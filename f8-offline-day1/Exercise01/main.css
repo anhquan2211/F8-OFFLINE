@@ -1,0 +1,87 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+  display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif,
+        'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  max-width: 500px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.excercise-1 {
+  background-color: #fdddb3;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+  padding: 20px;
+}
+
+.email-icon {
+  text-align: center;
+  margin-bottom: 12px;
+}
+
+.email-icon i {
+  font-size: 48px;
+  color: #f59f00;
+}
+
+.content {
+  text-align: center;
+  margin-bottom: 12px;
+}
+
+.header-content {
+  font-size: 24px;
+  color: #f59f00;
+  margin: 0px 0px 12px;
+  font-weight: 500;
+}
+
+.text-content {
+  color: #777;
+  margin: 0px 0px 12px;
+}
+
+.input-text {
+  margin-bottom: 12px;
+}
+
+.input-text span {
+    display: inline-block;
+    font-weight: bold;
+    margin-bottom: 8px;
+}
+
+.input-text input[type="text"] {
+  width: 100%;
+  padding: 8px;
+  border-radius: 3px;
+  border: 1px solid #ccc;
+}
+
+.btn button {
+  display: block;
+  width: 100%;
+  padding: 10px;
+  background-color: #f59f00;
+  color: #fff;
+  border: none;
+  border-radius: 3px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.btn button:hover {
+  background-color: #f28300;
+}
