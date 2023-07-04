@@ -1,0 +1,750 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Exercise 03</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+      integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link rel="stylesheet" href="./assets/css/reset.css" />
+    <link rel="stylesheet" href="./assets/css/main.css" />
+  </head>
+  <body>
+    <!-- Best seller section -->
+    <section class="best-seller">
+      <h2 class="section-heading">Best Seller</h2>
+      <input type="radio" name="products" id="skincare" checked />
+      <input type="radio" name="products" id="haircare" />
+      <input type="radio" name="products" id="cosmetics-cases" />
+      <input type="radio" name="products" id="fragrance" />
+      <input type="radio" name="products" id="makeup" />
+      <nav class="nav-list">
+        <ul>
+          <li>
+            <label for="skincare">Skincare</label>
+          </li>
+          <li>
+            <label for="haircare">Haircare</label>
+          </li>
+          <li>
+            <label for="cosmetics-cases">Cosmetics-cases</label>
+          </li>
+          <li>
+            <label for="fragrance">Fragrance</label>
+          </li>
+          <li>
+            <label for="makeup">Makeup</label>
+          </li>
+        </ul>
+      </nav>
+
+      <!--Skincare Product items -->
+      <div class="product-container skincare-product">
+        <a class="product-item" href="#">
+          <div class="product-img">
+            <!-- <img src="./assets/img/product-skincare.webp" alt="Ganier Gen" />
+            <img src="./assets/img/product-skincare-01.webp" alt="Ganier Gen" /> -->
+            <div class="img"></div>
+            <div class="product-action">
+              <div class="icon-action">
+                <i class="fa-regular fa-heart"></i>
+                <i class="fa-solid fa-right-left"></i>
+                <i class="fa-solid fa-eye"></i>
+              </div>
+              <button class="add-item">Add To Cart</button>
+            </div>
+          </div>
+
+          <div class="product-star">
+            <i class="fa-solid fa-star active"></i>
+            <i class="fa-solid fa-star active"></i>
+            <i class="fa-solid fa-star active"></i>
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+          </div>
+
+          <p class="product-name">
+            Garnier Gel rửa mặt Skin naturals bright Complets Vitamin C gel wash
+            120ml
+          </p>
+          <div class="product-price">
+            <p class="price-sale">126,650đ</p>
+            <p class="price-not-sale">149,000đ</p>
+          </div>
+        </a>
+
+        <a class="product-item" href="#">
+          <div class="product-img">
+            <img
+              src="./assets/img/skincare-02.webp"
+              alt="Al Stem Cell Cream 10g"
+            />
+            <img
+              src="./assets/img/skincare-02-back.webp"
+              alt="Al Stem Cell Cream 10g"
+            />
+
+            <div class="product-action">
+              <div class="icon-action">
+                <i class="fa-regular fa-heart"></i>
+                <i class="fa-solid fa-right-left"></i>
+                <i class="fa-solid fa-eye"></i>
+              </div>
+              <button class="add-item">Add To Cart</button>
+            </div>
+          </div>
+
+          <div class="product-star">
+            <i class="fa-solid fa-star active"></i>
+            <i class="fa-solid fa-star active"></i>
+            <i class="fa-solid fa-star active"></i>
+            <i class="fa-solid fa-star active"></i>
+            <i class="fa-solid fa-star active"></i>
+          </div>
+
+          <p class="product-name">82x Kem dưỡng Al Stem Cell Cream 10g</p>
+          <div class="product-price">
+            <p class="price-sale">891,000đ</p>
+            <p class="price-not-sale">990,000đ</p>
+          </div>
+        </a>
+
+        <a class="product-item" href="#">
+          <div class="product-img">
+            <img src="./assets/img/skincare-03.webp" alt="Astralift cream" />
+            <img
+              src="./assets/img/skincare-03-back.webp"
+              alt="Astralift cream"
+            />
+
+            <div class="product-action">
+              <div class="icon-action">
+                <i class="fa-regular fa-heart"></i>
+                <i class="fa-solid fa-right-left"></i>
+                <i class="fa-solid fa-eye"></i>
+              </div>
+              <button class="add-item">Add To Cart</button>
+            </div>
+          </div>
+
+          <div class="product-star">
+            <i class="fa-solid fa-star active"></i>
+            <i class="fa-solid fa-star active"></i>
+            <i class="fa-solid fa-star active"></i>
+            <i class="fa-solid fa-star active"></i>
+            <i class="fa-solid fa-star"></i>
+          </div>
+
+          <p class="product-name">Astralift Kem dưỡng ban ngày cream s 30g</p>
+          <div class="product-price">
+            <p class="price-sale">880,999đ</p>
+            <p class="price-not-sale">999,999đ</p>
+          </div>
+        </a>
+
+        <a class="product-item" href="#">
+          <div class="product-img">
+            <img
+              src="./assets/img/skincare-04.webp"
+              alt="Cathy Doll Whitamin C"
+            />
+            <img
+              src="./assets/img/skincare-04-back.webp"
+              alt="Cathy Doll Whitamin C"
+            />
+
+            <div class="product-action">
+              <div class="icon-action">
+                <i class="fa-regular fa-heart"></i>
+                <i class="fa-solid fa-right-left"></i>
+                <i class="fa-solid fa-eye"></i>
+              </div>
+              <button class="add-item">Add To Cart</button>
+            </div>
+          </div>
+
+          <div class="product-star">
+            <i class="fa-solid fa-star active"></i>
+            <i class="fa-solid fa-star active"></i>
+            <i class="fa-solid fa-star active"></i>
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+          </div>
+
+          <p class="product-name">
+            Cathy Doll Kem dưỡng trắng da mờ thâm Whitamin C Day Cream 50ml
+          </p>
+          <div class="product-price">
+            <p class="price-sale">279,200đ</p>
+            <p class="price-not-sale">349,000đ</p>
+          </div>
+        </a>
+      </div>
+
+      <!-- Haircare Product items -->
+      <div class="product-container haircare-product">
+        <a class="product-item" href="#">
+          <div class="product-img">
+            <img
+              src="./assets/img/product-haircare.webp"
+              alt="Weilalaiya White Truffle"
+            />
+            <img
+              src="./assets/img/product-haircare-01.jpg"
+              alt="Weilalaiya White Truffle"
+            />
+            <div class="product-action">
+              <div class="icon-action">
+                <i class="fa-regular fa-heart"></i>
+                <i class="fa-solid fa-right-left"></i>
+                <i class="fa-solid fa-eye"></i>
+              </div>
+              <button class="add-item">Add To Cart</button>
+            </div>
+          </div>
+
+          <div class="product-star">
+            <i class="fa-solid fa-star active"></i>
+            <i class="fa-solid fa-star active"></i>
+            <i class="fa-solid fa-star active"></i>
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+          </div>
+
+          <p class="product-name">
+            Weilalaiya Dầu gội White Truffle Lightness Shampoo 450ml
+          </p>
+          <div class="product-price">
+            <p class="price-sale">540,000đ</p>
+            <p class="price-not-sale">600,000đ</p>
+          </div>
+        </a>
+
+        <a class="product-item" href="#">
+          <div class="product-img">
+            <img
+              src="./assets/img/haircare-02.webp"
+              alt="Tresemme Keratin Smooth"
+            />
+            <img
+              src="./assets/img/haircare-02-back.webp"
+              alt="Tresemme Keratin Smooth"
+            />
+
+            <div class="product-action">
+              <div class="icon-action">
+                <i class="fa-regular fa-heart"></i>
+                <i class="fa-solid fa-right-left"></i>
+                <i class="fa-solid fa-eye"></i>
+              </div>
+              <button class="add-item">Add To Cart</button>
+            </div>
+          </div>
+
+          <div class="product-star">
+            <i class="fa-solid fa-star active"></i>
+            <i class="fa-solid fa-star active"></i>
+            <i class="fa-solid fa-star active"></i>
+            <i class="fa-solid fa-star active"></i>
+            <i class="fa-solid fa-star active"></i>
+          </div>
+
+          <p class="product-name">
+            Dầu gội Tresemme Keratin Smooth tinh chất Argan vào nếp suôn mượt
+            (640g)
+          </p>
+          <div class="product-price">
+            <p class="price-sale">175,000đ</p>
+            <p class="price-not-sale">203,000đ</p>
+          </div>
+        </a>
+
+        <a class="product-item" href="#">
+          <div class="product-img">
+            <img
+              src="./assets/img/haircare-03.webp"
+              alt="Moist Diane Extra Smooth & Straight Shampoo"
+            />
+            <img
+              src="./assets/img/haircare-03-back.webp"
+              alt="Moist Diane Extra Smooth & Straight Shampoo"
+            />
+
+            <div class="product-action">
+              <div class="icon-action">
+                <i class="fa-regular fa-heart"></i>
+                <i class="fa-solid fa-right-left"></i>
+                <i class="fa-solid fa-eye"></i>
+              </div>
+              <button class="add-item">Add To Cart</button>
+            </div>
+          </div>
+
+          <div class="product-star">
+            <i class="fa-solid fa-star active"></i>
+            <i class="fa-solid fa-star active"></i>
+            <i class="fa-solid fa-star active"></i>
+            <i class="fa-solid fa-star active"></i>
+            <i class="fa-solid fa-star"></i>
+          </div>
+
+          <p class="product-name">
+            Moist Diane Extra Smooth & Straight Shampoo 450ml
+          </p>
+          <div class="product-price">
+            <p class="price-sale">173,130đ</p>
+            <p class="price-not-sale">199,000đ</p>
+          </div>
+        </a>
+
+        <a class="product-item" href="#">
+          <div class="product-img">
+            <img src="./assets/img/haircare-04.webp" alt="F.O.X Home Dầu gội" />
+            <img
+              src="./assets/img/haircare-04-back.webp"
+              alt="F.O.X Home Dầu gội"
+            />
+
+            <div class="product-action">
+              <div class="icon-action">
+                <i class="fa-regular fa-heart"></i>
+                <i class="fa-solid fa-right-left"></i>
+                <i class="fa-solid fa-eye"></i>
+              </div>
+              <button class="add-item">Add To Cart</button>
+            </div>
+          </div>
+
+          <div class="product-star">
+            <i class="fa-solid fa-star active"></i>
+            <i class="fa-solid fa-star active"></i>
+            <i class="fa-solid fa-star active"></i>
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+          </div>
+
+          <p class="product-name">
+            F.O.X Home Dầu Gội Prevent Showflakes Shampoo #Voyage 1000ml.
+          </p>
+          <div class="product-price">
+            <p class="price-sale">250,000đ</p>
+            <p class="price-not-sale">299,000đ</p>
+          </div>
+        </a>
+      </div>
+
+      <!-- Cosmetics-cases Product -->
+      <div class="product-container cosmetics-product">
+        <a class="product-item" href="#">
+          <div class="product-img">
+            <img src="./assets/img/product-haircare.webp" alt="Ganier Gen" />
+            <img src="./assets/img/product-haircare-01.jpg" alt="Ganier Gen" />
+            <div class="product-action">
+              <div class="icon-action">
+                <i class="fa-regular fa-heart"></i>
+                <i class="fa-solid fa-right-left"></i>
+                <i class="fa-solid fa-eye"></i>
+              </div>
+              <button class="add-item">Add To Cart</button>
+            </div>
+          </div>
+
+          <div class="product-star">
+            <i class="fa-solid fa-star active"></i>
+            <i class="fa-solid fa-star active"></i>
+            <i class="fa-solid fa-star active"></i>
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+          </div>
+
+          <p class="product-name">
+            Garnier Gel rửa mặt Skin naturals bright Complets Vitamin C gel wash
+            120ml
+          </p>
+          <div class="product-price">
+            <p class="price-sale">126,650đ</p>
+            <p class="price-not-sale">149,000đ</p>
+          </div>
+        </a>
+
+        <a class="product-item" href="#">
+          <div class="product-img">
+            <img src="./assets/img/product-skincare.webp" alt="Ganier Gen" />
+            <img src="./assets/img/product-skincare-01.webp" alt="Ganier Gen" />
+
+            <div class="product-action">
+              <div class="icon-action">
+                <i class="fa-regular fa-heart"></i>
+                <i class="fa-solid fa-right-left"></i>
+                <i class="fa-solid fa-eye"></i>
+              </div>
+              <button class="add-item">Add To Cart</button>
+            </div>
+          </div>
+
+          <div class="product-star">
+            <i class="fa-solid fa-star active"></i>
+            <i class="fa-solid fa-star active"></i>
+            <i class="fa-solid fa-star active"></i>
+            <i class="fa-solid fa-star active"></i>
+            <i class="fa-solid fa-star active"></i>
+          </div>
+
+          <p class="product-name">
+            Garnier Gel rửa mặt Skin naturals bright Complets Vitamin C gel wash
+            120ml
+          </p>
+          <div class="product-price">
+            <p class="price-sale">126,650đ</p>
+            <p class="price-not-sale">149,000đ</p>
+          </div>
+        </a>
+
+        <a class="product-item" href="#">
+          <div class="product-img">
+            <img src="./assets/img/product-skincare.webp" alt="Ganier Gen" />
+            <img src="./assets/img/product-skincare-01.webp" alt="Ganier Gen" />
+
+            <div class="product-action">
+              <div class="icon-action">
+                <i class="fa-regular fa-heart"></i>
+                <i class="fa-solid fa-right-left"></i>
+                <i class="fa-solid fa-eye"></i>
+              </div>
+              <button class="add-item">Add To Cart</button>
+            </div>
+          </div>
+
+          <div class="product-star">
+            <i class="fa-solid fa-star active"></i>
+            <i class="fa-solid fa-star active"></i>
+            <i class="fa-solid fa-star active"></i>
+            <i class="fa-solid fa-star active"></i>
+            <i class="fa-solid fa-star"></i>
+          </div>
+
+          <p class="product-name">
+            Garnier Gel rửa mặt Skin naturals bright Complets Vitamin C gel wash
+            120ml
+          </p>
+          <div class="product-price">
+            <p class="price-sale">126,650đ</p>
+            <p class="price-not-sale">149,000đ</p>
+          </div>
+        </a>
+
+        <a class="product-item" href="#">
+          <div class="product-img">
+            <img src="./assets/img/product-skincare.webp" alt="Ganier Gen" />
+            <img src="./assets/img/product-skincare-01.webp" alt="Ganier Gen" />
+
+            <div class="product-action">
+              <div class="icon-action">
+                <i class="fa-regular fa-heart"></i>
+                <i class="fa-solid fa-right-left"></i>
+                <i class="fa-solid fa-eye"></i>
+              </div>
+              <button class="add-item">Add To Cart</button>
+            </div>
+          </div>
+
+          <div class="product-star">
+            <i class="fa-solid fa-star active"></i>
+            <i class="fa-solid fa-star active"></i>
+            <i class="fa-solid fa-star active"></i>
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+          </div>
+
+          <p class="product-name">
+            Garnier Gel rửa mặt Skin naturals bright Complets Vitamin C gel wash
+            120ml
+          </p>
+          <div class="product-price">
+            <p class="price-sale">126,650đ</p>
+            <p class="price-not-sale">149,000đ</p>
+          </div>
+        </a>
+      </div>
+
+      <!-- Fragrance product -->
+      <div class="product-container fragrance-product">
+        <a class="product-item" href="#">
+          <div class="product-img">
+            <img src="./assets/img/product-haircare.webp" alt="Ganier Gen" />
+            <img src="./assets/img/product-haircare-01.jpg" alt="Ganier Gen" />
+            <div class="product-action">
+              <div class="icon-action">
+                <i class="fa-regular fa-heart"></i>
+                <i class="fa-solid fa-right-left"></i>
+                <i class="fa-solid fa-eye"></i>
+              </div>
+              <button class="add-item">Add To Cart</button>
+            </div>
+          </div>
+
+          <div class="product-star">
+            <i class="fa-solid fa-star active"></i>
+            <i class="fa-solid fa-star active"></i>
+            <i class="fa-solid fa-star active"></i>
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+          </div>
+
+          <p class="product-name">
+            Garnier Gel rửa mặt Skin naturals bright Complets Vitamin C gel wash
+            120ml
+          </p>
+          <div class="product-price">
+            <p class="price-sale">126,650đ</p>
+            <p class="price-not-sale">149,000đ</p>
+          </div>
+        </a>
+
+        <a class="product-item" href="#">
+          <div class="product-img">
+            <img src="./assets/img/product-skincare.webp" alt="Ganier Gen" />
+            <img src="./assets/img/product-skincare-01.webp" alt="Ganier Gen" />
+
+            <div class="product-action">
+              <div class="icon-action">
+                <i class="fa-regular fa-heart"></i>
+                <i class="fa-solid fa-right-left"></i>
+                <i class="fa-solid fa-eye"></i>
+              </div>
+              <button class="add-item">Add To Cart</button>
+            </div>
+          </div>
+
+          <div class="product-star">
+            <i class="fa-solid fa-star active"></i>
+            <i class="fa-solid fa-star active"></i>
+            <i class="fa-solid fa-star active"></i>
+            <i class="fa-solid fa-star active"></i>
+            <i class="fa-solid fa-star active"></i>
+          </div>
+
+          <p class="product-name">
+            Garnier Gel rửa mặt Skin naturals bright Complets Vitamin C gel wash
+            120ml
+          </p>
+          <div class="product-price">
+            <p class="price-sale">126,650đ</p>
+            <p class="price-not-sale">149,000đ</p>
+          </div>
+        </a>
+
+        <a class="product-item" href="#">
+          <div class="product-img">
+            <img src="./assets/img/product-skincare.webp" alt="Ganier Gen" />
+            <img src="./assets/img/product-skincare-01.webp" alt="Ganier Gen" />
+
+            <div class="product-action">
+              <div class="icon-action">
+                <i class="fa-regular fa-heart"></i>
+                <i class="fa-solid fa-right-left"></i>
+                <i class="fa-solid fa-eye"></i>
+              </div>
+              <button class="add-item">Add To Cart</button>
+            </div>
+          </div>
+
+          <div class="product-star">
+            <i class="fa-solid fa-star active"></i>
+            <i class="fa-solid fa-star active"></i>
+            <i class="fa-solid fa-star active"></i>
+            <i class="fa-solid fa-star active"></i>
+            <i class="fa-solid fa-star"></i>
+          </div>
+
+          <p class="product-name">
+            Garnier Gel rửa mặt Skin naturals bright Complets Vitamin C gel wash
+            120ml
+          </p>
+          <div class="product-price">
+            <p class="price-sale">126,650đ</p>
+            <p class="price-not-sale">149,000đ</p>
+          </div>
+        </a>
+
+        <a class="product-item" href="#">
+          <div class="product-img">
+            <img src="./assets/img/product-skincare.webp" alt="Ganier Gen" />
+            <img src="./assets/img/product-skincare-01.webp" alt="Ganier Gen" />
+
+            <div class="product-action">
+              <div class="icon-action">
+                <i class="fa-regular fa-heart"></i>
+                <i class="fa-solid fa-right-left"></i>
+                <i class="fa-solid fa-eye"></i>
+              </div>
+              <button class="add-item">Add To Cart</button>
+            </div>
+          </div>
+
+          <div class="product-star">
+            <i class="fa-solid fa-star active"></i>
+            <i class="fa-solid fa-star active"></i>
+            <i class="fa-solid fa-star active"></i>
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+          </div>
+
+          <p class="product-name">
+            Garnier Gel rửa mặt Skin naturals bright Complets Vitamin C gel wash
+            120ml
+          </p>
+          <div class="product-price">
+            <p class="price-sale">126,650đ</p>
+            <p class="price-not-sale">149,000đ</p>
+          </div>
+        </a>
+      </div>
+
+      <!-- Makeup product -->
+      <div class="product-container makeup-product">
+        <a class="product-item" href="#">
+          <div class="product-img">
+            <img src="./assets/img/product-haircare.webp" alt="Ganier Gen" />
+            <img src="./assets/img/product-haircare-01.jpg" alt="Ganier Gen" />
+            <div class="product-action">
+              <div class="icon-action">
+                <i class="fa-regular fa-heart"></i>
+                <i class="fa-solid fa-right-left"></i>
+                <i class="fa-solid fa-eye"></i>
+              </div>
+              <button class="add-item">Add To Cart</button>
+            </div>
+          </div>
+
+          <div class="product-star">
+            <i class="fa-solid fa-star active"></i>
+            <i class="fa-solid fa-star active"></i>
+            <i class="fa-solid fa-star active"></i>
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+          </div>
+
+          <p class="product-name">
+            Garnier Gel rửa mặt Skin naturals bright Complets Vitamin C gel wash
+            120ml
+          </p>
+          <div class="product-price">
+            <p class="price-sale">126,650đ</p>
+            <p class="price-not-sale">149,000đ</p>
+          </div>
+        </a>
+
+        <a class="product-item" href="#">
+          <div class="product-img">
+            <img src="./assets/img/product-skincare.webp" alt="Ganier Gen" />
+            <img src="./assets/img/product-skincare-01.webp" alt="Ganier Gen" />
+
+            <div class="product-action">
+              <div class="icon-action">
+                <i class="fa-regular fa-heart"></i>
+                <i class="fa-solid fa-right-left"></i>
+                <i class="fa-solid fa-eye"></i>
+              </div>
+              <button class="add-item">Add To Cart</button>
+            </div>
+          </div>
+
+          <div class="product-star">
+            <i class="fa-solid fa-star active"></i>
+            <i class="fa-solid fa-star active"></i>
+            <i class="fa-solid fa-star active"></i>
+            <i class="fa-solid fa-star active"></i>
+            <i class="fa-solid fa-star active"></i>
+          </div>
+
+          <p class="product-name">
+            Garnier Gel rửa mặt Skin naturals bright Complets Vitamin C gel wash
+            120ml
+          </p>
+          <div class="product-price">
+            <p class="price-sale">126,650đ</p>
+            <p class="price-not-sale">149,000đ</p>
+          </div>
+        </a>
+
+        <a class="product-item" href="#">
+          <div class="product-img">
+            <img src="./assets/img/product-skincare.webp" alt="Ganier Gen" />
+            <img src="./assets/img/product-skincare-01.webp" alt="Ganier Gen" />
+
+            <div class="product-action">
+              <div class="icon-action">
+                <i class="fa-regular fa-heart"></i>
+                <i class="fa-solid fa-right-left"></i>
+                <i class="fa-solid fa-eye"></i>
+              </div>
+              <button class="add-item">Add To Cart</button>
+            </div>
+          </div>
+
+          <div class="product-star">
+            <i class="fa-solid fa-star active"></i>
+            <i class="fa-solid fa-star active"></i>
+            <i class="fa-solid fa-star active"></i>
+            <i class="fa-solid fa-star active"></i>
+            <i class="fa-solid fa-star"></i>
+          </div>
+
+          <p class="product-name">
+            Garnier Gel rửa mặt Skin naturals bright Complets Vitamin C gel wash
+            120ml
+          </p>
+          <div class="product-price">
+            <p class="price-sale">126,650đ</p>
+            <p class="price-not-sale">149,000đ</p>
+          </div>
+        </a>
+
+        <a class="product-item" href="#">
+          <div class="product-img">
+            <img src="./assets/img/product-skincare.webp" alt="Ganier Gen" />
+            <img src="./assets/img/product-skincare-01.webp" alt="Ganier Gen" />
+
+            <div class="product-action">
+              <div class="icon-action">
+                <i class="fa-regular fa-heart"></i>
+                <i class="fa-solid fa-right-left"></i>
+                <i class="fa-solid fa-eye"></i>
+              </div>
+              <button class="add-item">Add To Cart</button>
+            </div>
+          </div>
+
+          <div class="product-star">
+            <i class="fa-solid fa-star active"></i>
+            <i class="fa-solid fa-star active"></i>
+            <i class="fa-solid fa-star active"></i>
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+          </div>
+
+          <p class="product-name">
+            Garnier Gel rửa mặt Skin naturals bright Complets Vitamin C gel wash
+            120ml
+          </p>
+          <div class="product-price">
+            <p class="price-sale">126,650đ</p>
+            <p class="price-not-sale">149,000đ</p>
+          </div>
+        </a>
+      </div>
+    </section>
+  </body>
+</html>

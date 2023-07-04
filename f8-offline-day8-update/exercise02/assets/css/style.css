@@ -1,0 +1,247 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Nunito", sans-serif;
+  position: relative;
+}
+
+.overlay {
+  position: absolute;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.4);
+}
+
+.shopping-cart {
+  max-height: 100vh;
+  position: fixed;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.4);
+  display: flex;
+  justify-content: flex-end;
+}
+
+.container {
+  position: relative;
+  background-color: #fff;
+  width: 368px;
+  min-height: 100vh;
+}
+
+/* HEADER CART */
+
+.header-cart {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 60px;
+  background-color: #f4f4f4;
+}
+
+.header-cart .header-title {
+  margin-left: 30px;
+  font-weight: 700;
+  position: relative;
+}
+
+.header-cart .header-title::after {
+  content: "4";
+  position: absolute;
+  top: -10px;
+  right: -20px;
+  background-color: #4060f3;
+  color: #fff;
+  border-radius: 50%;
+  font-size: 12px;
+  width: 18px;
+  height: 18px;
+  text-align: center;
+  line-height: 18px;
+}
+
+.header-cart i {
+  margin-right: 20px;
+  font-size: 22px;
+  color: #eb5b2d;
+  cursor: pointer;
+}
+
+/* PRODUCT */
+.product-container {
+  height: 300px;
+  overflow: auto;
+  scrollbar-width: auto;
+  scrollbar-color: #cfcaca #ffffff;
+}
+
+.product-container::-webkit-scrollbar {
+  width: 10px;
+}
+
+.product-container::-webkit-scrollbar-track {
+  background: #ffffff;
+}
+
+.product-container::-webkit-scrollbar-thumb {
+  background-color: #dfdfdf;
+  border-radius: 10px;
+  border: 3px none #9e9e9e;
+}
+
+.product-item {
+  margin-left: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 30px 0;
+  border-bottom: 1px solid #dadada;
+}
+
+.product-item .product-img {
+  margin-right: 40px;
+}
+
+.product-item .product-img img {
+  width: 85px;
+  padding: 6px 0;
+  object-fit: cover;
+  border-radius: 12px;
+  box-shadow: rgba(136, 165, 191, 0.48) 6px 2px 16px 0px,
+    rgba(255, 255, 255, 0.8) -6px -2px 16px 0px;
+}
+
+.product-name-action {
+  display: flex;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.product-name-action .product-name {
+  font-size: 14px;
+  color: #777777;
+  font-weight: 500;
+  margin-right: 40px;
+}
+
+.product-name-action .product-action i {
+  font-size: 14px;
+  color: #777777;
+  cursor: pointer;
+}
+
+.product-price {
+  display: flex;
+  align-items: center;
+}
+
+.product-price .product-number {
+  margin-right: 50px;
+  border: 1px solid #777777;
+  border-radius: 999px;
+}
+
+.product-price .product-number span {
+  color: #777777;
+  font-size: 12px;
+  padding: 0px 10px;
+}
+
+.product-price .product-number i {
+  display: inline-block;
+  color: #777777;
+  font-size: 12px;
+  cursor: pointer;
+}
+
+.product-price .product-number i:first-child {
+  padding: 8px 0 8px 8px;
+}
+
+.product-price .product-number i:last-child {
+  padding: 8px 8px 0 0;
+}
+
+.product-price .price-total {
+  font-size: 14px;
+  color: #777777;
+  font-weight: 700;
+}
+
+/* Subtotal cart */
+.subtotal {
+  background-color: #f4f4f4;
+  padding: 16px 30px;
+}
+
+.subtotal-detail {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 12px;
+}
+
+.subtotal-detail .subtotal-title {
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.subtotal-detail .subtotal-price {
+  font-size: 18px;
+  font-weight: 500;
+  color: #eb5b2d;
+}
+
+.subtotal .subtotal-desc {
+  font-size: 12px;
+  color: #777777;
+}
+
+/* Button action */
+.btn-add,
+.btn-view {
+  width: 310px;
+  margin: 0 30px 12px;
+  padding: 10px 0;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.btn-view {
+  border: 1px solid #777777;
+  color: #777777;
+}
+
+.btn-add {
+  border: 1px solid #4060f3;
+  background-color: #4060f3;
+  color: #fff;
+}
+
+button:hover {
+  opacity: 0.9;
+}
+
+/* Footer Cart */
+.footer-cart {
+  display: flex;
+  align-items: center;
+  margin: 10px 0 16px 30px;
+}
+
+.footer-cart i {
+  width: 50px;
+  height: 50px;
+  font-size: 24px;
+  line-height: 50px;
+  border: 1px solid #4060f3;
+  text-align: center;
+  color: #4060f3;
+  border-radius: 50%;
+}
+
+.footer-cart .footer-desc {
+  margin-left: 30px;
+  font-size: 15px;
+  font-weight: 700;
+}

@@ -1,0 +1,98 @@
+/* Common */
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 16px;
+}
+
+button, input, textarea, select {
+    font-family: inherit;
+    font-size: inherit;
+}
+
+/* Map section */
+.active {
+    background-color: #B09656;
+}
+
+
+.map-section {
+    width: 90%;
+    margin: auto;
+    padding: 40px 0;
+}
+
+.map-nav {
+    margin-bottom: 20px;
+}
+
+.map-list {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    border: 2px solid #B09656;
+    width: fit-content;
+    border-radius: 5px;
+}
+
+.map-list li:hover {
+    background-color: #ebd397;
+}
+
+.map-item {
+    padding: 10px 50px;
+    border-right: none;
+}
+
+.map-item a {
+    text-decoration: none;
+    color: #9c854c;
+    font-size: 16px;
+    font-weight: 500;
+}
+
+.active a {
+    color: #fff;
+}
+
+.map-content {
+    display: flex;
+    justify-content: space-between;
+    background-color: #dfdbdb;
+    margin-top: 40px;
+}
+
+.content-heading {
+    padding: 50px 100px 26px 35px;
+    font-size: 24px;
+}
+
+.content-description {
+    padding-left: 35px;
+    line-height: 1.4;
+    color: #736f6f;
+}
+
+.contact-info {
+    padding-left: 35px;
+    margin-top: 16px;
+}
+
+.contact-info p,
+.contact-info a {
+    line-height: 1.4;
+    color: #736f6f;
+}
+
+.contact-info p:not(:last-child) a {
+    text-decoration: none;
+}
+
+.contact-info p:last-child a {
+    color: #9c854c;
+}

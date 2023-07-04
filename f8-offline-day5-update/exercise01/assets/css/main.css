@@ -1,0 +1,274 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  transition: all 0.35s ease-in-out;
+}
+
+body {
+  color: #c1c1c1;
+  font-family: "Lato", sans-serif;
+  background-color: #e3e3e3;
+}
+
+.form-container {
+  max-width: 38em;
+  padding: 1em 3em 2em 3em;
+  margin: 2em auto;
+  background-color: #fff;
+  border-radius: 4px;
+  box-shadow: 0px 3px 10px -2px rgba(0, 0, 0, 0.2);
+}
+
+.form-heading {
+  font-family: "Lobster", cursive;
+  font-size: 28px;
+  color: #333333;
+  margin-bottom: 1em;
+}
+
+.form-description {
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 1.4;
+  margin-bottom: 1.57em;
+}
+
+.form-description span {
+  color: #ed5d53;
+}
+
+input:not(input[type="checkbox"]),
+select option,
+select,
+textarea {
+  width: 100%;
+  padding: 1em;
+  line-height: 1.4;
+  background-color: #f9f9f9;
+  border: 1px solid #e5e5e5;
+  border-radius: 3px;
+  transition: 0.35s ease-in-out;
+  transition: all 0.35s ease-in-out;
+}
+
+.input-group {
+  margin-bottom: 1.3em;
+}
+
+.input-group-icon {
+  position: relative;
+}
+
+.input-group-icon input:not(input[type="checkbox"]),
+.input-group-icon select,
+.input-group textarea {
+  padding-left: 5.4em;
+  font-family: inherit;
+}
+
+.input-group-icon input::placeholder,
+.input-group-icon select,
+.input-group textarea::placeholder {
+  color: #aaaaaa;
+}
+
+.input-group-icon .input-exit,
+.input-group-icon .input-require {
+  position: absolute;
+  top: 19px;
+  right: 16px;
+  font-size: 6px;
+}
+
+.input-group-icon .input-exit {
+  display: none;
+}
+
+.input-group-icon .input-icon {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 3.4em;
+  height: 100%;
+  line-height: 3em;
+  text-align: center;
+  background-color: #dcdcdc;
+  pointer-events: none;
+  transition: all 0.35s ease-in-out;
+}
+
+.input-group-icon .input-icon i {
+  font-size: 17px;
+  color: #fff;
+}
+
+.input-group .input-description {
+  display: none;
+  position: absolute;
+  top: -52px;
+  left: 28px;
+  font-size: 13px;
+  color: #fff;
+  background-color: #333333;
+  padding: 12px;
+}
+
+.input-group .input-description::after {
+  content: "";
+  position: absolute;
+  display: inline-block;
+  width: 15px;
+  height: 15px;
+  background-color: #333;
+  bottom: -5px;
+  left: 18px;
+  transform: rotate(45deg);
+}
+
+.input-group .input-message {
+  height: calc(100% - 2px);
+}
+
+.check-box {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.check-box .send-message::before {
+  content: "";
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  border: 1px solid #ababab;
+  margin-right: 9px;
+}
+
+.check-box .send-message::after {
+  position: absolute;
+  display: inline-block;
+  content: "";
+  left: 5px;
+  top: 6px;
+  width: 6px;
+  height: 10px;
+  border-width: 0 2px 2px 0;
+  border-color: #000;
+  border-style: solid;
+  transform: rotate(45deg);
+  display: none;
+}
+
+.check-box button {
+  border: none;
+  padding: 7px 34px;
+  background-color: #ed5d53;
+  color: #fff;
+  cursor: pointer;
+}
+
+select:focus,
+input:not(input[type="checkbox"]):focus {
+  outline: none;
+  border: 1px solid #333333;
+}
+
+select:focus ~ .input-icon,
+input:focus ~ .input-icon i,
+textarea:focus ~ .input-icon i {
+  color: #fff;
+}
+
+select:focus ~ .input-icon,
+input:focus ~ .input-icon,
+textarea:focus ~ .input-icon {
+  background-color: #333333;
+}
+
+textarea:focus ~ .input-require,
+input:not(input[type="checkbox"]):focus ~ .input-require {
+  display: none;
+}
+
+textarea:focus ~ .input-exit,
+input:not(input[type="checkbox"]):focus ~ .input-exit {
+  display: block;
+  font-size: 10px;
+  color: #333333;
+  cursor: pointer;
+}
+
+.check-box input[type="checkbox"]:checked ~ .send-message::after,
+textarea:focus ~ .input-description,
+input:focus ~ .input-description {
+  display: block;
+}
+
+.dropdown-select:hover,
+.input-group:hover input,
+.input-group:hover select,
+.input-group:hover textarea {
+  border-color: #333;
+}
+
+.input-group:hover .input-icon {
+  background-color: #333;
+}
+
+.send-message:hover {
+  color: #3f3f3f;
+  cursor: pointer;
+}
+
+.custom-select {
+  position: relative;
+}
+
+.custom-select:hover .dropdown-list {
+  opacity: 1;
+  visibility: visible;
+  z-index: 1;
+}
+
+.dropdown-select {
+  padding: 1em;
+  border-radius: 4px;
+  background-color: #fff;
+  width: 100%;
+  font-size: 13px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  cursor: pointer;
+  border: 1px solid #e5e5e5;
+}
+
+.select {
+  padding-left: 60px;
+}
+
+.dropdown-list {
+  border-radius: 4px;
+  background-color: #fff;
+  position: absolute;
+  top: 110%;
+  left: 0;
+  right: 0;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.2s linear;
+}
+
+.dropdown-item {
+  padding: 1rem;
+  font-size: 13px;
+  border-bottom: 1px solid #e5e5e5;
+  cursor: pointer;
+}
+
+.dropdown-item:hover {
+  background-color: #3f3f3f;
+  color: #fff;
+}

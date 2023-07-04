@@ -1,0 +1,234 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  transition: all 0.2s linear;
+}
+
+body {
+  font-family: "Poppins", sans-serif;
+  text-align: center;
+}
+
+/* Best seller section */
+.best-seller {
+  width: 1000px;
+  height: 600px;
+  margin: 40px auto;
+  border-radius: 8px;
+  background-color: #8ec5fc;
+  background-image: linear-gradient(62deg, #8ec5fc 0%, #e0c3fc 100%);
+}
+
+input {
+  display: none;
+}
+
+.section-heading {
+  font-family: "Times New Roman", Times, serif;
+  font-weight: bolder;
+  display: block;
+  font-size: 38px;
+  padding: 20px 0;
+  margin-bottom: 16px;
+}
+
+.nav-list ul {
+  display: flex;
+  justify-content: center;
+}
+
+.nav-list ul li {
+  list-style: none;
+  margin-right: 4px;
+}
+
+.nav-list label {
+  display: block;
+  padding: 12px 20px;
+  font-size: 13px;
+  background-color: #d7d5d5;
+  color: #000;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+input[id="makeup"]:checked ~ .nav-list ul li label[for="makeup"],
+input[id="fragrance"]:checked ~ .nav-list ul li label[for="fragrance"],
+input[id="cosmetics-cases"]:checked
+  ~ .nav-list
+  ul
+  li
+  label[for="cosmetics-cases"],
+input[id="haircare"]:checked ~ .nav-list ul li label[for="haircare"],
+input[id="skincare"]:checked ~ .nav-list ul li label[for="skincare"] {
+  background-color: #29388e;
+  color: #fff;
+}
+
+/* product */
+
+.product-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.product-item {
+  flex-basis: 23%;
+  text-decoration: none;
+  color: #6f6d6d;
+  background-color: #fff;
+  margin-top: 30px;
+  margin-right: 16px;
+  display: none;
+  border-radius: 8px;
+  transition: all 0.2s linear;
+}
+
+.product-container .product-item:last-child {
+  margin-right: 0px;
+}
+
+.product-item:hover {
+  box-shadow: 0 3px 20px 0 rgba(0, 0, 0, 0.05);
+  transform: translateY(-2px);
+}
+
+.product-img {
+  position: relative;
+}
+
+.product-img img {
+  width: 180px;
+  height: 200px;
+  border-radius: 10px;
+  margin: 0 auto 32px;
+  object-fit: contain;
+  overflow: hidden;
+}
+
+.product-item:hover .product-action {
+  display: block;
+  position: absolute;
+  bottom: -10px;
+  left: 0;
+  right: 0;
+}
+
+.product-img img:nth-child(2) {
+  display: none;
+}
+
+.product-item:hover img:nth-child(2) {
+  display: block;
+}
+
+.product-item:hover img:nth-child(1) {
+  display: none;
+}
+
+.product-item:hover img {
+  opacity: 0.6;
+}
+
+.product-action {
+  display: none;
+}
+
+.icon-action {
+  margin-bottom: 12px;
+}
+
+.icon-action i {
+  padding: 12px;
+  background-color: #29388e;
+  color: #fff;
+  font-size: 14px;
+  border-radius: 5px;
+}
+
+.add-item {
+  background-color: #29388e;
+  color: #fff;
+  font-size: 14px;
+  padding: 8px 24px;
+  border: 1px solid #29388e;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.icon-action i:hover,
+.add-item:hover {
+  background-color: #0f1c74;
+}
+
+.active {
+  color: #f4c342;
+}
+
+.product-star {
+  margin-bottom: 16px;
+}
+
+.product-name {
+  font-size: 14px;
+  line-height: 1.4;
+  padding: 0 6px;
+  margin-bottom: 16px;
+  text-align: center;
+  overflow: hidden;
+  display: block;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+}
+
+.product-price {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-bottom: 16px;
+}
+
+.price-sale {
+  color: #29388e;
+  font-size: 14px;
+  font-weight: 600;
+  margin-left: 4px;
+}
+
+.price-not-sale {
+  font-size: 14px;
+  color: #666;
+  text-decoration: line-through;
+  margin-left: 10px;
+}
+
+input[id="makeup"]:checked ~ .makeup-product .product-item,
+input[id="fragrance"]:checked ~ .fragrance-product .product-item,
+input[id="cosmetics-cases"]:checked ~ .cosmetics-product .product-item,
+input[id="haircare"]:checked ~ .haircare-product .product-item,
+input[id="skincare"]:checked ~ .skincare-product .product-item {
+  display: block;
+}
+
+.img {
+  width: 180px;
+  height: 200px;
+  background-image: url(../img/product-skincare.webp);
+  background-repeat: no-repeat;
+  /* background-position: center; */
+  background-size: cover;
+  margin: 0 auto 32px;
+}
+
+.img:hover {
+  width: 180px;
+  height: 200px;
+  background-image: url(../img/product-skincare-01.webp);
+  background-repeat: no-repeat;
+  /* background-position: center; */
+  background-size: cover;
+  margin: 0 auto 32px;
+}

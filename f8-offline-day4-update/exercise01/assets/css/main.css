@@ -1,0 +1,81 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.form-subcribe {
+    width: 90%;
+    background-color: #334455;
+    margin: 50px auto;
+    padding: 40px 0 30px 45px;
+    border-radius: 8px;
+}
+
+/* hover */
+.form-subcribe:hover .email::placeholder {
+    color: #FFA500;
+}
+
+.form-subcribe:hover .email {
+    background-color: #ddd;
+}
+
+.form-subcribe:hover button {
+    background-color: #FFA500;
+    color: #fff;
+}
+/* end hover */
+
+.form-heading {
+    font-size: 28px;
+    color: #fff;
+    margin-bottom: 24px;
+}
+
+.form-heading span {
+    color: #FFA500;
+}
+
+.form-description {
+    color: #fff;
+    line-height: 1.6;
+    margin-bottom: 20px;
+    font-size: 14px;
+    font-weight: 300;
+}
+
+.email,
+button {
+    font-size: 17px;
+    border: none;
+    border-radius: 4px;
+    transition: all .2s linear;
+}
+
+.email {
+    height: 40px;
+    width: 280px;
+    padding: 12px;
+    margin-right: 4px;
+    border: 1px solid #ccc;
+}
+
+button {
+    outline: none;
+    height: 41px;
+    width: 228px;
+    font-size: 15px;
+    font-weight: 600;
+    background-color: rgb(248, 219, 53);
+    color: black;
+    cursor: pointer;
+    box-shadow: rgba(248, 219, 53, 0.3) 1px 1px 0px 1px;
+}

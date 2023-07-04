@@ -1,0 +1,180 @@
+/* Common */
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 16px;
+}
+
+button, input, textarea, select {
+    font-family: inherit;
+    font-size: inherit;
+}
+
+/* Form section */
+.pd-8 {
+    padding: 8px;
+}
+
+.form-manager {
+    width: 500px;
+    margin: 50px auto;
+    background-color: antiquewhite;
+    border-radius: 8px;
+    box-shadow: rgba(0, 0, 0, 0.15) 0px 15px 25px, rgba(0, 0, 0, 0.05) 0px 5px 10px;
+}
+
+.form-manager input {
+    padding: 6px;
+}
+
+.form-name {
+    display: block;
+    padding-top: 16px;
+}
+
+.form-name input,
+.form-password input,
+.form-city input {
+    width: 280px;
+    border-radius: 5px;
+    border: 2px solid #9AB2C8;
+}
+
+input::placeholder {
+    color: #b0aeae;
+}
+
+.form-password label {
+    margin-right: 50px;
+}
+
+.form-name label {
+    margin-right: 46px;
+}
+
+.form-city label {
+    margin-right: 36px
+}
+
+.form-city {
+    display: flex;
+    align-items: center;
+}
+
+.form-server label {
+    margin-right: 39px;
+}
+
+.form-server select {
+    width: 200px;
+    padding: 6px;
+    border-radius: 5px;
+    border: 2px solid #9AB2C8;
+}
+
+.form-role {
+    display: flex;
+    align-items: center;
+}
+
+.form-role > label {
+    margin-right: 30px;
+}
+
+
+input[type=radio],
+input[type=checkbox] {
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    -o-appearance: none;
+    outline: none;
+    content: none;
+}
+
+input[type="checkbox"]:before,
+input[type="radio"]+label:before {
+    font-family: "FontAwesome";
+    font-size: 10px;
+    text-align: center;
+    display: block;
+    width: 12px;
+    height: 12px;
+    color: transparent;
+    border: 2px solid #9AB2C8;
+    background: #fff;
+    border-radius: 50%;
+}
+
+input[type="checkbox"]:before {
+    border-radius: 4px;
+}
+
+
+input[type="checkbox"]:before {
+    content: "\f00c";
+}
+
+input[type="checkbox"]:checked:before {
+    color: blue;
+    background-color: blue;
+}
+
+input[type="radio"]+label:before {
+    content: "\f192";
+    letter-spacing: 1px;
+    display: inline-block;
+    margin-right: 5px;
+}
+
+input[type="radio"]:checked+label:before {
+    content: "\f111";
+    color: blue;
+    background-color: blue;
+}
+
+input[type="checkbox"] {
+    padding: 4px;
+}
+
+.roles-detail label {
+    padding-left: 4px;
+    line-height: 1.6;
+}
+
+.form-sign-on {
+    display: flex;
+    align-items: center;
+}
+
+.form-sign-on > label {
+    margin-right: 22px;
+}
+
+.sign-on-detail {
+    margin-left: 16px;
+}
+
+.form-btn {
+    display: flex;
+    justify-content: center;
+    margin-right: 45px;
+}
+
+.form-btn input {
+    margin-right: 8px;
+    padding: 4px 6px;
+    border-radius: 5px;
+    border: 2px solid #9AB2C8;
+    opacity: 0.9;
+    cursor: pointer;
+}
+
+.form-btn input:hover {
+    opacity: 1;
+}
+

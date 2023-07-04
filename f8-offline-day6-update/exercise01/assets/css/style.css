@@ -1,0 +1,132 @@
+* {
+  box-sizing: border-box;
+  transition: all 0.2s ease-in-out;
+}
+
+body {
+  font-family: "Open Sans", sans-serif;
+  margin: 40px 100px;
+}
+
+.nav-section {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border: 1px solid #e5dede;
+}
+
+.nav-left .nav-item {
+  border-right: 1px solid #e5dede;
+}
+
+.nav-right {
+  border-left: 1px solid #e5dede;
+}
+
+.nav-list {
+  display: flex;
+  align-items: center;
+}
+
+.nav-right,
+.nav-item {
+  font-size: 14px;
+  position: relative;
+}
+
+.nav-right > a,
+.nav-item > a {
+  position: relative;
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  color: #666;
+  padding: 14px 16px;
+  margin: 4px;
+}
+
+.nav-item::after {
+  content: "";
+  width: 148px;
+  height: 30px;
+  background-color: #fff;
+  position: absolute;
+  bottom: -20px;
+  left: 0;
+  z-index: -3;
+}
+
+.nav-right i,
+.nav-item i {
+  color: #666;
+  padding: 0 8px;
+}
+
+.nav-item .fa-chevron-down {
+  font-size: 10px;
+}
+
+.sub-nav {
+  display: none;
+  position: absolute;
+  top: 68px;
+  left: 4px;
+  width: 200px;
+  height: 140px;
+  box-shadow: rgba(17, 17, 26, 0.1) 0px 8px 24px,
+    rgba(17, 17, 26, 0.1) 0px 16px 56px, rgba(17, 17, 26, 0.1) 0px 24px 80px;
+}
+
+.sub-nav::before {
+  display: block;
+  position: absolute;
+  top: -18px;
+  left: 27px;
+  content: "";
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 9px;
+  border-color: transparent transparent #fff transparent;
+  z-index: 0;
+}
+
+.sub-nav a {
+  text-decoration: none;
+  color: #666;
+}
+
+.sub-item {
+  position: relative;
+  display: block;
+  padding: 16px;
+  border-bottom: 1px solid #e5dede;
+  z-index: 2;
+}
+
+.menu-multi:hover .sub-nav {
+  display: block;
+}
+
+.nav-item:hover > a > i,
+.sub-item:hover a,
+.sub-item:hover i,
+.sub-item:hover,
+.nav-right:hover a,
+.nav-right:hover a i,
+.nav-item:hover > a,
+.menu-multi:hover .menu-level-1 > i,
+.menu-multi:hover > a {
+  background-color: #2da5da;
+  color: #fff;
+}
+
+/* .sub-item:hover {
+  background-color: #2da5da;
+} */
+
+/* .nav-item:hover > a > i,
+.sub-item:hover a,
+.sub-item:hover i {
+  color: #fff;
+} */

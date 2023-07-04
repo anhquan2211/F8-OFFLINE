@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Exercise 1</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;500;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./assets/css/reset.css" />
+    <link rel="stylesheet" href="./assets/css/main.css" />
+  </head>
+  <body>
+    <div class="form-container">
+      <h1 class="heading-content">Try a free sample</h1>
+      <p class="description">
+        Sign up to get a coupon you can redeem at your nearest Dancing Goat cafe
+        for a sample of the Colombia Carlos Imbachi coffee. We'll also make sure
+        you don't miss out on news introducing the new coffees that we add to
+        our store regularly.
+      </p>
+      <table class="form-table" width="80%" border="1" cellspacing="0">
+        <tr class="row">
+          <td>
+            <form action="">
+              <label for="fname">First name</label><br />
+              <input type="text" id="fname" name="fname" value="John" />
+            </form>
+          </td>
+          <td>
+            <form action="">
+              <label for="lname">Last name</label><br />
+              <input type="text" id="lname" name="lname" value="Smith" />
+            </form>
+          </td>
+        </tr>
+
+        <tr class="row">
+          <td>
+            <form action="">
+              <label for="email">Email address</label><br />
+              <input
+                type="text"
+                id="email"
+                name="email"
+                value="john@example.com"
+              />
+            </form>
+          </td>
+          <td>
+            <form action="">
+              <label for="address">Address</label><br />
+              <input type="text" id="address" name="address" value="Silk St" />
+            </form>
+          </td>
+        </tr>
+
+        <tr class="row">
+          <td>
+            <form action="">
+              <label for="city">City</label><br />
+              <input type="text" id="city" name="city" value="London" />
+            </form>
+          </td>
+          <td>
+            <form action="">
+              <label for="state">State <span>(optional)</span></label
+              ><br />
+              <input type="text" id="state" name="state" value="" />
+            </form>
+          </td>
+        </tr>
+
+        <tr class="row">
+          <td>
+            <form action="">
+              <label for="zip-code">ZIP code</label><br />
+              <input
+                type="text"
+                id="zip-code"
+                name="zip-code"
+                value="EC2Y8DS"
+              />
+            </form>
+          </td>
+          <td>
+            <form action="">
+              <label for="country">Country</label><br />
+              <select id="country" name="country">
+                <option value="United Kingdom">United Kingdom</option>
+                <option value="Canada">Canada</option>
+                <option value="Usa">USA</option>
+              </select>
+            </form>
+          </td>
+        </tr>
+
+        <tr class="row">
+          <td colspan="2">
+            <input
+              class="btn-submit"
+              type="submit"
+              value="SEND ME FREE COFFEE"
+            />
+          </td>
+        </tr>
+      </table>
+    </div>
+
+    <script src="./main.js"></script>
+  </body>
+</html>

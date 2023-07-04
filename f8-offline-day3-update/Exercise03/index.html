@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Exercise 03</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+      integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link rel="stylesheet" href="./assets/css/reset.css" />
+    <link rel="stylesheet" href="./assets/css/main.css" />
+  </head>
+  <body>
+    <form action="" class="form-manager">
+      <div class="pd-8 form-name">
+        <label for="name">Username:</label>
+        <input type="text" id="name" placeholder="Username" />
+      </div>
+
+      <div class="pd-8 form-password">
+        <label for="password">Password:</label>
+        <input type="password" id="password" placeholder="Password" />
+      </div>
+
+      <div class="pd-8 form-city">
+        <label for="city"
+          >City of <br />
+          Employment:</label
+        >
+        <input type="text" id="city" placeholder="City" />
+      </div>
+
+      <div class="pd-8 form-server">
+        <label for="">Web server:</label>
+        <select name="server" id="">
+          <option value="0" hidden>--Choose a server--</option>
+          <option value="1">Nginx</option>
+          <option value="2">Internet Information Services (IIS)</option>
+          <option value="3">Apache Tomca</option>
+        </select>
+      </div>
+
+      <div class="pd-8 form-role">
+        <label for=""
+          >Please specify <br />
+          your role:</label
+        >
+        <div class="roles-detail">
+          <input type="radio" name="role" id="admin" />
+          <label for="admin">Admin</label> <br />
+          <input type="radio" name="role" id="engineer" />
+          <label for="engineer">Engineer</label> <br />
+          <input type="radio" name="role" id="manager" />
+          <label for="manager">Manager</label> <br />
+          <input type="radio" name="role" id="guest" />
+          <label for="guest">Guest</label>
+        </div>
+      </div>
+
+      <div class="pd-8 form-sign-on">
+        <label for=""
+          >Single Sign-on <br />
+          to the following:</label
+        >
+        <div class="sign-on-detail">
+          <input type="checkbox" name="sign-on-mail" id="mail" />
+          <label for="mail">Mail</label> <br />
+          <input type="checkbox" name="sign-on-payroll" id="payroll" />
+          <label for="payroll">Payroll</label><br />
+          <input type="checkbox" name="sign-on-self-service" id="" />
+          <label for="self-service">Self-service</label>
+        </div>
+      </div>
+
+      <div class="pd-8 form-btn">
+        <input type="submit" class="btn-login" value="Login" />
+        <input type="reset" class="btn-reset" value="Reset" />
+      </div>
+    </form>
+  </body>
+</html>

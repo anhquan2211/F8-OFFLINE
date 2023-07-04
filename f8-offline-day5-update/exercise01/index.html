@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Exercise 01</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Lobster&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+      integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link rel="stylesheet" href="./assets/css/reset.css" />
+    <link rel="stylesheet" href="./assets/css/main.css" />
+  </head>
+  <body>
+    <!-- Form Section -->
+    <form class="form-container">
+      <h2 class="form-heading">Hey there</h2>
+      <h3 class="form-description">
+        <span>We'd like to hear from you.</span> Send us your message or just
+        say hy with our contact form or directly via phone, we love to chat.
+      </h3>
+      <div class="input-group input-group-icon">
+        <input type="text" placeholder="Your name" required />
+        <p class="input-description">Enter your name</p>
+        <div class="input-icon"><i class="fa-solid fa-user"></i></div>
+        <div class="input-require"><i class="fa-solid fa-star"></i></div>
+        <div class="input-exit"><i class="fa-solid fa-xmark"></i></div>
+      </div>
+      <div class="input-group input-group-icon">
+        <input type="email" placeholder="your@domain.com" required />
+        <p class="input-description">Enter your email</p>
+        <div class="input-icon"><i class="fa-solid fa-envelope"></i></div>
+        <div class="input-require"><i class="fa-solid fa-star"></i></div>
+        <div class="input-exit"><i class="fa-solid fa-xmark"></i></div>
+      </div>
+      <div class="input-group input-group-icon">
+        <input type="number" placeholder="+44 00 123" />
+        <p class="input-description">Enter your phone</p>
+        <div class="input-icon"><i class="fa-solid fa-mobile"></i></div>
+      </div>
+      <!-- select -->
+      <div class="input-group input-group-icon custom-select">
+        <!-- <select name="subject" id="subject">
+          <option value="0" hidden>Subject</option>
+          <option value="1">HTML & CSS</option>
+          <option value="2">JavaScript</option>
+          <option value="3">Python</option>
+          <option value="4">PHP</option>
+        </select> -->
+        <div class="dropdown-select">
+          <span class="select">Subject</span>
+          <i class="fa fa-caret-down icon"></i>
+        </div>
+        <div class="dropdown-list">
+          <div class="dropdown-item">HTML&CSS</div>
+          <div class="dropdown-item">JavaScript</div>
+          <div class="dropdown-item">Python</div>
+        </div>
+        <div class="input-icon"><i class="fa-solid fa-book"></i></div>
+      </div>
+      <div class="input-group input-group-icon">
+        <textarea
+          name="message"
+          id="message"
+          cols="30"
+          rows="10"
+          placeholder="Message"
+          required
+        ></textarea>
+
+        <p class="input-description">Enter your message</p>
+        <div class="input-icon input-message">
+          <i class="fa-solid fa-message"></i>
+        </div>
+        <div class="input-require"><i class="fa-solid fa-star"></i></div>
+        <div class="input-exit"><i class="fa-solid fa-xmark"></i></div>
+      </div>
+      <div class="check-box">
+        <div>
+          <input type="checkbox" id="send-message" hidden />
+          <label for="send-message" class="send-message"
+            >Send me a copy of this message</label
+          >
+        </div>
+        <button type="submit">SEND</button>
+      </div>
+    </form>
+  </body>
+</html>

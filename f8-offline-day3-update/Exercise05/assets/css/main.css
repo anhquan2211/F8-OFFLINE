@@ -1,0 +1,72 @@
+/* Common */
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 16px;
+}
+
+button, input, textarea, select {
+    font-family: inherit;
+    font-size: inherit;
+}
+
+/* Call to action */
+.action {
+    width: 80%;
+    margin: 100px auto;
+    background-color: antiquewhite;
+    text-align: center;
+}
+
+.action-size {
+    display: inline-block;
+    width: 190px;
+    font-size: 20px;
+    padding: 18px 48px;
+    background-color: #8498CB;
+    color: #fff;
+    margin: 30px 0;
+    letter-spacing: 2px;
+    border-radius: 4px;
+}
+
+.action-heading {
+    font-size: 32px;
+    letter-spacing: 2px;
+    font-weight: 600;
+    margin-bottom: 38px;
+}
+
+.action-heading span {
+    color: #0AACF0;
+}
+
+.action-description {
+    color: #616161;
+    margin: 0 8px 46px;
+}
+
+.action-btn {
+    padding-bottom: 26px;
+}
+
+.action-btn .btn {
+    width: 168px;
+    height: 56px;
+    background-color: #2C3033;
+    color: #fff;
+    border-radius: 4px;
+    margin-right: 26px;
+    border: 1px solid #ccc;
+    cursor: pointer;
+    opacity: 0.9;
+}
+
+.action-btn .btn:hover {
+    opacity: 1;
+}
