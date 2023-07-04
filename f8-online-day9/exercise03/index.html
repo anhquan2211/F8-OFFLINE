@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Exercise 03 | Day 09</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+      integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./assets/css/reset.css" />
+    <link rel="stylesheet" href="./assets/css/style.css" />
+  </head>
+  <body>
+    <section class="section-form">
+      <h2 class="section-heading">Drop Us a Line</h2>
+      <p class="desc">
+        Reach out to us from our contact form and we will get back to you
+        shortly.
+      </p>
+      <form action="" class="form-container">
+        <div class="row">
+          <div class="form-item">
+            <input class="input" type="text" id="first-name" required />
+            <label class="label" for="first-name">First Name *</label>
+          </div>
+          <div class="form-item">
+            <input class="input" type="text" id="last-name" required />
+            <label class="label" for="last-name">Last Name *</label>
+          </div>
+        </div>
+        <div class="row">
+          <div class="form-item">
+            <input class="input" type="text" id="email" required />
+            <label class="label" for="email">Email *</label>
+          </div>
+          <div class="form-item">
+            <select class="select" name="jobs" id="jobs">
+              <option value="0">Sales</option>
+              <option value="1">Doctor</option>
+              <option value="2">Teacher</option>
+            </select>
+            <i class="fa-solid fa-chevron-down icon-select"></i>
+          </div>
+        </div>
+        <div class="form-item">
+          <textarea name="" id="" cols="30" rows="10" required></textarea>
+          <label for="" class="label message-label">Message *</label>
+        </div>
+        <button type="submit">Send message</button>
+      </form>
+    </section>
+  </body>
+</html>
