@@ -24,7 +24,6 @@
 
 .content-stage {
   display: flex;
-  position: relative;
 }
 
 .content-stage:hover .text-btn {
