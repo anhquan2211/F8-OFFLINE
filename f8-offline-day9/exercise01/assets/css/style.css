@@ -24,12 +24,27 @@
 
 .content-stage {
   display: flex;
+  position: relative;
 }
 
 .content-stage:hover .text-btn {
   background-color: #a26f5a;
   color: #fff;
   cursor: pointer;
+}
+
+.content-stage:hover .content-text {
+  transform: translateX(130%);
+  text-align: left;
+}
+
+.content-stage:hover .content-year {
+  transform: translateX(-200%);
+}
+
+.content-stage:hover .text-desc::after {
+  top: 33px;
+  right: calc(100% + 40px);
 }
 
 .content-text {
@@ -78,6 +93,7 @@
   top: 33px;
   right: -28px;
   background-color: #eeeef0;
+  /* background-color: #a26f5a; */
   width: 1px;
   height: 106px;
 }
