@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Mega Menu | Day 8</title>
+    <title>Day 10</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -63,92 +63,57 @@
               <span class="active">Documentation</span>
               <i class="fa-solid fa-angle-down"></i>
             </a>
-
-            <!-- submenu -->
-            <div class="sub-menu">
-              <!-- sub menu left -->
-              <div class="usage-styleguide-menu">
-                <div class="usage-menu">
-                  <div class="sub-menu-title">USAGE</div>
-                  <div class="usage-list">
-                    <ul class="usage-menu-left">
-                      <li><a href="#!">Get Started</a></li>
-                      <li><a href="#!">Forms</a></li>
-                      <li><a href="#!">FAQ</a></li>
-                    </ul>
-                    <ul class="usage-menu-right">
-                      <li><a href="#!">Changelog</a></li>
-                      <li><a href="#!">Credits</a></li>
-                    </ul>
-                  </div>
-                </div>
-
-                <div class="styleguide-menu">
-                  <div class="sub-menu-title">STYLEGUIDE</div>
-                  <div class="styleguide-list">
-                    <ul class="styleguide-menu-left">
-                      <li><a href="#!">Colors</a></li>
-                      <li><a href="#!">Fonts</a></li>
-                      <li><a href="#!">SVG Icons</a></li>
-                      <li><a href="#!">Font Icons</a></li>
-                    </ul>
-                    <ul class="styleguide-menu-right">
-                      <li class="ml-23"><a href="#!">Illustrations</a></li>
-                      <li class="ml-23"><a href="#!">Backgrounds</a></li>
-                      <li class="ml-23"><a href="#!">Misc</a></li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
-
-              <!-- sub menu right -->
-              <div class="elements-menu">
-                <div class="sub-menu-title">ELEMENTS</div>
-                <div class="elements-list">
-                  <ul class="element-menu-left">
-                    <li><a href="#!">Accordion</a></li>
-                    <li><a href="#!">Alerts</a></li>
-                    <li><a href="#!">Animations</a></li>
-                    <li><a href="#!">Avatars</a></li>
-                    <li><a href="#!">Background</a></li>
-                    <li><a href="#!">Badges</a></li>
-                    <li><a href="#!">Buttons</a></li>
-                    <li><a href="#!">Card</a></li>
-                    <li><a href="#!">Carousel</a></li>
-                  </ul>
-                  <ul class="element-menu-center">
-                    <li><a href="#!">Dividers</a></li>
-                    <li><a href="#!">Form Elements</a></li>
-                    <li><a href="#!">Image Hover</a></li>
-                    <li><a href="#!">Image Mask</a></li>
-                    <li><a href="#!">Lightbox</a></li>
-                    <li><a href="#!">Media Player</a></li>
-                    <li><a href="#!">Modal</a></li>
-                    <li><a href="#!">Pagination</a></li>
-                    <li><a href="#!">Progressbar</a></li>
-                  </ul>
-                  <ul class="element-menu-right">
-                    <li><a href="#!">Shadows</a></li>
-                    <li><a href="#!">Shapes</a></li>
-                    <li><a href="#!">Tables</a></li>
-                    <li><a href="#!">Tabs</a></li>
-                    <li><a href="#!">Text Animations</a></li>
-                    <li><a href="#!">Text Hightlight</a></li>
-                    <li><a href="#!">Tiles</a></li>
-                    <li><a href="#!">Tooltips & Popovers</a></li>
-                    <li><a href="#!">Typography</a></li>
-                  </ul>
-                </div>
-              </div>
-            </div>
           </li>
         </ul>
-
-        <div class="icon">
-          <i class="fa-solid fa-circle-info info-icon"></i>
-          <i class="fa-solid fa-magnifying-glass search-icon"></i>
-        </div>
       </nav>
+
+      <!-- Button -->
+      <div class="button-common">
+        <button class="btn">Purchase Now</button>
+        <label for="burger">
+          <i class="fa-solid fa-bars icon-mobile"></i>
+        </label>
+      </div>
     </header>
+
+    <input type="radio" name="btn" id="burger" />
+    <input type="radio" name="btn" id="exit" />
+    <div class="overlay"></div>
+
+    <div class="nav-mobile">
+      <div class="header-nav">
+        <h2 class="header-title">Sandbox</h2>
+        <label for="exit">
+          <i class="fa-regular fa-circle-xmark"></i>
+        </label>
+      </div>
+
+      <ul class="mobile-list">
+        <li class="mobile-item">
+          <span>Demos</span>
+          <i class="fa-solid fa-angle-down"></i>
+        </li>
+        <li class="mobile-item">
+          <span>Pages</span>
+          <i class="fa-solid fa-angle-down"></i>
+        </li>
+        <li class="mobile-item">
+          <span>Projects</span>
+          <i class="fa-solid fa-angle-down"></i>
+        </li>
+        <li class="mobile-item">
+          <span>Blog</span>
+          <i class="fa-solid fa-angle-down"></i>
+        </li>
+        <li class="mobile-item">
+          <span>Blocks</span>
+          <i class="fa-solid fa-angle-down"></i>
+        </li>
+        <li class="mobile-item">
+          <span>Documentation</span>
+          <i class="fa-solid fa-angle-down"></i>
+        </li>
+      </ul>
+    </div>
   </body>
 </html>
