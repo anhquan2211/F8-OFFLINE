@@ -1,13 +1,13 @@
 * {
   box-sizing: border-box;
-  /* transition: all 0.4s ease; */
 }
 
 :root {
   --primary-font: "Poppins", sans-serif;
   --primary-color: #f86061;
   --secondary-color: #fdecec;
-  --text-color: #f55556;
+  --title-color: #2e2e2e;
+  --desc-color: #676767;
 }
 
 html {
@@ -93,7 +93,7 @@ textarea {
 }
 
 .navbar .burger {
-  font-size: 30px;
+  font-size: 3rem;
   padding: 4px 12px;
   color: rgba(0, 0, 0, 0.55);
   border: 1px solid rgba(0, 0, 0, 0.1);
@@ -274,7 +274,7 @@ textarea {
   font-weight: 500;
   font-size: 1.6rem;
   line-height: 1;
-  color: var(--text-color);
+  color: #f55556;
 }
 
 .header-grocery .top-title-img {
@@ -286,7 +286,7 @@ textarea {
   font-size: 3.8rem;
   line-height: 1.5;
   letter-spacing: -0.01em;
-  color: #2e2e2e;
+  color: var(--title-color);
 }
 
 .header-grocery .title-time {
@@ -318,7 +318,7 @@ textarea {
   display: block;
   width: 160px;
   font-size: 1.6rem;
-  background-color: #f86061;
+  background-color: var(--primary-color);
   border-radius: 12px;
   padding: 25px 20px;
   font-weight: 500;
@@ -329,8 +329,8 @@ textarea {
 }
 
 .header-grocery .link-order:hover {
-  border: 1px solid #f86061;
-  color: #f86061;
+  border: 1px solid var(--primary-color);
+  color: var(--primary-color);
   background-color: #fffafa;
 }
 
@@ -350,7 +350,7 @@ textarea {
   text-transform: capitalize;
   letter-spacing: -0.01em;
   -webkit-box-align: center;
-  color: #2e2e2e;
+  color: var(--title-color);
   -webkit-box-pack: justify;
   background: none;
   border: none;
@@ -399,7 +399,7 @@ textarea {
   max-width: 100%;
   font-weight: 700;
   text-transform: capitalize;
-  color: #2e2e2e;
+  color: var(--title-color);
   margin: 0 auto;
 }
 
@@ -452,7 +452,7 @@ textarea {
   font-weight: 600;
   line-height: 1.8;
   letter-spacing: -0.01em;
-  color: #2e2e2e;
+  color: var(--title-color);
   margin: 0 0 15px 0;
 }
 
@@ -511,7 +511,7 @@ textarea {
   line-height: 1.375;
   font-weight: 700;
   text-transform: capitalize;
-  color: #2e2e2e;
+  color: var(--title-color);
   margin: 0 0 22px 0;
 }
 
@@ -536,7 +536,7 @@ textarea {
   width: 180px;
   padding: 18px 20px;
   font-size: 1.6rem;
-  background: #f86061;
+  background: var(--primary-color);
   border-radius: 12px;
   text-align: center;
   font-weight: 500;
@@ -547,8 +547,8 @@ textarea {
 
 .feature2-wrapper .feature2-btn:hover,
 .feature-wrapper .feature-btn:hover {
-  border: 1px solid #f86061;
-  color: #f86061;
+  border: 1px solid var(--primary-color);
+  color: var(--primary-color);
   background-color: #fffafa;
 }
 
@@ -597,7 +597,7 @@ textarea {
   line-height: 1.375;
   font-weight: 700;
   text-transform: capitalize;
-  color: #2e2e2e;
+  color: var(--title-color);
   margin: 0 0 22px 0;
 }
 
@@ -632,7 +632,7 @@ textarea {
   font-weight: 500;
   line-height: 1.25;
   font-size: 1.6rem;
-  color: #2e2e2e;
+  color: var(--title-color);
   padding: 12px 2px;
   border: 1px solid #eedcdc;
   box-sizing: border-box;
@@ -679,7 +679,7 @@ textarea {
   font-size: 1.8rem;
   line-height: 1.11;
   letter-spacing: -0.01em;
-  color: #2e2e2e;
+  color: var(--title-color);
 }
 
 .footer-wrapper .content-list {
@@ -704,7 +704,7 @@ textarea {
   font-size: 1.8rem;
   line-height: 1.11;
   letter-spacing: -0.01em;
-  color: #2e2e2e;
+  color: var(--title-color);
 }
 
 .footer-wrapper .content-detail {
