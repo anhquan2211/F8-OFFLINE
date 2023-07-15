@@ -297,6 +297,9 @@ body {
   border: none;
   outline: none;
 }
+.section-landing .landing-form .form-login .form .row-form:last-child .btn-account:hover {
+  background-color: #5753e4;
+}
 .section-landing .landing-form .form-login .text-socials {
   margin-top: 40px;
   font-size: 1.4rem;

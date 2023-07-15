@@ -337,6 +337,10 @@ body {
             cursor: pointer;
             border: none;
             outline: none;
+
+            &:hover {
+              background-color: #5753e4;
+            }
           }
         }
       }
