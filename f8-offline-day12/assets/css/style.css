@@ -496,6 +496,9 @@ body {
   border: none;
   font-family: Rajdhani, sans-serif;
 }
+.section-landing .landing-form .form-register .form .row-form:nth-child(6) .btn-register:hover {
+  background-color: #1bc5d4;
+}
 .section-landing .landing-form .form-register .text-desc {
   margin-top: 30px;
   font-size: 1.4rem;

@@ -571,6 +571,10 @@ body {
             outline: none;
             border: none;
             font-family: #{$primaryFont};
+
+            &:hover {
+              background-color: #1bc5d4;
+            }
           }
         }
       }
