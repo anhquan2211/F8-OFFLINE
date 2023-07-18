@@ -1,0 +1,47 @@
+@mixin size($width: 100px, $height: $width) {
+  width: $width;
+  height: $height;
+}
+
+@mixin rounded {
+  border-radius: 16px;
+}
+
+@mixin flexCenter {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@mixin gridParent($column, $spacing) {
+  row-gap: $spacing;
+  margin-left: ($spacing * -1);
+
+  > * {
+    width: calc((100% / $column) - $spacing);
+    margin-left: $spacing;
+  }
+}
+
+// @mixin gridChild($column, $spacing) {
+//   width: calc((100% / $column) - $spacing);
+//   margin-left: $spacing;
+// }
+
+@mixin screen($break-point) {
+  @if $break-point == mobile {
+    @media (max-width: 575px) {
+      @content;
+    }
+  }
+  @if $break-point == tablet {
+    @media (min-width: 575px) and (max-width: 991px) {
+      @content;
+    }
+  }
+  @if $break-point == pc {
+    @media (min-width: 992px) {
+      @content;
+    }
+  }
+}
