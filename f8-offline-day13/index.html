@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>Ecommerce Website UI</title>
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
@@ -14,163 +14,144 @@
     <link rel="stylesheet" href="./assets/css/styles.css" />
   </head>
   <body>
-    <!--BEGIN: HEADER -->
-    <header class="header">
-      <div class="header-inner">
-        <a class="logo" hidden>
-          <img src="./assets/img/logo.svg" alt="Logo" />
-        </a>
-        <form action="" class="search-form">
-          <img class="search-icon" src="./assets/img/search.svg" alt="Search" />
-          <input type="text" class="search-input" placeholder="Search store" />
-        </form>
+    <div class="wrapper">
+      <div class="wrapper-inner">
+        <!--BEGIN: HEADER -->
+        <header class="header">
+          <a class="header-logo">
+            <img src="./assets/img/logo.svg" alt="" />
+          </a>
 
-        <input type="radio" name="menu" id="menu-open" hidden />
-        <input type="radio" name="menu" id="menu-exit" hidden />
+          <form class="search-form">
+            <img src="./assets/img/search.svg" alt="" class="icon" />
+            <input type="text" class="search" placeholder="Search store" />
+          </form>
 
-        <nav class="navbar">
-          <label for="menu-exit" hidden>
-            <i class="fa-solid fa-xmark exit"></i>
-          </label>
-          <a href="#!" class="nav-link active">Products</a>
-          <a href="#!" class="nav-link">Story</a>
-          <a href="#!" class="nav-link">Manufacturing</a>
-          <a href="#!" class="nav-link">Packaging</a>
-          <div class="nav-link explore" hidden>
-            Explore
-            <nav class="navbar-sub">
-              <a href="#!" class="nav-link">
-                <img src="./assets/img/newin-icon.svg" alt="icon" />
-                <span>New In</span>
-              </a>
-              <a href="#!" class="nav-link">
-                <img src="./assets/img/clothing-icon.svg" alt="icon" />
-                <span>Clothing</span>
-              </a>
-              <a href="#!" class="nav-link">
-                <img src="./assets/img/shoes-icon.svg" alt="icon" />
-                <span>Shoes</span>
-              </a>
-              <a href="#!" class="nav-link">
-                <img src="./assets/img/accessories-icon.svg" alt="icon" />
-                <span>Accessories</span>
-              </a>
-              <a href="#!" class="nav-link">
-                <img src="./assets/img/activewear-icon.svg" alt="icon" />
-                <span>Activewear</span>
-              </a>
-              <a href="#!" class="nav-link">
-                <img src="./assets/img/gifts-icon.svg" alt="icon" />
-                <span>Gifts & Living</span>
-              </a>
-              <a href="#!" class="nav-link">
-                <img src="./assets/img/inspiration-icon.svg" alt="icon" />
-                <span>Inspiration</span>
-              </a>
-            </nav>
+          <nav class="nav">
+            <a href="#!" class="nav-link active">Products</a>
+            <a href="#!" class="nav-link">Story</a>
+            <a href="#!" class="nav-link">Manufacturing</a>
+            <a href="#!" class="nav-link">Packaging</a>
+          </nav>
+
+          <div class="actions">
+            <a href="#!" class="search">
+              <img src="./assets/img/search.svg" alt="" class="icon" />
+            </a>
+
+            <a href="#!" class="action-link">
+              <img src="./assets/img/basket.svg" alt="" class="action-icon" />
+            </a>
+            <a href="#!" class="action-link">
+              <img src="./assets/img/person.svg" alt="" class="action-icon" />
+            </a>
+
+            <a href="#!" class="sidebar-open">
+              <label for="sidebar">
+                <i class="fa-solid fa-bars"></i>
+              </label>
+            </a>
           </div>
-        </nav>
+        </header>
+        <!--END: HEADER -->
 
-        <div class="overlay"></div>
+        <input type="radio" name="sidebar" id="sidebar" hidden />
+        <input type="radio" name="sidebar" id="exit-sidebar" hidden />
 
-        <div class="actions">
-          <a href="#!" class="action-link search" hidden>
-            <img
-              class="search-icon"
-              src="./assets/img/search.svg"
-              alt="Search"
-            />
-          </a>
-          <a href="#!" class="action-link">
-            <img src="./assets/img/basket.svg" alt="" class="action-icon" />
-          </a>
-          <a href="#!" class="action-link">
-            <img src="./assets/img/person.svg" alt="" class="action-icon" />
+        <!-- BEGIN: SIDEBAR -->
+        <aside class="sidebar">
+          <a href="#!" class="logo-link">
+            <img src="./assets/img/logo.svg" alt="" />
           </a>
 
-          <a href="#!" class="action-link icon-mobile" hidden>
-            <label for="menu-open">
-              <i class="fa-solid fa-bars burger"></i>
-            </label>
-          </a>
-        </div>
-      </div>
-    </header>
-    <!--END: HEADER -->
+          <h2 class="heading">Explore</h2>
 
-    <!-- BEGIN: SIDEBAR -->
-    <section class="sidebar">
-      <div class="sidebar-inner">
-        <a class="logo">
-          <img src="./assets/img/logo.svg" alt="Logo" />
-        </a>
-        <h2 class="sidebar-title">Explore</h2>
-        <nav class="navbar">
-          <a href="#!" class="nav-link">
-            <img src="./assets/img/newin-icon.svg" alt="icon" />
-            <span>New In</span>
-          </a>
-          <a href="#!" class="nav-link">
-            <img src="./assets/img/clothing-icon.svg" alt="icon" />
-            <span>Clothing</span>
-          </a>
-          <a href="#!" class="nav-link">
-            <img src="./assets/img/shoes-icon.svg" alt="icon" />
-            <span>Shoes</span>
-          </a>
-          <a href="#!" class="nav-link">
-            <img src="./assets/img/accessories-icon.svg" alt="icon" />
-            <span>Accessories</span>
-          </a>
-          <a href="#!" class="nav-link">
-            <img src="./assets/img/activewear-icon.svg" alt="icon" />
-            <span>Activewear</span>
-          </a>
-          <a href="#!" class="nav-link">
-            <img src="./assets/img/gifts-icon.svg" alt="icon" />
-            <span>Gifts & Living</span>
-          </a>
-          <a href="#!" class="nav-link">
-            <img src="./assets/img/inspiration-icon.svg" alt="icon" />
-            <span>Inspiration</span>
-          </a>
-        </nav>
-        <a class="help-center">
-          <img src="./assets/img/help-icon.svg" alt="" />
-          <span>Help Center</span>
-        </a>
-      </div>
-    </section>
-    <!-- END: SIDEBAR -->
+          <nav class="nav">
+            <a href="#!" class="nav-item">
+              <img src="./assets/img/newin-icon.svg" alt="" class="icon" />
+              New In
+            </a>
+            <a href="#!" class="nav-item">
+              <img src="./assets/img/clothing-icon.svg" alt="" class="icon" />
+              Clothing
+            </a>
+            <a href="#!" class="nav-item">
+              <img src="./assets/img/shoes-icon.svg" alt="" class="icon" />
+              Shoes
+            </a>
+            <a href="#!" class="nav-item">
+              <img
+                src="./assets/img/accessories-icon.svg"
+                alt=""
+                class="icon"
+              />
+              Accessories
+            </a>
+            <a href="#!" class="nav-item">
+              <img src="./assets/img/activewear-icon.svg" alt="" class="icon" />
+              Activewear
+            </a>
+            <a href="#!" class="nav-item">
+              <img src="./assets/img/gifts-icon.svg" alt="" class="icon" />
+              Gifts & Living
+            </a>
+            <a href="#!" class="nav-item">
+              <img
+                src="./assets/img/inspiration-icon.svg"
+                alt=""
+                class="icon"
+              />
+              Inspiration
+            </a>
+          </nav>
 
-    <!-- BEGIN: CONTENT -->
-    <main class="content">
-      <div class="wrap">
-        <div class="wrap-vertical">
-          <img src="./assets/img/img-1.svg" alt="" class="img-vertical" />
-          <img src="./assets/img/img-2.svg" alt="" class="img-vertical" />
-        </div>
-      </div>
-      <div class="wrap">
-        <div class="wrap-horizontal">
-          <img src="./assets/img/img-3.svg" alt="" class="img-horizontal" />
-          <img src="./assets/img/img-4.svg" alt="" class="img-horizontal" />
-        </div>
-      </div>
-      <div class="wrap">
-        <div class="wrap-horizontal">
-          <img src="./assets/img/img-5.svg" alt="" class="img-horizontal" />
-          <img src="./assets/img/img-6.svg" alt="" class="img-horizontal" />
-        </div>
-      </div>
-      <div class="wrap">
-        <div class="wrap-vertical">
-          <img src="./assets/img/img-7.svg" alt="" class="img-vertical" />
-          <img src="./assets/img/img-8.svg" alt="" class="img-vertical" />
-        </div>
-      </div>
-    </main>
+          <a href="#!" class="icon-exit">
+            <label for="exit-sidebar"><i class="fa-solid fa-xmark"></i></label>
+          </a>
+        </aside>
+        <!-- END: SIDEBAR -->
 
-    <!-- END: CONTENT -->
+        <!-- BEGIN: CONTENT -->
+        <main class="main">
+          <div class="wide">
+            <img src="./assets/img/img-1.svg" alt="" />
+          </div>
+          <div class="wide wide-mobile">
+            <img src="./assets/img/img-2.svg" alt="" />
+          </div>
+          <div class="tall">
+            <img src="./assets/img/img-3.svg" alt="" />
+          </div>
+          <div class="wide wide-tablet">
+            <img src="./assets/img/img-2.svg" alt="" />
+          </div>
+          <div class="tall">
+            <img src="./assets/img/img-4.svg" alt="" />
+          </div>
+          <div class="tall">
+            <img src="./assets/img/img-5.svg" alt="" />
+          </div>
+          <div class="tall">
+            <img src="./assets/img/img-6.svg" alt="" />
+          </div>
+          <div class="wide row-last">
+            <img src="./assets/img/img-7.svg" alt="" />
+          </div>
+          <div class="wide row-last">
+            <img src="./assets/img/img-8.svg" alt="" />
+          </div>
+          <div class="tall tall-tablet">
+            <img src="./assets/img/img-5.svg" alt="" />
+          </div>
+          <div class="overlay"></div>
+        </main>
+        <!-- END: CONTENT -->
+      </div>
+
+      <button class="chat-btn">
+        <img src="./assets/img/help-icon.svg" alt="" class="icon" />
+        <span>Help Center</span>
+      </button>
+    </div>
   </body>
 </html>
