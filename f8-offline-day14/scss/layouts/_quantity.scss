@@ -31,11 +31,37 @@
         justify-content: center;
         column-gap: 26px;
         height: 716px;
+        margin-top: 30px;
+        position: relative;
+
+        &::after,
+        &::before {
+          content: "";
+          position: absolute;
+          width: 282px;
+          height: 282px;
+          background-color: #dcffca;
+          border-radius: 50%;
+          z-index: -1;
+        }
+
+        &::before {
+          top: 0;
+          left: 0;
+        }
+
+        &::after {
+          content: "";
+          bottom: 0;
+          right: 0;
+          background-color: #ffd5bd;
+        }
 
         .quantity-item {
           box-shadow: -7px 10px 87px 0px rgba(54, 54, 54, 0.12);
           padding: 40px;
           border-radius: 4px;
+          background-color: #fff;
 
           &:not(:nth-child(2)) {
             width: 353px;

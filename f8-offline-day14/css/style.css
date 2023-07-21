@@ -588,11 +588,33 @@ ul li {
   justify-content: center;
   column-gap: 26px;
   height: 716px;
+  margin-top: 30px;
+  position: relative;
+}
+.quantity-section .container .container-inner .quantity-list::after, .quantity-section .container .container-inner .quantity-list::before {
+  content: "";
+  position: absolute;
+  width: 282px;
+  height: 282px;
+  background-color: #dcffca;
+  border-radius: 50%;
+  z-index: -1;
+}
+.quantity-section .container .container-inner .quantity-list::before {
+  top: 0;
+  left: 0;
+}
+.quantity-section .container .container-inner .quantity-list::after {
+  content: "";
+  bottom: 0;
+  right: 0;
+  background-color: #ffd5bd;
 }
 .quantity-section .container .container-inner .quantity-list .quantity-item {
   box-shadow: -7px 10px 87px 0px rgba(54, 54, 54, 0.12);
   padding: 40px;
   border-radius: 4px;
+  background-color: #fff;
 }
 .quantity-section .container .container-inner .quantity-list .quantity-item:not(:nth-child(2)) {
   width: 353px;
