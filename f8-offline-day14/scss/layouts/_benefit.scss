@@ -5,13 +5,14 @@
 
     .title {
       max-width: 473px;
-      margin-top: 120px;
+      margin-top: 114px;
       text-align: center;
       margin-left: auto;
       margin-right: auto;
       font-size: 3.8rem;
       font-weight: 800;
       line-height: 1.31;
+      transform: translateX(8px);
     }
 
     .desc {
@@ -21,6 +22,7 @@
       font-size: 1.6rem;
       font-weight: 400;
       line-height: 1.53;
+      transform: translateX(10px);
     }
 
     .benefit-list {
@@ -31,6 +33,7 @@
       justify-content: center;
       column-gap: 30px;
       counter-reset: number;
+      transform: translateY(14px) translateX(10px);
 
       .benefit-item {
         flex-basis: calc((100% - 60px) / 3);

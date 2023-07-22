@@ -102,7 +102,7 @@ body {
 .header .container .container-inner .navbar ul li .nav-link::after {
   content: "";
   position: absolute;
-  bottom: 0;
+  bottom: 10px;
   left: 0;
   width: 0;
   height: 3px;
@@ -286,13 +286,14 @@ body {
 }
 @media only screen and (min-width: 1200px) {
   .header {
-    padding: 10px 0;
+    padding: 22px 0;
+    height: 130px;
   }
   .header .container {
     max-width: 1140px;
   }
   .header .container .container-inner .navbar ul li .nav-link {
-    padding: 51px 10px;
+    padding: 56px 8px;
   }
 }
 @media only screen and (min-width: 1400px) {
@@ -592,6 +593,8 @@ body {
   max-width: 670px;
   margin: 0 auto;
   text-align: center;
+  padding-top: 3px;
+  padding-left: 3px;
 }
 .quantity-section .container .container-inner .desc {
   margin-top: 30px;
@@ -602,6 +605,7 @@ body {
   margin-left: auto;
   margin-right: auto;
   text-align: center;
+  padding-left: 12px;
 }
 .quantity-section .container .container-inner .quantity-list {
   display: flex;
@@ -636,6 +640,8 @@ body {
   padding: 40px;
   border-radius: 4px;
   background-color: #fff;
+  padding-left: 48px;
+  padding-top: 30px;
 }
 .quantity-section .container .container-inner .quantity-list .quantity-item:not(:nth-child(2)) {
   width: 353px;
@@ -644,6 +650,7 @@ body {
 .quantity-section .container .container-inner .quantity-list .quantity-item:nth-child(2) {
   width: 411px;
   height: 471px;
+  padding-top: 62px;
 }
 .quantity-section .container .container-inner .quantity-list .quantity-item .icon {
   display: inline-block;
@@ -656,7 +663,7 @@ body {
 }
 .quantity-section .container .container-inner .quantity-list .quantity-item .number {
   display: block;
-  margin: 28px 0 29px;
+  margin: 28px 0 30px;
   font-size: 5.2rem;
   font-weight: 800;
   line-height: normal;
@@ -667,6 +674,7 @@ body {
   line-height: 1.54;
   max-width: 267px;
   text-align: left;
+  padding-left: 2px;
 }
 .quantity-section .container .container-inner .quantity-list .quantity-item .desc-center {
   max-width: 329px;
@@ -910,7 +918,8 @@ body {
   font-weight: 800;
   line-height: 1.31;
   text-align: center;
-  margin-top: 120px;
+  margin-top: 126px;
+  margin-left: 10px;
 }
 .products-section .container .products-list {
   margin-top: 60px;
@@ -926,6 +935,78 @@ body {
   flex-grow: 1;
   flex-basis: calc((100% - 200px) / 3);
   max-width: 323px;
+}
+.products-section .container .products-list .product-item:first-child .product-title {
+  padding-right: 18px;
+}
+.products-section .container .products-list .product-item:first-child .quantity {
+  padding-right: 10px;
+}
+.products-section .container .products-list .product-item:first-child .cost {
+  padding-right: 12px;
+}
+.products-section .container .products-list .product-item:first-child .btn {
+  transform: translateX(-8px);
+}
+.products-section .container .products-list .product-item:nth-child(2) .product-title {
+  padding-left: 22px;
+}
+.products-section .container .products-list .product-item:nth-child(2) .quantity {
+  padding-left: 22px;
+}
+.products-section .container .products-list .product-item:nth-child(2) .cost {
+  padding-left: 22px;
+}
+.products-section .container .products-list .product-item:nth-child(2) .btn {
+  transform: translateX(12px);
+}
+.products-section .container .products-list .product-item:nth-child(3) .product-title {
+  transform: translateX(10px);
+}
+.products-section .container .products-list .product-item:nth-child(3) .quantity {
+  padding-left: 16px;
+}
+.products-section .container .products-list .product-item:nth-child(3) .cost {
+  padding-left: 10px;
+}
+.products-section .container .products-list .product-item:nth-child(3) .btn {
+  transform: translateX(12px);
+}
+.products-section .container .products-list .product-item:nth-child(4) .product-title {
+  transform: translateX(-10px);
+}
+.products-section .container .products-list .product-item:nth-child(4) .quantity {
+  padding-right: 16px;
+}
+.products-section .container .products-list .product-item:nth-child(4) .cost {
+  padding-right: 15px;
+}
+.products-section .container .products-list .product-item:nth-child(4) .btn {
+  transform: translateX(-12px);
+}
+.products-section .container .products-list .product-item:nth-child(5) .product-title {
+  transform: translateX(12px);
+}
+.products-section .container .products-list .product-item:nth-child(5) .quantity {
+  padding-left: 16px;
+}
+.products-section .container .products-list .product-item:nth-child(5) .cost {
+  padding-left: 18px;
+}
+.products-section .container .products-list .product-item:nth-child(5) .btn {
+  transform: translateX(12px);
+}
+.products-section .container .products-list .product-item:nth-child(6) .product-title {
+  transform: translateX(12px);
+}
+.products-section .container .products-list .product-item:nth-child(6) .quantity {
+  padding-left: 16px;
+}
+.products-section .container .products-list .product-item:nth-child(6) .cost {
+  padding-left: 18px;
+}
+.products-section .container .products-list .product-item:nth-child(6) .btn {
+  transform: translateX(10px);
 }
 .products-section .container .products-list .product-item::before {
   content: "";
@@ -953,7 +1034,7 @@ body {
   font-size: 2.8rem;
   font-weight: 700;
   line-height: normal;
-  margin: 20px auto 0;
+  margin: 16px auto 0;
   position: relative;
   height: 68px;
 }
@@ -1164,11 +1245,12 @@ body {
   max-width: 1440px;
 }
 .news-section .container .title {
-  margin-top: 160px;
+  margin-top: 162px;
   text-align: center;
   font-size: 3.8rem;
   font-weight: 800;
   line-height: 1.31;
+  transform: translateX(8px);
 }
 .news-section .container .desc {
   margin-top: 28px;
@@ -1179,11 +1261,13 @@ body {
   font-size: 1.6rem;
   font-weight: 400;
   line-height: 1.53;
+  transform: translateX(10px);
 }
 .news-section .container .news-list {
   margin-top: 60px;
   display: flex;
   column-gap: 28px;
+  transform: translateX(10px);
 }
 .news-section .container .news-list .news-item {
   display: flex;
@@ -1250,12 +1334,13 @@ body {
   margin-top: 120px;
   margin-left: auto;
   margin-right: auto;
-  padding: 14px 27px;
+  padding: 16px 28px;
   border: 1px solid #46b20f;
   border-radius: 8px;
   background-color: #fff;
   font-size: 2rem;
   font-weight: 700;
+  transform: translateX(10px);
 }
 .news-section .container .btn-subview i {
   padding-left: 4px;
@@ -1363,13 +1448,14 @@ body {
 }
 .benefit-section .container .title {
   max-width: 473px;
-  margin-top: 120px;
+  margin-top: 114px;
   text-align: center;
   margin-left: auto;
   margin-right: auto;
   font-size: 3.8rem;
   font-weight: 800;
   line-height: 1.31;
+  transform: translateX(8px);
 }
 .benefit-section .container .desc {
   max-width: 894px;
@@ -1378,6 +1464,7 @@ body {
   font-size: 1.6rem;
   font-weight: 400;
   line-height: 1.53;
+  transform: translateX(10px);
 }
 .benefit-section .container .benefit-list {
   max-width: 1305px;
@@ -1387,6 +1474,7 @@ body {
   justify-content: center;
   column-gap: 30px;
   counter-reset: number;
+  transform: translateY(14px) translateX(10px);
 }
 .benefit-section .container .benefit-list .benefit-item {
   flex-basis: calc((100% - 60px) / 3);

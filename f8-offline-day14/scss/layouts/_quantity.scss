@@ -12,6 +12,8 @@
         max-width: 670px;
         margin: 0 auto;
         text-align: center;
+        padding-top: 3px;
+        padding-left: 3px;
       }
 
       .desc {
@@ -23,6 +25,7 @@
         margin-left: auto;
         margin-right: auto;
         text-align: center;
+        padding-left: 12px;
       }
 
       .quantity-list {
@@ -62,6 +65,8 @@
           padding: 40px;
           border-radius: 4px;
           background-color: #fff;
+          padding-left: 48px;
+          padding-top: 30px;
 
           &:not(:nth-child(2)) {
             width: 353px;
@@ -71,6 +76,7 @@
           &:nth-child(2) {
             width: 411px;
             height: 471px;
+            padding-top: 62px;
           }
 
           .icon {
@@ -86,7 +92,7 @@
 
           .number {
             display: block;
-            margin: 28px 0 29px;
+            margin: 28px 0 30px;
             font-size: 5.2rem;
             font-weight: 800;
             line-height: normal;
@@ -98,6 +104,7 @@
             line-height: 1.54;
             max-width: 267px;
             text-align: left;
+            padding-left: 2px;
           }
 
           .desc-center {
