@@ -68,6 +68,31 @@
   }
 }
 
+@media only screen and (max-width: 1199px) {
+  .service-section {
+    .container {
+      max-width: 960px;
+
+      .service-list {
+        $column-gap: 20px;
+        column-gap: $column-gap;
+
+        .service-item {
+          .content {
+            .title {
+              font-size: 2rem;
+            }
+
+            .desc {
+              width: 223px;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
 @media only screen and (max-width: 991px) {
   .service-section {
     .container {
