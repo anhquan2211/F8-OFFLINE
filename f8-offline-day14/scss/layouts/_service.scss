@@ -1,0 +1,150 @@
+.service-section {
+  .container {
+    max-width: 1440px;
+
+    .service-list {
+      $column-gap: 63px;
+      max-width: 1179px;
+      display: flex;
+      align-items: center;
+      column-gap: $column-gap;
+      row-gap: 47px;
+      flex-wrap: wrap;
+      margin: 0 auto;
+      margin-top: 300px;
+      transform: translateX(12px) translateY(15px);
+
+      .service-item {
+        flex-basis: calc((100% - $column-gap * 2) / 3);
+        display: flex;
+        column-gap: 19px;
+
+        .icon {
+          img {
+            max-width: none;
+            height: 67px;
+          }
+        }
+
+        .content {
+          .title {
+            margin-bottom: 8px;
+            font-size: 2.4rem;
+            font-weight: 600;
+            line-height: 1.33;
+          }
+
+          .desc {
+            width: 260px;
+            height: 117px;
+            font-size: 1.8rem;
+            font-weight: 500;
+            line-height: normal;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 1499px) {
+  .service-section {
+    .container {
+      max-width: 1320px;
+    }
+  }
+}
+
+@media only screen and (max-width: 1399px) {
+  .service-section {
+    .container {
+      max-width: 1140px;
+
+      .service-list {
+        $column-gap: 40px;
+        column-gap: $column-gap;
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 991px) {
+  .service-section {
+    .container {
+      max-width: 720px;
+
+      .service-list {
+        $column-gap: 20px;
+        column-gap: $column-gap;
+        row-gap: 30px;
+
+        .service-item {
+          column-gap: 20px;
+          flex-basis: calc((100% - $column-gap) / 2);
+
+          .icon {
+            img {
+              width: 67px;
+            }
+          }
+
+          .content {
+            .title {
+              font-size: 2rem;
+            }
+
+            .desc {
+              width: 232px;
+              font-size: 1.6rem;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 767px) {
+  .service-section {
+    .container {
+      max-width: 540px;
+
+      .service-list {
+        row-gap: 10px;
+        justify-content: center;
+        margin-top: 100px;
+
+        .service-item {
+          column-gap: 20px;
+          flex-basis: 100%;
+          justify-content: center;
+
+          .icon {
+            img {
+              width: 67px;
+            }
+          }
+
+          .content {
+            .title {
+              font-size: 2rem;
+            }
+
+            .desc {
+              width: 232px;
+              font-size: 1.6rem;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 767px) {
+  .service-section {
+    .container {
+      max-width: 320px;
+    }
+  }
+}

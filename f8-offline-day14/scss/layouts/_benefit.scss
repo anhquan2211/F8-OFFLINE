@@ -38,6 +38,8 @@
       .benefit-item {
         flex-basis: calc((100% - 60px) / 3);
         height: 431px;
+        background-color: #fff;
+        border-radius: 10px;
 
         .image {
           border-radius: 10px;
@@ -171,7 +173,7 @@
 
     &::after {
       top: 213px;
-      height: 550px;
+      height: 580px;
     }
   }
 }
