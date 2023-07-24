@@ -4,13 +4,19 @@
 @import "parts/base";
 @import "parts/mixin";
 
-// Import Layouts
-@import "layouts/header";
-@import "layouts/hero-img";
-@import "layouts/quantity";
-@import "layouts/products";
-@import "layouts/news";
-@import "layouts/benefit";
-@import "layouts/service";
-@import "layouts/form";
-@import "layouts/footer";
+// Import Layouts Home
+@import "layouts_home/header";
+@import "layouts_home/hero-img";
+@import "layouts_home/quantity";
+@import "layouts_home/products";
+@import "layouts_home/news";
+@import "layouts_home/benefit";
+@import "layouts_home/service";
+@import "layouts_home/form";
+@import "layouts_home/footer";
+
+// Import Layouts About Greenchop
+@import "layouts_about_greenchop/header";
+@import "layouts_about_greenchop/title-large";
+@import "layouts_about_greenchop/about";
+@import "layouts_about_greenchop/main-product";
