@@ -2,6 +2,7 @@
   background-image: url(../../images/background-main-product.svg);
   position: relative;
   height: 470px;
+  transform: translateY(44px);
 
   &::before {
     content: "";
