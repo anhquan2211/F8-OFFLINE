@@ -24,13 +24,13 @@
             line-height: 1.53;
             max-width: 230px;
             margin-left: auto;
-            transform: translateX(16px) translateY(4px);
+            transform: translateX(15px) translateY(5px);
           }
         }
 
         .info-text {
           padding-top: 40px;
-          transform: translateX(8px);
+          transform: translateX(10px);
 
           //   &:nth-of-type(3) {
           //     transform: translateX(86px);
@@ -44,6 +44,18 @@
             color: #46b20f;
           }
 
+          .title-home {
+            transform: translateY(-1px) translateX(1px);
+          }
+
+          .title-support {
+            transform: translateX(-5px) translateY(-1px);
+          }
+
+          .title-contact {
+            transform: translateX(3px) translateY(-1px);
+          }
+
           .text {
             margin-bottom: 8px;
             font-size: 1.6rem;
@@ -51,14 +63,23 @@
             line-height: 1.53;
           }
 
+          .text-home {
+            transform: translateX(1px);
+          }
+
           .text-last {
             margin-bottom: 0;
+          }
+
+          .text-support {
+            transform: translateX(-4px) translateY(-1px);
           }
 
           .text-wrap {
             display: flex;
             align-items: center;
             column-gap: 12px;
+            transform: translateX(-4px);
 
             span {
               font-weight: 600;
@@ -69,6 +90,10 @@
               font-weight: 400;
               line-height: 1.53;
             }
+          }
+
+          .text-contact {
+            transform: translateX(3px) translateY(-1px);
           }
         }
 
@@ -96,6 +121,10 @@
         justify-content: space-between;
         transform: translateX(10px);
 
+        .image-copyright {
+          transform: translateY(3px) translateX(-2px);
+        }
+
         .social-list {
           display: flex;
           column-gap: 8px;
@@ -106,6 +135,7 @@
             background-color: #dcffca;
             line-height: 48px;
             border-radius: 50%;
+            transform: translateY(2px) translateX(-1px);
 
             img {
               display: block;

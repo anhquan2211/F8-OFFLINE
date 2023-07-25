@@ -28,6 +28,7 @@
           margin-bottom: 34px;
           text-align: left;
           margin-right: auto;
+          transform: translateX(-2px);
         }
 
         .row {
@@ -36,7 +37,7 @@
           input {
             margin-bottom: 28px;
             padding: 16px 0 16px 16px;
-            transform: translateY(6px);
+            transform: translateY(2px);
           }
 
           input,
@@ -63,6 +64,7 @@
         .row2 {
           display: flex;
           column-gap: 21px;
+          transform: translateY(2px) translateX(-2px);
 
           input {
             flex-basis: calc((100% - 21px) / 2);
@@ -82,7 +84,7 @@
           background-color: #46b20f;
           margin-top: 32px;
           margin-left: auto;
-          transform: translateX(-9px) translateY(8px);
+          transform: translateX(-8px) translateY(4px);
         }
       }
     }

@@ -9,6 +9,7 @@
       text-align: center;
       margin-top: 126px;
       margin-left: 10px;
+      transform: translateX(3px) translateY(1px);
     }
 
     .products-list {
@@ -30,6 +31,7 @@
         &:first-child {
           .product-title {
             padding-right: 18px;
+            transform: translateX(-2px) translateY(-1px);
           }
 
           .quantity {
@@ -38,34 +40,38 @@
 
           .cost {
             padding-right: 12px;
+            transform: translateX(4px);
           }
 
           .btn {
-            transform: translateX(-8px);
+            transform: translateX(-7px);
           }
         }
 
         &:nth-child(2) {
           .product-title {
             padding-left: 22px;
+            transform: translateX(3px) translateY(-1px);
           }
 
           .quantity {
             padding-left: 22px;
+            transform: translateX(2px);
           }
 
           .cost {
             padding-left: 22px;
+            transform: translateX(3px);
           }
 
           .btn {
-            transform: translateX(12px);
+            transform: translateX(13px);
           }
         }
 
         &:nth-child(3) {
           .product-title {
-            transform: translateX(10px);
+            transform: translateX(8px) translateY(-1px);
           }
 
           .quantity {
@@ -74,24 +80,27 @@
 
           .cost {
             padding-left: 10px;
+            transform: translateX(3px);
           }
 
           .btn {
-            transform: translateX(12px);
+            transform: translateX(10px);
           }
         }
 
         &:nth-child(4) {
           .product-title {
-            transform: translateX(-10px);
+            transform: translateX(-12px) translateY(-1px);
           }
 
           .quantity {
             padding-right: 16px;
+            transform: translateX(-4px) translateY(-1px);
           }
 
           .cost {
             padding-right: 15px;
+            transform: translateX(-4px);
           }
 
           .btn {
@@ -101,25 +110,27 @@
 
         &:nth-child(5) {
           .product-title {
-            transform: translateX(12px);
+            transform: translateX(13px) translateY(-1px);
           }
 
           .quantity {
             padding-left: 16px;
+            transform: translateX(6px) translateY(-1px);
           }
 
           .cost {
             padding-left: 18px;
+            transform: translateX(5px);
           }
 
           .btn {
-            transform: translateX(12px);
+            transform: translateX(14px);
           }
         }
 
         &:nth-child(6) {
           .product-title {
-            transform: translateX(12px);
+            transform: translateX(9px) translateY(-2px);
           }
 
           .quantity {
@@ -128,6 +139,7 @@
 
           .cost {
             padding-left: 18px;
+            transform: translateX(-1px);
           }
 
           .btn {
@@ -145,11 +157,13 @@
           height: 323px;
           border-radius: 50%;
           background-color: #ffba94;
+          transform: translateX(8px);
         }
 
         .icon {
           padding-top: 138px;
           margin: 0 auto;
+          transform: translateX(8px) translateY(-1px);
         }
 
         .icon-perspective {
@@ -178,6 +192,7 @@
             width: 49px;
             height: 2px;
             background-color: #a3a3a3;
+            transform: translateX(-34px);
           }
         }
 
