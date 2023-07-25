@@ -14,7 +14,7 @@
         text-align: center;
         padding-top: 3px;
         padding-left: 3px;
-        transform: translateX(3px);
+        transform: translateX(3px) translateY(-2px);
       }
 
       .desc {
@@ -27,6 +27,7 @@
         margin-right: auto;
         text-align: center;
         padding-left: 12px;
+        transform: translateY(-3px) translateX(2px);
       }
 
       .quantity-list {
@@ -48,6 +49,7 @@
           background-color: #dcffca;
           border-radius: 50%;
           z-index: -1;
+          transform: translateY(14px);
         }
 
         &::before {
@@ -86,7 +88,7 @@
             padding: 23px;
             border-radius: 12px;
             background-color: #fff0e7;
-            transform: translateY(8px) translateX(-2px);
+            transform: translateY(10px) translateX(-4px);
           }
 
           .icon-center {
