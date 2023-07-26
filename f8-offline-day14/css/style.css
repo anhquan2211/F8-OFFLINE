@@ -239,7 +239,7 @@ body {
     margin: 0 auto;
   }
   .header .container .container-inner .navbar .burger {
-    left: 80px;
+    left: 5px;
   }
 }
 @media only screen and (max-width: 575px) {
@@ -250,7 +250,7 @@ body {
     width: 100px;
   }
   .header .container .container-inner .navbar .burger {
-    left: 40px;
+    left: 51px;
   }
   .header .container .container-inner .navbar .burger i {
     font-size: 2.4rem;
