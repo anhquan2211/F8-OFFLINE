@@ -72,8 +72,19 @@
 
 @media only screen and (max-width: 1499px) {
   .about-greenchop {
+    * {
+      transform: translate(0) !important;
+    }
     .container {
       max-width: 1320px;
+
+      .container-inner {
+        .about-item {
+          .text {
+            text-align: center;
+          }
+        }
+      }
     }
   }
 }

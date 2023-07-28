@@ -1,4 +1,7 @@
 .products-section {
+  * {
+    transform: translateX(0px) !important;
+  }
   .container {
     max-width: 1440px;
 

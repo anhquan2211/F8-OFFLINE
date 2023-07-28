@@ -34,6 +34,7 @@ ul li {
 
 body {
   overflow-x: hidden;
+  width: 100vw;
 }
 
 .container {

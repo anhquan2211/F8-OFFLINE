@@ -225,6 +225,9 @@
 
           .image {
             flex-basis: 100%;
+            img {
+              max-width: 95%;
+            }
           }
 
           .content {

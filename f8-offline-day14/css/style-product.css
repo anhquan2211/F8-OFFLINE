@@ -34,6 +34,7 @@ ul li {
 
 body {
   overflow-x: hidden;
+  width: 100vw;
 }
 
 .container {
@@ -148,15 +149,15 @@ body {
 .header .container .container-inner .header-actions .search-icon {
   transform: translateX(10px) translateY(3px);
 }
+.header .container .container-inner .header-actions .burger {
+  display: none;
+  font-size: 3rem;
+}
 
 @media only screen and (max-width: 991px) {
   .header .container {
     position: relative;
     max-width: 720px;
-  }
-  .header .container .container-inner .header-logo {
-    margin-left: auto;
-    padding-left: 190px;
   }
   .header .container .container-inner input[type=checkbox] {
     display: block;
@@ -197,8 +198,8 @@ body {
     inset: 0;
     flex-direction: column;
     background-color: #fff;
-    max-width: 300px;
-    width: 250px;
+    max-width: 60%;
+    min-width: 250px;
     min-height: 100vh;
     box-shadow: 5px 0px 10px 0px #aaa;
     overflow: scroll;
@@ -232,6 +233,9 @@ body {
   .header .container .container-inner .header-actions img {
     width: 35px;
   }
+  .header .container .container-inner .header-actions .burger {
+    display: block;
+  }
 }
 @media only screen and (min-width: 576px) and (max-width: 767px) {
   .header .container {
@@ -241,10 +245,13 @@ body {
   .header .container .container-inner .navbar .burger {
     left: 80px;
   }
+  .header .container .container-inner .header-actions {
+    column-gap: 30px;
+  }
 }
 @media only screen and (max-width: 575px) {
   .header .container {
-    min-width: 320px;
+    max-width: 320px;
   }
   .header .container .container-inner .header-logo img {
     width: 100px;
@@ -255,6 +262,13 @@ body {
   .header .container .container-inner .navbar .burger i {
     font-size: 2.4rem;
   }
+  .header .container .container-inner input[type=checkbox]:checked ~ .header-actions .cart-icon {
+    z-index: -1;
+  }
+  .header .container .container-inner .header-actions {
+    column-gap: 30px;
+    margin-right: 0;
+  }
   .header .container .container-inner .header-actions img {
     width: 28px;
   }
@@ -263,7 +277,8 @@ body {
   .header .container .container-inner .navbar ul .menu-sub-mobile {
     display: block;
   }
-  .header .container .container-inner .header-actions {
+  .header .container .container-inner .header-actions .cart-icon,
+  .header .container .container-inner .header-actions .search-icon {
     display: none;
   }
 }
@@ -389,6 +404,9 @@ body {
   .title-large .container .container-inner .title {
     font-size: 4rem;
   }
+}
+.products-section * {
+  transform: translateX(0px) !important;
 }
 .products-section .container {
   max-width: 1440px;
@@ -1339,7 +1357,6 @@ body {
   display: flex;
   padding: 80px 380px 97px 669px;
   margin-bottom: 198px;
-  transform: translateX(24px) translateY(10px);
 }
 .protect-section .container .container-inner .content-wrap-1 .image {
   position: absolute;
@@ -1452,6 +1469,7 @@ body {
     padding-right: 45px;
     padding-left: 98px;
     margin-bottom: 20px;
+    height: 347px;
   }
   .protect-section .container .container-inner .content-wrap-1 .image {
     display: none;
@@ -1459,12 +1477,16 @@ body {
   .protect-section .container .container-inner .content-wrap-2 {
     padding-left: 85px;
     padding-right: 108px;
+    height: 347px;
   }
   .protect-section .container .container-inner .content-wrap-2 .image {
     display: none;
   }
 }
 @media screen and (max-width: 575px) {
+  .protect-section .container .container-inner {
+    margin-top: 60px;
+  }
   .protect-section .container .container-inner .title {
     max-width: 300px;
     margin-bottom: 20px;
@@ -1474,10 +1496,18 @@ body {
     padding-right: 40px;
     padding-left: 50px;
     padding-top: 20px;
+    height: 294px;
   }
   .protect-section .container .container-inner .content-wrap-1 .text-wrap img,
   .protect-section .container .container-inner .content-wrap-2 .text-wrap img {
     display: none;
+  }
+  .protect-section .container .container-inner .content-wrap-1 .text-wrap .text,
+  .protect-section .container .container-inner .content-wrap-2 .text-wrap .text {
+    display: -webkit-box;
+    -webkit-line-clamp: 10;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
   }
 }
 .service-section .container {
@@ -1650,7 +1680,7 @@ body {
   }
 }
 .footer-section {
-  margin-top: 176px;
+  margin-top: 138px;
   background-color: #f2ffec;
 }
 .footer-section .container {
@@ -1783,19 +1813,23 @@ body {
   }
   .footer-section .container .container-inner .info-list {
     flex-wrap: wrap;
-    column-gap: 40px;
+    column-gap: 30px;
     justify-content: center;
   }
   .footer-section .container .container-inner .info-list .info-item {
-    flex-basis: calc((100% - 40px) / 2);
-    text-align: center;
+    text-align: left;
+  }
+  .footer-section .container .container-inner .info-list .info-item:first-child {
+    flex-basis: 100%;
+  }
+  .footer-section .container .container-inner .info-list .info-item:not(:first-child) {
+    flex-basis: calc((100% - 60px) / 3);
   }
   .footer-section .container .container-inner .info-list .info-item .text-image {
-    margin-left: auto;
-    margin-right: auto;
+    margin-left: 0;
   }
   .footer-section .container .container-inner .info-list .info-item .text-wrap {
-    justify-content: center;
+    justify-content: flex-start;
   }
   .footer-section .container .container-inner .info-list .info-item .text-wrap .text-tablet {
     padding-right: 84px;
@@ -1808,8 +1842,17 @@ body {
   .footer-section .container {
     max-width: 540px;
   }
+  .footer-section .container .container-inner .info-list .info-item {
+    flex-basis: 100% !important;
+  }
 }
 @media screen and (max-width: 575.98px) {
+  .footer-section {
+    margin-top: 60px;
+  }
+  .footer-section * {
+    transform: translateX(0) !important;
+  }
   .footer-section .container {
     max-width: 320px;
   }
@@ -1817,7 +1860,7 @@ body {
     flex-direction: column;
   }
   .footer-section .container .container-inner .info-list .info-item .text-wrap {
-    justify-content: center;
+    justify-content: flex-start;
   }
   .footer-section .container .container-inner .info-list .info-item .text-wrap .text-tablet {
     padding-right: 83px;
