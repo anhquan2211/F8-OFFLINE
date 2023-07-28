@@ -1284,7 +1284,6 @@ body {
 .desc-section .container .container-inner .image {
   max-width: 706px;
   margin-left: 54px;
-  transform: translateX(16px) translateY(16px);
 }
 
 @media screen and (max-width: 1499px) {

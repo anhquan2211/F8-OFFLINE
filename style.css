@@ -5,6 +5,19 @@
   box-sizing: border-box;
 }
 
+html::-webkit-scrollbar {
+  width: 0.3rem;
+}
+html::-webkit-scrollbar-track {
+  background: #fefefe;
+  /* Đây là màu nền */
+}
+html::-webkit-scrollbar-thumb {
+  background: #056aa4;
+  /* Đây là màu của cái tròn tròn */
+  border-radius: 5rem;
+}
+
 a {
   text-decoration: none;
 }
@@ -69,17 +82,28 @@ body {
   color: #fff6f4;
   padding: 4px 0;
   margin: 0 auto;
-  background-image: radial-gradient(
+  cursor: pointer;
+  /* background-image: radial-gradient(
     circle farthest-corner at 10% 20%,
     rgba(237, 3, 32, 0.87) 20.8%,
     rgba(242, 121, 1, 0.84) 74.4%
-  );
+  ); */
+  background: linear-gradient(90deg, #0086ef, #551aae);
+  transition: opacity 0.4s ease-in-out;
+}
+
+.title:hover {
+  opacity: 0.8;
+}
+
+.title i {
+  padding-left: 16px;
 }
 
 .title-js {
   background-color: #f8da3c;
 
-  background-image: linear-gradient(to right, #6a11cb 0%, #2575fc 100%);
+  background: linear-gradient(270deg, #fe3b0e, #ff8119);
 }
 
 .day-homework {
@@ -92,7 +116,7 @@ body {
 .day-title {
   font-size: 20px;
   color: blue;
-  word-spacing: 8px;
+  word-spacing: 4px;
 }
 
 .day-homework a {
@@ -115,4 +139,17 @@ body {
   font-size: 18px;
   font-weight: 500;
   margin-top: 20px;
+}
+
+.homework-wrapper {
+  opacity: 0;
+  display: none;
+  transition: opacity 0.4s ease-in-out;
+  transition: transform 0.4s ease-in-out;
+}
+
+input[id="title-wrap-js"]:checked ~ .homework-wrapper,
+input[id="title-wrap"]:checked ~ .homework-wrapper {
+  opacity: 1;
+  display: block;
 }
