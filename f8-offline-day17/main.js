@@ -142,7 +142,7 @@ for (let i = 0; i < 64; i++) {
 }
 
 /*
-Bài 7: Vẽ bàn cờ vua..
+Bài 7: Vẽ bảng cửu chương.
 */
 
 document.write("<center><table border='1px'>");
