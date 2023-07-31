@@ -343,7 +343,7 @@ body {
   line-height: 200px;
   font-size: 5.2rem;
   font-weight: 700;
-  transform: translateX(8px) translateY(1px);
+  transform: translateY(1px);
 }
 
 @media only screen and (max-width: 1499px) {
@@ -406,12 +406,16 @@ body {
   position: relative;
   column-gap: 109px;
 }
+.hot-section .container .container-inner .row .image-1 {
+  transform: translateX(-8px);
+}
 .hot-section .container .container-inner .row .image-2 {
-  transform: translateY(-95px);
+  transform: translateY(-95px) translateX(-8px);
 }
 .hot-section .container .container-inner .row .content-wrap {
   max-width: 644px;
   padding-top: 33px;
+  transform: translateX(-8px);
 }
 .hot-section .container .container-inner .row .content-wrap .title-small {
   color: #46b20f;
@@ -448,7 +452,7 @@ body {
   font-size: 1.8rem;
 }
 .hot-section .container .container-inner .row .content-2 {
-  transform: translateY(52px) translateX(1px);
+  transform: translateY(52px) translateX(-7px);
 }
 .hot-section .container .container-inner .row .order-1 {
   order: 1;
@@ -506,6 +510,9 @@ body {
   .hot-section .container .container-inner .row .content-wrap {
     padding-top: 20px;
   }
+  .hot-section .container .container-inner .row .content-wrap .btn-subview {
+    width: 80%;
+  }
 }
 @media screen and (max-width: 767px) {
   .hot-section .container {
@@ -531,7 +538,6 @@ body {
 }
 .post-section .container .container-inner {
   margin-top: 62px;
-  transform: translateX(8px);
 }
 .post-section .container .container-inner .title {
   font-size: 3.8rem;
@@ -574,6 +580,9 @@ body {
 .post-section .container .container-inner .news-list .news-item .image-2 {
   transform: translateX(-13px);
 }
+.post-section .container .container-inner .news-list .news-item .image-item-4 {
+  transform: translateX(-13px);
+}
 .post-section .container .container-inner .news-list .news-item .name-calendar {
   display: flex;
   align-items: center;
@@ -592,7 +601,10 @@ body {
   transform: translateY(-5px) translateX(-7px);
 }
 .post-section .container .container-inner .news-list .news-item .name-calendar .name-item-3 {
-  transform: translateX(-2px) translateY(-2px);
+  transform: translateY(2px);
+}
+.post-section .container .container-inner .news-list .news-item .name-calendar .name-item-4 {
+  transform: translateX(-8px) translateY(-2px);
 }
 .post-section .container .container-inner .news-list .news-item .name-calendar .calendar {
   display: flex;
@@ -620,11 +632,11 @@ body {
 .post-section .container .container-inner .news-list .news-item .name-calendar .calendar .img-2 {
   transform: translateX(-24px) translateY(-3px);
 }
-.post-section .container .container-inner .news-list .news-item .name-calendar .calendar .img-time-3 {
-  transform: translateX(-6px) translateY(-3px);
+.post-section .container .container-inner .news-list .news-item .name-calendar .calendar .img-time-4 {
+  transform: translateX(-24px) translateY(-2px);
 }
-.post-section .container .container-inner .news-list .news-item .name-calendar .calendar .time-item-3 {
-  transform: translateX(-6px) translateY(-2px);
+.post-section .container .container-inner .news-list .news-item .name-calendar .calendar .time-item-4 {
+  transform: translateX(-21px) translateY(-1px);
 }
 .post-section .container .container-inner .news-list .news-item .news-title {
   max-width: 585px;
@@ -637,10 +649,13 @@ body {
   overflow: hidden;
 }
 .post-section .container .container-inner .news-list .news-item .news-title-1 {
-  transform: translateX(0px) translateY(-40px);
+  transform: translateX(-1px) translateY(-38px);
 }
 .post-section .container .container-inner .news-list .news-item .news-title-2 {
   transform: translateY(-43px) translateX(-8px);
+}
+.post-section .container .container-inner .news-list .news-item .news-title-3 {
+  transform: translateY(-37px) translateX(-1px);
 }
 .post-section .container .container-inner .news-list .news-item .news-desc {
   max-width: 575px;
@@ -660,7 +675,7 @@ body {
   transform: translateY(-47px) translateX(-8px);
 }
 .post-section .container .container-inner .news-list .news-item .news-desc-3 {
-  transform: translateY(-2px) translateX(-2px);
+  transform: translateY(-41px) translateX(-1px);
 }
 
 /*# sourceMappingURL=style-news.css.map */

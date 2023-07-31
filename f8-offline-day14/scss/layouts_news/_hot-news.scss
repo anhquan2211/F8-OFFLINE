@@ -11,16 +11,18 @@
         position: relative;
         column-gap: 109px;
 
-        .image {
+        .image-1 {
+          transform: translateX(-8px);
         }
 
         .image-2 {
-          transform: translateY(-95px);
+          transform: translateY(-95px) translateX(-8px);
         }
 
         .content-wrap {
           max-width: 644px;
           padding-top: 33px;
+          transform: translateX(-8px);
 
           .title-small {
             color: #46b20f;
@@ -64,7 +66,7 @@
         }
 
         .content-2 {
-          transform: translateY(52px) translateX(1px);
+          transform: translateY(52px) translateX(-7px);
         }
 
         .order-1 {
@@ -145,6 +147,10 @@
 
           .content-wrap {
             padding-top: 20px;
+
+            .btn-subview {
+              width: 80%;
+            }
           }
         }
       }
