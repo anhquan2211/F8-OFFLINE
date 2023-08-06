@@ -9,13 +9,17 @@ var i = 0;
 
 let changeTextColor = function () {
   setInterval(function () {
+    if (i > 0) {
+      const str = document.querySelector("span").innerText;
+      console.log(str);
+      // words[i - 1] = words[i];
+      words[i - 1] = str;
+    }
     words[i] = `<span>${words[i]}</span>`;
     content = words.join(" ");
     document.getElementById("text").innerHTML = content;
-    words[i] = wordsSame[i];
 
     i++;
-
     if (i >= words.length) {
       i = 0;
     }

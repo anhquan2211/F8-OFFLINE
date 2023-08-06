@@ -59,6 +59,14 @@
             transform: translateX(-13px);
           }
 
+          .image-item-5 {
+            transform: translateY(-46px) translateX(-1px);
+          }
+
+          .image-item-6 {
+            transform: translateY(-46px) translateX(-13px);
+          }
+
           .name-calendar {
             display: flex;
             align-items: center;
@@ -85,6 +93,10 @@
 
             .name-item-4 {
               transform: translateX(-8px) translateY(-2px);
+            }
+
+            .name-item-5 {
+              transform: translateX(0px) translateY(-44px);
             }
 
             .calendar {
@@ -127,6 +139,14 @@
                 transform: translateX(-21px) translateY(-1px);
               }
             }
+
+            .calendar-item-5 {
+              transform: translateX(-5px) translateY(-43px);
+            }
+          }
+
+          .name-calendar-6 {
+            transform: translateY(-47px) translateX(-8px);
           }
 
           .news-title {
@@ -152,6 +172,18 @@
             transform: translateY(-37px) translateX(-1px);
           }
 
+          .news-title-4 {
+            transform: translateY(-40px) translateX(-8px);
+          }
+
+          .news-title-5 {
+            transform: translateY(-82px) translateX(0px);
+          }
+
+          .news-title-6 {
+            transform: translateY(-88px) translateX(-8px);
+          }
+
           .news-desc {
             max-width: 575px;
             font-size: 2rem;
@@ -175,6 +207,31 @@
           .news-desc-3 {
             transform: translateY(-41px) translateX(-1px);
           }
+
+          .news-desc-4 {
+            transform: translateY(-45px) translateX(-8px);
+          }
+
+          .news-desc-5 {
+            transform: translateY(-88px) translateX(0px);
+          }
+
+          .news-desc-6 {
+            transform: translateY(-92px) translateX(-8px);
+          }
+        }
+      }
+
+      .page-number {
+        margin-top: 60px;
+        display: flex;
+        justify-content: center;
+        column-gap: 20px;
+
+        .number {
+          font-size: 20px;
+          font-weight: 400;
+          line-height: 1.3;
         }
       }
     }
