@@ -122,10 +122,16 @@ function getNestedArr(categories, parentId = 0) {
     );
 
     var result = parentElements.map((item) => {
-      return {
-        ...item,
-        children: getNestedArr(categories, item.id),
-      };
+      const { parent, ...rest } = item;
+      const children = getNestedArr(categories, item.id);
+      if (children.length > 0) {
+        return {
+          ...rest,
+          children,
+        };
+      } else {
+        return rest;
+      }
     });
     return result;
   } else {
