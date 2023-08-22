@@ -7,6 +7,7 @@ var errPasswordRegister = document.querySelector("#form-2 .err-pass");
 var showHideEleRegister = document.querySelector("#form-2 .show-hide");
 var eyeNormalEleRegister = document.querySelector("#form-2 .show-hide i");
 
+console.log(eyeNormalEleRegister);
 // EMAIL ONINPUT
 inputEmailRegister.oninput = function () {
   let regex = new RegExp("[a-z0-9]+@[a-z]+.[a-z]{2,3}");
@@ -25,6 +26,8 @@ inputEmailRegister.oninput = function () {
     errPasswordRegister.innerText = "Vui lòng nhập thông tin";
     inputEmailRegister.parentElement.classList.add("invalid");
     inputPasswordRegister.parentElement.classList.add("invalid");
+    errFullNameRegister.innerText = "Vui lòng nhập thông tin";
+    inputFullNameRegister.parentElement.classList.add("invalid");
   }
 
   if (inputEmailRegister.value === "") {
@@ -32,6 +35,11 @@ inputEmailRegister.oninput = function () {
   }
 
   if (inputEmailRegister.value === "" && inputPasswordRegister.value) {
+    errPasswordRegister.innerText = "";
+    inputPasswordRegister.parentElement.classList.remove("invalid");
+  }
+
+  if (inputEmailRegister.value && inputPasswordRegister.value) {
     errPasswordRegister.innerText = "";
     inputPasswordRegister.parentElement.classList.remove("invalid");
   }
@@ -74,6 +82,19 @@ inputPasswordRegister.oninput = function () {
       errEmailRegister.innerText = "Vui lòng nhập thông tin";
       inputEmailRegister.parentElement.classList.add("invalid");
     }
+    if (inputFullNameRegister.value === "") {
+      errFullNameRegister.innerText = "Vui lòng nhập thông tin";
+      inputFullNameRegister.parentElement.classList.add("invalid");
+    }
+  }
+
+  if (inputPasswordRegister.value.length <= 6) {
+    errPasswordRegister.innerText = "Mật khẩu tối thiểu 6-20 ký tự";
+    inputPasswordRegister.parentElement.classList.add("invalid");
+  }
+  if (inputPasswordRegister.value.length === 0) {
+    errPasswordRegister.innerText = "Vui lòng nhập thông tin";
+    inputPasswordRegister.parentElement.classList.add("invalid");
   }
 };
 
@@ -92,9 +113,18 @@ inputPasswordRegister.onblur = function () {
     inputFullNameRegister.parentElement.classList.add("invalid");
   }
 
-  if (inputPasswordLogin.value) {
-    errPassword.innerText = "";
-    inputPasswordLogin.parentElement.classList.remove("invalid");
+  if (inputPasswordRegister.value) {
+    errPasswordRegister.innerText = "";
+    inputPasswordRegister.parentElement.classList.remove("invalid");
+  }
+
+  if (inputPasswordRegister.value.length <= 6) {
+    errPasswordRegister.innerText = "Mật khẩu tối thiểu 6-20 ký tự";
+    inputPasswordRegister.parentElement.classList.add("invalid");
+  }
+  if (inputPasswordRegister.value.length === 0) {
+    errPasswordRegister.innerText = "Vui lòng nhập thông tin";
+    inputPasswordRegister.parentElement.classList.add("invalid");
   }
 };
 
@@ -140,16 +170,16 @@ inputFullNameRegister.onblur = function () {
 
 // SHOW AND HIDE PASSWORD
 
-eyeNormalEle.classList.add("fa-eye");
+eyeNormalEleRegister.classList.add("fa-eye");
 
 showHideEleRegister.addEventListener("click", function () {
   if (inputPasswordRegister.type === "password") {
     inputPasswordRegister.type = "text";
-    eyeNormalEle.classList.remove("fa-eye");
-    eyeNormalEle.classList.add("fa-eye-slash");
+    eyeNormalEleRegister.classList.remove("fa-eye");
+    eyeNormalEleRegister.classList.add("fa-eye-slash");
   } else {
     inputPasswordRegister.type = "password";
-    eyeNormalEle.classList.remove("fa-eye-slash");
-    eyeNormalEle.classList.add("fa-eye");
+    eyeNormalEleRegister.classList.remove("fa-eye-slash");
+    eyeNormalEleRegister.classList.add("fa-eye");
   }
 });
