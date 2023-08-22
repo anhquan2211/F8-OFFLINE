@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+      integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <title>
+      Tin tức Việt Nam và quốc tế nóng, nhanh, cập nhật 24h | Báo Dân Trí
+    </title>
+    <link rel="stylesheet" href="./assets/css/reset.css" />
+    <link rel="stylesheet" href="./assets/css/style.css" />
+  </head>
+  <body>
+    <!-- HEADER -->
+    <header class="header">
+      <div class="header-container">
+        <!-- Logo -->
+        <div class="logo">
+          <a href="#!" class="link-logo">
+            <img src="./assets/images/logo.svg" alt="Logo Dan Tri" />
+          </a>
+        </div>
+
+        <!-- Container Right -->
+        <div class="content-right">
+          <div class="fica">
+            <img
+              src="./assets/images/fica-img.jpg"
+              alt="Fica"
+              class="fica-img"
+            />
+            <span class="text-img">Fica</span>
+          </div>
+
+          <div class="dtinews">
+            <img
+              src="./assets/images/dtinews-img.png"
+              alt="DTiNews"
+              class="dtinews-img"
+            />
+            <span class="text-img">DTiNews</span>
+          </div>
+
+          <div class="date-time">
+            <span class="address">Hà Nội</span>
+            <span class="date">Thứ 4, 23/08/2023</span>
+          </div>
+
+          <div class="weather">
+            <i class="fa-solid fa-cloud"></i>
+            <span class="text-weather">34 &deg; C</span>
+          </div>
+
+          <div class="login">
+            <button class="btn-login">
+              <span>Đăng nhập</span>
+              <i class="fa-regular fa-user"></i>
+            </button>
+          </div>
+
+          <div class="search-btn">
+            <i class="fa-solid fa-magnifying-glass"></i>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- MODAL LOGIN AND REGISTER -->
+    <div class="modal">
+      <div class="modal-container">
+        <!-- MODAL LOGIN -->
+        <div class="modal-header">
+          <div class="header-main">
+            <div class="modal-login">Đăng nhập</div>
+            <div class="modal-register no-active">Đăng ký</div>
+          </div>
+        </div>
+
+        <!-- LOGIN -->
+        <div class="login-content">
+          <span class="text-desc">với các tài khoản mạng xã hội</span>
+
+          <div class="btn-container">
+            <div class="container-inner">
+              <button class="login-google">
+                <img src="./assets/images/google-login.png" alt="" />
+                Google
+              </button>
+
+              <button class="login-facebook">
+                <img src="./assets/images/facebook-login.png" alt="" />
+                Facebook
+              </button>
+            </div>
+
+            <span class="text-or">hoặc</span>
+          </div>
+
+          <form action="" class="form-login form" id="form-1">
+            <div class="form-group email-container">
+              <label for="email" class="title-email">Email</label>
+              <input
+                id="email"
+                type="email"
+                class="email-input"
+                placeholder="Email"
+              />
+              <span class="form-message err-email"></span>
+            </div>
+
+            <div class="form-group password-container">
+              <label for="password" class="title-password">Mật khẩu</label>
+              <input
+                id="password"
+                type="password"
+                class="password-input"
+                placeholder="Mật khẩu"
+              />
+              <div class="show-hide">
+                <i class="fa-regular"></i>
+              </div>
+              <span class="form-message err-pass"></span>
+            </div>
+
+            <p class="forget-password">Quên mật khẩu?</p>
+
+            <button type="submit" class="submit-login">Đăng nhập</button>
+          </form>
+        </div>
+
+        <!-- REGISTER -->
+        <div class="register-content">
+          <span class="desc-register">
+            Hoàn thành đăng ký, và bắt đầu trải nghiệm ngay!
+          </span>
+
+          <form action="" class="form form-register" id="form-2">
+            <div class="name-container">
+              <label for="fullName" class="title-name">Họ và tên</label>
+              <input
+                id="fullName"
+                type="text"
+                class="name-input"
+                placeholder="Họ và tên"
+              />
+              <span class="form-message err-fullName"></span>
+            </div>
+
+            <div class="email-container">
+              <label for="email" class="title-email">Email</label>
+              <input
+                id="email"
+                type="email"
+                class="email-input"
+                placeholder="Email"
+              />
+              <span class="form-message err-email"></span>
+            </div>
+
+            <div class="password-container">
+              <label for="password" class="title-password">Mật khẩu</label>
+              <input
+                id="password"
+                type="password"
+                class="password-input"
+                placeholder="Mật khẩu"
+              />
+              <div class="show-hide">
+                <i class="fa-regular"></i>
+              </div>
+              <span class="form-message err-pass"></span>
+            </div>
+
+            <p class="text-policy">
+              Bằng cách đăng ký tài khoản, bạn cũng đồng thời chấp nhận mọi
+              <a href="">điều kiện về qui định và chính sách của Dân trí</a>
+            </p>
+
+            <button type="submit" class="register-login">Đăng ký</button>
+          </form>
+        </div>
+      </div>
+      <div class="overlay"></div>
+    </div>
+
+    <script src="./assets/js/modal.js"></script>
+    <script src="./assets/js/validatorLogin.js"></script>
+    <script src="./assets/js/validatorRegister.js"></script>
+    <!-- <script>
+      Validator({
+        form: "#form-1",
+        formGroupSelector: ".form-group",
+        errorSelector: ".form-message",
+        showHide: ".show-hide",
+        rules: [],
+        showHideRules: [Validator.showHide("#password")],
+      });
+    </script> -->
+  </body>
+</html>
