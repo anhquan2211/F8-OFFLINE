@@ -39,9 +39,25 @@ inputEmailRegister.oninput = function () {
     inputPasswordRegister.parentElement.classList.remove("invalid");
   }
 
-  if (inputEmailRegister.value && inputPasswordRegister.value) {
+  if (inputEmailRegister.value === "" && inputFullNameRegister.value) {
+    errFullNameRegister.innerText = "";
+    inputFullNameRegister.parentElement.classList.remove("invalid");
+  }
+
+  if (
+    inputEmailRegister.value &&
+    inputPasswordRegister.value &&
+    inputFullNameRegister.value
+  ) {
     errPasswordRegister.innerText = "";
     inputPasswordRegister.parentElement.classList.remove("invalid");
+    errFullNameRegister.innerText = "";
+    inputFullNameRegister.parentElement.classList.remove("invalid");
+  }
+
+  if (inputEmailRegister.value && inputFullNameRegister.value) {
+    errFullNameRegister.innerText = "";
+    inputFullNameRegister.parentElement.classList.remove("invalid");
   }
 };
 
@@ -149,6 +165,11 @@ inputFullNameRegister.oninput = function () {
       errEmailRegister.innerText = "Vui lòng nhập thông tin";
       inputEmailRegister.parentElement.classList.add("invalid");
     }
+
+    if (inputPasswordRegister.value === "") {
+      errPasswordRegister.innerText = "Vui lòng nhập thông tin";
+      inputPasswordRegister.parentElement.classList.add("invalid");
+    }
   }
 };
 
@@ -165,6 +186,11 @@ inputFullNameRegister.onblur = function () {
     inputPasswordRegister.parentElement.classList.add("invalid");
     errFullNameRegister.innerText = "Vui lòng nhập thông tin";
     inputFullNameRegister.parentElement.classList.add("invalid");
+  }
+
+  if (inputFullNameRegister.value) {
+    errFullNameRegister.innerText = "";
+    inputFullNameRegister.parentElement.classList.remove("invalid");
   }
 };
 

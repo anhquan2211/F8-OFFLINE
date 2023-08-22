@@ -33,6 +33,11 @@ inputEmailLogin.oninput = function () {
     errPassword.innerText = "";
     inputPasswordLogin.parentElement.classList.remove("invalid");
   }
+
+  if (!regex.test(inputEmailLogin.value) && inputPasswordLogin.value) {
+    errPassword.innerText = "";
+    inputPasswordLogin.parentElement.classList.remove("invalid");
+  }
 };
 
 //EMAIL BLUR

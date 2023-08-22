@@ -1,11 +1,25 @@
 body {
   font-family: "Poppins", sans-serif;
   padding: 20px 70px;
-  font-size: 14px;
+  font-size: 15px;
+  max-width: 1130px;
+  margin: 0 auto;
+}
+
+button,
+input::placeholder {
+  font-size: 15px;
+  font-family: inherit;
+}
+
+a {
+  text-decoration: none;
+  color: #4c4c4c;
+  font-weight: 500;
 }
 
 .header {
-  width: 1100px;
+  max-width: 1130px;
   margin: 0 auto;
 }
 
@@ -46,6 +60,7 @@ body {
 .date-time {
   display: flex;
   flex-direction: column;
+  align-items: flex-end;
   font-size: 14px;
 }
 
@@ -174,12 +189,34 @@ body {
   outline: none;
   border-radius: 8px;
   cursor: pointer;
+  font-size: 15px;
 }
 
 .text-or {
   display: block;
   margin: 20px 0;
   text-align: center;
+  font-size: 15px;
+  position: relative;
+}
+
+.text-or::after,
+.text-or::before {
+  content: "";
+  position: absolute;
+  width: 40%;
+  height: 2px;
+  background-color: #f0f0f0;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.text-or::before {
+  left: 0;
+}
+
+.text-or::after {
+  right: 5px;
 }
 
 .form-register,
@@ -213,13 +250,18 @@ body {
   position: relative;
 }
 
-.password-container i {
+.password-container .show-hide {
   position: absolute;
   right: 14px;
   top: 50%;
+  /* transform: translateY(-50%); */
   color: #7c7c7c;
   cursor: pointer;
   font-size: 16px;
+}
+
+.password-container .show-register {
+  transform: translateY(-50%);
 }
 
 .forget-password {
@@ -227,6 +269,7 @@ body {
   text-align: right;
   cursor: pointer;
   font-style: italic;
+  color: #999;
 }
 
 .register-login,
@@ -241,6 +284,12 @@ body {
   border: none;
   outline: none;
   cursor: pointer;
+  transition: opacity 0.2s linear;
+}
+
+.register-login:hover,
+.submit-login:hover {
+  opacity: 0.8;
 }
 
 /* DESCRIPTION */
@@ -255,6 +304,10 @@ body {
   line-height: 1.4;
 }
 
+.text-policy a {
+  color: #306aff;
+}
+
 /* OVERLAY */
 .overlay {
   background-color: rgba(0, 0, 0, 0.3);
@@ -262,8 +315,9 @@ body {
   inset: 0;
   opacity: 0;
   visibility: hidden;
-  transition: opacity 0.4s ease-in-out, visibility 0.4s ease-in-out;
-  z-index: 0;
+  transition: 1s ease-in-out;
+  transition-property: opacity, visibility;
+  /* z-index: 0; */
 }
 
 .modal.show .overlay {
@@ -297,4 +351,19 @@ body {
 .form .invalid .form-message {
   color: red;
   font-style: italic;
+}
+
+/* SECTION NAVIGATION */
+
+.navigation-container {
+  max-width: 100%;
+  display: flex;
+  justify-content: space-between;
+  font-size: 13px;
+  margin-top: 30px;
+}
+
+.navigation-container > div:hover {
+  padding-bottom: 6px;
+  border-bottom: 3px solid #1a7900;
 }
