@@ -104,6 +104,10 @@ a {
   align-items: center;
 }
 
+.btn-login:hover {
+  opacity: 0.8;
+}
+
 .btn-login i {
   padding-left: 8px;
   font-size: 20px;
@@ -118,7 +122,10 @@ a {
 /* MODAL CONTAINER */
 
 .modal {
-  display: none;
+  opacity: 0;
+  visibility: hidden;
+  transition-property: opacity, visibility;
+  transition: 0.2s ease-in-out;
 }
 
 .modal-container {
@@ -147,6 +154,11 @@ a {
   font-weight: 600;
   font-size: 17px;
 }
+
+/* .login-content,
+.register-content {
+  display: none;
+} */
 
 .modal-login,
 .modal-register {
@@ -261,7 +273,7 @@ a {
 }
 
 .password-container .show-register {
-  transform: translateY(-50%);
+  /* transform: translateY(-50%); */
 }
 
 .forget-password {
@@ -315,7 +327,7 @@ a {
   inset: 0;
   opacity: 0;
   visibility: hidden;
-  transition: 1s ease-in-out;
+  transition: 0.4s ease-in-out;
   transition-property: opacity, visibility;
   /* z-index: 0; */
 }
@@ -332,8 +344,13 @@ a {
   width: 100%;
 }
 
+/* .modal.show .modal-container {
+  top: 30px;
+} */
+
 .modal.show {
-  display: block;
+  opacity: 1;
+  visibility: visible;
 }
 
 .d-block {
