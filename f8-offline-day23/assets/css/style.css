@@ -446,6 +446,10 @@ a {
   margin: 0 20px;
 }
 
+.container-center img {
+  width: 515px;
+}
+
 .container-center .desc,
 .container-center .title {
   max-width: 515px;
