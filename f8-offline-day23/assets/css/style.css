@@ -265,7 +265,7 @@ a {
 .password-container .show-hide {
   position: absolute;
   right: 14px;
-  top: 50%;
+  top: 40px;
   /* transform: translateY(-50%); */
   color: #7c7c7c;
   cursor: pointer;
