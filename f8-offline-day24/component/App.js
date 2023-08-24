@@ -1,7 +1,7 @@
 import html from "../core.js";
 import { connect } from "../store.js";
 import Header from "../component/Header.js";
-import Footer from "./Footer.js";
+import Footer from "../component/Footer.js";
 import TodoList from "../component/TodoList.js";
 
 function App({ todos }) {
