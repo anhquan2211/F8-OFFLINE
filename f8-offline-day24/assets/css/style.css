@@ -52,7 +52,11 @@ input[type="checkbox"] {
   outline: none;
   color: #fff;
   cursor: pointer;
-  z-index: 2;
+  font-weight: 600;
+}
+
+.btn:hover {
+  opacity: 0.9;
 }
 
 .main {
@@ -142,4 +146,9 @@ label[for="toggle-all"] {
 
 .edit {
   display: none;
+}
+
+.toggle-all,
+label[for="toggle-all"] {
+  cursor: pointer;
 }
