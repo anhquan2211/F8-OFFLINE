@@ -117,6 +117,7 @@ body {
   font-size: 20px;
   color: blue;
   word-spacing: 4px;
+  text-align: center;
 }
 
 .day-homework a {
@@ -152,4 +153,15 @@ input[id="title-wrap-js"]:checked ~ .homework-wrapper,
 input[id="title-wrap"]:checked ~ .homework-wrapper {
   opacity: 1;
   display: block;
+}
+
+.title-desc {
+  font-size: 16px;
+  color: #fff;
+  text-align: center;
+  background-color: #74ebd5;
+  background-image: linear-gradient(to right, #8e2de2, #4a00e0);
+
+  padding: 6px;
+  border-radius: 8px;
 }
