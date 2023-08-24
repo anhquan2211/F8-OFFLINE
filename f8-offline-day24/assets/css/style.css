@@ -6,7 +6,9 @@ body {
 
 input {
   color: #fff;
-  font-weight: 500px;
+}
+
+input[type="checkbox"] {
   width: 14px;
   height: 14px;
 }
@@ -17,6 +19,7 @@ input {
   padding: 40px 30px;
   margin: 40px auto;
   position: relative;
+  border-radius: 6px;
 }
 
 .todoapp h1 {
@@ -68,6 +71,12 @@ input {
   justify-content: space-between;
   cursor: pointer;
   border-radius: 6px;
+  align-items: center;
+}
+
+.todo-list .check-container {
+  display: flex;
+  column-gap: 10px;
 }
 
 .todo-list .action {

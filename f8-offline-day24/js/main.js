@@ -15,23 +15,28 @@ var inputCheckAll = document.querySelector("#toggle-all");
 
 btn.addEventListener("click", function (e) {
   // console.log(e);
-  handleInputKeyUp(e);
+  const enterKeyEvent = new KeyboardEvent("keyup", { keyCode: 13 });
+
+  inputHeader.dispatchEvent(enterKeyEvent);
 });
 
-function handleInputKeyUp(e) {
-  console.log(e.type);
-  if (e.type === "click") {
-    console.log(true);
-    handleAddAction();
-  }
-}
+inputHeader.addEventListener("click", function (e) {
+  console.log(e);
+});
+// function handleInputKeyUp(e) {
+//   console.log(e.type);
+//   if (e.type === "click") {
+//     console.log(true);
+//     handleAddAction();
+//   }
+// }
 
-function handleAddAction() {
-  if (inputHeader.value.trim() !== "") {
-    dispatch("add", inputHeader.value.trim());
-    btn.addEventListener("click", function (e) {
-      // console.log(e);
-      handleInputKeyUp(e);
-    });
-  }
-}
+// function handleAddAction() {
+//   if (inputHeader.value.trim() !== "") {
+//     dispatch("add", inputHeader.value.trim());
+//     btn.addEventListener("click", function (e) {
+//       // console.log(e);
+//       handleInputKeyUp(e);
+//     });
+//   }
+// }

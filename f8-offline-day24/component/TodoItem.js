@@ -37,14 +37,19 @@ function TodoItem({ todo, index, editIndex }) {
         </div>
       </div>
       <div class="edit">
-        <input
-          class="new-todo"
-          placeholder="Update Task"
-          autofocus
-          value="${todo.title}"
-          onkeyup="event.keyCode === 13 && dispatch('endEdit', this.value.trim())"
-        />
-        <button class="btn">Add Task</button>
+        <form
+          class="form"
+          onsubmit="event.preventDefault(); dispatch('endEdit', this.querySelector('.new-todo').value.trim());"
+        >
+          <input
+            class="new-todo"
+            placeholder="Update Task"
+            autofocus
+            value="${todo.title}"
+            onkeyup="event.keyCode === 13 && dispatch('endEdit', this.value.trim())"
+          />
+          <button class="btn" type="submit">Add Task</button>
+        </form>
       </div>
     </li>
   `;

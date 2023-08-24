@@ -4,13 +4,18 @@ function Header() {
   return html`
     <header class="header">
       <h1>Get Things Done !</h1>
-      <input
-        class="new-todo"
-        placeholder="What is the tasks today?"
-        autofocus
-        onkeyup="event.keyCode === 13 && dispatch('add', this.value.trim())"
-      />
-      <button class="btn">Add Task</button>
+      <form
+        class="form"
+        onsubmit="event.preventDefault(); dispatch('add', this.querySelector('.new-todo').value.trim());"
+      >
+        <input
+          class="new-todo"
+          placeholder="What is the tasks today?"
+          autofocus
+          onkeyup="event.keyCode === 13 && dispatch('add', this.value.trim())"
+        />
+        <button class="btn" type="submit">Add Task</button>
+      </form>
     </header>
   `;
 }
