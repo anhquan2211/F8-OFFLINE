@@ -51,6 +51,15 @@ const actions = {
       state.editIndex = null;
     }
   },
+
+  switchFilter(state, filter) {
+    state.filter = filter;
+  },
+
+  clearCompleted(state) {
+    state.todos = state.todos.filter(state.filters.active);
+    storage.set(state.todos);
+  },
 };
 
 export default function reducer(state = init, action, args) {

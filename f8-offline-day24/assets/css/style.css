@@ -152,3 +152,143 @@ label[for="toggle-all"] {
 label[for="toggle-all"] {
   cursor: pointer;
 }
+
+/* FOOTER */
+/* .footer {
+  color: #777;
+  padding: 10px 15px;
+  height: 20px;
+  text-align: center;
+  border-top: 1px solid #e6e6e6;
+}
+
+.footer:before {
+  content: "";
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  height: 50px;
+  overflow: hidden;
+}
+
+.todo-count {
+  float: left;
+  text-align: left;
+}
+
+.todo-count strong {
+  font-weight: 300;
+}
+
+.filters {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  position: absolute;
+  right: 0;
+  left: 0;
+}
+
+.filters li {
+  display: inline;
+}
+
+.filters li a {
+  color: inherit;
+  margin: 3px;
+  padding: 3px 7px;
+  text-decoration: none;
+  border: 1px solid transparent;
+  border-radius: 3px;
+}
+
+.filters li a:hover {
+  border-color: rgba(175, 47, 47, 0.1);
+}
+
+.filters li a.selected {
+  border-color: rgba(175, 47, 47, 0.2);
+}
+
+.clear-completed,
+html .clear-completed:active {
+  float: right;
+  position: relative;
+  line-height: 20px;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.clear-completed:hover {
+  text-decoration: underline;
+}
+
+.info {
+  margin: 65px auto 0;
+  color: #bfbfbf;
+  font-size: 10px;
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5);
+  text-align: center;
+}
+
+.info p {
+  line-height: 1;
+}
+
+.info a {
+  color: inherit;
+  text-decoration: none;
+  font-weight: 400;
+}
+
+.info a:hover {
+  text-decoration: underline;
+} */
+
+.footer {
+  margin-top: 30px;
+  display: flex;
+  color: #fff;
+  justify-content: space-between;
+  position: relative;
+  padding-top: 20px;
+  align-items: center;
+  flex-wrap: wrap;
+  row-gap: 20px;
+}
+
+.footer::before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 2px;
+  top: -4px;
+  background-color: #fff;
+}
+
+.filters {
+  display: flex;
+  column-gap: 10px;
+}
+
+.filters li a {
+  text-decoration: none;
+  color: #fff;
+  padding: 4px;
+  border-radius: 4px;
+}
+
+.selected {
+  background-color: #8758ff !important;
+}
+
+.filters li a:hover {
+  opacity: 0.9;
+}
+
+.clear-completed {
+  padding: 4px;
+  font-size: 16px;
+  cursor: pointer;
+}
