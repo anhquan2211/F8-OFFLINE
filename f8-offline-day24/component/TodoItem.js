@@ -6,8 +6,7 @@ function TodoItem({ todo, index, editIndex }) {
   // console.log(todo.completed);
   return html`
     <li
-      class="${todo.completed && "completed"} ${editIndex === index &&
-      "editing"}"
+      class="${todo.completed && "completed"} ${editIndex[index] && "editing"}"
     >
       <div class="view">
         <div class="check-container">
@@ -24,7 +23,7 @@ function TodoItem({ todo, index, editIndex }) {
         <div class="action">
           <button
             class="btn-common edit-btn"
-            onclick="dispatch('startEdit', ${index})"
+            onclick="event.preventDefault(); dispatch('startEdit', ${index})"
           >
             <i class="fa-solid fa-pen-to-square edit-icon"></i>
           </button>
@@ -39,7 +38,7 @@ function TodoItem({ todo, index, editIndex }) {
       <div class="edit">
         <form
           class="form"
-          onsubmit="event.preventDefault(); dispatch('endEdit', this.querySelector('.new-todo').value.trim());"
+          onsubmit="event.preventDefault(); dispatch('endEdit', { title: this.querySelector('.new-todo').value.trim(), index: ${index} });"
         >
           <input
             class="new-todo"

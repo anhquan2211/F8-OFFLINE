@@ -8,7 +8,7 @@ const init = {
     active: (todo) => !todo.completed,
     completed: (todo) => todo.completed,
   },
-  editIndex: null,
+  editIndex: {},
 };
 
 const actions = {
@@ -37,19 +37,41 @@ const actions = {
   },
 
   startEdit(state, index) {
-    state.editIndex = index;
+    state.editIndex[index] = true;
   },
 
-  endEdit(state, title) {
-    if (state.editIndex !== null) {
+  endEdit(state, { title, index }) {
+    console.log(title, index);
+    if (state.editIndex[index]) {
       if (title) {
-        state.todos[state.editIndex].title = title;
+        state.todos[index].title = title;
         storage.set(state.todos);
-      } else {
-        this.destroy(state, state.editIndex);
       }
-      state.editIndex = null;
+      state.editIndex[index] = false;
     }
+    // var indexArr = Object.keys(state.editIndex);
+    // console.log(title);
+    // for (var i = 0; i < indexArr.length; i++) {
+    //   state.todos[i].title = title;
+    //   storage.set(state.todos);
+    //   state.editIndex[i] = false;
+    //   break;
+    // }
+
+    // if (state.editIndex) {
+    //   if (title) {
+    //     state.todos[0].title = title;
+    //     storage.set(state.todos);
+    //   }
+    //   state.editIndex[0] = false;
+    // }
+    // if (state.editIndex[1]) {
+    //   if (title) {
+    //     state.todos[1].title = title;
+    //     storage.set(state.todos);
+    //   }
+    //   state.editIndex[1] = false;
+    // }
   },
 
   switchFilter(state, filter) {

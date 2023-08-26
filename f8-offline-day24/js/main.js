@@ -23,20 +23,3 @@ btn.addEventListener("click", function (e) {
 inputHeader.addEventListener("click", function (e) {
   console.log(e);
 });
-// function handleInputKeyUp(e) {
-//   console.log(e.type);
-//   if (e.type === "click") {
-//     console.log(true);
-//     handleAddAction();
-//   }
-// }
-
-// function handleAddAction() {
-//   if (inputHeader.value.trim() !== "") {
-//     dispatch("add", inputHeader.value.trim());
-//     btn.addEventListener("click", function (e) {
-//       // console.log(e);
-//       handleInputKeyUp(e);
-//     });
-//   }
-// }
