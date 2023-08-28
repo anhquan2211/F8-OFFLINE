@@ -6,13 +6,17 @@ function Header() {
       <h1>Get Things Done !</h1>
       <form
         class="form"
-        onsubmit="event.preventDefault(); dispatch('add', this.querySelector('.new-todo').value.trim());"
+        onsubmit="event.preventDefault(); dispatch('add', this.querySelector('.new-todo').value.trim());this.querySelector('.new-todo').focus() "
+        autofocus
+        tabindex="-1"
       >
         <input
           class="new-todo"
           placeholder="What is the tasks today?"
           autofocus
+          onfocus="this.focus();"
           onkeyup="event.keyCode === 13 && dispatch('add', this.value.trim())"
+          tabindex="-1"
         />
         <button class="btn" type="submit">Add Task</button>
       </form>

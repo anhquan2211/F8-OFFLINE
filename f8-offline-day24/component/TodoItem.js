@@ -45,7 +45,7 @@ function TodoItem({ todo, index, editIndex }) {
             placeholder="Update Task"
             autofocus
             value="${todo.title}"
-            onkeyup="event.keyCode === 13 && dispatch('endEdit', this.value.trim())"
+            onkeyup="event.keyCode === 13 && dispatch('endEdit', { title: this.value.trim(), index: ${index} })"
           />
           <button class="btn" type="submit">Add Task</button>
         </form>

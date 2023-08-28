@@ -23,3 +23,7 @@ btn.addEventListener("click", function (e) {
 inputHeader.addEventListener("click", function (e) {
   console.log(e);
 });
+
+window.onload = function () {
+  document.querySelector(".new-todo").focus();
+};
