@@ -85,3 +85,7 @@ img {
 .carousel .carousel-dots span.active {
   background: goldenrod;
 }
+
+.carousel-inner .item {
+  width: 100vw;
+}
