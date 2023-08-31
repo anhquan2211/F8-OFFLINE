@@ -175,7 +175,7 @@ const app = {
       var isMove = false;
       if (!isMove) {
         timer.style.display = "block";
-        timer.style.left = `${e.offsetX + 46}px`;
+        timer.style.left = `${e.offsetX + 40}px`;
         var percentage = (100 * e.offsetX) / this.clientWidth;
         var time = (audio.duration * percentage) / 100;
         timer.innerText = getTime(time);
