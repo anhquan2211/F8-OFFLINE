@@ -184,9 +184,7 @@ const app = {
     });
 
     progress.addEventListener("mouseout", function () {
-      // Set isMove to false when the mouse leaves the progress element
       isMove = false;
-
       timer.style.display = "none";
     });
 
