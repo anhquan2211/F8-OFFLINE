@@ -205,7 +205,7 @@ header h2 {
 }
 
 .control .btn.active {
-  color: var(--primary-color);
+  color: rgb(0, 0, 204);
 }
 
 .control .btn-toggle-play {
