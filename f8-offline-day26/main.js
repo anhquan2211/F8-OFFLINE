@@ -178,13 +178,15 @@ const app = {
 
     progress.addEventListener("mousemove", function (e) {
       e.stopPropagation();
-      var isMove = false;
-      if (!isMove) {
-        timer.style.display = "block";
-        timer.style.left = `${e.offsetX + 65}px`;
-        var percentage = (100 * e.offsetX) / this.clientWidth;
-        var time = (audio.duration * percentage) / 100;
-        timer.innerText = getTime(time);
+      if (audio.duration) {
+        var isMove = false;
+        if (!isMove) {
+          timer.style.display = "block";
+          timer.style.left = `${e.offsetX + 65}px`;
+          var percentage = (100 * e.offsetX) / this.clientWidth;
+          var time = (audio.duration * percentage) / 100;
+          timer.innerText = getTime(time);
+        }
       }
     });
 
@@ -763,20 +765,20 @@ const app = {
 app.start();
 
 // Dark/Light Theme
-var darkTheme = document.querySelector(".dark-theme");
+var darkTheme = $(".dark-theme");
 var moonIcon = document.createElement("i");
 moonIcon.className = "fa-regular fa-moon";
 
 var sunIcon = document.createElement("i");
 sunIcon.className = "fa-regular fa-sun";
 
-var backgroundDark = document.querySelector(".music_card__background");
-var htmlElement = document.querySelector("html");
-var bodyElement = document.querySelector("body");
-var songElement = document.querySelectorAll(".song");
-var activeElement = document.querySelector(".active");
-var bodySongElement = document.querySelectorAll(".song .body");
-var headerTitle = document.querySelector("header h2");
+var backgroundDark = $(".music_card__background");
+var htmlElement = $("html");
+var bodyElement = $("body");
+var songElement = $$(".song");
+var activeElement = $(".active");
+var bodySongElement = $$(".song .body");
+var headerTitle = $("header h2");
 
 var isDark = false;
 
@@ -808,11 +810,15 @@ darkTheme.addEventListener("click", function () {
       song.children.style.color = "#fff";
     });
     activeElement.style.backgroundColor = "#ccc";
+    bodyElement.style.transition = "2s ease";
+    htmlElement.style.transition = "2s ease";
   } else {
     darkTheme.appendChild(moonIcon);
 
     darkTheme.style.color = "black";
     darkTheme.style.borderColor = "black";
+
+    headerTitle.style.color = "rgb(0,0,204)";
     backgroundDark.src =
       "./assets/img/pexels-rostislav-uzunov-10613972-1920x1080-24fps.mp4";
 
@@ -822,5 +828,8 @@ darkTheme.addEventListener("click", function () {
       song.classList.remove("dark-background");
       song.style.color = " #fff";
     });
+
+    bodyElement.style.transition = "2s ease";
+    htmlElement.style.transition = "2s ease";
   }
 });
