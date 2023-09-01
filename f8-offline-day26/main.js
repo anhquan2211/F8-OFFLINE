@@ -43,6 +43,7 @@ const app = {
   isMove: false,
   isRandom: false,
   isRepeat: false,
+  isDraggingProgress: true,
   currentIndex: 0,
   isPlaying: false,
   playedIndexes: [],
@@ -180,7 +181,7 @@ const app = {
       var isMove = false;
       if (!isMove) {
         timer.style.display = "block";
-        timer.style.left = `${e.offsetX + 40}px`;
+        timer.style.left = `${e.offsetX + 65}px`;
         var percentage = (100 * e.offsetX) / this.clientWidth;
         var time = (audio.duration * percentage) / 100;
         timer.innerText = getTime(time);
@@ -341,15 +342,25 @@ const app = {
       { passive: false }
     );
 
+    // Trạng thái của isDraggingProgress khi nhấn chuột xuống
+    progress.onmousedown = function () {
+      _this.isDraggingProgress = false;
+    };
+
+    // Trạng thái của isDraggingProgress khi nhấn chuột lên
+    progress.onmouseup = function () {
+      _this.isDraggingProgress = true;
+    };
+
     //Xy ly khi tua
     audio.ontimeupdate = function () {
-      if (audio.duration) {
-        const progressPercent = Math.floor(
+      if (_this.isDraggingProgress && audio.duration) {
+        const progressPercent = Math.trunc(
           (audio.currentTime / audio.duration) * 100
         );
+
         progress.value = progressPercent;
-        _this.setConfig("progressSong", audio.currentTime);
-        audioTimeLeft.innerHTML = _this.formatTime(audio.currentTime);
+
         var color =
           "linear-gradient(to right, rgb(0, 0, 204)" +
           progress.value +
@@ -357,21 +368,47 @@ const app = {
           progress.value +
           "%)";
         progress.style.background = color;
-        // progress.setAttribute("title", "Left " + progressPercent + "%");
-      }
-      // Xử lý khi tua
-      progress.oninput = function (e) {
-        const seekTime = (audio.duration / 100) * e.target.value;
-        audio.currentTime = seekTime;
-      };
 
-      ///cd Thumb complete percent
-      const percent = (progress.value / 100) * 180;
-      cdProgressFull.style.transform = `rotate(${percent}deg)`;
-      cdProgressFill.forEach((fillElement) => {
-        fillElement.style.transform = `rotate(${percent}deg)`;
-      });
+        _this.startTimer(audio.currentTime);
+        _this.endTimer();
+
+        // Lấy current progress && current index
+        _this.setConfig("lastProgress", audio.currentTime);
+        _this.setConfig("lastIndex", _this.currentIndex);
+        _this.setConfig("lastVolume", audio.volume);
+      }
     };
+    // Khi tua bài hát
+    progress.onclick = function () {
+      audio.currentTime = Math.trunc((progress.value / 100) * audio.duration);
+      const progressPercent = Math.floor(
+        (audio.currentTime / audio.duration) * 100
+      );
+      progress.value = progressPercent;
+      var color =
+        "linear-gradient(to right, rgb(0, 0, 204)" +
+        progress.value +
+        "% , rgb(214, 214, 214)" +
+        progress.value +
+        "%)";
+      progress.style.background = color;
+    };
+
+    progress.oninput = function (e) {
+      // const seekTime = (audio.duration / 100) * e.target.value;
+      // progress.value = seekTime;
+      var currentTime = (e.target.value / 100) * audio.duration;
+      _this.setConfig("progressSong", currentTime);
+      audioTimeLeft.innerHTML = _this.formatTime(currentTime);
+      var color =
+        "linear-gradient(to right, rgb(0, 0, 204)" +
+        progress.value +
+        "% , rgb(214, 214, 214)" +
+        progress.value +
+        "%)";
+      progress.style.background = color;
+    };
+
     // Khi next song
     nextBtn.addEventListener(
       "touchstart",
@@ -630,6 +667,7 @@ const app = {
     this.currentIndex = this.config.currentIndex;
     this.currentVolume = this.config.currentVolume;
     this.progressSong = this.config.progressSong;
+
     // Object.assign(this, this.config)
   },
 
@@ -684,6 +722,26 @@ const app = {
     const song = songList[this.currentIndex];
     song.classList.add("active");
     this.loadCurrentSong();
+  },
+
+  startTimer: function (e) {
+    let startMinute = Math.floor(e / 60);
+    let startSecond = Math.floor(e % 60);
+
+    let displayStartMinute = startMinute < 10 ? "0" + startMinute : startMinute;
+    let displayStartSecond = startSecond < 10 ? "0" + startSecond : startSecond;
+
+    audioTimeLeft.textContent = displayStartMinute + " : " + displayStartSecond;
+  },
+
+  endTimer: function () {
+    let endMinute = Math.floor(audio.duration / 60);
+    let endSecond = Math.floor(audio.duration % 60);
+
+    let displayEndMinute = endMinute < 10 ? "0" + endMinute : endMinute;
+    let displayEndSecond = endSecond < 10 ? "0" + endSecond : endSecond;
+
+    audioDuration.textContent = displayEndMinute + " : " + displayEndSecond;
   },
 
   start: function () {

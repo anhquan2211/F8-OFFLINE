@@ -383,11 +383,13 @@ div.btn.btn-toggle-volume {
 .time-left {
   padding-right: 5px;
   color: #97fff4;
+  width: 80px;
 }
 
 .time-right {
   padding-left: 5px;
   color: #97fff4;
+  width: 80px;
 }
 
 .scrolling-text-container {
