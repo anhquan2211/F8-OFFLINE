@@ -26,6 +26,7 @@ const cdProgressFill = $$(".cd .circle .mask .fill");
 const timer = $(".timer");
 const durationBar = $(".duration-bar");
 var r = $(":root");
+let isDragging = false;
 
 const initialConfig = {
   isRandom: false,
@@ -39,6 +40,7 @@ const initialConfig = {
 const storedConfig = JSON.parse(localStorage.getItem(PLAYER_STORAGE_KEY));
 
 const app = {
+  isMove: false,
   isRandom: false,
   isRepeat: false,
   currentIndex: 0,
@@ -135,6 +137,8 @@ const app = {
     });
     playlist.innerHTML = htmls.join("");
   },
+
+  //Ngay khi bat dau thi se lay bai hay dau tien Current Song.
   definedProperties: function () {
     Object.defineProperty(this, "currentSong", {
       get: function () {
@@ -142,13 +146,14 @@ const app = {
       },
     });
   },
+
   handleEvents: function () {
     const _this = this;
     // Xử lý CD quay/dừng
     const cdWidth = cd.offsetWidth;
     const cdHeight = cd.offsetHeight;
     const cdThumbAnimate = cdThumb.animate([{ transform: "rotate(360deg)" }], {
-      duration: 10000,
+      duration: 10000, //10 seconds
       iterations: Infinity,
     });
     cdThumbAnimate.pause();
@@ -179,7 +184,6 @@ const app = {
         var percentage = (100 * e.offsetX) / this.clientWidth;
         var time = (audio.duration * percentage) / 100;
         timer.innerText = getTime(time);
-        console.log("move");
       }
     });
 
@@ -188,15 +192,29 @@ const app = {
       timer.style.display = "none";
     });
 
+    // durationBar.addEventListener("mousedown", function () {
+    //   if (e.which === 1) {
+    //     isDragging = true;
+    //   }
+    // });
+
+    // document.addEventListener("mousemove", function (e) {
+    //   if (isDragging) {
+    //     var newPercentage =
+    //   }
+    // });
+
     document.addEventListener("touchmove", (e) => {
       if (isTouchingVolume) {
         e.preventDefault(); // Ngăn cuộn trang khi di chuyển ngón tay
       }
     });
+
     document.addEventListener("touchend", (e) => {
       isTouchingVolume = false;
     });
 
+    //Xu ly phong to / thu nho CD
     document.onscroll = function () {
       const scrollTop = document.documentElement.scrollTop;
       const newCdWidth = cdWidth - scrollTop;
@@ -211,6 +229,7 @@ const app = {
       );
       cd.style.opacity = newCdWidth / cdWidth;
     };
+
     // Xử lý khi click play
     playBtn.addEventListener(
       "touchstart",
@@ -284,10 +303,12 @@ const app = {
           const percent = (touchX - progressRect.left) / progressRect.width;
           const seekTime = audio.duration * percent;
           audio.currentTime = seekTime;
+          audio.play();
         }
       },
       { passive: false }
     );
+
     progress.addEventListener(
       "touchmove",
       (e) => {
@@ -309,6 +330,7 @@ const app = {
       },
       { passive: true }
     );
+
     progress.addEventListener(
       "touchend",
       (e) => {
@@ -319,7 +341,7 @@ const app = {
       { passive: false }
     );
 
-    //Khi tiến độ bài hát thay đổi
+    //Xy ly khi tua
     audio.ontimeupdate = function () {
       if (audio.duration) {
         const progressPercent = Math.floor(
@@ -461,6 +483,7 @@ const app = {
       _this.setConfig("isRepeat", _this.isRepeat);
       repeatBtn.classList.toggle("active", _this.isRepeat);
     };
+
     // Xử lý bật/ tắt random song
     randomBtn.addEventListener(
       "touchstart",
@@ -503,8 +526,8 @@ const app = {
         nextBtn.click();
       }
     };
-    // Lắng nghe hành vi click vào playlist
 
+    // Lắng nghe hành vi click vào playlist
     playlist.onclick = function (e) {
       const songNode = e.target.closest(".song:not(.active)");
 
@@ -533,6 +556,7 @@ const app = {
       $(".icon-unmute").style.visibility = "hidden";
       $(".icon-mute").style.visibility = "visible";
     }
+
     audio.onvolumechange = () => {
       volumeBar.value = audio.volume;
       if (audio.volume === 0) {
@@ -558,6 +582,7 @@ const app = {
       audio.volume = 0;
       this.setConfig("currentVolume", audio.volume);
     };
+
     muteIcon.onclick = (e) => {
       audio.volume = this.config.savedVolume;
       this.setConfig("currentVolume", audio.volume);
@@ -577,6 +602,7 @@ const app = {
     }, 100);
   },
 
+  //Tai bai hat dau tien khi chay ung dung
   loadCurrentSong: function () {
     this.setConfig("currentIndex", this.currentIndex);
     heading.textContent = this.currentSong.name;
@@ -587,6 +613,7 @@ const app = {
       audio.currentTime = this.progressSong;
     };
   },
+
   formatTime: function (seconds) {
     const minutes = Math.floor(seconds / 60);
     const remainingSeconds = Math.floor(seconds % 60);
@@ -596,6 +623,7 @@ const app = {
     }${remainingSeconds}`;
     return formattedTime;
   },
+
   loadConfig: function () {
     this.isRandom = this.config.isRandom;
     this.isRepeat = this.config.isRepeat;
@@ -604,6 +632,7 @@ const app = {
     this.progressSong = this.config.progressSong;
     // Object.assign(this, this.config)
   },
+
   nextSong: function () {
     this.currentIndex++;
     this.progressSong = 0;
@@ -619,6 +648,7 @@ const app = {
     song.classList.add("active");
     this.loadCurrentSong();
   },
+
   prevSong: function () {
     this.currentIndex--;
     this.progressSong = 0;
@@ -633,6 +663,7 @@ const app = {
     song.classList.add("active");
     this.loadCurrentSong();
   },
+
   playRandomSong: function () {
     let newIndex;
     do {
@@ -654,6 +685,7 @@ const app = {
     song.classList.add("active");
     this.loadCurrentSong();
   },
+
   start: function () {
     //Gán cấu hình vào ứng dụng
     this.loadConfig();

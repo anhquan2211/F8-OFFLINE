@@ -1,16 +1,15 @@
-:root {
-  --primary-color: #ec1f55;
-  --text-color: #333;
-}
-
 * {
   padding: 0;
   margin: 0;
   box-sizing: inherit;
 }
 
-body {
-  /* padding: 30px; */
+:root {
+  --primary-color: #ec1f55;
+  --text-color: #333;
+  --cd-dim: 150px;
+  --thumb-dim: 140px;
+  --c-width: 5px;
 }
 
 html {
@@ -22,20 +21,6 @@ html {
     rgb(200, 80, 192) 50%,
     rgb(255, 204, 112) 100%
   );
-}
-
-:root {
-  --primary-color: #ec1f55;
-  --text-color: #333;
-  --cd-dim: 150px;
-  --thumb-dim: 140px;
-  --c-width: 5px;
-}
-
-* {
-  padding: 0;
-  margin: 0;
-  box-sizing: inherit;
 }
 
 .player {
