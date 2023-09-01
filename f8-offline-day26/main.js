@@ -761,3 +761,66 @@ const app = {
   },
 };
 app.start();
+
+// Dark/Light Theme
+var darkTheme = document.querySelector(".dark-theme");
+var moonIcon = document.createElement("i");
+moonIcon.className = "fa-regular fa-moon";
+
+var sunIcon = document.createElement("i");
+sunIcon.className = "fa-regular fa-sun";
+
+var backgroundDark = document.querySelector(".music_card__background");
+var htmlElement = document.querySelector("html");
+var bodyElement = document.querySelector("body");
+var songElement = document.querySelectorAll(".song");
+var activeElement = document.querySelector(".active");
+var bodySongElement = document.querySelectorAll(".song .body");
+var headerTitle = document.querySelector("header h2");
+
+var isDark = false;
+
+darkTheme.addEventListener("click", function () {
+  isDark = !isDark;
+
+  while (darkTheme.firstChild) {
+    darkTheme.removeChild(darkTheme.firstChild);
+  }
+
+  if (isDark) {
+    darkTheme.appendChild(sunIcon);
+
+    darkTheme.style.color = "white";
+    darkTheme.style.borderColor = "white";
+    backgroundDark.src =
+      "./assets/img/pexels-rostislav-uzunov-10613973 (1080p).mp4";
+
+    htmlElement.classList.add("dark-background");
+    bodyElement.classList.add("dark-background");
+
+    headerTitle.style.color = "#fff";
+
+    songElement.forEach(function (song) {
+      song.classList.add("dark-background");
+    });
+
+    bodySongElement.forEach(function (song) {
+      song.children.style.color = "#fff";
+    });
+    activeElement.style.backgroundColor = "#ccc";
+  } else {
+    darkTheme.appendChild(moonIcon);
+
+    darkTheme.style.color = "black";
+    darkTheme.style.borderColor = "black";
+    backgroundDark.src =
+      "./assets/img/pexels-rostislav-uzunov-10613972-1920x1080-24fps.mp4";
+
+    htmlElement.classList.remove("dark-background");
+    bodyElement.classList.remove("dark-background");
+    songElement.forEach(function (song) {
+      song.classList.remove("dark-background");
+      song.style.color = " #fff";
+    });
+  }
+});
