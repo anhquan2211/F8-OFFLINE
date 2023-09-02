@@ -5,6 +5,17 @@
   box-sizing: border-box;
 }
 
+:root {
+  --shine-degree: 120deg;
+  --shine-color: rgba(255, 255, 255, 0.4);
+  --shine-effect: linear-gradient(
+    var(--shine-degree),
+    transparent,
+    var(--shine-color),
+    transparent
+  );
+}
+
 html::-webkit-scrollbar {
   width: 0.3rem;
 }
@@ -74,6 +85,7 @@ body {
 }
 
 .title {
+  position: relative;
   width: 800px;
   text-align: center;
   font-size: 30px;
@@ -164,4 +176,35 @@ input[id="title-wrap"]:checked ~ .homework-wrapper {
 
   padding: 6px;
   border-radius: 8px;
+}
+
+.title-wrap {
+  position: relative;
+}
+
+.btn-animation {
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-animation::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: var(--shine-effect);
+  animation: shine 3s ease-in-out infinite;
+}
+
+@keyframes shine {
+  0% {
+    left: -100%;
+    transition-property: left;
+  }
+  56%,
+  100% {
+    left: 100%;
+    transition-property: left;
+  }
 }
