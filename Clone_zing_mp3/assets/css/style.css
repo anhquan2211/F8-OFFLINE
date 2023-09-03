@@ -192,7 +192,7 @@ body {
   box-shadow: rgba(17, 17, 26, 0.1) 0px 8px 24px, rgba(17, 17, 26, 0.1) 0px 16px 56px, rgba(17, 17, 26, 0.1) 0px 24px 80px;
 }
 .sidebar .container .nav .nav-scroll {
-  height: 150px;
+  height: calc(100vh - 226px - 234px);
   overflow: hidden scroll;
 }
 .sidebar .container .nav .nav-scroll::-webkit-scrollbar {
@@ -433,13 +433,13 @@ body {
   width: 150px;
 }
 .control-player .container .right-control .wrap .btn-toggle-volume .icon-mute {
-  visibility: hidden;
+  display: none;
 }
 .control-player .container .right-control .wrap .btn-toggle-volume.showing .icon-mute {
-  visibility: visible;
+  display: block;
 }
 .control-player .container .right-control .wrap .btn-toggle-volume.showing .icon-unmute {
-  visibility: hidden;
+  display: block;
 }
 .control-player .container .right-control .wrap .btn-toggle-volume .volume-bar {
   appearance: none;
@@ -696,6 +696,7 @@ body {
   column-gap: 12px;
   padding: 10px 0 10px 10px;
   position: relative;
+  cursor: pointer;
 }
 .new-release .container .container-inner .list-music-app .item.active {
   background-color: #2f2739;

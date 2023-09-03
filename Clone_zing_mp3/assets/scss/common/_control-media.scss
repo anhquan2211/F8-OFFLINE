@@ -209,15 +209,15 @@
           width: 150px;
 
           .icon-mute {
-            visibility: hidden;
+            display: none;
           }
 
           &.showing .icon-mute {
-            visibility: visible;
+            display: block;
           }
 
           &.showing .icon-unmute {
-            visibility: hidden;
+            display: block;
           }
 
           .volume-bar {

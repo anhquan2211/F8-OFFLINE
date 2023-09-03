@@ -68,7 +68,7 @@
       }
 
       .nav-scroll {
-        height: 150px;
+        height: calc(100vh - 226px - 234px);
         overflow: hidden scroll;
         &::-webkit-scrollbar {
           width: 0.3rem;

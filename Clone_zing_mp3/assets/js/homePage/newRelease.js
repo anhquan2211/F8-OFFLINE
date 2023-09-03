@@ -54,6 +54,27 @@ const app = {
   },
   songs: [
     {
+      name: "Call Me",
+      singer: "Wren Evans, Itsnk",
+      path: "./assets/music/newReleaseList/song10.mp3",
+      image: "./assets/images/newReleaseImg/song10.webp",
+      time: "3 ngày trước",
+    },
+    {
+      name: "Ngõ Chạm",
+      singer: "BigDaddy, Emily",
+      path: "./assets/music/newReleaseList/song11.mp3",
+      image: "./assets/images/newReleaseImg/song11.webp",
+      time: "1 ngày trước",
+    },
+    {
+      name: "Có Ai Hẹn Hò Cùng Em Chưa",
+      singer: "Quân A.P",
+      path: "./assets/music/newReleaseList/song12.mp3",
+      image: "./assets/images/newReleaseImg/song12.webp",
+      time: "6 ngày trước",
+    },
+    {
       name: "Không Thể Say",
       singer: "HIEUTHUHAI",
       path: "./assets/music/newReleaseList/song1.mp3",
@@ -503,23 +524,37 @@ const app = {
     if (_this.currentVolume > 0) {
       volumeBar.value = _this.currentVolume;
       audio.volume = _this.currentVolume;
-      $(".icon-unmute").style.visibility = "visible";
-      $(".icon-mute").style.visibility = "hidden";
+      var color =
+        "linear-gradient(to right, rgb(0, 0, 204)" +
+        audio.volume * 100 +
+        "% , rgb(214, 214, 214)" +
+        audio.volume * 100 +
+        "%)";
+      volumeBar.style.background = color;
+      $(".icon-unmute").style.display = "block";
+      $(".icon-mute").style.display = "none";
     } else {
       volumeBar.value = 0;
       audio.volume = 0;
-      $(".icon-unmute").style.visibility = "hidden";
-      $(".icon-mute").style.visibility = "visible";
+      $(".icon-unmute").style.display = "none";
+      $(".icon-mute").style.display = "block";
     }
 
     audio.onvolumechange = () => {
       volumeBar.value = audio.volume;
+      var color =
+        "linear-gradient(to right, rgb(0, 0, 204)" +
+        audio.volume * 100 +
+        "% , rgb(214, 214, 214)" +
+        audio.volume * 100 +
+        "%)";
+      volumeBar.style.background = color;
       if (audio.volume === 0) {
-        muteIcon.style.visibility = "visible";
-        unmuteIcon.style.visibility = "hidden";
+        muteIcon.style.display = "block";
+        unmuteIcon.style.display = "none";
       } else {
-        muteIcon.style.visibility = "hidden";
-        unmuteIcon.style.visibility = "visible";
+        muteIcon.style.display = "none";
+        unmuteIcon.style.display = "block";
       }
     };
 
@@ -530,6 +565,13 @@ const app = {
         "title",
         "Âm lượng " + volumeBar.value * 100 + "%"
       );
+      var color =
+        "linear-gradient(to right, rgb(0, 0, 204)" +
+        audio.volume * 100 +
+        "% , rgb(214, 214, 214)" +
+        audio.volume * 100 +
+        "%)";
+      volumeBar.style.background = color;
     };
 
     unmuteIcon.onclick = (e) => {
@@ -625,8 +667,8 @@ const app = {
     this.progressSong = 0;
     this.isPlaying = true;
     player.classList.add("playing");
-    $(".song.active").classList.remove("active");
-    const songList = $$(".song");
+    $(".item.active").classList.remove("active");
+    const songList = $$(".item");
     const song = songList[this.currentIndex];
     song.classList.add("active");
     this.loadCurrentSong();
