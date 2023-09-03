@@ -1,0 +1,101 @@
+.header {
+  .container {
+    position: fixed;
+    right: 0;
+    top: 0;
+    left: 240px;
+    z-index: 2;
+    color: #fff;
+    padding-top: 16px;
+    padding-bottom: 16px;
+    background-color: #181124;
+
+    .container-inner {
+      margin: 0 60px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+
+      .header-left {
+        display: flex;
+        align-items: center;
+        column-gap: 26px;
+
+        i {
+          font-size: 20px;
+        }
+
+        .search-form {
+          position: relative;
+
+          i {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            left: 12px;
+          }
+
+          .text-input {
+            width: 440px;
+            padding: 14px 0 14px 40px;
+            background-color: #2f2739;
+            outline: none;
+            border: none;
+            border-radius: 99px;
+            caret-color: #fff;
+
+            &::placeholder {
+              color: #fff;
+            }
+          }
+        }
+      }
+
+      .header-right {
+        display: flex;
+        column-gap: 12px;
+        align-items: center;
+
+        .dowload-window {
+          display: flex;
+          align-items: center;
+          padding: 10px 26px;
+          column-gap: 8px;
+          background-color: #2f2739;
+          border-radius: 99px;
+          color: #c273ed;
+          cursor: pointer;
+
+          .desc {
+            font-size: 14px;
+            font-weight: 700;
+          }
+
+          &:hover {
+            opacity: 0.8;
+          }
+        }
+
+        .setting {
+          padding: 12px;
+          background-color: #2f2739;
+          border-radius: 50%;
+          cursor: pointer;
+          &:hover {
+            opacity: 0.8;
+          }
+        }
+
+        .avatar {
+          padding: 12px;
+          background-color: #2f2739;
+          border-radius: 50%;
+          cursor: pointer;
+          &:hover {
+            opacity: 0.8;
+          }
+        }
+      }
+    }
+  }
+}
