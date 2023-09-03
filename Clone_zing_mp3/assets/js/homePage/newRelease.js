@@ -342,9 +342,9 @@ const app = {
         progress.value = progressPercent;
 
         var color =
-          "linear-gradient(to right, rgb(0, 0, 204)" +
+          "linear-gradient(to right, rgb(255, 255, 255)" +
           progress.value +
-          "% , rgb(214, 214, 214)" +
+          "% , rgb(90, 85, 96)" +
           progress.value +
           "%)";
         progress.style.background = color;
@@ -366,9 +366,9 @@ const app = {
       );
       progress.value = progressPercent;
       var color =
-        "linear-gradient(to right, rgb(0, 0, 204)" +
+        "linear-gradient(to right, rgb(255, 255, 255)" +
         progress.value +
-        "% , rgb(214, 214, 214)" +
+        "% , rgb(90, 85, 96)" +
         progress.value +
         "%)";
       progress.style.background = color;
@@ -381,9 +381,9 @@ const app = {
       _this.setConfig("progressSong", currentTime);
       audioTimeLeft.innerHTML = _this.formatTime(currentTime);
       var color =
-        "linear-gradient(to right, rgb(0, 0, 204)" +
+        "linear-gradient(to right, rgb(255, 255, 255)" +
         progress.value +
-        "% , rgb(214, 214, 214)" +
+        "% , rgb(90, 85, 96)" +
         progress.value +
         "%)";
       progress.style.background = color;
@@ -525,9 +525,9 @@ const app = {
       volumeBar.value = _this.currentVolume;
       audio.volume = _this.currentVolume;
       var color =
-        "linear-gradient(to right, rgb(0, 0, 204)" +
+        "linear-gradient(to right, rgb(255, 255, 255)" +
         audio.volume * 100 +
-        "% , rgb(214, 214, 214)" +
+        "% , rgb(90, 85, 96)" +
         audio.volume * 100 +
         "%)";
       volumeBar.style.background = color;
@@ -543,9 +543,9 @@ const app = {
     audio.onvolumechange = () => {
       volumeBar.value = audio.volume;
       var color =
-        "linear-gradient(to right, rgb(0, 0, 204)" +
+        "linear-gradient(to right, rgb(255, 255, 255)" +
         audio.volume * 100 +
-        "% , rgb(214, 214, 214)" +
+        "% , rgb(90, 85, 96)" +
         audio.volume * 100 +
         "%)";
       volumeBar.style.background = color;
@@ -566,9 +566,9 @@ const app = {
         "Âm lượng " + volumeBar.value * 100 + "%"
       );
       var color =
-        "linear-gradient(to right, rgb(0, 0, 204)" +
+        "linear-gradient(to right, rgb(255, 255, 255)" +
         audio.volume * 100 +
-        "% , rgb(214, 214, 214)" +
+        "% , rgb(90, 85, 96)" +
         audio.volume * 100 +
         "%)";
       volumeBar.style.background = color;
