@@ -185,7 +185,11 @@ const app = {
           timer.style.left = `${e.offsetX + 65}px`;
           var percentage = (100 * e.offsetX) / this.clientWidth;
           var time = (audio.duration * percentage) / 100;
-          timer.innerText = getTime(time);
+          if (time <= audio.duration && time >= 0) {
+            timer.innerText = getTime(time);
+          } else {
+            timer.style.display = "none";
+          }
         }
       }
     });
