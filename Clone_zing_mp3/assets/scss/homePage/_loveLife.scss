@@ -1,0 +1,118 @@
+.love-life {
+  .container {
+    margin: 60px 60px 60px 300px;
+    .container-inner {
+      color: #fff;
+
+      .desc-wrap {
+        display: flex;
+        justify-content: space-between;
+        .title {
+          font-size: 20px;
+          font-weight: 700;
+          margin-bottom: 28px;
+        }
+
+        .all {
+          font-size: 12px;
+          font-weight: 600;
+          cursor: pointer;
+          color: #8b8791;
+        }
+      }
+
+      .list-container {
+        display: flex;
+        column-gap: 28px;
+        flex-wrap: wrap;
+
+        .list-item {
+          flex-basis: calc((100% - 28px * 3) / 4);
+          .image-wrap {
+            border-radius: 8px;
+            overflow: hidden;
+            position: relative;
+            img {
+              transition: all 0.8s ease-in-out;
+              display: flex;
+              width: 100%;
+              line-height: 0;
+              object-fit: cover;
+              border-radius: 8px;
+            }
+
+            &:hover::before {
+              content: "";
+              position: absolute;
+              z-index: 1;
+              inset: 0;
+              background-color: rgba(0, 0, 0, 0.5);
+            }
+
+            &:hover img {
+              transform: scale(1.1);
+            }
+
+            &:hover .actions {
+              display: flex;
+            }
+
+            .actions {
+              width: 100%;
+              position: absolute;
+              z-index: 2;
+              top: 50%;
+              transform: translateY(-50%);
+              display: flex;
+              justify-content: space-evenly;
+              align-items: center;
+              display: none;
+
+              .icon-heart {
+                font-size: 20px;
+                cursor: pointer;
+                width: 30px;
+                height: 30px;
+                line-height: 30px;
+                text-align: center;
+
+                &:hover {
+                  background-color: #8b8791;
+                  border-radius: 50%;
+                }
+              }
+
+              .icon-option {
+                font-size: 20px;
+                cursor: pointer;
+                width: 30px;
+                height: 30px;
+                line-height: 30px;
+                text-align: center;
+
+                &:hover {
+                  background-color: #8b8791;
+                  border-radius: 50%;
+                }
+              }
+
+              .icon-play {
+                font-size: 46px;
+                cursor: pointer;
+              }
+            }
+          }
+
+          .desc-item {
+            margin-top: 12px;
+            font-size: 14px;
+            line-height: 1.4;
+            font-weight: 500;
+            cursor: pointer;
+            color: #8b8791;
+          }
+        }
+      }
+    }
+  }
+}

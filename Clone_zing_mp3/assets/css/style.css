@@ -864,4 +864,313 @@ body {
   color: #8b8791;
 }
 
+.love-life .container {
+  margin: 60px 60px 60px 300px;
+}
+.love-life .container .container-inner {
+  color: #fff;
+}
+.love-life .container .container-inner .desc-wrap {
+  display: flex;
+  justify-content: space-between;
+}
+.love-life .container .container-inner .desc-wrap .title {
+  font-size: 20px;
+  font-weight: 700;
+  margin-bottom: 28px;
+}
+.love-life .container .container-inner .desc-wrap .all {
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  color: #8b8791;
+}
+.love-life .container .container-inner .list-container {
+  display: flex;
+  column-gap: 28px;
+  flex-wrap: wrap;
+}
+.love-life .container .container-inner .list-container .list-item {
+  flex-basis: calc((100% - 84px) / 4);
+}
+.love-life .container .container-inner .list-container .list-item .image-wrap {
+  border-radius: 8px;
+  overflow: hidden;
+  position: relative;
+}
+.love-life .container .container-inner .list-container .list-item .image-wrap img {
+  transition: all 0.8s ease-in-out;
+  display: flex;
+  width: 100%;
+  line-height: 0;
+  object-fit: cover;
+  border-radius: 8px;
+}
+.love-life .container .container-inner .list-container .list-item .image-wrap:hover::before {
+  content: "";
+  position: absolute;
+  z-index: 1;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+.love-life .container .container-inner .list-container .list-item .image-wrap:hover img {
+  transform: scale(1.1);
+}
+.love-life .container .container-inner .list-container .list-item .image-wrap:hover .actions {
+  display: flex;
+}
+.love-life .container .container-inner .list-container .list-item .image-wrap .actions {
+  width: 100%;
+  position: absolute;
+  z-index: 2;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  display: none;
+}
+.love-life .container .container-inner .list-container .list-item .image-wrap .actions .icon-heart {
+  font-size: 20px;
+  cursor: pointer;
+  width: 30px;
+  height: 30px;
+  line-height: 30px;
+  text-align: center;
+}
+.love-life .container .container-inner .list-container .list-item .image-wrap .actions .icon-heart:hover {
+  background-color: #8b8791;
+  border-radius: 50%;
+}
+.love-life .container .container-inner .list-container .list-item .image-wrap .actions .icon-option {
+  font-size: 20px;
+  cursor: pointer;
+  width: 30px;
+  height: 30px;
+  line-height: 30px;
+  text-align: center;
+}
+.love-life .container .container-inner .list-container .list-item .image-wrap .actions .icon-option:hover {
+  background-color: #8b8791;
+  border-radius: 50%;
+}
+.love-life .container .container-inner .list-container .list-item .image-wrap .actions .icon-play {
+  font-size: 46px;
+  cursor: pointer;
+}
+.love-life .container .container-inner .list-container .list-item .desc-item {
+  margin-top: 12px;
+  font-size: 14px;
+  line-height: 1.4;
+  font-weight: 500;
+  cursor: pointer;
+  color: #8b8791;
+}
+
+.remix-list .container {
+  margin: 60px 60px 60px 300px;
+}
+.remix-list .container .container-inner {
+  color: #fff;
+}
+.remix-list .container .container-inner .desc-wrap {
+  display: flex;
+  justify-content: space-between;
+}
+.remix-list .container .container-inner .desc-wrap .title {
+  font-size: 20px;
+  font-weight: 700;
+  margin-bottom: 28px;
+}
+.remix-list .container .container-inner .desc-wrap .all {
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  color: #8b8791;
+}
+.remix-list .container .container-inner .list-container {
+  display: flex;
+  column-gap: 28px;
+  flex-wrap: wrap;
+}
+.remix-list .container .container-inner .list-container .list-item {
+  flex-basis: calc((100% - 84px) / 4);
+}
+.remix-list .container .container-inner .list-container .list-item .image-wrap {
+  border-radius: 8px;
+  overflow: hidden;
+  position: relative;
+}
+.remix-list .container .container-inner .list-container .list-item .image-wrap img {
+  transition: all 0.8s ease-in-out;
+  display: flex;
+  width: 100%;
+  line-height: 0;
+  object-fit: cover;
+  border-radius: 8px;
+}
+.remix-list .container .container-inner .list-container .list-item .image-wrap:hover::before {
+  content: "";
+  position: absolute;
+  z-index: 1;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+.remix-list .container .container-inner .list-container .list-item .image-wrap:hover img {
+  transform: scale(1.1);
+}
+.remix-list .container .container-inner .list-container .list-item .image-wrap:hover .actions {
+  display: flex;
+}
+.remix-list .container .container-inner .list-container .list-item .image-wrap .actions {
+  width: 100%;
+  position: absolute;
+  z-index: 2;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  display: none;
+}
+.remix-list .container .container-inner .list-container .list-item .image-wrap .actions .icon-heart {
+  font-size: 20px;
+  cursor: pointer;
+  width: 30px;
+  height: 30px;
+  line-height: 30px;
+  text-align: center;
+}
+.remix-list .container .container-inner .list-container .list-item .image-wrap .actions .icon-heart:hover {
+  background-color: #8b8791;
+  border-radius: 50%;
+}
+.remix-list .container .container-inner .list-container .list-item .image-wrap .actions .icon-option {
+  font-size: 20px;
+  cursor: pointer;
+  width: 30px;
+  height: 30px;
+  line-height: 30px;
+  text-align: center;
+}
+.remix-list .container .container-inner .list-container .list-item .image-wrap .actions .icon-option:hover {
+  background-color: #8b8791;
+  border-radius: 50%;
+}
+.remix-list .container .container-inner .list-container .list-item .image-wrap .actions .icon-play {
+  font-size: 46px;
+  cursor: pointer;
+}
+.remix-list .container .container-inner .list-container .list-item .desc-item {
+  margin-top: 12px;
+  font-size: 14px;
+  line-height: 1.4;
+  font-weight: 500;
+  cursor: pointer;
+  color: #8b8791;
+}
+
+.sad-list .container {
+  margin: 60px 60px 60px 300px;
+}
+.sad-list .container .container-inner {
+  color: #fff;
+}
+.sad-list .container .container-inner .desc-wrap {
+  display: flex;
+  justify-content: space-between;
+}
+.sad-list .container .container-inner .desc-wrap .title {
+  font-size: 20px;
+  font-weight: 700;
+  margin-bottom: 28px;
+}
+.sad-list .container .container-inner .desc-wrap .all {
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  color: #8b8791;
+}
+.sad-list .container .container-inner .list-container {
+  display: flex;
+  column-gap: 28px;
+  flex-wrap: wrap;
+}
+.sad-list .container .container-inner .list-container .list-item {
+  flex-basis: calc((100% - 84px) / 4);
+}
+.sad-list .container .container-inner .list-container .list-item .image-wrap {
+  border-radius: 8px;
+  overflow: hidden;
+  position: relative;
+}
+.sad-list .container .container-inner .list-container .list-item .image-wrap img {
+  transition: all 0.8s ease-in-out;
+  display: flex;
+  width: 100%;
+  line-height: 0;
+  object-fit: cover;
+  border-radius: 8px;
+}
+.sad-list .container .container-inner .list-container .list-item .image-wrap:hover::before {
+  content: "";
+  position: absolute;
+  z-index: 1;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+.sad-list .container .container-inner .list-container .list-item .image-wrap:hover img {
+  transform: scale(1.1);
+}
+.sad-list .container .container-inner .list-container .list-item .image-wrap:hover .actions {
+  display: flex;
+}
+.sad-list .container .container-inner .list-container .list-item .image-wrap .actions {
+  width: 100%;
+  position: absolute;
+  z-index: 2;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  display: none;
+}
+.sad-list .container .container-inner .list-container .list-item .image-wrap .actions .icon-heart {
+  font-size: 20px;
+  cursor: pointer;
+  width: 30px;
+  height: 30px;
+  line-height: 30px;
+  text-align: center;
+}
+.sad-list .container .container-inner .list-container .list-item .image-wrap .actions .icon-heart:hover {
+  background-color: #8b8791;
+  border-radius: 50%;
+}
+.sad-list .container .container-inner .list-container .list-item .image-wrap .actions .icon-option {
+  font-size: 20px;
+  cursor: pointer;
+  width: 30px;
+  height: 30px;
+  line-height: 30px;
+  text-align: center;
+}
+.sad-list .container .container-inner .list-container .list-item .image-wrap .actions .icon-option:hover {
+  background-color: #8b8791;
+  border-radius: 50%;
+}
+.sad-list .container .container-inner .list-container .list-item .image-wrap .actions .icon-play {
+  font-size: 46px;
+  cursor: pointer;
+}
+.sad-list .container .container-inner .list-container .list-item .desc-item {
+  margin-top: 12px;
+  font-size: 14px;
+  line-height: 1.4;
+  font-weight: 500;
+  cursor: pointer;
+  color: #8b8791;
+}
+
 /*# sourceMappingURL=style.css.map */
