@@ -514,7 +514,8 @@ const app = {
           _this.loadCurrentSong();
           $(".item.active").classList.remove("active");
           songNode.classList.add("active");
-          if (_this.isPlaying) audio.play();
+          // if (_this.isPlaying) audio.play();
+          audio.play();
         }
       }
     };
