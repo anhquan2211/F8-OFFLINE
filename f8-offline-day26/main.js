@@ -271,25 +271,25 @@ const app = {
       { passive: true }
     );
 
-    playBtn.onmousedown = function () {
-      if (_this.isPlaying) {
-        audio.pause();
-      } else {
-        audio.play();
-      }
-      // Khi bài hát đc play
-      audio.onplay = function () {
-        _this.isPlaying = true;
-        player.classList.add("playing");
-        cdThumbAnimate.play();
-      };
-      // Khi bài hát bị pause
-      audio.onpause = function () {
-        _this.isPlaying = false;
-        player.classList.remove("playing");
-        cdThumbAnimate.pause();
-      };
-    };
+    // playBtn.onmousedown = function () {
+    //   if (_this.isPlaying) {
+    //     audio.pause();
+    //   } else {
+    //     audio.play();
+    //   }
+    //   // Khi bài hát đc play
+    //   audio.onplay = function () {
+    //     _this.isPlaying = true;
+    //     player.classList.add("playing");
+    //     cdThumbAnimate.play();
+    //   };
+    //   // Khi bài hát bị pause
+    //   audio.onpause = function () {
+    //     _this.isPlaying = false;
+    //     player.classList.remove("playing");
+    //     cdThumbAnimate.pause();
+    //   };
+    // };
 
     let isTouchingProgressBar = false;
 
@@ -581,9 +581,37 @@ const app = {
           _this.loadCurrentSong();
           $(".song.active").classList.remove("active");
           songNode.classList.add("active");
-          if (_this.isPlaying) audio.play();
+          // if (_this.isPlaying) audio.play();
+          audio.play();
         }
       }
+    };
+
+    var isPlaying = false;
+
+    // Click event handler for play button
+    playBtn.onclick = function () {
+      if (isPlaying) {
+        audio.pause();
+      } else {
+        audio.play();
+      }
+    };
+
+    // When the audio is played
+    audio.onplay = function () {
+      isPlaying = true;
+      _this.isPlaying = true;
+      player.classList.add("playing");
+      cdThumbAnimate.play();
+    };
+
+    // When the audio is paused
+    audio.onpause = function () {
+      isPlaying = false;
+      _this.isPlaying = false;
+      player.classList.remove("playing");
+      cdThumbAnimate.pause();
     };
 
     //Xử lý khi click vào nút volume
