@@ -19,9 +19,9 @@ let buttonsDOM = [];
 class Products {
   async getProducts() {
     try {
-      let result = await fetch("../../products.json");
+      let result = await fetch("/f8-offline-day27/assets/data/products.json");
       let data = await result.json();
-
+      console.log(result);
       let products = data.items;
       products = products.map((item) => {
         const { title, price } = item.fields;
@@ -92,6 +92,7 @@ class UI {
       });
     });
   }
+
   setCartValues(cart) {
     let tempTotal = 0;
     let itemsTotal = 0;
@@ -155,7 +156,7 @@ class UI {
         let removeItem = e.target;
         let id = removeItem.dataset.id;
         cartContent.removeChild(removeItem.parentElement.parentElement);
-        this, removeItem(id);
+        this.removeItem(id);
       } else if (e.target.classList.contains("fa-chevron-up")) {
         let addAmount = e.target;
         let id = addAmount.dataset.id;
@@ -233,6 +234,7 @@ document.addEventListener("DOMContentLoaded", () => {
   products
     .getProducts()
     .then((products) => {
+      console.log(products);
       ui.displayProducts(products);
       Storage.saveProducts(products);
     })
