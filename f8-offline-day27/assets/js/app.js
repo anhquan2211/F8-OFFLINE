@@ -43,7 +43,7 @@ class UI {
       result += `
         <!-- single product -->
         <article class="product">
-          <div class="img-container">
+          <div class="img-container skeleton">
             <img
               src=${product.image}
               alt="product"
@@ -54,8 +54,8 @@ class UI {
               Add to cart
             </button>
           </div>
-          <h3>${product.title}</h3>
-          <h4>$${product.price}</h4>
+          <h3 class="skeleton">${product.title}</h3>
+          <h4 class="skeleton">$${product.price}</h4>
         </article>
         <!-- end of single product -->
         `;
@@ -114,7 +114,7 @@ class UI {
             <h5>$${item.price}</h5>
             <span class="remove-item" data-id=${item.id}>Remove</span>
         </div>
-        <div>
+        <div class="icon-wrapper">
             <i class="fas fa-chevron-up" data-id=${item.id}></i>
             <p class="item-amount" data-id=${item.id}>${item.amount}</p>
             <i class="fas fa-chevron-down" data-id=${item.id}></i>
@@ -218,6 +218,22 @@ class UI {
   getSingleButton(id) {
     return buttonsDOM.find((button) => button.dataset.id === id);
   }
+
+  skeleton() {
+    const allSkeleton = document.querySelectorAll(".skeleton");
+    console.log(allSkeleton);
+    // window.addEventListener("load", function () {
+    //   console.log("loaded");
+    //   allSkeleton.forEach((item) => {
+    //     item.classList.remove("skeleton");
+    //   });
+    // });
+    setTimeout(() => {
+      allSkeleton.forEach((item) => {
+        item.classList.remove("skeleton");
+      });
+    }, 2000);
+  }
 }
 
 // local storage
@@ -249,8 +265,8 @@ document.addEventListener("DOMContentLoaded", () => {
   products
     .getProducts()
     .then((products) => {
-      console.log(products);
       ui.displayProducts(products);
+      ui.skeleton();
       Storage.saveProducts(products);
     })
     .then(() => {
