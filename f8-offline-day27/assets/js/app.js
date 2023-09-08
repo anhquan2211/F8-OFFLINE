@@ -20,10 +20,8 @@ let buttonsDOM = [];
 class Products {
   async getProducts() {
     try {
-      let result = await fetch("/f8-offline-day27/assets/data/products.json");
-      let data = await result.json();
-      console.log(result);
-      let products = data.items;
+      let result = await fetch("https://rtjcm3-3000.csb.app/items");
+      let products = await result.json();
       products = products.map((item) => {
         const { title, price } = item.fields;
         const { id } = item.sys;
