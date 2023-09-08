@@ -9,6 +9,7 @@ const cartItems = document.querySelector(".cart-items");
 const cartTotal = document.querySelector(".cart-total");
 const cartContent = document.querySelector(".cart-content");
 const productsDOM = document.querySelector(".products-center");
+const overlay = document.querySelector("#overlay");
 
 //cart
 let cart = [];
@@ -63,6 +64,7 @@ class UI {
     });
     productsDOM.innerHTML = result;
   }
+
   getBagButtons() {
     const buttons = [...document.querySelectorAll(".bag-btn")];
     buttonsDOM = buttons;
@@ -116,7 +118,7 @@ class UI {
         </div>
         <div>
             <i class="fas fa-chevron-up" data-id=${item.id}></i>
-            <p class="item-amount">${item.amount}</p>
+            <p class="item-amount" data-id=${item.id}>${item.amount}</p>
             <i class="fas fa-chevron-down" data-id=${item.id}></i>
         </div>
     `;
@@ -157,6 +159,21 @@ class UI {
         let id = removeItem.dataset.id;
         cartContent.removeChild(removeItem.parentElement.parentElement);
         this.removeItem(id);
+      } else if (e.target.classList.contains("item-amount")) {
+        let itemAmount = e.target;
+        let _this = this;
+        itemAmount.setAttribute("contenteditable", true);
+        itemAmount.onblur = function () {
+          let arrayCart = JSON.parse(localStorage.cart);
+          arrayCart.forEach((item) => {
+            if (itemAmount.dataset.id === item.id) {
+              item.amount = +itemAmount.innerText;
+            }
+          });
+          cart = arrayCart;
+          Storage.saveCart(cart);
+          _this.setCartValues(cart);
+        };
       } else if (e.target.classList.contains("fa-chevron-up")) {
         let addAmount = e.target;
         let id = addAmount.dataset.id;
@@ -242,4 +259,9 @@ document.addEventListener("DOMContentLoaded", () => {
       ui.getBagButtons();
       ui.cartLogic();
     });
+});
+
+overlay.addEventListener("change", function () {
+  cartOverlay.classList.remove("transparentBcg");
+  cartDOM.classList.remove("showCart");
 });
