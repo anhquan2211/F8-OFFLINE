@@ -2,7 +2,6 @@
 
 const cartBtn = document.querySelector(".cart-btn");
 const closeCartBtn = document.querySelector(".close-cart");
-const clearCartBtn = document.querySelector(".clear-cart");
 const cartDOM = document.querySelector(".cart");
 const cartOverlay = document.querySelector(".cart-overlay");
 const cartItems = document.querySelector(".cart-items");
@@ -10,6 +9,18 @@ const cartTotal = document.querySelector(".cart-total");
 const cartContent = document.querySelector(".cart-content");
 const productsDOM = document.querySelector(".products-center");
 const overlay = document.querySelector("#overlay");
+
+// This is button what can be clicked to remove all cart
+const clearCartBtn = document.createElement("button");
+clearCartBtn.className = "clear-cart banner-btn";
+clearCartBtn.innerText = "Clear cart";
+function eventRemoveBtn() {
+  if (cart.length > 0) {
+    document.querySelector(".cart-footer").append(clearCartBtn);
+  } else {
+    clearCartBtn?.remove?.();
+  }
+}
 
 //cart
 let cart = [];
@@ -126,6 +137,7 @@ class UI {
   showCart() {
     cartOverlay.classList.add("transparentBcg");
     cartDOM.classList.add("showCart");
+    eventRemoveBtn();
   }
 
   hideCart() {
@@ -147,7 +159,7 @@ class UI {
 
   cartLogic() {
     //clear cart button
-    clearCartBtn.addEventListener("click", () => {
+    clearCartBtn?.addEventListener("click", () => {
       this.clearCart();
     });
     //cart functionality
@@ -193,6 +205,7 @@ class UI {
           cartContent.removeChild(lowerAmount.parentElement.parentElement);
           this.removeItem(id);
         }
+        eventRemoveBtn();
       }
     });
   }
@@ -221,7 +234,7 @@ class UI {
 
   skeleton() {
     const allSkeleton = document.querySelectorAll(".skeleton");
-    console.log(allSkeleton);
+    // console.log(allSkeleton);
     // window.addEventListener("load", function () {
     //   console.log("loaded");
     //   allSkeleton.forEach((item) => {
