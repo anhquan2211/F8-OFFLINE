@@ -27,6 +27,8 @@ let cart = [];
 //buttons
 let buttonsDOM = [];
 
+let edit = false;
+
 // getting the products
 class Products {
   async getProducts() {
@@ -177,7 +179,18 @@ class UI {
           let arrayCart = JSON.parse(localStorage.cart);
           arrayCart.forEach((item) => {
             if (itemAmount.dataset.id === item.id) {
-              item.amount = +itemAmount.innerText;
+              if (
+                +itemAmount.innerText !== NaN &&
+                +itemAmount.innerText !== null &&
+                +itemAmount.innerText >= 0 &&
+                Number.isInteger(+itemAmount.innerText)
+              ) {
+                item.amount = +itemAmount.innerText;
+              } else {
+                alert("Vui lòng nhập số nguyên dương!");
+                itemAmount.innerText = 1;
+                item.amount = +itemAmount.innerText;
+              }
             }
           });
           cart = arrayCart;
@@ -226,6 +239,7 @@ class UI {
     let button = this.getSingleButton(id);
     button.disabled = false;
     button.innerHTML = `<i class="fas fa-shopping-cart"></i>add to cart`;
+    eventRemoveBtn();
   }
 
   getSingleButton(id) {
