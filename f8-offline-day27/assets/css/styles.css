@@ -273,8 +273,9 @@ body {
 
 .item-amount {
   text-align: center;
-  width: 30px;
+  width: auto;
   height: 25px;
+  line-height: 25px;
 }
 .remove-item {
   color: grey;

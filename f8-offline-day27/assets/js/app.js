@@ -111,7 +111,7 @@ class UI {
     let itemsTotal = 0;
     cart.map((item) => {
       tempTotal += item.price * item.amount;
-      itemsTotal += item.amount;
+      itemsTotal += +item.amount;
     });
     cartTotal.innerText = parseFloat(tempTotal.toFixed(2));
     cartItems.innerText = itemsTotal;
@@ -179,18 +179,11 @@ class UI {
           let arrayCart = JSON.parse(localStorage.cart);
           arrayCart.forEach((item) => {
             if (itemAmount.dataset.id === item.id) {
-              if (
-                +itemAmount.innerText !== NaN &&
-                +itemAmount.innerText !== null &&
-                +itemAmount.innerText >= 0 &&
-                Number.isInteger(+itemAmount.innerText)
-              ) {
-                item.amount = +itemAmount.innerText;
-              } else {
-                alert("Vui lòng nhập số nguyên dương!");
-                itemAmount.innerText = 1;
-                item.amount = +itemAmount.innerText;
-              }
+              itemAmount.innerText = itemAmount.innerText.replace(
+                /[^0-9]/g,
+                ""
+              );
+              item.amount = itemAmount.innerText;
             }
           });
           cart = arrayCart;
