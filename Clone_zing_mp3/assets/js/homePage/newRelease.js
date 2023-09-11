@@ -3112,6 +3112,7 @@ var arrowDown = document.querySelector(".arrow-down");
 var activeKaraoke = document.querySelector(".active-karaoke");
 var centerControl = document.querySelector(".center-control");
 var textKaraoke = document.querySelector(".active-karaoke .text");
+var textKaraoke2 = document.querySelector(".active-karaoke .text-2");
 var karaokeWrap = document.querySelector(".active-karaoke");
 var wordsArr;
 
@@ -3162,27 +3163,35 @@ audio.addEventListener("timeupdate", function () {
     //   `arrStartTime: ${arrStartTime[i]} - arrSetence: ${arrSetence[i]}`
     // );
     if (currentTime >= arrStartTime[i] && currentTime < arrStartTime[i + 1]) {
-      textKaraoke.innerHTML = arrSetence[i];
+      if (i % 2 === 0) {
+        textKaraoke.innerHTML = arrSetence[i];
+      } else {
+        textKaraoke2.innerHTML = arrSetence[i];
+      }
     } else if (currentTime < arrStartTime[0]) {
       textKaraoke.innerHTML = `
       <div>Tên bài hát: Có Ai Đang Hẹn Hò Cùng Em Chưa</div>
       <div>Ca Sỹ: Quân A.P</div>
       `;
+      textKaraoke2.innerHTML = "";
     } else if (currentTime > 133090 && currentTime < 138330) {
       textKaraoke.innerHTML = `
       <div>Tên bài hát: Có Ai Đang Hẹn Hò Cùng Em Chưa</div>
       <div>Ca Sỹ: Quân A.P</div>
       `;
+      textKaraoke2.innerHTML = "";
     } else if (currentTime > 223880 && currentTime < 26140) {
       textKaraoke.innerHTML = `
       <div>Tên bài hát: Có Ai Đang Hẹn Hò Cùng Em Chưa</div>
       <div>Ca Sỹ: Quân A.P</div>
       `;
+      textKaraoke2.innerHTML = "";
     } else if (currentTime > arrEndTime[arrEndTime.length - 1]) {
       textKaraoke.innerHTML = `
       <div>Tên bài hát: Có Ai Đang Hẹn Hò Cùng Em Chưa</div>
       <div>Ca Sỹ: Quân A.P</div>
       `;
+      textKaraoke2.innerHTML = "";
     }
   }
 });

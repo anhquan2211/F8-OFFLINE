@@ -452,10 +452,20 @@ body {
   position: fixed;
   top: 50%;
   left: 50%;
-  transform: translateY(-50%) translateX(-30%);
+  transform: translateY(-50%) translateX(-40%);
   text-align: center;
   line-height: 1.4;
-  font-size: 20px;
+  font-size: 30px;
+}
+.control-player .container .right-control .wrap .active-karaoke.active .text-2 {
+  display: block;
+  position: fixed;
+  top: 60%;
+  left: 50%;
+  transform: translateY(-50%) translateX(-40%);
+  text-align: center;
+  line-height: 1.4;
+  font-size: 30px;
 }
 .control-player .container .right-control .wrap > div {
   display: flex;
