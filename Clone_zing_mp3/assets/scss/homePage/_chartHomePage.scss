@@ -6,9 +6,18 @@
     width: 100%;
     min-height: 400px;
     background-color: #41155B;
+    svg #myChart-graph-id0-path {
+      fill: #41155B;
+    }
+
+    tspan {
+      fill: #fff;
+      font-family: "Inter", sans-serif;
+    }
   }
    
   .zc-ref {
     display: none;
   }
+
 }

@@ -186,6 +186,60 @@
         display: flex;
         column-gap: 20px;
 
+        
+
+        .active-karaoke {
+          position: fixed;
+          inset: 0;
+          background-color: #281a43;
+          translate: 0 100vh;
+          transition: translate 0.6s ease-in-out;
+          z-index: 2;
+
+          i {
+            display: none;
+          }
+
+          .text {
+            display: none;
+          }
+        }
+
+        .active-karaoke.active {
+          z-index: 5;
+          translate: 0 0 ;
+          transition: translate 0.6s ease-in-out;
+
+
+
+          i {
+            display: block;
+            position: fixed;
+            top: 30px;
+            right: 30px;
+            color: #281a43;
+            font-size: 24px;
+            padding: 10px;
+            width: 30px;
+            height: 30px;
+            line-height: 30px;
+            text-align: center;
+            border-radius: 50%;
+            background-color: #d3d3d3;
+          }
+
+          .text {
+            display: block;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translateY(-50%) translateX(-50%);
+            text-align: center;
+            line-height: 1.4;
+            font-size: 20px;
+          }
+        }
+
         > div {
           display: flex;
           align-items: center;
