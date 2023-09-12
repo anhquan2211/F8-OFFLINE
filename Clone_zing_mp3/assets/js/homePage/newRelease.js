@@ -3133,9 +3133,18 @@ var arrStartTime = [];
 var arrEndTime = [];
 var arrSetence = [];
 var arrCurrentTime = [];
+var arrWords = [];
+var listTimeWordThird = [];
 
 lyric.map(function (item) {
   wordsArr = item.words;
+  arrWords.push(wordsArr);
+
+  // wordsArr.map(function (word) {
+  //   durationWord = (word.endTime - word.startTime) / 1000;
+  //   console.log(durationWord);
+  // });
+
   startTimeWord = wordsArr[0].startTime;
   endTimeWord = wordsArr[wordsArr.length - 1].endTime;
 
@@ -3146,7 +3155,8 @@ lyric.map(function (item) {
   durationWord = endTimeWord - startTimeWord;
 
   wordSplit = wordsArr.map(function (word) {
-    return `<span class="highlight">${word.data}</span>`;
+    durationWord = (word.endTime - word.startTime) / 1000;
+    return `<span class=""><span>${word.data}</span></span>`;
   });
   oneSetence = wordSplit.join(" ");
   arrSetence.push(oneSetence);
@@ -3158,6 +3168,14 @@ audio.addEventListener("timeupdate", function () {
 
   arrCurrentTime.push(currentTime);
 
+  arrWords.map(function (word) {
+    wordTimeThird = word[word.length - 3].startTime;
+    listTimeWordThird.push(wordTimeThird);
+    word.map(function (char) {
+      // console.log(char);
+    });
+  });
+
   for (let i = 0; i < arrSetence.length; i++) {
     // console.log(
     //   `arrStartTime: ${arrStartTime[i]} - arrSetence: ${arrSetence[i]}`
@@ -3165,8 +3183,18 @@ audio.addEventListener("timeupdate", function () {
     if (currentTime >= arrStartTime[i] && currentTime < arrStartTime[i + 1]) {
       if (i % 2 === 0) {
         textKaraoke.innerHTML = arrSetence[i];
+        textKaraoke.classList.add("opacity");
+        textKaraoke2.classList.remove("opacity");
+        if (currentTime >= listTimeWordThird[i]) {
+          textKaraoke2.innerHTML = arrSetence[i + 1];
+        }
       } else {
         textKaraoke2.innerHTML = arrSetence[i];
+        textKaraoke2.classList.add("opacity");
+        textKaraoke.classList.remove("opacity");
+        if (currentTime >= listTimeWordThird[i]) {
+          textKaraoke.innerHTML = arrSetence[i + 1];
+        }
       }
     } else if (currentTime < arrStartTime[0]) {
       textKaraoke.innerHTML = `

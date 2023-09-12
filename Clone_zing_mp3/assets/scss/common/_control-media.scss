@@ -3,7 +3,7 @@
     display: flex;
     justify-content: space-between;
     position: fixed;
-    z-index: 2;
+    z-index: 4;
     color: #fff;
     bottom: 0;
     padding: 0 20px;
@@ -238,6 +238,9 @@
             text-align: center;
             line-height: 1.4;
             font-size: 30px;
+            transition: all 0.5s ease-in-out;
+            opacity: 0.3;
+            
           }
 
           .text-2 {
@@ -249,7 +252,22 @@
             text-align: center;
             line-height: 1.4;
             font-size: 30px;
+            transition: all 0.5s ease-in-out;
+            opacity: 0.3;
+
+            
+
           }
+
+          .highlight {
+            color: yellow;
+          }
+
+          .opacity {
+            opacity: 1;
+          }
+
+          
         }
 
         > div {
