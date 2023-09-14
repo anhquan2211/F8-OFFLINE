@@ -48,25 +48,6 @@ const getHalfHeight = (element) => {
   return (rect.bottom - rect.top) / 2;
 };
 
-const appendPlaceholder = (e, index) => {
-  e.preventDefault();
-  if (index === dragIndex) {
-    return;
-  }
-
-  const offset = getOffset(e);
-  const halfHeight = getHalfHeight(e.target);
-  const placeholder = list.children[dragIndex];
-
-  // console.log(`hover on ${index} ${offset.y > halfHeight ? 'bottom half' : 'top half'}`)
-  if (offset.y > halfHeight) {
-    list.insertBefore(e.target, placeholder);
-  } else if (list.children[index + 1]) {
-    list.insertBefore(e.target.nextSibling || e.target, placeholder);
-  }
-  return;
-};
-
 function sortable(rootElement, renderView) {
   // Khởi tạo phần tử được drag
   var dragElement;
@@ -81,26 +62,16 @@ function sortable(rootElement, renderView) {
 
     // Lấy ra phần tử được thả
     var targetElement = e.target;
+    console.log(targetElement !== dragElement);
     if (
       targetElement &&
       targetElement !== dragElement &&
       targetElement.nodeName === "DIV"
     ) {
-      // console.log(1);
-      const offset = getOffset(e);
-      const halfHeight = getHalfHeight(e.target);
-      console.log(rootElement);
-
-      if (offset.y > halfHeight) {
-        if (targetElement.nextSibling.parentElement === rootElement) {
-          console.log("You moving module");
-          rootElement.insertBefore(dragElement, targetElement.nextSibling);
-        } else {
-          if (targetElement.parentElement === rootElement) {
-            console.log("You moving lession");
-            rootElement.insertBefore(dragElement, targetElement);
-          }
-        }
+      // console.log(`offset.y: ${offset.y}, halfHeight: ${halfHeight}`);
+      if (targetElement.parentElement === rootElement) {
+        console.log(dragElement);
+        rootElement.insertBefore(dragElement, targetElement);
       }
     }
   }
@@ -110,31 +81,27 @@ function sortable(rootElement, renderView) {
     e.preventDefault();
 
     dragElement.classList.remove("opacity");
-    rootElement.removeEventListener("dragover", handleDragOver, false);
-    rootElement.removeEventListener("dragend", handleDragEnd, false);
+    rootElement.removeEventListener("dragover", handleDragOver);
+    rootElement.removeEventListener("dragend", handleDragEnd);
 
     renderView(dragElement);
   }
 
   // Sự kiện bắt đầu kéo thả.
-  rootElement.addEventListener(
-    "dragstart",
-    function (e) {
-      dragElement = e.target; //Lưu phân tử được kéo thả.
+  rootElement.addEventListener("dragstart", function (e) {
+    dragElement = e.target; //Lưu phân tử được kéo thả.
 
-      //Set up Drag Start
-      e.dataTransfer.effectAllowed = "move";
-      e.dataTransfer.setData("Text", dragElement.textContent);
+    //Set up Drag Start
+    e.dataTransfer.effectAllowed = "move";
+    e.dataTransfer.setData("Text", dragElement.textContent);
 
-      rootElement.addEventListener("dragover", handleDragOver, false);
-      rootElement.addEventListener("dragend", handleDragEnd, false);
+    rootElement.addEventListener("dragover", handleDragOver);
+    rootElement.addEventListener("dragend", handleDragEnd);
 
-      setTimeout(function () {
-        dragElement.classList.add("opacity");
-      }, 0);
-    },
-    false
-  );
+    setTimeout(function () {
+      dragElement.classList.add("opacity");
+    }, 0);
+  });
 }
 
 sortable(list, (item) => {
