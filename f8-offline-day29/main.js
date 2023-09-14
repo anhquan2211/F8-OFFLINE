@@ -1,5 +1,11 @@
 const list = document.querySelector(".list");
 const listItems = document.querySelectorAll(".list-item");
+const moduleItems = document.querySelectorAll(".title-module");
+
+// Handle Scroll
+moduleItems.forEach(function (item, index) {
+  console.log(item.getBoundingClientRect().top, index);
+});
 
 let listItemIndex = 0;
 let moduleIndex = 0;
@@ -70,7 +76,6 @@ function sortable(rootElement, renderView) {
     ) {
       // console.log(`offset.y: ${offset.y}, halfHeight: ${halfHeight}`);
       if (targetElement.parentElement === rootElement) {
-        console.log(dragElement);
         rootElement.insertBefore(dragElement, targetElement);
       }
     }
@@ -104,7 +109,7 @@ function sortable(rootElement, renderView) {
   });
 }
 
-sortable(list, (item) => {
+sortable(list, () => {
   listItemIndex = 0;
   moduleIndex = 0;
 

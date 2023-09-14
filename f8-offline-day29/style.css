@@ -6,6 +6,8 @@
 
 body {
   font-family: "Roboto", sans-serif;
+  background-color: #8bc6ec;
+  background-image: linear-gradient(135deg, #8bc6ec 0%, #9599e2 100%);
 }
 
 .list {
@@ -13,6 +15,7 @@ body {
   width: 600px;
   padding: 20px;
   margin: 0 auto;
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
 }
 
 .list-item {
@@ -35,3 +38,9 @@ body {
   background: #303742;
   pointer-events: none;
 }
+
+/* .list-scroll {
+  position: absolute;
+  top: -9999px;
+  left: -9999px;
+} */
