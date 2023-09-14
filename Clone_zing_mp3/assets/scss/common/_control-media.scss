@@ -25,7 +25,7 @@
       column-gap: 10px;
       align-items: center;
       cursor: pointer;
-      width: 30%;
+      // width: 30%;
 
       .media-left {
         img {
@@ -63,6 +63,7 @@
       align-items: center;
       justify-content: center;
       row-gap: 10px;
+      position: relative;
 
       .action-top {
         display: flex;
@@ -188,86 +189,72 @@
 
         
 
-        .active-karaoke {
+        .karaoke-inner {
           position: fixed;
           inset: 0;
-          background-color: #281a43;
-          translate: 0 100vh;
-          transition: translate 0.6s ease-in-out;
-          z-index: 2;
-
-          i {
-            display: none;
-          }
-
-          .text {
-            display: none;
-          }
+          top: 100%;
+          z-index: 100;
+          background: rgb(99, 13, 180);
+          color: #fff;
+          transition: top 0.4s ease;
+          padding: 15px;
         }
 
-        .active-karaoke.active {
-          z-index: 5;
-          translate: 0 0 ;
-          transition: translate 0.6s ease-in-out;
+        .karaoke-inner.show {
+          top: 0;
+        }
 
+        .karaoke-container {
+          max-width: 90%;
+          margin: 0 auto;
+        }
 
+        .karaoke-heading {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
 
-          i {
-            display: block;
-            position: fixed;
-            top: 30px;
-            right: 30px;
-            color: #281a43;
-            font-size: 24px;
-            padding: 10px;
-            width: 30px;
-            height: 30px;
-            line-height: 30px;
-            text-align: center;
-            border-radius: 50%;
-            background-color: #d3d3d3;
+          h2 {
+            font-size: 28px;
           }
 
+          .close {
+            cursor: pointer;
+            font-size: 28px;
+          }
+
+        }
+
+        .karaoke-content {
+          font-size: 3vw;
+          font-weight: bold;
+          height: 80vh;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          flex-direction: column;
           
-          .text {
-            display: block;
-            position: fixed;
-            top: 50%;
-            left: 50%;
-            transform: translateY(-50%) translateX(-40% );
+
+          p {
+            margin: 15px 0 ;
             text-align: center;
-            line-height: 1.4;
-            font-size: 30px;
-            transition: all 0.5s ease-in-out;
-            opacity: 0.3;
-            
           }
 
-          .text-2 {
-            display: block;
-            position: fixed;
-            top: 60%;
-            left: 50%;
-            transform: translateY(-50%) translateX(-40% );
-            text-align: center;
-            line-height: 1.4;
-            font-size: 30px;
-            transition: all 0.5s ease-in-out;
-            opacity: 0.3;
+          .word {
+            position: relative;
+            margin: 0 5px;
 
-            
-
+            span {
+              position: absolute;
+              top: 5px;
+              left: 0;
+              width: 0;
+              overflow: hidden;
+              display: inline-block;
+              color: rgb(255, 204, 0);
+              
+            }
           }
-
-          .highlight {
-            color: yellow;
-          }
-
-          .opacity {
-            opacity: 1;
-          }
-
-          
         }
 
         > div {

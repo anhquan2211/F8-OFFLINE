@@ -281,7 +281,6 @@ body {
   column-gap: 10px;
   align-items: center;
   cursor: pointer;
-  width: 30%;
 }
 .control-player .container .left-control .media-left img {
   width: 65px;
@@ -311,6 +310,7 @@ body {
   align-items: center;
   justify-content: center;
   row-gap: 10px;
+  position: relative;
 }
 .control-player .container .center-control .action-top {
   display: flex;
@@ -413,69 +413,60 @@ body {
   display: flex;
   column-gap: 20px;
 }
-.control-player .container .right-control .wrap .active-karaoke {
+.control-player .container .right-control .wrap .karaoke-inner {
   position: fixed;
   inset: 0;
-  background-color: #281a43;
-  translate: 0 100vh;
-  transition: translate 0.6s ease-in-out;
-  z-index: 2;
+  top: 100%;
+  z-index: 100;
+  background: rgb(99, 13, 180);
+  color: #fff;
+  transition: top 0.4s ease;
+  padding: 15px;
 }
-.control-player .container .right-control .wrap .active-karaoke i {
-  display: none;
+.control-player .container .right-control .wrap .karaoke-inner.show {
+  top: 0;
 }
-.control-player .container .right-control .wrap .active-karaoke .text {
-  display: none;
+.control-player .container .right-control .wrap .karaoke-container {
+  max-width: 90%;
+  margin: 0 auto;
 }
-.control-player .container .right-control .wrap .active-karaoke.active {
-  z-index: 5;
-  translate: 0 0;
-  transition: translate 0.6s ease-in-out;
+.control-player .container .right-control .wrap .karaoke-heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
-.control-player .container .right-control .wrap .active-karaoke.active i {
-  display: block;
-  position: fixed;
-  top: 30px;
-  right: 30px;
-  color: #281a43;
-  font-size: 24px;
-  padding: 10px;
-  width: 30px;
-  height: 30px;
-  line-height: 30px;
+.control-player .container .right-control .wrap .karaoke-heading h2 {
+  font-size: 28px;
+}
+.control-player .container .right-control .wrap .karaoke-heading .close {
+  cursor: pointer;
+  font-size: 28px;
+}
+.control-player .container .right-control .wrap .karaoke-content {
+  font-size: 3vw;
+  font-weight: bold;
+  height: 80vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+.control-player .container .right-control .wrap .karaoke-content p {
+  margin: 15px 0;
   text-align: center;
-  border-radius: 50%;
-  background-color: #d3d3d3;
 }
-.control-player .container .right-control .wrap .active-karaoke.active .text {
-  display: block;
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translateY(-50%) translateX(-40%);
-  text-align: center;
-  line-height: 1.4;
-  font-size: 30px;
-  transition: all 0.5s ease-in-out;
-  opacity: 0.3;
+.control-player .container .right-control .wrap .karaoke-content .word {
+  position: relative;
+  margin: 0 5px;
 }
-.control-player .container .right-control .wrap .active-karaoke.active .text-2 {
-  display: block;
-  position: fixed;
-  top: 60%;
-  left: 50%;
-  transform: translateY(-50%) translateX(-40%);
-  text-align: center;
-  line-height: 1.4;
-  font-size: 30px;
-  transition: all 0.5s ease-in-out;
-  opacity: 0.3;
-}
-.control-player .container .right-control .wrap .active-karaoke.active .highlight {
-  color: yellow;
-}
-.control-player .container .right-control .wrap .active-karaoke.active .opacity {
-  opacity: 1;
+.control-player .container .right-control .wrap .karaoke-content .word span {
+  position: absolute;
+  top: 5px;
+  left: 0;
+  width: 0;
+  overflow: hidden;
+  display: inline-block;
+  color: rgb(255, 204, 0);
 }
 .control-player .container .right-control .wrap > div {
   display: flex;
@@ -635,6 +626,63 @@ body {
 }
 .header .container .container-inner .header-right .avatar:hover {
   opacity: 0.8;
+}
+
+#toastBox {
+  position: absolute;
+  top: 10px;
+  right: 30px;
+  display: flex;
+  align-items: flex-end;
+  flex-direction: column;
+  overflow: hidden;
+  padding: 30px;
+  z-index: 105;
+}
+#toastBox .toast {
+  width: 400px;
+  height: 80px;
+  background: rgb(106, 27, 180);
+  font-weight: 500;
+  margin: 15px 0;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+  position: relative;
+  transform: translateX(100%);
+  animation: moveleft 0.5s linear forwards;
+  color: #fff;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  line-height: 1.4;
+  border-radius: 10px;
+  overflow: hidden;
+  padding: 10px;
+}
+#toastBox .toast i {
+  margin: 0 20px;
+  font-size: 35px;
+  color: orange;
+}
+#toastBox .toast::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 5px;
+  background: orange;
+  animation: anim 5s linear forwards;
+}
+@keyframes anim {
+  100% {
+    width: 0;
+  }
+}
+@keyframes moveleft {
+  100% {
+    transform: translateX(0);
+  }
 }
 
 .slider .container {

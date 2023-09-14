@@ -3107,125 +3107,271 @@ var lyric = `
 lyric = JSON.parse(lyric).data.sentences;
 console.log(lyric);
 
-var karaokeBtn = document.querySelector(".karaoke");
-var arrowDown = document.querySelector(".arrow-down");
-var activeKaraoke = document.querySelector(".active-karaoke");
+// Xay dung tinh nang karaoke
+var karaokePlayBtn = document.querySelector(".karaoke i");
+var karaokeInner = document.querySelector(".karaoke-inner");
+var karaokeClose = karaokeInner.querySelector(".close");
+var karaokeContent = karaokeInner.querySelector(".karaoke-content");
 var centerControl = document.querySelector(".center-control");
-var textKaraoke = document.querySelector(".active-karaoke .text");
-var textKaraoke2 = document.querySelector(".active-karaoke .text-2");
-var karaokeWrap = document.querySelector(".active-karaoke");
-var wordsArr;
+console.log(centerControl);
 
-karaokeBtn.addEventListener("click", function () {
-  karaokeWrap.classList.add("active");
+var songInfo = `
+<h3>Có Ai Đang Hẹn Hò Cùng Em Chưa</h3>
+<p>Ca sỹ: Quân A.P, Doãn Hiếu</p>
+`;
 
-  setTimeout(function () {
-    centerControl.style.zIndex = 6;
-  }, 800);
+karaokePlayBtn.addEventListener("click", function () {
+  karaokeInner.classList.add("show");
+  karaokeContent.innerHTML = songInfo;
+  karaokeContent.style.opacity = 0.5;
+  centerControl.style.zIndex = 110;
+
+  audioTimeLeft.style.color = "#fff";
+  audioDuration.style.color = "#fff";
 });
 
-arrowDown.addEventListener("click", function () {
-  karaokeWrap.classList.remove("active");
-  centerControl.style.zIndex = 0;
+karaokeClose.addEventListener("click", function () {
+  karaokeInner.classList.remove("show");
+  karaokeContent.innerHTML = "";
+  centerControl.style.zIndex = 1;
+  audioTimeLeft.style.color = "";
+  audioDuration.style.color = "";
 });
 
-var arrStartTime = [];
-var arrEndTime = [];
-var arrSetence = [];
-var arrCurrentTime = [];
-var arrWords = [];
-var listTimeWordThird = [];
+var numberSetence = 2;
+var currentPage;
 
-lyric.map(function (item) {
-  wordsArr = item.words;
-  arrWords.push(wordsArr);
+var handleKaraoke = function (currentTime) {
+  //Quy đổi currentTime ra ms
+  currentTime *= 1000;
 
-  // wordsArr.map(function (word) {
-  //   durationWord = (word.endTime - word.startTime) / 1000;
-  //   console.log(durationWord);
-  // });
-
-  startTimeWord = wordsArr[0].startTime;
-  endTimeWord = wordsArr[wordsArr.length - 1].endTime;
-
-  arrEndTime.push(endTimeWord);
-  arrStartTime.push(startTimeWord);
-
-  //Thoi gian cua 1 cau
-  durationWord = endTimeWord - startTimeWord;
-
-  wordSplit = wordsArr.map(function (word) {
-    durationWord = (word.endTime - word.startTime) / 1000;
-    return `<span class=""><span>${word.data}</span></span>`;
-  });
-  oneSetence = wordSplit.join(" ");
-  arrSetence.push(oneSetence);
-});
-// console.log(arrStartTime);
-
-audio.addEventListener("timeupdate", function () {
-  var currentTime = (audio.currentTime * 1000).toFixed(0);
-
-  arrCurrentTime.push(currentTime);
-
-  arrWords.map(function (word) {
-    wordTimeThird = word[word.length - 3].startTime;
-    listTimeWordThird.push(wordTimeThird);
-    word.map(function (char) {
-      // console.log(char);
-    });
+  var index = lyric.findIndex(function (wordItem) {
+    var wordItemArray = wordItem.words;
+    return (
+      currentTime >= wordItemArray[0].startTime &&
+      currentTime <= wordItemArray[wordItemArray.length - 1].endTime
+    );
   });
 
-  for (let i = 0; i < arrSetence.length; i++) {
-    // console.log(
-    //   `arrStartTime: ${arrStartTime[i]} - arrSetence: ${arrSetence[i]}`
-    // );
-    if (currentTime >= arrStartTime[i] && currentTime < arrStartTime[i + 1]) {
-      if (i % 2 === 0) {
-        textKaraoke.innerHTML = arrSetence[i];
-        textKaraoke.classList.add("opacity");
-        textKaraoke2.classList.remove("opacity");
-        if (currentTime >= listTimeWordThird[i]) {
-          textKaraoke2.innerHTML = arrSetence[i + 1];
+  if (index !== -1) {
+    // Vòng lặp các câu trong một màn hình.
+    /*
+    Page = 1 -> Index = 0 + Index = 1
+    Page = 2 -> Index = 2 + Index = 3
+    Page = 3 -> Index = 4 + Index = 5
+    Page = 4 -> Index = 6 + Index = 7
+
+    Page = index / 2 + 1
+    */
+
+    var page = Math.floor(index / numberSetence + 1);
+
+    handleColor(currentTime);
+
+    if (page !== currentPage) {
+      var offset = (page - 1) * numberSetence;
+
+      if (index >= offset && index < offset + numberSetence) {
+        karaokeContent.innerText = "";
+
+        var div = document.createElement("div");
+
+        for (var i = offset; i < offset + numberSetence; i++) {
+          var p = document.createElement("p");
+
+          lyric[i].words.forEach(function (word) {
+            var wordEle = document.createElement("span");
+            wordEle.classList.add("word");
+            wordEle.innerText = word.data;
+            wordEle.dataset.startTime = word.startTime;
+            wordEle.dataset.endTime = word.endTime;
+
+            var span = document.createElement("span");
+            span.innerText = word.data;
+            wordEle.append(span);
+
+            p.append(wordEle);
+          });
+          div.append(p);
         }
-      } else {
-        textKaraoke2.innerHTML = arrSetence[i];
-        textKaraoke2.classList.add("opacity");
-        textKaraoke.classList.remove("opacity");
-        if (currentTime >= listTimeWordThird[i]) {
-          textKaraoke.innerHTML = arrSetence[i + 1];
-        }
+
+        karaokeContent.append(div);
+        karaokeContent.style.opacity = 1;
       }
-    } else if (currentTime < arrStartTime[0]) {
-      textKaraoke.innerHTML = `
-      <div>Tên bài hát: Có Ai Đang Hẹn Hò Cùng Em Chưa</div>
-      <div>Ca Sỹ: Quân A.P</div>
-      `;
-      textKaraoke2.innerHTML = "";
-    } else if (currentTime > 133090 && currentTime < 138330) {
-      textKaraoke.innerHTML = `
-      <div>Tên bài hát: Có Ai Đang Hẹn Hò Cùng Em Chưa</div>
-      <div>Ca Sỹ: Quân A.P</div>
-      `;
-      textKaraoke2.innerHTML = "";
-    } else if (currentTime > 223880 && currentTime < 26140) {
-      textKaraoke.innerHTML = `
-      <div>Tên bài hát: Có Ai Đang Hẹn Hò Cùng Em Chưa</div>
-      <div>Ca Sỹ: Quân A.P</div>
-      `;
-      textKaraoke2.innerHTML = "";
-    } else if (currentTime > arrEndTime[arrEndTime.length - 1]) {
-      textKaraoke.innerHTML = `
-      <div>Tên bài hát: Có Ai Đang Hẹn Hò Cùng Em Chưa</div>
-      <div>Ca Sỹ: Quân A.P</div>
-      `;
-      textKaraoke2.innerHTML = "";
+
+      currentPage = page;
     }
   }
+};
+
+var handleColor = function (currentTime) {
+  var wordItems = document.querySelectorAll(".word");
+  // console.log(wordItems);
+  wordItems.forEach(function (wordItem, i) {
+    if (currentTime >= wordItem.dataset.startTime) {
+      wordItem.children[0].style.width = "100%";
+      var wordTime = wordItem.dataset.endTime - wordItem.dataset.startTime;
+      // var wordTime = wordItem.endTime - wordItem.startTime;
+      if (wordTime > 50) {
+        wordItem.children[0].style.transition = `width ${wordTime}ms linear`;
+      }
+    }
+    // console.log(wordItem, i);
+  });
+};
+
+audio.addEventListener("timeupdate", () => {
+  handleKaraoke(audio.currentTime);
 });
 
-window.addEventListener("load", function () {
-  alert(
-    "Tính năng karaoke khả dụng đối với bài hát 'Có Ai Hẹn Hò Cùng Em Chưa' của Quân A.P!"
-  );
-});
+// var karaokeBtn = document.querySelector(".karaoke");
+// var arrowDown = document.querySelector(".arrow-down");
+// var activeKaraoke = document.querySelector(".active-karaoke");
+// var centerControl = document.querySelector(".center-control");
+// var textKaraoke = document.querySelector(".active-karaoke .text");
+// var textKaraoke2 = document.querySelector(".active-karaoke .text-2");
+// var karaokeWrap = document.querySelector(".active-karaoke");
+// var wordsArr;
+
+//Render giao dien
+// karaokeBtn.addEventListener("click", function () {
+//   karaokeWrap.classList.add("active");
+
+//   setTimeout(function () {
+//     centerControl.style.zIndex = 6;
+//   }, 800);
+// });
+
+// arrowDown.addEventListener("click", function () {
+//   karaokeWrap.classList.remove("active");
+//   centerControl.style.zIndex = 0;
+// });
+
+//End Render giao dien
+
+// var arrStartTime = [];
+// var arrEndTime = [];
+// var arrSetence = [];
+// var arrCurrentTime = [];
+// var arrWords = [];
+// var listTimeWordThird = [];
+// var arrDurationWord = [];
+
+// lyric.map(function (item) {
+//   // console.log(item);
+//   wordsArr = item.words;
+//   arrWords.push(wordsArr);
+
+//   // wordsArr.map(function (word) {
+//   //   durationWord = (word.endTime - word.startTime) / 1000;
+//   //   console.log(durationWord);
+//   // });
+
+//   startTimeWord = wordsArr[0].startTime;
+//   endTimeWord = wordsArr[wordsArr.length - 1].endTime;
+
+//   arrEndTime.push(endTimeWord);
+//   arrStartTime.push(startTimeWord);
+
+//   //Thoi gian cua 1 cau
+//   durationWord = endTimeWord - startTimeWord;
+//   arrDurationWord.push(durationWord);
+
+//   wordSplit = wordsArr.map(function (word) {
+//     durationWord = (word.endTime - word.startTime) / 1000;
+//     return `<span data-text="${word.data}">${word.data}</span>`;
+//   });
+//   oneSetence = wordSplit.join(" ");
+//   arrSetence.push(oneSetence);
+// });
+// console.log(arrStartTime);
+
+// audio.addEventListener("timeupdate", function () {
+//   var currentTime = (audio.currentTime * 1000).toFixed(0);
+
+//   arrCurrentTime.push(currentTime);
+
+//   arrWords.map(function (word) {
+//     wordTimeThird = word[word.length - 3].startTime;
+//     listTimeWordThird.push(wordTimeThird);
+//     word.map(function (char) {
+//       // console.log(char);
+//     });
+//   });
+
+//   for (let i = 0; i < arrSetence.length; i++) {
+//     // console.log(
+//     //   `arrStartTime: ${arrStartTime[i]} - arrSetence: ${arrSetence[i]}`
+//     // );
+//     if (currentTime >= arrStartTime[i] && currentTime < arrStartTime[i + 1]) {
+//       if (i % 2 === 0) {
+//         textKaraoke.innerHTML = arrSetence[i];
+//         console.log();
+
+//         textKaraoke.classList.add("opacity");
+//         textKaraoke2.classList.remove("opacity");
+
+//         // var spanElement = document.querySelector(".text span");
+
+//         // console.log(arrDurationWord[i] / 1000);
+//         // setTimeout(function () {
+//         //   spanElement.style.transitionDuration = `${
+//         //     arrDurationWord[i] / 1000
+//         //   }s`;
+//         //   spanElement.style.width = `100%`;
+//         // }, 10);
+//         // var highlight = document.querySelector(".highlight");
+//         // console.log(highlight);
+//         if (currentTime >= listTimeWordThird[i]) {
+//           textKaraoke2.innerHTML = arrSetence[i + 1];
+//         }
+//       } else {
+//         textKaraoke2.innerHTML = arrSetence[i];
+//         textKaraoke2.classList.add("opacity");
+//         textKaraoke.classList.remove("opacity");
+
+//         if (currentTime >= listTimeWordThird[i]) {
+//           textKaraoke.innerHTML = arrSetence[i + 1];
+//         }
+//       }
+//     } else if (
+//       currentTime < arrStartTime[0] ||
+//       (currentTime > 133090 && currentTime < 138330) ||
+//       (currentTime > 223880 && currentTime < 26140) ||
+//       currentTime > arrEndTime[arrEndTime.length - 1]
+//     ) {
+//       textKaraoke.innerHTML = `
+//       <div>Tên bài hát: Có Ai Đang Hẹn Hò Cùng Em Chưa</div>
+//       <div>Ca Sỹ: Quân A.P</div>
+//       `;
+//       textKaraoke2.innerHTML = "";
+//     }
+//   }
+// });
+
+// window.addEventListener("load", function () {
+//   alert(
+//     "Tính năng karaoke khả dụng đối với bài hát 'Có Ai Hẹn Hò Cùng Em Chưa' của Quân A.P!"
+//   );
+// });
+
+// audio.addEventListener("playing", function () {
+//   console.log(audio.currentTime);
+// });
+
+// Toast Message
+let toastBox = document.getElementById("toastBox");
+let karaokeNoti = `<i class="fa-solid fa-circle-exclamation"></i> Chức năng Karaoke chỉ khả dụng với bài hát 'Có Ai Đang Hẹn Hò Cùng Em Chưa'!`;
+
+function showToast(msg) {
+  let toast = document.createElement("div");
+  toast.classList.add("toast");
+  toast.innerHTML = msg;
+  toastBox.appendChild(toast);
+
+  setTimeout(() => {
+    toast.remove();
+  }, 5000);
+}
+
+window.addEventListener("load", showToast(karaokeNoti));
