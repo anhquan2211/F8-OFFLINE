@@ -70,9 +70,21 @@ function sortable(rootElement, renderView) {
       targetElement.nodeName === "DIV"
     ) {
       // console.log(`offset.y: ${offset.y}, halfHeight: ${halfHeight}`);
-      if (targetElement.parentElement === rootElement) {
-        rootElement.insertBefore(dragElement, targetElement);
+      const offset = getOffset(e);
+      const halfHeight = getHalfHeight(e.target);
+
+      if (offset.y > halfHeight) {
+        if (targetElement.nextSibling.parentElement === rootElement) {
+          rootElement.insertBefore(dragElement, targetElement.nextSibling);
+        }
+      } else {
+        if (targetElement.parentElement === rootElement) {
+          rootElement.insertBefore(dragElement, targetElement);
+        }
       }
+      // if (targetElement.parentElement === rootElement) {
+      //   rootElement.insertBefore(dragElement, targetElement);
+      // }
     }
   }
 
