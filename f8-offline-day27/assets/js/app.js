@@ -33,7 +33,7 @@ let edit = false;
 class Products {
   async getProducts() {
     try {
-      let result = await fetch("https://rtjcm3-3000.csb.app/items");
+      let result = await fetch("https://api-anhquan.vercel.app/items");
       let products = await result.json();
       products = products.map((item) => {
         const { title, price } = item.fields;

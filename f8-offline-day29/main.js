@@ -2,11 +2,6 @@ const list = document.querySelector(".list");
 const listItems = document.querySelectorAll(".list-item");
 const moduleItems = document.querySelectorAll(".title-module");
 
-// Handle Scroll
-moduleItems.forEach(function (item, index) {
-  console.log(item.getBoundingClientRect().top, index);
-});
-
 let listItemIndex = 0;
 let moduleIndex = 0;
 
@@ -68,7 +63,7 @@ function sortable(rootElement, renderView) {
 
     // Lấy ra phần tử được thả
     var targetElement = e.target;
-    console.log(targetElement !== dragElement);
+    // console.log(targetElement !== dragElement);
     if (
       targetElement &&
       targetElement !== dragElement &&
@@ -106,6 +101,64 @@ function sortable(rootElement, renderView) {
     setTimeout(function () {
       dragElement.classList.add("opacity");
     }, 0);
+
+    // Lấy chiều cao của viewport
+    const viewportHeight = window.innerHeight;
+    // console.log(viewportHeight);
+
+    // let isDragging = false;
+    // let initialMouseY;
+    // let initialElementY;
+
+    // const scrollThreshold = 100;
+    // const scrollSpeed = 5;
+
+    // // Function to scroll the window
+    // function scrollWindow(direction) {
+    //   window.scrollBy(0, direction * scrollSpeed);
+    // }
+
+    // document.addEventListener("mousedown", function (e) {
+    //   // dragElement = e.target;
+    //   console.log("Đang nhảy vào mousedown");
+    //   isDragging = true;
+
+    //   e.preventDefault();
+
+    //   initialMouseY = e.clientY;
+    //   let elementRect = dragElement.getBoundingClientRect();
+    //   initialElementY = elementRect.top;
+
+    //   document.addEventListener("mousemove", handleMouseMove);
+    // });
+
+    // const handleMouseMove = function (e) {
+    //   // console.log(e.target);
+    //   console.log("Đang nhảy vào mousemove");
+    //   if (!isDragging) return;
+
+    //   // console.log(e.clientY);
+
+    //   const deltaY = e.clientY - initialMouseY;
+    //   const newElementY = initialElementY + deltaY;
+
+    //   // Update the element's position
+    //   // dragElement.style.top = newElementY + "px";
+
+    //   if (newElementY < scrollThreshold) {
+    //     // Scroll up
+    //     scrollWindow(-1);
+    //   } else if (newElementY > window.innerHeight - scrollThreshold) {
+    //     // Scroll down
+    //     scrollWindow(1);
+    //   }
+    // };
+
+    // document.addEventListener("mouseup", () => {
+    //   console.log("Đang nhảy vào mouseup");
+    //   isDragging = false;
+    //   document.removeEventListener("mousemove", handleMouseMove);
+    // });
   });
 }
 
