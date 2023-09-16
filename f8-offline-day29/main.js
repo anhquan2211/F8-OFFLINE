@@ -75,11 +75,12 @@ function sortable(rootElement, renderView) {
 
       if (offset.y > halfHeight) {
         if (targetElement.nextSibling.parentElement === rootElement) {
+          console.log(dragElement, targetElement.nextSibling);
           rootElement.insertBefore(dragElement, targetElement.nextSibling);
         }
       } else {
         if (targetElement.parentElement === rootElement) {
-          // rootElement.insertBefore(dragElement, targetElement);
+          rootElement.insertBefore(dragElement, targetElement);
         }
       }
       // if (targetElement.parentElement === rootElement) {
