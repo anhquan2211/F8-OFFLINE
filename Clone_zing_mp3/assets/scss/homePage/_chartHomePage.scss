@@ -1,23 +1,12 @@
 .chart {
   margin: 60px 60px 60px 300px;
-  background-color: #41155B;
+  // background-color: #a645dd;
   #myChart {
     height: 100%;
     width: 100%;
     min-height: 400px;
-    background-color: #41155B;
-    svg #myChart-graph-id0-path {
-      fill: #41155B;
-    }
-
-    tspan {
-      fill: #fff;
-      font-family: "Inter", sans-serif;
-    }
   }
    
-  .zc-ref {
-    display: none;
-  }
+  
 
 }

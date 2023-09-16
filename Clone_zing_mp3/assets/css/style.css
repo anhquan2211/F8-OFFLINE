@@ -1287,23 +1287,11 @@ body {
 
 .chart {
   margin: 60px 60px 60px 300px;
-  background-color: #41155B;
 }
 .chart #myChart {
   height: 100%;
   width: 100%;
   min-height: 400px;
-  background-color: #41155B;
-}
-.chart #myChart svg #myChart-graph-id0-path {
-  fill: #41155B;
-}
-.chart #myChart tspan {
-  fill: #fff;
-  font-family: "Inter", sans-serif;
-}
-.chart .zc-ref {
-  display: none;
 }
 
 /*# sourceMappingURL=style.css.map */
