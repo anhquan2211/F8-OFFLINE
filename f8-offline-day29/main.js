@@ -12,22 +12,22 @@ function render(rootElement) {
   childArr.forEach(function (item, index) {
     item.draggable = "true";
 
-    let type = "Bài ";
+    let title = "Bài ";
 
     if (item.classList.contains("title-module")) {
-      type = "Module ";
+      title = "Module ";
       moduleIndex++;
     } else {
       listItemIndex++;
     }
 
     if (!item.children.length) {
-      item.innerHTML = `${type} ${
-        type === "Module " ? moduleIndex : listItemIndex
+      item.innerHTML = `${title} ${
+        title === "Module " ? moduleIndex : listItemIndex
       }: <span>${item.innerText}</span>`;
     } else {
-      item.innerHTML = `${type} ${
-        type === "Module " ? moduleIndex : listItemIndex
+      item.innerHTML = `${title} ${
+        title === "Module " ? moduleIndex : listItemIndex
       }: <span>${item.children[0].innerText}</span>`;
     }
   });
@@ -79,7 +79,7 @@ function sortable(rootElement, renderView) {
         }
       } else {
         if (targetElement.parentElement === rootElement) {
-          rootElement.insertBefore(dragElement, targetElement);
+          // rootElement.insertBefore(dragElement, targetElement);
         }
       }
       // if (targetElement.parentElement === rootElement) {
@@ -102,6 +102,7 @@ function sortable(rootElement, renderView) {
   // Sự kiện bắt đầu kéo thả.
   rootElement.addEventListener("dragstart", function (e) {
     dragElement = e.target; //Lưu phân tử được kéo thả.
+    console.log(dragElement);
 
     //Set up Drag Start
     e.dataTransfer.effectAllowed = "move";
@@ -113,6 +114,8 @@ function sortable(rootElement, renderView) {
     setTimeout(function () {
       dragElement.classList.add("opacity");
     }, 0);
+
+    // dragElement.classList.add("opacity");
 
     // Lấy chiều cao của viewport
     const viewportHeight = window.innerHeight;
