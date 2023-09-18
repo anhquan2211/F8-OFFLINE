@@ -49,32 +49,77 @@
 // };
 const Utils = ChartUtils.init();
 
-const DATA_COUNT = 7;
+const DATA_COUNT = 24;
 const NUMBER_CFG = { count: DATA_COUNT, min: -100, max: 100 };
 
 console.log(Utils.numbers);
-let labels = ["Data 1", "Data 2", "Data 3", "Data 4", "Data 5"];
+let labels = [
+  "Data 1",
+  "Data 2",
+  "Data 3",
+  "Data 4",
+  "Data 5",
+  "Data 6",
+  "Data 7",
+  "Data 8",
+  "Data 9",
+  "Data 10",
+  "Data 11",
+  "Data 12",
+  "Data 13",
+  "Data 14",
+  "Data 15",
+  "Data 16",
+  "Data 17",
+  "Data 18",
+  "Data 19",
+  "Data 20",
+  "Data 21",
+  "Data 22",
+  "Data 23",
+  "Data 24",
+];
 
-let itemData = [1000000, 1500000, 2000000, 1800000, 3000000];
+// let itemData = [1000000, 1500000, 2000000, 1800000, 3000000];
+let itemData1 = [
+  2, 2, 3, 3, 2, 3, 2, 2, 2, 3, 2, 3, 2, 3, 2, 3, 2, 3, 2, 3, 2, 2, 4, 2,
+];
+
+let itemData2 = [
+  2, 2, 3, 3, 3, 3, 2, 3, 2, 3, 2, 3, 3, 3, 2, 3, 2.5, 3, 2, 3, 2, 2, 4, 2,
+];
+
+let itemData3 = [
+  2, 2, 3, 3, 3, 3, 4, 3, 2, 3, 2.5, 3, 3.5, 3, 2, 3, 2.5, 3, 2, 3, 2.3, 2, 4,
+  2.4,
+];
 
 const data = {
   labels: labels,
   datasets: [
     {
       label: "Dataset 1",
-      data: Utils.numbers(NUMBER_CFG),
+      data: itemData1,
       borderColor: Utils.CHART_COLORS.red,
       backgroundColor: Utils.transparentize(Utils.CHART_COLORS.red, 0.5),
       yAxisID: "y",
-      tension: 0.1,
+      tension: 0.3,
     },
     {
       label: "Dataset 2",
-      data: Utils.numbers(NUMBER_CFG),
+      data: itemData2,
       borderColor: Utils.CHART_COLORS.blue,
       backgroundColor: Utils.transparentize(Utils.CHART_COLORS.blue, 0.5),
       yAxisID: "y1",
-      tension: 0.1,
+      tension: 0.3,
+    },
+    {
+      label: "Dataset 3",
+      data: itemData3,
+      borderColor: Utils.CHART_COLORS.orange,
+      backgroundColor: Utils.transparentize(Utils.CHART_COLORS.orange, 0.5),
+      yAxisID: "y1",
+      tension: 0.3,
     },
   ],
 };
