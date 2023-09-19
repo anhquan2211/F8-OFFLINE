@@ -15,7 +15,7 @@ let wordNumber = document.querySelector(".word-number");
 const countEvent = new Event("count");
 
 charNumber.addEventListener("count", function () {
-  var countChar = writingArea.innerText.replace(/(\n\n)/g, "\n").length;
+  var countChar = writingArea.innerText.length;
   charNumber.innerHTML = `Số ký tự: ${countChar}`;
 });
 
