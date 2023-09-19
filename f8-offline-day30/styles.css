@@ -23,6 +23,12 @@ body {
   box-shadow: 0 25px 50px rgba(7, 20, 35, 0.2);
 }
 
+#fileName {
+  border: 1px solid #333;
+  border-radius: 4px;
+  padding-left: 6px;
+}
+
 .toolbar {
   padding: 16px;
   padding-left: 0;
@@ -94,7 +100,7 @@ input[type="color"]::-moz-color-swatch {
 
 #text-input {
   margin-top: 10px;
-  border: 1px solid #ddd;
+  outline: 1px solid #ddd;
   height: 50vh;
   padding: 20px;
 }
