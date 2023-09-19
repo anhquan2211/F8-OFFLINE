@@ -140,7 +140,7 @@ const highlighterRemover = (className) => {
 function fileHandle(value) {
   if (value === "new") {
     writingArea = "";
-    fileName.value = "untitled";
+    fileName.value = "Untitled";
   } else if (value === "txt") {
     const blob = new Blob([writingArea.innerText]);
     const url = URL.createObjectURL(blob);
