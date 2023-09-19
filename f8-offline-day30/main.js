@@ -15,14 +15,16 @@ let wordNumber = document.querySelector(".word-number");
 const countEvent = new Event("count");
 
 charNumber.addEventListener("count", function () {
-  var countChar = writingArea.innerText.length;
+  var countChar = writingArea.innerText
+    .replace(/(\n\n)/g, "\n")
+    .replace(/\t/g, "    ").length;
   charNumber.innerHTML = `Số ký tự: ${countChar}`;
 });
 
 wordNumber.addEventListener("count", function () {
   var str = writingArea.innerText.trim();
   if (str) {
-    var countWord = str.split(/\s+/g).length;
+    var countWord = str.split(/[\s\t]+/g).length;
     wordNumber.innerHTML = `Số từ: ${countWord}`;
   } else {
     wordNumber.innerHTML = `Số từ: 0`;
@@ -152,5 +154,14 @@ function fileHandle(value) {
     html2pdf(writingArea).save(filename.value);
   }
 }
+
+//Tab for indent
+writingArea.addEventListener("keydown", (e) => {
+  // console.log(e);
+  if (e.key === "Tab") {
+    e.preventDefault();
+    document.execCommand("insertText", false, "\t");
+  }
+});
 
 window.onload = initializer();
