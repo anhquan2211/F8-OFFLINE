@@ -141,7 +141,8 @@ const highlighterRemover = (className) => {
 //Handle Save File
 function fileHandle(value) {
   if (value === "new") {
-    writingArea = "";
+    writingArea.innerText = "";
+    writingArea.focus();
     fileName.value = "Untitled";
   } else if (value === "txt") {
     const blob = new Blob([writingArea.innerText]);
