@@ -103,7 +103,6 @@ input[type="color"]::-moz-color-swatch {
   outline: 1px solid #ddd;
   height: 50vh;
   padding: 20px;
-
   overflow: scroll;
 }
 
