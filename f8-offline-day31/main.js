@@ -1,3 +1,6 @@
+const counterElement = document.querySelector(".counter");
+const btnElement = document.querySelector(".btn");
+
 let timer = 0;
 const INTERVAL = 1000;
 let count = 30;
@@ -11,11 +14,11 @@ const handleDecrement = (timestamp) => {
   if (timestamp - timer >= INTERVAL) {
     timer = timestamp;
     count--;
-    document.querySelector(".counter").textContent = count;
+    counterElement.textContent = count;
 
     if (count === 0) {
       isDisabled = false;
-      document.querySelector(".btn").removeAttribute("disabled");
+      btnElement.removeAttribute("disabled");
     }
   }
 
@@ -30,7 +33,7 @@ const handleGetLink = () => {
   }
 };
 
-document.querySelector(".btn").addEventListener("click", handleGetLink);
+btnElement.addEventListener("click", handleGetLink);
 
 document.addEventListener("DOMContentLoaded", () => {
   window.requestAnimationFrame(handleDecrement);
