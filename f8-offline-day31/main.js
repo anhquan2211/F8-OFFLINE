@@ -29,7 +29,7 @@ const handleDecrement = (timestamp) => {
 
 const handleGetLink = () => {
   if (!isDisabled) {
-    window.location.href = "https://fullstack.edu.vn";
+    window.open("https://fullstack.edu.vn", "_blank");
   }
 };
 
