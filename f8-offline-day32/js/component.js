@@ -36,9 +36,9 @@ class F8 {
               try {
                 let count = this.data.count;
                 eval(`this.data.` + match[2]);
-                this.updateCountSpan(); // Update the count span
+                this.updateCountSpan(count); // Update the count span
                 this.render();
-                console.log(count);
+                // console.log(count);
               } catch (error) {
                 console.error("Error executing code:", error);
               }
@@ -53,7 +53,7 @@ class F8 {
         return eventName;
       }
 
-      updateCountSpan() {
+      updateCountSpan(count) {
         const shadow = this.shadowRoot;
         const countSpan = shadow.querySelector(".count-span");
         if (countSpan) {
