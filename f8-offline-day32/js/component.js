@@ -37,6 +37,7 @@ class F8 {
                 let count = this.data.count;
                 eval(`this.data.` + match[2]);
                 this.updateCountSpan(); // Update the count span
+                this.render();
                 console.log(count);
               } catch (error) {
                 console.error("Error executing code:", error);
