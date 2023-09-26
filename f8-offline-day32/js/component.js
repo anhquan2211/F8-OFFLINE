@@ -53,7 +53,7 @@ class F8 {
         return eventName;
       }
 
-      updateCountSpan(count) {
+      updateCountSpan() {
         const shadow = this.shadowRoot;
         const countSpan = shadow.querySelector(".count-span");
         if (countSpan) {
