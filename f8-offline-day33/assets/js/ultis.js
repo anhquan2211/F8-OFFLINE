@@ -19,7 +19,7 @@ export function handleSearchAction(actionDiv, appDiv) {
   recognition.lang = "vi-VN";
 
   recognition.onstart = function () {
-    setAction("Hãy nói nội dung Dương muốn <3");
+    setAction("Hãy nói nội dung Dương muốn!");
     setActionSuccess("");
 
     if (result) {
@@ -43,7 +43,7 @@ export function handleSearchAction(actionDiv, appDiv) {
     app.appendChild(result);
 
     setTimeout(() => {
-      const status = handleResult(transcript.toLowerCase());
+      const status = handleResult(transcript.toLowerCase().replaceAll(".", ""));
       if (status) {
         result.textContent = "Đã thực hiện xong Dương nhé!";
       } else {
@@ -94,11 +94,7 @@ export function handleResult(transcript) {
 
         const url = `https://www.google.com/maps/search/${transcriptNew}`;
         window.open(url.trim());
-      } else if (
-        transcript.includes("bài hát") ||
-        transcript.includes("mở bài hát") ||
-        transcript.includes("nghe bài hát")
-      ) {
+      } else if (transcript.includes("bài hát")) {
         const transcriptNew = transcript
           .replace("bài hát", "")
           .replace("mở", "")
@@ -107,11 +103,7 @@ export function handleResult(transcript) {
 
         const url = `https://zingmp3.vn/tim-kiem/tat-ca?q=${transcriptNew}`;
         window.open(url.trim());
-      } else if (
-        transcript.includes("video") ||
-        transcript.includes("mở video") ||
-        transcript.includes("xem video")
-      ) {
+      } else if (transcript.includes("video")) {
         const transcriptNew = transcript
           .replace("video", "")
           .replace("mở", "")
