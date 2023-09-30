@@ -1,6 +1,6 @@
 /** @format */
 
-let action, app, result;
+let action, app, result, speechTimeout;
 
 // Hàm hiển thị text khi có hành động của người dùng
 export function setAction(actionText) {
@@ -34,11 +34,13 @@ export function handleSearchAction(actionDiv, appDiv) {
 
   //Sự kiện khi speech recognition kết thúc
   recognition.onspeechend = function () {
+    clearTimeout(speechTimeout);
     recognition.stop();
   };
 
   //Sự kiện khi speech recognition nhận diện được giọng nói
   recognition.onresult = function (e) {
+    clearTimeout(speechTimeout);
     setAction("Đã nói xong. Hi vọng kết quả như Dương muốn");
     setActionSuccess("success");
 
@@ -58,6 +60,22 @@ export function handleSearchAction(actionDiv, appDiv) {
       }
     }, 1000);
   };
+
+  recognition.onnomatch = function () {
+    console.log("nomatch");
+    // Xử lý nếu như không nhận diện được giọng nói
+    setAction("Vui lòng nói yêu cầu của bạn!");
+    setActionSuccess("");
+    if (result) {
+      result.remove();
+    }
+  };
+
+  // Nếu sau 5s không nhận diện được giọng nói nó sẽ gọi đến hàm stop và onnomatch
+  speechTimeout = setTimeout(() => {
+    recognition.stop();
+    recognition.onnomatch();
+  }, 5000);
 
   //Bắt đầu speech recognition
   recognition.start();
