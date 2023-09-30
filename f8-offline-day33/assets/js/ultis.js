@@ -2,14 +2,17 @@
 
 let action, app, result;
 
+// Hàm hiển thị text khi có hành động của người dùng
 export function setAction(actionText) {
   action.textContent = actionText;
 }
 
+//Hàm set class cho hành động đó, ban đầu thì successClass = "" còn khi nói xong thì successClass = "success"
 export function setActionSuccess(successClass) {
   action.className = "action " + successClass;
 }
 
+//Hàm xử lý việc tìm kiếm theo đoạn text nhận được
 export function handleSearchAction(actionDiv, appDiv) {
   action = actionDiv;
   app = appDiv;
@@ -18,19 +21,23 @@ export function handleSearchAction(actionDiv, appDiv) {
     window.webkitSpeechRecognition)();
   recognition.lang = "vi-VN";
 
+  //Sự kiện khi speech recognition được start
   recognition.onstart = function () {
     setAction("Hãy nói nội dung Dương muốn!");
     setActionSuccess("");
 
+    //Xoá result nếu như tồn tại để khi nhấn vào tìm kiếm lần thứ 2 sẽ mất kết quả của lần thứ nhất
     if (result) {
       result.remove();
     }
   };
 
+  //Sự kiện khi speech recognition kết thúc
   recognition.onspeechend = function () {
     recognition.stop();
   };
 
+  //Sự kiện khi speech recognition nhận diện được giọng nói
   recognition.onresult = function (e) {
     setAction("Đã nói xong. Hi vọng kết quả như Dương muốn");
     setActionSuccess("success");
@@ -52,6 +59,7 @@ export function handleSearchAction(actionDiv, appDiv) {
     }, 1000);
   };
 
+  //Bắt đầu speech recognition
   recognition.start();
 }
 
@@ -94,11 +102,16 @@ export function handleResult(transcript) {
 
         const url = `https://www.google.com/maps/search/${transcriptNew}`;
         window.open(url.trim());
-      } else if (transcript.includes("bài hát")) {
+      } else if (
+        transcript.includes("bài hát") ||
+        transcript.includes("mở bài") ||
+        transcript.includes("nghe bài")
+      ) {
         const transcriptNew = transcript
           .replace("bài hát", "")
           .replace("mở", "")
           .replace("nghe", "")
+          .replace("bài", "")
           .trim();
 
         const url = `https://zingmp3.vn/tim-kiem/tat-ca?q=${transcriptNew}`;
