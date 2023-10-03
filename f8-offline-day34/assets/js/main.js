@@ -15,6 +15,9 @@ const root = $("#root");
 const container = $(".container");
 const addTodosBtn = $(".add-todos");
 
+let isEditting = false;
+let completedTaskCount = 0;
+
 function renderTasks(id, name, done) {
   const taskContainerEle = document.createElement("div");
   taskContainerEle.className = "task-container";
@@ -73,8 +76,12 @@ async function renderTasksUI() {
 
     tasks.forEach((task) => {
       renderTasks(task.id, task.name, task.done);
+      if (task.done) {
+        completedTaskCount++;
+      }
     });
     // renderBtnCompleteTodos(1);
+    renderCompletedTaskCount(completedTaskCount);
   } catch (e) {
     console.error("Error fectch tasks: ", error);
   }
@@ -82,7 +89,7 @@ async function renderTasksUI() {
 
 renderTasksUI();
 
-//Handle Delete Task
+//Handle Task
 async function handleTask(e) {
   const target = e.target;
   console.log(target);
@@ -104,42 +111,63 @@ async function handleTask(e) {
     target.classList.contains("btn-edit") ||
     target.classList.contains("fa-pen-to-square")
   ) {
-    //code handle edit task and update to api
+    // //code handle edit task and update to api
     const taskContainer = target.closest(".task-container");
     const taskId = taskContainer.querySelector(".name-task").dataset.id;
-
     try {
       const task = await getTaskDetails(taskId);
       if (task) {
         // Populate modal input with current task name
         const modalInput = formAdd.querySelector("input[type='text']");
         modalInput.value = task.name;
+        formAdd.dataset.taskId = taskId;
+        isEditting = true;
         // Show the modal
         modal.classList.add("is-show");
-        // Handle edit and update on form submission
-        formAdd.addEventListener("submit", async (e) => {
-          e.preventDefault();
-          // console.log("submit edit tasks");
-          const editedTaskName = modalInput.value.trim();
-          if (!editedTaskName) {
-            alert("Task name cannot be empty");
-            return;
-          }
-          try {
-            // Update the task on the API
-            await editTasks(taskId, editedTaskName, false);
-            // Update the task name in the UI
-            const nameTaskEle = taskContainer.querySelector(".name-task");
-            nameTaskEle.textContent = editedTaskName;
-            // Hide the modal
-            modal.classList.remove("is-show");
-          } catch (error) {
-            console.error("Error updating task", error);
-          }
-        });
       }
     } catch (e) {
-      console.error("Error fetching task details", error);
+      console.error("Error fetching task details", e);
+    }
+  } else if (target.classList.contains("add-todos")) {
+    const modalInput = formAdd.querySelector("input[type='text']");
+    modalInput.value = "";
+    formAdd.addEventListener("submit", function (e) {
+      e.preventDefault();
+      // handleAddTasks();
+    });
+  } else if (
+    target.classList.contains("btn-check") ||
+    target.classList.contains("fa-check-to-slot")
+  ) {
+    const taskContainer = target.closest(".task-container");
+    const taskId = taskContainer.querySelector(".name-task").dataset.id;
+
+    // Get the current done status of the task
+    const isDone = taskContainer.classList.contains("task-complete");
+
+    try {
+      // Toggle the done status in the UI
+      if (isDone) {
+        taskContainer.classList.remove("task-complete");
+        completedTaskCount--;
+      } else {
+        taskContainer.classList.add("task-complete");
+        container.appendChild(taskContainer);
+        completedTaskCount++;
+      }
+
+      const nameTaskEle = document.querySelector(
+        `.name-task[data-id='${taskId}']`
+      );
+
+      const nameTask = nameTaskEle.textContent;
+
+      // Update the done status on the server
+      await editTasks(taskId, nameTask, !isDone);
+      // Render the updated completed task count
+      renderCompletedTaskCount(completedTaskCount);
+    } catch (error) {
+      console.error("Error updating task status: ", error);
     }
   }
 }
@@ -147,6 +175,12 @@ async function handleTask(e) {
 container.addEventListener("click", (e) => {
   handleTask(e);
 });
+
+// Function to render the completed task count
+function renderCompletedTaskCount(count) {
+  const completeNumberEle = document.querySelector(".number");
+  completeNumberEle.textContent = `${count} `;
+}
 
 // Handle Modal
 const modal = document.createElement("div");
@@ -198,6 +232,7 @@ const formAdd = $(".form-add");
 
 addTodosBtn.addEventListener("click", function (e) {
   e.preventDefault();
+  isEditting = false;
   modal.classList.toggle("is-show");
 });
 
@@ -228,12 +263,51 @@ async function handleAddTasks() {
   modal.classList.remove("is-show");
 }
 
-formAdd.addEventListener("submit", function (e) {
-  e.preventDefault();
-  console.log("submit add tasks");
+// Handle editing an existing task
+async function handleEditTask(taskId) {
+  const modalInput = formAdd.querySelector("input[type='text']");
+  const editedTaskName = modalInput.value.trim();
+  if (!editedTaskName) {
+    alert("Task name cannot be empty");
+    return;
+  }
 
-  handleAddTasks();
+  try {
+    // Update the task on the API
+    await editTasks(taskId, editedTaskName, false);
+    // Update the task name in the UI
+    const nameTaskEle = document.querySelector(
+      `.name-task[data-id='${taskId}']`
+    );
+    nameTaskEle.textContent = editedTaskName;
+    modal.classList.remove("is-show");
+  } catch (error) {
+    console.error("Error updating task", error);
+  }
+}
+
+// Add an event listener to the form submit button to handle adding/editing a task
+formAdd.addEventListener("submit", async function (e) {
+  e.preventDefault();
+
+  if (isEditting) {
+    // Handle editing the existing task
+    const taskId = formAdd.dataset.taskId;
+    handleEditTask(taskId);
+    console.log("Đang editting");
+    isEditting = false; // Reset the editing flag
+  } else {
+    console.log("Đang thêm task mớis");
+    // Handle adding a new task
+    handleAddTasks();
+  }
 });
+
+// formAdd.addEventListener("submit", function (e) {
+//   e.preventDefault();
+
+//   handleAddTasks();
+// });
 
 //Button Complete Task Number
 function renderBtnCompleteTodos(number) {

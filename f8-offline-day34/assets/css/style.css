@@ -233,3 +233,7 @@ button:hover {
 .form-add .btn-cancel:hover {
   background-color: #e7e2e2;
 }
+
+.task-complete .btn-check {
+  background-color: #047857 !important;
+}
