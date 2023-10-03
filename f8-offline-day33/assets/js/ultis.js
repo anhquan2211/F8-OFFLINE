@@ -50,6 +50,7 @@ export function handleSearchAction(actionDiv, appDiv) {
     result.className = "result";
     result.textContent = "Đang thực hiện: " + transcript;
     app.appendChild(result);
+    
 
     setTimeout(() => {
       const status = handleResult(transcript.toLowerCase().replaceAll(".", ""));
@@ -62,7 +63,6 @@ export function handleSearchAction(actionDiv, appDiv) {
   };
 
   recognition.onnomatch = function () {
-    console.log("nomatch");
     // Xử lý nếu như không nhận diện được giọng nói
     setAction("Vui lòng nói yêu cầu của bạn!");
     setActionSuccess("");
@@ -75,7 +75,7 @@ export function handleSearchAction(actionDiv, appDiv) {
   speechTimeout = setTimeout(() => {
     recognition.stop();
     recognition.onnomatch();
-  }, 5000);
+  }, 6000);
 
   //Bắt đầu speech recognition
   recognition.start();
