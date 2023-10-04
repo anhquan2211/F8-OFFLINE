@@ -344,3 +344,11 @@ button:hover {
   inset: 0;
   background-color: rgba(0, 0, 0, 0.2);
 }
+
+.hidden {
+  display: none;
+}
+
+.bg-green {
+  background-color: #047857;
+}

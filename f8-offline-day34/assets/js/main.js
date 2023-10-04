@@ -17,6 +17,7 @@ const addTodosBtn = $(".add-todos");
 
 let isEditting = false;
 let completedTaskCount = 0;
+let areCompletedTasksHidden = true;
 
 function renderTasks(id, name, done) {
   const taskContainerEle = document.createElement("div");
@@ -82,6 +83,7 @@ async function renderTasksUI() {
         completedTaskCount++;
         hasCompletedTasks = true;
         taskContainer.classList.add("task-complete");
+        taskContainer.classList.add("hidden");
         container.appendChild(taskContainer);
       }
       // if (hasCompletedTasks) {
@@ -165,6 +167,7 @@ async function handleTask(e) {
         );
       } else {
         taskContainer.classList.add("task-complete");
+        taskContainer.classList.add("hidden");
         container.appendChild(taskContainer);
         completedTaskCount++;
       }
@@ -182,6 +185,31 @@ async function handleTask(e) {
     } catch (error) {
       console.error("Error updating task status: ", error);
     }
+  } else if (
+    target.classList.contains("btn-complete-todos") ||
+    target.classList.contains("text") ||
+    target.classList.contains("number") ||
+    target.classList.contains("fa-circle-right")
+  ) {
+    const buttonEle = $(".buttons-container .btn-complete-todos");
+    const iconEle = $(".btn-complete-todos i");
+    if (iconEle.classList.contains("fa-circle-right")) {
+      iconEle.classList.remove("fa-circle-right");
+      iconEle.classList.add("fa-circle-down");
+    } else {
+      iconEle.classList.add("fa-circle-right");
+      iconEle.classList.remove("fa-circle-down");
+    }
+    buttonEle.classList.toggle("bg-green");
+    areCompletedTasksHidden = !areCompletedTasksHidden;
+    const completedTasks = $$(".task-complete");
+    completedTasks.forEach((task) => {
+      if (areCompletedTasksHidden) {
+        task.classList.add("hidden");
+      } else {
+        task.classList.remove("hidden");
+      }
+    });
   }
 }
 
