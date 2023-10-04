@@ -57,9 +57,9 @@ function renderTasks(id, name, done) {
 
   taskContainerEle.appendChild(taskWrapEle);
 
-  if (done) {
-    taskWrapEle.classList.add("task-complete");
-  }
+  // if (done) {
+  //   taskWrapEle.classList.add("task-complete");
+  // }
 
   //   container.appendChild(taskContainerEle);
   //   container.insertAdjacentHTML("beforeend", taskContainerEle);
@@ -67,23 +67,31 @@ function renderTasks(id, name, done) {
 
   // Insert taskContainerEle before buttonsContainer
   buttonsContainer.parentNode.insertBefore(taskContainerEle, buttonsContainer);
+  return taskContainerEle; // Return the created element
 }
 
 //Render task from URL
 async function renderTasksUI() {
   try {
     const tasks = await getTasks();
+    let hasCompletedTasks = false;
 
     tasks.forEach((task) => {
-      renderTasks(task.id, task.name, task.done);
+      const taskContainer = renderTasks(task.id, task.name, task.done);
       if (task.done) {
         completedTaskCount++;
+        hasCompletedTasks = true;
+        taskContainer.classList.add("task-complete");
+        container.appendChild(taskContainer);
       }
+      // if (hasCompletedTasks) {
+      //   container.appendChild(taskContainer);
+      // }
     });
     // renderBtnCompleteTodos(1);
     renderCompletedTaskCount(completedTaskCount);
   } catch (e) {
-    console.error("Error fectch tasks: ", error);
+    console.error("Error fectch tasks: ", e);
   }
 }
 
@@ -150,6 +158,11 @@ async function handleTask(e) {
       if (isDone) {
         taskContainer.classList.remove("task-complete");
         completedTaskCount--;
+        const buttonsContainer = document.querySelector(".buttons-container");
+        buttonsContainer.parentNode.insertBefore(
+          taskContainer,
+          buttonsContainer
+        );
       } else {
         taskContainer.classList.add("task-complete");
         container.appendChild(taskContainer);
@@ -338,3 +351,8 @@ function renderBtnCompleteTodos(number) {
 }
 
 renderBtnCompleteTodos(0);
+
+// Handle Loading
+const loadingElement = $(".loading");
+const buttonArray = $$("button");
+console.log(buttonArray);
