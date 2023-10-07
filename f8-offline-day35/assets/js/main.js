@@ -4,7 +4,7 @@
 const postsContainer = document.getElementById("posts-container");
 const loading = document.querySelector(".loader");
 
-let limit = 5;
+let limit = 3;
 let page = 1;
 
 // Fetch the posts data from api

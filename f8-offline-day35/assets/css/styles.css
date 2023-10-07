@@ -362,6 +362,8 @@ body {
 .post .post-img img {
   width: 680px;
   height: auto;
+  display: block;
+  margin: 0 auto;
 }
 
 .post .post-reaction {
