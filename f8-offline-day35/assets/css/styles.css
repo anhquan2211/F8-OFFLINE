@@ -310,6 +310,14 @@ body {
   margin-bottom: 4px;
   font-size: 16px;
   font-weight: 500;
+  display: flex;
+  align-items: center;
+  column-gap: 6px;
+}
+
+.post .header-left .desc-wrap .name svg {
+  color: #0866ff;
+  width: 12px;
 }
 
 .post .header-left img {
@@ -351,6 +359,10 @@ body {
 
 .post .post-content {
   padding-left: 16px;
+  padding-right: 16px;
+  line-height: 1.4;
+  text-align: justify;
+  font-weight: 400;
 }
 
 .post .post-img {
