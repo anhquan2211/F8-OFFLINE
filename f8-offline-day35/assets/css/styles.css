@@ -483,3 +483,11 @@ body {
     transform: translateY(-10px);
   }
 }
+
+.end-message {
+  text-align: center;
+  font-size: 18px;
+  background-color: #4d4a4a;
+  padding: 10px 30px;
+  border-radius: 99px;
+}
