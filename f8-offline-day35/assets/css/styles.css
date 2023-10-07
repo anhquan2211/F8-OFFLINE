@@ -360,9 +360,8 @@ body {
 .post .post-content {
   padding-left: 16px;
   padding-right: 16px;
-  line-height: 1.4;
+  line-height: 1.5;
   text-align: justify;
-  font-weight: 400;
 }
 
 .post .post-img {
