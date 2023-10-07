@@ -26,6 +26,7 @@ body {
   background-color: #242526;
   position: fixed;
   top: 0;
+  z-index: 10;
 }
 
 .header .container {
@@ -157,7 +158,6 @@ body {
   top: 90px;
   max-height: 700px;
   width: 370px;
-  overflow-y: scroll;
   padding-left: 10px;
 }
 
