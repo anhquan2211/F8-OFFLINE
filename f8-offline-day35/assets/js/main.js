@@ -1,6 +1,8 @@
 /** @format */
 
 // /** @format */
+import { client } from "./client.js";
+
 const postsContainer = document.getElementById("posts-container");
 const loading = document.querySelector(".loader");
 
@@ -10,12 +12,7 @@ let allDataLoaded = false;
 
 // Fetch the posts data from api
 async function getPosts() {
-  const res = await fetch(
-    `https://ff9cn8-8080.csb.app/posts?_limit=${limit}&_page=${page}`
-  );
-  const data = await res.json();
-
-  console.log(data);
+  const { data } = await client.get(`/posts?_limit=${limit}&_page=${page}`);
 
   if (data.length === 0) {
     console.log("allDataLoaded = true");
