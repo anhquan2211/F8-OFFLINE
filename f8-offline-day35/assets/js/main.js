@@ -134,8 +134,6 @@ function showLoading() {
     page++;
     await showPosts();
 
-    skeleton();
-
     if (allDataLoaded) {
       const message = document.createElement("div");
       message.textContent = "You have viewed all the posts";
@@ -155,22 +153,4 @@ window.addEventListener("scroll", () => {
   if (!allDataLoaded && scrollTop + clientHeight >= scrollHeight - 5) {
     showLoading();
   }
-});
-
-function skeleton() {
-  // Define a function to remove the "skeleton" class from elements
-  const removeSkeletonClass = () => {
-    const allSkeleton = document.querySelectorAll(".skeleton");
-    allSkeleton.forEach((item) => {
-      item.classList.remove("skeleton");
-    });
-  };
-
-  // Use setTimeout to trigger the class removal after the specified delay (2 seconds)
-  setTimeout(removeSkeletonClass, 500);
-}
-
-// Call the skeleton function when the DOM is ready
-document.addEventListener("DOMContentLoaded", () => {
-  skeleton();
 });
