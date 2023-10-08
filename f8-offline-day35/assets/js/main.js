@@ -34,18 +34,18 @@ async function showPosts() {
     <div class="post-header">
       <!-- HEADER-LEFT -->
       <div class="header-left">
-        <div class="avatar">
+        <div class="avatar skeleton">
           <img src="${post.avatar}" alt="Avatar" />
         </div>
 
         <div class="desc-wrap">
-          <div class="name">
+          <div class="name skeleton">
             ${post.name}
 
             <svg fill="currentColor" viewBox="0 0 12 13" width="1em" height="1em" class="x1lliihq x1k90msu x2h7rmj x1qfuztq x1qq9wsj x1kpxq89 xsmyaan" title="Tài khoản đã xác minh"><title>Tài khoản đã xác minh</title><g fill-rule="evenodd" transform="translate(-98 -917)"><path d="m106.853 922.354-3.5 3.5a.499.499 0 0 1-.706 0l-1.5-1.5a.5.5 0 1 1 .706-.708l1.147 1.147 3.147-3.147a.5.5 0 1 1 .706.708m3.078 2.295-.589-1.149.588-1.15a.633.633 0 0 0-.219-.82l-1.085-.7-.065-1.287a.627.627 0 0 0-.6-.603l-1.29-.066-.703-1.087a.636.636 0 0 0-.82-.217l-1.148.588-1.15-.588a.631.631 0 0 0-.82.22l-.701 1.085-1.289.065a.626.626 0 0 0-.6.6l-.066 1.29-1.088.702a.634.634 0 0 0-.216.82l.588 1.149-.588 1.15a.632.632 0 0 0 .219.819l1.085.701.065 1.286c.014.33.274.59.6.604l1.29.065.703 1.088c.177.27.53.362.82.216l1.148-.588 1.15.589a.629.629 0 0 0 .82-.22l.701-1.085 1.286-.064a.627.627 0 0 0 .604-.601l.065-1.29 1.088-.703a.633.633 0 0 0 .216-.819"></path></g></svg>  
           </div>
           <div class="info">
-            <div class="time">${post.time}</div>
+            <div class="time skeleton">${post.time}</div>
             <div class="icon-public">
               <i class="fa-solid fa-earth-asia"></i>
             </div>
@@ -64,11 +64,11 @@ async function showPosts() {
       </div>
     </div>
 
-    <div class="post-content">
+    <div class="post-content skeleton">
       ${post.content}
     </div>
 
-    <div class="post-img">
+    <div class="post-img skeleton">
       <img src="${post.postImg}" alt="" />
     </div>
 
@@ -83,21 +83,21 @@ async function showPosts() {
             width="18"
           />
         </div>
-        <div class="name-reaction">
+        <div class="name-reaction skeleton">
           ${post.nameReaction}
         </div>
       </div>
 
       <div class="reaction-right">
         <div class="action comment">
-          <div class="number">${post.numberComment}</div>
+          <div class="number skeleton">${post.numberComment}</div>
           <div class="icon-comment">
             <i class="fa-solid fa-comment"></i>
           </div>
         </div>
 
         <div class="action share">
-          <div class="number">${post.numberShare}</div>
+          <div class="number skeleton">${post.numberShare}</div>
           <div class="icon-share"><i class="fa-solid fa-share"></i></div>
         </div>
       </div>
@@ -105,15 +105,15 @@ async function showPosts() {
 
     <div class="post-action">
       <div class="action action-like">
-        <div class="icon-like"><i class="fa-regular fa-thumbs-up"></i></div>
+        <div class="icon-like skeleton"><i class="fa-regular fa-thumbs-up"></i></div>
         <div class="desc">Thích</div>
       </div>
       <div class="action action-comment">
-        <div class="icon-comment"><i class="fa-solid fa-comment"></i></div>
+        <div class="icon-comment skeleton"><i class="fa-solid fa-comment"></i></div>
         <div class="desc">Bình luận</div>
       </div>
       <div class="action action-share">
-        <div class="icon-share"><i class="fa-solid fa-share"></i></div>
+        <div class="icon-share skeleton"><i class="fa-solid fa-share"></i></div>
         <div class="desc">Chia sẻ</div>
       </div>
     </div>
@@ -134,6 +134,8 @@ function showLoading() {
     page++;
     await showPosts();
 
+    skeleton();
+
     if (allDataLoaded) {
       const message = document.createElement("div");
       message.textContent = "You have viewed all the posts";
@@ -153,4 +155,22 @@ window.addEventListener("scroll", () => {
   if (!allDataLoaded && scrollTop + clientHeight >= scrollHeight - 5) {
     showLoading();
   }
+});
+
+function skeleton() {
+  // Define a function to remove the "skeleton" class from elements
+  const removeSkeletonClass = () => {
+    const allSkeleton = document.querySelectorAll(".skeleton");
+    allSkeleton.forEach((item) => {
+      item.classList.remove("skeleton");
+    });
+  };
+
+  // Use setTimeout to trigger the class removal after the specified delay (2 seconds)
+  setTimeout(removeSkeletonClass, 2000);
+}
+
+// Call the skeleton function when the DOM is ready
+document.addEventListener("DOMContentLoaded", () => {
+  skeleton();
 });
