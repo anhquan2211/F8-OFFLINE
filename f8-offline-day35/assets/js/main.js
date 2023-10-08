@@ -167,7 +167,7 @@ function skeleton() {
   };
 
   // Use setTimeout to trigger the class removal after the specified delay (2 seconds)
-  setTimeout(removeSkeletonClass, 2000);
+  setTimeout(removeSkeletonClass, 500);
 }
 
 // Call the skeleton function when the DOM is ready
