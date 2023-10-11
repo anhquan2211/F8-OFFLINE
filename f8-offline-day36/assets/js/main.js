@@ -130,8 +130,8 @@ function renderEnd(totalQuestion) {
   const quizizzStatInnerTopEl = document.createElement("div");
   quizizzStatInnerTopEl.classList.add("end-top");
   const pEl = document.createElement("p");
-  if (totalAnswerCorrect > 7) pEl.innerText = "Game performance";
-  else if (totalAnswerCorrect < 4) pEl.innerText = "Bad";
+  if (totalAnswerCorrect > 2) pEl.innerText = "Good";
+  else if (totalAnswerCorrect < 1) pEl.innerText = "Bad";
   else pEl.innerText = "Normal";
   quizizzStatInnerTopEl.append(pEl);
 
@@ -309,6 +309,7 @@ async function renderQuesttion(quiz) {
         handleQuestion(e, correct_answer, incorrect_answers, score);
         if (sentenceCurrent === quiz.length) {
           isPlay = true;
+          sentenceCurrent = 0;
         }
       });
       answerEl.innerText = answer;
