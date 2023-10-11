@@ -140,7 +140,7 @@ function renderEnd(totalQuestion) {
 
   const quizizzStatAccuracyEl = document.createElement("div");
   quizizzStatAccuracyEl.classList.add("end-correct");
-  quizizzStatAccuracyEl.innerHTML = `<p>Accuracy</p>
+  quizizzStatAccuracyEl.innerHTML = `<p>Result Percent</p>
                     <div class="end-correct-total">
                       <div
                         class="end-correct-progress"
