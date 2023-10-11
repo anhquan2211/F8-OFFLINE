@@ -38,7 +38,8 @@ const getQuestions = async (query = {}, isTotal = false) => {
 };
 
 // Function to handle user choice
-function handleQuestion(e, correct_answers, score) {
+function handleQuestion(e, correct_answers, incorrect_answers, score) {
+  console.log(score);
   e.preventDefault();
   const quizizzResultEl = document.querySelector(".result");
   const el = e.target;
@@ -55,12 +56,14 @@ function handleQuestion(e, correct_answers, score) {
       quizizzResultEl.innerText = "Correct";
       quizizzResultEl.style.backgroundColor = "green";
       if (streakPoint > 0) {
-        totalScore += +score;
-        totalScore += +streakPoint;
+        console.log(score);
+        totalScore += score;
+        totalScore += streakPoint;
       } else {
-        totalScore += +score;
+        console.log(score);
+        totalScore += score;
       }
-      streakPoint += +limitPoint;
+      streakPoint += limitPoint;
       if (streak === 2) streakMax++;
       if (streak < 3) streak++;
 
@@ -101,6 +104,7 @@ function shuffleArray(array) {
 function handleReset() {
   quizizz.innerHTML = "";
   totalPoint = 0;
+  totalScore = 0;
   streak = 0;
   streakPoint = 0;
   totalAnswerCorrect = 0;
@@ -153,10 +157,10 @@ function renderEnd(totalQuestion) {
                     </div>`;
   quizizzStatInnerTopEl.append(quizizzStatAccuracyEl);
 
-  const quizizzStatPerformanceEl = document.createElement("div");
-  quizizzStatPerformanceEl.classList.add("end-performance");
-  quizizzStatPerformanceEl.innerHTML = ` <div class="end-performance-item">
-                      <p class="number">${totalPoint}</p>
+  const endPerformance = document.createElement("div");
+  endPerformance.classList.add("end-performance");
+  endPerformance.innerHTML = ` <div class="end-performance-item">
+                      <p class="number">${totalScore}</p>
                       <p class="end">Score</p>
                     </div>
                     <div class="end-performance-item">
@@ -171,18 +175,18 @@ function renderEnd(totalQuestion) {
                       <p class="number">${totalAnswerIncorrect}</p>
                       <p class="end">Incorrect</p>
                     </div>`;
-  quizizzStatInnerTopEl.append(quizizzStatPerformanceEl);
+  quizizzStatInnerTopEl.append(endPerformance);
 
-  const quizizzStatActionEl = document.createElement("div");
-  quizizzStatActionEl.classList.add("quizz-end--actions");
+  const endActionEle = document.createElement("div");
+  endActionEle.classList.add("quizz-end--actions");
 
   const btnReset = document.createElement("button");
   btnReset.classList.add("action-reset");
   btnReset.addEventListener("click", handleReset);
   btnReset.innerText = " Play again";
-  quizizzStatActionEl.append(btnReset);
+  endActionEle.append(btnReset);
 
-  quizizzStatInnerTopEl.append(quizizzStatActionEl);
+  quizizzStatInnerTopEl.append(endActionEle);
 
   quizizzStatInnerEl.append(quizizzStatInnerTopEl);
   quizizzStatsEl.append(quizizzStatInnerEl);
@@ -236,6 +240,7 @@ async function renderQuesttion(quiz) {
     const randomQuestion = getRandomQuestion(quizcopy);
     const { question, correct_answer, incorrect_answers, score } =
       randomQuestion;
+    console.log(score);
     const randomQuestionIndex = quizcopy.findIndex(
       (item) => item === randomQuestion
     );
@@ -270,7 +275,7 @@ async function renderQuesttion(quiz) {
                     <span>${streakPoint > 0 ? "+" + streakPoint : ""}</span>
                   </div>
                   <div class="top-inner-right">
-                    <div class="top-score">Score: ${totalPoint}</div>
+                    <div class="top-score">Score: ${totalScore}</div>
                   </div>
                 </div>`;
 
@@ -306,6 +311,7 @@ async function renderQuesttion(quiz) {
       answerEl.addEventListener("click", (e) => {
         sentenceCurrent++;
 
+        console.log(score);
         handleQuestion(e, correct_answer, incorrect_answers, score);
         if (sentenceCurrent === quiz.length) {
           isPlay = true;
