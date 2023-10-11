@@ -60,7 +60,6 @@ function handleQuestion(e, correct_answers, incorrect_answers, score) {
         totalScore += score;
         totalScore += streakPoint;
       } else {
-        console.log(score);
         totalScore += score;
       }
       streakPoint += limitPoint;
@@ -157,9 +156,9 @@ function renderEnd(totalQuestion) {
                     </div>`;
   quizizzStatInnerTopEl.append(quizizzStatAccuracyEl);
 
-  const endPerformance = document.createElement("div");
-  endPerformance.classList.add("end-performance");
-  endPerformance.innerHTML = ` <div class="end-performance-item">
+  const quizizzStatPerformanceEl = document.createElement("div");
+  quizizzStatPerformanceEl.classList.add("end-performance");
+  quizizzStatPerformanceEl.innerHTML = ` <div class="end-performance-item">
                       <p class="number">${totalScore}</p>
                       <p class="end">Score</p>
                     </div>
@@ -175,18 +174,18 @@ function renderEnd(totalQuestion) {
                       <p class="number">${totalAnswerIncorrect}</p>
                       <p class="end">Incorrect</p>
                     </div>`;
-  quizizzStatInnerTopEl.append(endPerformance);
+  quizizzStatInnerTopEl.append(quizizzStatPerformanceEl);
 
-  const endActionEle = document.createElement("div");
-  endActionEle.classList.add("quizz-end--actions");
+  const quizizzStatActionEl = document.createElement("div");
+  quizizzStatActionEl.classList.add("quizz-end--actions");
 
   const btnReset = document.createElement("button");
   btnReset.classList.add("action-reset");
   btnReset.addEventListener("click", handleReset);
   btnReset.innerText = " Play again";
-  endActionEle.append(btnReset);
+  quizizzStatActionEl.append(btnReset);
 
-  quizizzStatInnerTopEl.append(endActionEle);
+  quizizzStatInnerTopEl.append(quizizzStatActionEl);
 
   quizizzStatInnerEl.append(quizizzStatInnerTopEl);
   quizizzStatsEl.append(quizizzStatInnerEl);
@@ -315,7 +314,6 @@ async function renderQuesttion(quiz) {
         handleQuestion(e, correct_answer, incorrect_answers, score);
         if (sentenceCurrent === quiz.length) {
           isPlay = true;
-          sentenceCurrent = 0;
         }
       });
       answerEl.innerText = answer;
@@ -332,6 +330,9 @@ async function renderQuesttion(quiz) {
     quizizzQuestionEl.append(quizizzBody);
     quizizzQuestionEl.append(quizizzResult);
     quizizz.append(quizizzQuestionEl);
+
+    console.log(sentenceCurrent);
+    console.log(quiz.length);
 
     if (sentenceCurrent === quiz.length) {
       sentenceCurrent = 0;
