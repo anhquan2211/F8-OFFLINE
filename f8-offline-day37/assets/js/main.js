@@ -322,5 +322,5 @@ async function checkToken() {
 window.addEventListener("load", () => {
   loadingEl.classList.remove("d-none");
   checkToken();
-  renderPost();
+  // renderPost();
 });
