@@ -105,6 +105,20 @@ async function handleRegister({ email, password, name }) {
   if (response.ok) {
     //Logic toast register success
     loadingEl.classList.add("d-none");
+    Toastify({
+      text: "Bạn đã đăng ký thành công ",
+      duration: 3000,
+      destination: "https://github.com/apvarun/toastify-js",
+      newWindow: true,
+      close: true,
+      gravity: "top", // `top` or `bottom`
+      position: "right", // `left`, `center` or `right`
+      stopOnFocus: true, // Prevents dismissing of toast on hover
+      style: {
+        background: "linear-gradient(to right, #6a3093, #a044ff)",
+        borderRadius: "10px",
+      },
+    }).showToast();
   }
 }
 
@@ -129,6 +143,20 @@ async function handleLogin({ email, password }) {
     loadingEl.classList.remove("d-none");
 
     renderPost();
+    Toastify({
+      text: "Bạn đã đăng nhập thành công ",
+      duration: 3000,
+      destination: "https://github.com/apvarun/toastify-js",
+      newWindow: true,
+      close: true,
+      gravity: "top", // `top` or `bottom`
+      position: "right", // `left`, `center` or `right`
+      stopOnFocus: true, // Prevents dismissing of toast on hover
+      style: {
+        background: "linear-gradient(to right, #6a3093, #a044ff)",
+        borderRadius: "10px",
+      },
+    }).showToast();
   }
 }
 
@@ -258,6 +286,20 @@ async function handleSignout(token) {
     renderPost();
     handleLoginAndRegister();
     loadingEl.classList.add("d-none");
+    Toastify({
+      text: "Bạn đã đăng xuất thành công ",
+      duration: 3000,
+      destination: "https://github.com/apvarun/toastify-js",
+      newWindow: true,
+      close: true,
+      gravity: "top", // `top` or `bottom`
+      position: "right", // `left`, `center` or `right`
+      stopOnFocus: true, // Prevents dismissing of toast on hover
+      style: {
+        background: "linear-gradient(to right, #6a3093, #a044ff)",
+        borderRadius: "10px",
+      },
+    }).showToast();
   }
 }
 
@@ -271,6 +313,21 @@ async function handleNewBlog(title, content, token, titleEL, contentEL) {
     renderPost();
     titleEL.value = "";
     contentEL.value = "";
+    Toastify({
+      text: "Bạn đã đăng 1 bài viết mới ",
+      duration: 3000,
+      destination: "https://github.com/apvarun/toastify-js",
+      newWindow: true,
+      close: true,
+      gravity: "top", // `top` or `bottom`
+      position: "right", // `left`, `center` or `right`
+      stopOnFocus: true, // Prevents dismissing of toast on hover
+      style: {
+        background: "linear-gradient(to right, #6a3093, #a044ff)",
+        borderRadius: "10px",
+        color: "#2d3481",
+      },
+    }).showToast();
   } else {
     refreshToken();
   }
