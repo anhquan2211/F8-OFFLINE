@@ -19,51 +19,54 @@ const root = document.querySelector("#root");
 root.innerHTML = "";
 renderBtnLogin();
 renderPost();
-const btnLogin = document.querySelector(".btn-login");
 
-//Handle render login form and register form
-btnLogin.addEventListener("click", () => {
-  root.innerHTML = "";
-  renderFormLogin();
-
-  //Handle Login
-  const formLogin = document.querySelector(".login");
-  const emailLogin = document.querySelector("#email");
-  const passwordLogin = document.querySelector("#password");
-  formLogin.addEventListener("submit", (e) => {
-    e.preventDefault();
-    const email = emailLogin.value;
-    const password = passwordLogin.value;
-    if (email && password) {
-      handleLogin({ email, password });
-      renderPost();
-    }
-  });
-
-  //Render Form Register
-  const btnRegister = document.querySelector(".btn-register-form");
-  btnRegister.addEventListener("click", () => {
+function handleLoginAndRegister() {
+  const btnLogin = document.querySelector(".btn-login");
+  //Handle render login form and register form
+  btnLogin.addEventListener("click", () => {
     root.innerHTML = "";
-    renderFormRegister();
+    renderFormLogin();
 
-    //Handle Register
-    const formRegister = document.querySelector(".register");
-    const nameEl = document.querySelector("#name");
-    const emailEl = document.querySelector("#email");
-    const passwordEl = document.querySelector("#password");
-    formRegister.addEventListener("submit", (e) => {
+    //Handle Login
+    const formLogin = document.querySelector(".login");
+    const emailLogin = document.querySelector("#email");
+    const passwordLogin = document.querySelector("#password");
+    formLogin.addEventListener("submit", (e) => {
       e.preventDefault();
-      const name = nameEl.value;
-      const email = emailEl.value;
-      const password = passwordEl.value;
-      if (name && email && password) {
-        console.log(123);
-        console.log(name, email, password);
-        handleRegister({ email, password, name });
+      const email = emailLogin.value;
+      const password = passwordLogin.value;
+      if (email && password) {
+        handleLogin({ email, password });
+        renderPost();
       }
     });
+
+    //Render Form Register
+    const btnRegister = document.querySelector(".btn-register-form");
+    btnRegister.addEventListener("click", () => {
+      root.innerHTML = "";
+      renderFormRegister();
+
+      //Handle Register
+      const formRegister = document.querySelector(".register");
+      const nameEl = document.querySelector("#name");
+      const emailEl = document.querySelector("#email");
+      const passwordEl = document.querySelector("#password");
+      formRegister.addEventListener("submit", (e) => {
+        e.preventDefault();
+        const name = nameEl.value;
+        const email = emailEl.value;
+        const password = passwordEl.value;
+        if (name && email && password) {
+          console.log(123);
+          console.log(name, email, password);
+          handleRegister({ email, password, name });
+        }
+      });
+    });
   });
-});
+}
+handleLoginAndRegister();
 
 //Handle register user
 async function handleRegister({ email, password, name }) {
@@ -209,14 +212,15 @@ async function refreshToken() {
 
 async function handleSignout(token) {
   console.log(token);
-  const { response } = await client.post("/logout", {}, token);
-  console.log(response.json());
-  if (response) {
+  const { data, response } = await client.post("/auth/logout", {}, token);
+  console.log(response);
+  if (response.ok) {
     localStorage.removeItem("access_token");
     localStorage.removeItem("refresh_token");
     root.innerHTML = "";
     renderBtnLogin();
     renderPost();
+    handleLoginAndRegister();
   }
 }
 
