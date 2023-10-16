@@ -8,6 +8,7 @@ const { SERVER_AUTH_API } = config;
 client.setUrl(SERVER_AUTH_API);
 
 const root = document.querySelector("#root");
+const loadingEl = document.querySelector(".loading");
 
 // Render button login
 export function renderBtnLogin() {
@@ -25,6 +26,7 @@ export function renderBtnLogin() {
 }
 
 export async function renderPost() {
+  loadingEl.classList.remove("d-none");
   const { data: blogs, response } = await client.get("/blogs");
 
   if (response.ok) {

@@ -15,6 +15,7 @@ import {
 } from "./render.js";
 
 const root = document.querySelector("#root");
+const loadingEl = document.querySelector(".loading");
 
 root.innerHTML = "";
 renderBtnLogin();
@@ -71,6 +72,8 @@ handleLoginAndRegister();
 //Handle register user
 async function handleRegister({ email, password, name }) {
   console.log(email, password, name);
+  loadingEl.classList.remove("d-none");
+
   const { response, data } = await client.post("/auth/register", {
     email,
     password,
@@ -81,11 +84,14 @@ async function handleRegister({ email, password, name }) {
 
   if (response.ok) {
     //Logic toast register success
+    loadingEl.classList.add("d-none");
   }
 }
 
 //Handle login user
 async function handleLogin({ email, password }) {
+  loadingEl.classList.remove("d-none");
+
   const { response, data: datas } = await client.post("/auth/login", {
     email,
     password,
@@ -105,6 +111,8 @@ async function handleLogin({ email, password }) {
 
 //Get Profile
 async function getUser() {
+  loadingEl.classList.remove("d-none");
+
   const { data: user } = await client.get(
     "/users/profile",
     localStorage.getItem("access_token")
@@ -163,6 +171,7 @@ async function getUser() {
   container.append(formPost);
 
   root.append(container);
+  loadingEl.classList.add("d-none");
 
   const formPostEl = document.querySelector(".form-post");
 
@@ -211,6 +220,7 @@ async function refreshToken() {
 }
 
 async function handleSignout(token) {
+  loadingEl.classList.remove("d-none");
   console.log(token);
   const { data, response } = await client.post("/auth/logout", {}, token);
   console.log(response);
@@ -221,6 +231,7 @@ async function handleSignout(token) {
     renderBtnLogin();
     renderPost();
     handleLoginAndRegister();
+    loadingEl.classList.add("d-none");
   }
 }
 
