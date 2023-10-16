@@ -161,8 +161,6 @@ async function getUser() {
 
   root.append(container);
 
-  renderPost();
-
   const formPostEl = document.querySelector(".form-post");
 
   formPostEl.addEventListener("submit", (e) => {
@@ -194,6 +192,8 @@ async function getUser() {
   // renderPost();
 }
 
+renderPost();
+
 async function refreshToken() {
   const { response, data } = await client.post(
     "/auth/refresh-token",
@@ -210,8 +210,8 @@ async function refreshToken() {
 async function handleSignout(token) {
   console.log(token);
   const { response } = await client.post("/logout", {}, token);
-  console.log(response);
-  if (response.ok) {
+  console.log(response.json());
+  if (response) {
     localStorage.removeItem("access_token");
     localStorage.removeItem("refresh_token");
     root.innerHTML = "";
@@ -225,6 +225,7 @@ async function handleNewBlog(title, content, token, titleEL, contentEL) {
   if (response.ok) {
     root.innerHTML = "";
     getUser();
+    renderPost();
     titleEL.value = "";
     contentEL.value = "";
   } else {
