@@ -86,6 +86,7 @@ export async function renderPost() {
     root.append(containerBlog);
   } else {
   }
+  loadingEl.classList.add("d-none");
 }
 
 export function renderFormLogin() {

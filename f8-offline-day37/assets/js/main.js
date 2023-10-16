@@ -19,7 +19,7 @@ const loadingEl = document.querySelector(".loading");
 
 root.innerHTML = "";
 renderBtnLogin();
-renderPost();
+// renderPost();
 
 function handleLoginAndRegister() {
   const btnLogin = document.querySelector(".btn-login");
@@ -33,12 +33,14 @@ function handleLoginAndRegister() {
     const emailLogin = document.querySelector("#email");
     const passwordLogin = document.querySelector("#password");
     formLogin.addEventListener("submit", (e) => {
+      loadingEl.classList.remove("d-none");
+
       e.preventDefault();
       const email = emailLogin.value;
       const password = passwordLogin.value;
       if (email && password) {
         handleLogin({ email, password });
-        renderPost();
+        // renderPost();
       }
     });
 
@@ -62,7 +64,25 @@ function handleLoginAndRegister() {
           console.log(123);
           console.log(name, email, password);
           handleRegister({ email, password, name });
+          root.innerHTML = "";
+          loadingEl.classList.remove("d-none");
+          renderFormLogin();
+          const formLogin = document.querySelector(".login");
+          const emailLogin = document.querySelector("#email");
+          const passwordLogin = document.querySelector("#password");
+          emailLogin.value = email;
+          formLogin.addEventListener("submit", (e) => {
+            loadingEl.classList.remove("d-none");
+            e.preventDefault();
+            const email = emailLogin.value;
+            const password = passwordLogin.value;
+            if (email && password) {
+              handleLogin({ email, password });
+              // renderPost();
+            }
+          });
         }
+        loadingEl.classList.add("d-none");
       });
     });
   });
@@ -101,10 +121,13 @@ async function handleLogin({ email, password }) {
   console.log(datas);
 
   if (response.ok) {
+    loadingEl.classList.remove("d-none");
     localStorage.setItem("access_token", datas.data.accessToken);
     localStorage.setItem("refresh_token", datas.data.refreshToken);
     root.innerHTML = "";
     getUser();
+    loadingEl.classList.remove("d-none");
+
     renderPost();
   }
 }
@@ -171,11 +194,12 @@ async function getUser() {
   container.append(formPost);
 
   root.append(container);
-  loadingEl.classList.add("d-none");
 
   const formPostEl = document.querySelector(".form-post");
 
   formPostEl.addEventListener("submit", (e) => {
+    loadingEl.classList.remove("d-none");
+
     e.preventDefault();
     const titleEl = document.querySelector(".input-title");
     const contentEl = document.querySelector(".input-content");
@@ -198,6 +222,8 @@ async function getUser() {
     console.log(localStorage.getItem("access_token"));
     handleSignout(localStorage.getItem("access_token"));
   });
+
+  loadingEl.classList.add("d-none");
 
   // root.innerHTML = "";
   // getUser();
@@ -238,6 +264,8 @@ async function handleSignout(token) {
 async function handleNewBlog(title, content, token, titleEL, contentEL) {
   const { response } = await client.post("/blogs", { title, content }, token);
   if (response.ok) {
+    loadingEl.classList.remove("d-none");
+
     root.innerHTML = "";
     getUser();
     renderPost();
@@ -246,6 +274,8 @@ async function handleNewBlog(title, content, token, titleEL, contentEL) {
   } else {
     refreshToken();
   }
+
+  loadingEl.classList.add("d-none");
 }
 
 async function checkToken() {
@@ -290,5 +320,7 @@ async function checkToken() {
   }
 }
 window.addEventListener("load", () => {
+  loadingEl.classList.remove("d-none");
   checkToken();
+  renderPost();
 });
