@@ -485,7 +485,7 @@ async function checkToken() {
           "refresh_token",
           refreshToken.data.token.refreshToken
         );
-        // getUser();
+        getUser();
       } else {
         localStorage.removeItem("access_token");
         localStorage.removeItem("refresh_token");
@@ -495,8 +495,8 @@ async function checkToken() {
   } else {
     localStorage.removeItem("access_token");
     localStorage.removeItem("refresh_token");
-    // renderBtnLogin();
-    // renderPost();
+    renderBtnLogin();
+    renderPost();
   }
 }
 window.addEventListener("load", () => {

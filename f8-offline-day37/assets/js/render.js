@@ -378,22 +378,22 @@ export function renderDatePicker() {
       const minutesDifference = Math.floor(
         (timeDifferenceMillis % (1000 * 60 * 60)) / (1000 * 60)
       );
-      // let timeDifferenceString;
+      let timeDifferenceString;
 
       // Format the time difference
-      // if (daysDifference > 0 && hoursDifference > 0 && minutesDifference > 0) {
-      //   timeDifferenceString =
-      //     daysDifference > 0
-      //       ? `Bài đăng của bạn sẽ được đăng sau ${daysDifference} ngày ${hoursDifference} giờ và ${minutesDifference} phút khi bạn submit`
-      //       : `Bài đăng của bạn sẽ được đăng sau ${hoursDifference} giờ ${minutesDifference} phút khi bạn submit.`;
-      // } else {
-      //   timeDifferenceString = `Vui lòng chọn lại thời gian đăng bài!`;
-      // }
+      if (daysDifference > 0 && hoursDifference > 0 && minutesDifference > 0) {
+        timeDifferenceString =
+          daysDifference > 0
+            ? `Bài đăng của bạn sẽ được đăng sau ${daysDifference} ngày ${hoursDifference} giờ và ${minutesDifference} phút khi bạn submit`
+            : `Bài đăng của bạn sẽ được đăng sau ${hoursDifference} giờ ${minutesDifference} phút khi bạn submit.`;
+      } else {
+        timeDifferenceString = `Vui lòng chọn lại thời gian đăng bài!`;
+      }
 
-      const timeDifferenceString =
-        daysDifference > 0
-          ? `Bài đăng của bạn sẽ được đăng sau ${daysDifference} ngày ${hoursDifference} giờ và ${minutesDifference} phút khi bạn submit`
-          : `Bài đăng của bạn sẽ được đăng sau ${hoursDifference} giờ ${minutesDifference} phút khi bạn submit.`;
+      // const timeDifferenceString =
+      //   daysDifference > 0
+      //     ? `Bài đăng của bạn sẽ được đăng sau ${daysDifference} ngày ${hoursDifference} giờ và ${minutesDifference} phút khi bạn submit`
+      //     : `Bài đăng của bạn sẽ được đăng sau ${hoursDifference} giờ ${minutesDifference} phút khi bạn submit.`;
 
       Toastify({
         text: timeDifferenceString,
