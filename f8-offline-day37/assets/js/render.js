@@ -43,6 +43,7 @@ export async function renderPost() {
         characterNameArr[characterNameArr.length - 1].charAt(0);
       const title = blog.title;
       const content = blog.content;
+      const date = blog.createdAt;
 
       const blogItem = document.createElement("div");
       blogItem.classList.add("blog-item");
@@ -66,17 +67,20 @@ export async function renderPost() {
 
       const avatar = document.createElement("div");
       avatar.classList.add("avatar");
+      avatar.classList.add("info-item");
       avatar.innerText = firstCharacterName;
       info.append(avatar);
 
       const name = document.createElement("div");
       name.classList.add("name");
+      name.classList.add("info-item");
       name.innerText = nameUser;
       info.append(name);
 
       const time = document.createElement("div");
       time.classList.add("time");
-      time.innerText = "Oct 16, 2023";
+      time.classList.add("info-item");
+      time.innerText = formatDate(date);
       info.append(time);
 
       blogItem.append(info);
@@ -227,4 +231,25 @@ export function renderFormRegister() {
   container.append(containerRight);
 
   root.append(container);
+}
+
+function formatDate(date) {
+  date = new Date(date);
+  var hours = date.getHours();
+  var minutes = date.getMinutes();
+  var ampm = hours >= 12 ? "pm" : "am";
+  hours = hours % 12;
+  hours = hours ? hours : 12; // the hour '0' should be '12'
+  minutes = minutes < 10 ? "0" + minutes : minutes;
+  var strTime = hours + ":" + minutes + " " + ampm;
+  return (
+    date.getMonth() +
+    1 +
+    "/" +
+    date.getDate() +
+    "/" +
+    date.getFullYear() +
+    "  " +
+    strTime
+  );
 }

@@ -3,16 +3,16 @@
 import { config } from "./config.js";
 import { client } from "./client.js";
 
-const { SERVER_AUTH_API } = config;
-
-client.setUrl(SERVER_AUTH_API);
-
 import {
   renderBtnLogin,
   renderPost,
   renderFormLogin,
   renderFormRegister,
-} from "./render.js";
+} from "./render.js ";
+
+const { SERVER_AUTH_API } = config;
+
+client.setUrl(SERVER_AUTH_API);
 
 const root = document.querySelector("#root");
 const loadingEl = document.querySelector(".loading");
@@ -117,6 +117,7 @@ async function handleRegister({ email, password, name }) {
       style: {
         background: "linear-gradient(to right, #6a3093, #a044ff)",
         borderRadius: "10px",
+        color: "#fff",
       },
     }).showToast();
   }
@@ -155,6 +156,7 @@ async function handleLogin({ email, password }) {
       style: {
         background: "linear-gradient(to right, #6a3093, #a044ff)",
         borderRadius: "10px",
+        color: "#fff",
       },
     }).showToast();
   }
@@ -298,6 +300,7 @@ async function handleSignout(token) {
       style: {
         background: "linear-gradient(to right, #6a3093, #a044ff)",
         borderRadius: "10px",
+        color: "#fff",
       },
     }).showToast();
   }
@@ -325,7 +328,7 @@ async function handleNewBlog(title, content, token, titleEL, contentEL) {
       style: {
         background: "linear-gradient(to right, #6a3093, #a044ff)",
         borderRadius: "10px",
-        color: "#2d3481",
+        color: "#fff",
       },
     }).showToast();
   } else {
