@@ -5,6 +5,9 @@ import { client } from "./client.js";
 
 const { SERVER_AUTH_API } = config;
 
+let limit = 12;
+let page = 1;
+
 client.setUrl(SERVER_AUTH_API);
 
 const root = document.querySelector("#root");
@@ -27,7 +30,9 @@ export function renderBtnLogin() {
 
 export async function renderPost() {
   loadingEl.classList.remove("d-none");
-  const { data: blogs, response } = await client.get("/blogs");
+  const { data: blogs, response } = await client.get(
+    `/blogs?_limit=${limit}&_page=${page}`
+  );
 
   if (response.ok) {
     const blogsArray = blogs.data;
@@ -237,7 +242,7 @@ function formatDate(date) {
   date = new Date(date);
   var hours = date.getHours();
   var minutes = date.getMinutes();
-  var ampm = hours >= 12 ? "pm" : "am";
+  var ampm = hours >= 12 ? "PM" : "AM";
   hours = hours % 12;
   hours = hours ? hours : 12; // the hour '0' should be '12'
   minutes = minutes < 10 ? "0" + minutes : minutes;
