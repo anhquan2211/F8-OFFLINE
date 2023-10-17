@@ -33,6 +33,7 @@ function handleLoginAndRegister() {
     const formLogin = document.querySelector(".login");
     const emailLogin = document.querySelector("#email");
     const passwordLogin = document.querySelector("#password");
+    const goHome = document.querySelector(".go-home");
     formLogin.addEventListener("submit", (e) => {
       loadingEl.classList.remove("d-none");
 
@@ -42,7 +43,30 @@ function handleLoginAndRegister() {
       if (email && password) {
         handleLogin({ email, password });
         // renderPost();
+      } else {
+        Toastify({
+          text: "Đăng nhập thất bại! ",
+          duration: 3000,
+          destination: "https://github.com/apvarun/toastify-js",
+          newWindow: true,
+          close: true,
+          gravity: "top", // `top` or `bottom`
+          position: "right", // `left`, `center` or `right`
+          stopOnFocus: true, // Prevents dismissing of toast on hover
+          style: {
+            background: "linear-gradient(62deg, #FBAB7E 0%, #F7CE68 100%)",
+            borderRadius: "10px",
+            color: "#fff",
+          },
+        }).showToast();
+        loadingEl.classList.add("d-none");
       }
+    });
+
+    goHome.addEventListener("click", (e) => {
+      root.innerHTML = "";
+      renderBtnLogin();
+      renderPost();
     });
 
     //Render Form Register
@@ -83,8 +107,32 @@ function handleLoginAndRegister() {
               // renderDatePicker();
             }
           });
+        } else {
+          Toastify({
+            text: "Đăng ký thất bại! ",
+            duration: 3000,
+            destination: "https://github.com/apvarun/toastify-js",
+            newWindow: true,
+            close: true,
+            gravity: "top", // `top` or `bottom`
+            position: "right", // `left`, `center` or `right`
+            stopOnFocus: true, // Prevents dismissing of toast on hover
+            style: {
+              background: "linear-gradient(62deg, #FBAB7E 0%, #F7CE68 100%)",
+              borderRadius: "10px",
+              color: "#fff",
+            },
+          }).showToast();
+          loadingEl.classList.add("d-none");
         }
         loadingEl.classList.add("d-none");
+      });
+
+      const goHome = document.querySelector(".go-home");
+      goHome.addEventListener("click", (e) => {
+        root.innerHTML = "";
+        renderBtnLogin();
+        renderPost();
       });
     });
   });
@@ -495,8 +543,8 @@ async function checkToken() {
   } else {
     localStorage.removeItem("access_token");
     localStorage.removeItem("refresh_token");
-    renderBtnLogin();
-    renderPost();
+    // renderBtnLogin();
+    // renderPost();
   }
 }
 window.addEventListener("load", () => {

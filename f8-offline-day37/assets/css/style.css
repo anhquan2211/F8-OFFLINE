@@ -271,6 +271,7 @@ a {
   color: #fff;
   display: inline-block;
   width: 200px;
+  cursor: pointer;
 }
 
 .container-left a:hover {
