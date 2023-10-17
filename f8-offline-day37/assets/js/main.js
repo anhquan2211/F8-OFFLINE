@@ -260,7 +260,7 @@ async function getUser() {
   // renderPost();
 }
 
-renderPost();
+// renderPost();
 
 async function refreshToken() {
   const { response, data } = await client.post(
@@ -350,7 +350,7 @@ async function checkToken() {
     if (user) {
       root.innerHTML = "";
       getUser();
-      // // renderPost();
+      renderPost();
     } else {
       const { data: refreshToken } = await client.post("/auth/refresh-token", {
         refreshToken: localStorage.getItem("refresh_token"),
@@ -382,5 +382,5 @@ async function checkToken() {
 window.addEventListener("load", () => {
   loadingEl.classList.remove("d-none");
   checkToken();
-  // renderPost();
+  renderPost();
 });

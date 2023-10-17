@@ -123,7 +123,7 @@ button {
   text-align: center;
   border-radius: 10px;
   overflow: hidden;
-  height: fit-content;
+  height: 500px;
   display: flex;
   flex-direction: column;
   row-gap: 10px;
@@ -168,7 +168,7 @@ button {
   column-gap: 10px;
   row-gap: 16px;
   margin: 0 30px 10px;
-  /* flex-wrap: wrap; */
+  flex-wrap: wrap;
 }
 
 .blog-item .info .avatar {
@@ -207,6 +207,11 @@ button {
   -webkit-line-clamp: 1;
   -webkit-box-orient: vertical;
   overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  width: 109px;
+  text-align: left;
+  line-height: 20px;
 }
 
 .blog-item .info .time {
