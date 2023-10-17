@@ -8,6 +8,7 @@ import {
   renderPost,
   renderFormLogin,
   renderFormRegister,
+  renderDatePicker,
 } from "./render.js ";
 
 const { SERVER_AUTH_API } = config;
@@ -79,6 +80,7 @@ function handleLoginAndRegister() {
             if (email && password) {
               handleLogin({ email, password });
               // renderPost();
+              // renderDatePicker();
             }
           });
         }
@@ -141,6 +143,7 @@ async function handleLogin({ email, password }) {
     localStorage.setItem("refresh_token", datas.data.refreshToken);
     root.innerHTML = "";
     getUser();
+
     loadingEl.classList.remove("d-none");
 
     renderPost();
@@ -216,6 +219,121 @@ async function getUser() {
   inputContent.placeholder = "Vui lòng nhập content bài viết của bạn...";
   formPost.append(inputContent);
 
+  // Create the container element
+  const containerDate = document.createElement("div");
+  containerDate.classList.add("container");
+
+  const titleSetTime = document.createElement("div");
+  titleSetTime.classList.add("title-set-time");
+  titleSetTime.innerText = "Hãy chọn thời gian đăng bài của bạn!";
+  containerDate.append(titleSetTime);
+
+  // Create the calendar element
+  const calendar = document.createElement("div");
+  calendar.classList.add("calendar");
+
+  // Create the calendar header
+  const calendarHeader = document.createElement("div");
+  calendarHeader.classList.add("calendar-header");
+
+  const calendarSet = document.createElement("div");
+  calendarSet.classList.add("calendar-set");
+
+  const monthPicker = document.createElement("span");
+  monthPicker.classList.add("month-picker");
+  monthPicker.id = "month-picker";
+  monthPicker.textContent = "May";
+
+  const yearPicker = document.createElement("div");
+  yearPicker.classList.add("year-picker");
+  yearPicker.id = "year-picker";
+
+  const preYear = document.createElement("span");
+  preYear.classList.add("year-change");
+  preYear.id = "pre-year";
+  preYear.innerHTML = "<pre><</pre>";
+
+  const year = document.createElement("span");
+  year.id = "year";
+  year.textContent = "2020";
+
+  const nextYear = document.createElement("span");
+  nextYear.classList.add("year-change");
+  nextYear.id = "next-year";
+  nextYear.innerHTML = "<pre>></pre>";
+
+  yearPicker.appendChild(preYear);
+  yearPicker.appendChild(year);
+  yearPicker.appendChild(nextYear);
+
+  calendarHeader.appendChild(monthPicker);
+  calendarHeader.appendChild(yearPicker);
+
+  // Create the calendar body
+  const calendarBody = document.createElement("div");
+  calendarBody.classList.add("calendar-body");
+
+  const calendarWeekDays = document.createElement("div");
+  calendarWeekDays.classList.add("calendar-week-days");
+  const weekDayNames = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+
+  weekDayNames.forEach((dayName) => {
+    const dayElement = document.createElement("div");
+    dayElement.textContent = dayName;
+    calendarWeekDays.appendChild(dayElement);
+  });
+
+  const calendarDays = document.createElement("div");
+  calendarDays.classList.add("calendar-days");
+
+  calendarBody.appendChild(calendarWeekDays);
+  calendarBody.appendChild(calendarDays);
+
+  // Create the calendar footer
+  const calendarFooter = document.createElement("div");
+  calendarFooter.classList.add("calendar-footer");
+
+  // Create the date-time format
+  const dateTimeFormat = document.createElement("div");
+  dateTimeFormat.classList.add("date-time-formate");
+
+  const dayTextFormat = document.createElement("div");
+  dayTextFormat.classList.add("day-text-formate");
+  dayTextFormat.textContent = "TODAY";
+
+  const dateTimeValue = document.createElement("div");
+  dateTimeValue.classList.add("date-time-value");
+
+  const timeFormat = document.createElement("div");
+  timeFormat.classList.add("time-formate");
+  timeFormat.textContent = "02:51:20";
+
+  const dateFormat = document.createElement("div");
+  dateFormat.classList.add("date-formate");
+  dateFormat.textContent = "23 - july - 2022";
+
+  dateTimeValue.appendChild(timeFormat);
+  dateTimeValue.appendChild(dateFormat);
+
+  dateTimeFormat.appendChild(dayTextFormat);
+  dateTimeFormat.appendChild(dateTimeValue);
+
+  // Create the month list
+  const monthList = document.createElement("div");
+  monthList.classList.add("month-list");
+
+  // Append the created elements to build the structure
+  calendar.appendChild(calendarSet);
+  calendar.appendChild(calendarHeader);
+  calendar.appendChild(calendarBody);
+  calendar.appendChild(calendarFooter);
+  calendar.appendChild(dateTimeFormat);
+  calendar.appendChild(monthList);
+
+  containerDate.appendChild(calendar);
+
+  formPost.append(containerDate);
+
   const btnPost = document.createElement("button");
   btnPost.classList.add("btn-post");
   btnPost.innerText = "Đăng bài";
@@ -225,6 +343,8 @@ async function getUser() {
 
   root.append(container);
 
+  renderDatePicker();
+
   const formPostEl = document.querySelector(".form-post");
 
   formPostEl.addEventListener("submit", (e) => {
@@ -233,6 +353,7 @@ async function getUser() {
     e.preventDefault();
     const titleEl = document.querySelector(".input-title");
     const contentEl = document.querySelector(".input-content");
+
     const title = titleEl.value;
     const content = contentEl.value;
     console.log(title, content);
@@ -258,10 +379,9 @@ async function getUser() {
   // root.innerHTML = "";
   // getUser();
   // renderPost();
+
+  // renderPost();
 }
-
-// renderPost();
-
 async function refreshToken() {
   const { response, data } = await client.post(
     "/auth/refresh-token",

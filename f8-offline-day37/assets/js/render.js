@@ -31,7 +31,7 @@ export function renderBtnLogin() {
 export async function renderPost() {
   loadingEl.classList.remove("d-none");
   const { data: blogs, response } = await client.get(
-    `/blogs?_limit=${limit}&_page=${page}`
+    `/blogs?limit=${limit}&page=${page}`
   );
 
   if (response.ok) {
@@ -257,4 +257,233 @@ function formatDate(date) {
     "  " +
     strTime
   );
+}
+
+export function renderDatePicker() {
+  const isLeapYear = (year) => {
+    return (
+      (year % 4 === 0 && year % 100 !== 0 && year % 400 !== 0) ||
+      (year % 100 === 0 && year % 400 === 0)
+    );
+  };
+  const getFebDays = (year) => {
+    return isLeapYear(year) ? 29 : 28;
+  };
+  let calendar = document.querySelector(".calendar");
+  const month_names = [
+    "January",
+    "February",
+    "March",
+    "April",
+    "May",
+    "June",
+    "July",
+    "August",
+    "September",
+    "October",
+    "November",
+    "December",
+  ];
+  let month_picker = document.querySelector("#month-picker");
+  const dayTextFormate = document.querySelector(".day-text-formate");
+  const timeFormate = document.querySelector(".time-formate");
+  const dateFormate = document.querySelector(".date-formate");
+
+  month_picker.onclick = () => {
+    month_list.classList.remove("hideonce");
+    month_list.classList.remove("hide");
+    month_list.classList.add("show");
+    dayTextFormate.classList.remove("showtime");
+    dayTextFormate.classList.add("hidetime");
+    timeFormate.classList.remove("showtime");
+    timeFormate.classList.add("hideTime");
+    dateFormate.classList.remove("showtime");
+    dateFormate.classList.add("hideTime");
+  };
+
+  const generateCalendar = (month, year) => {
+    let calendar_days = document.querySelector(".calendar-days");
+    calendar_days.innerHTML = "";
+    let calendar_header_year = document.querySelector("#year");
+    let days_of_month = [
+      31,
+      getFebDays(year),
+      31,
+      30,
+      31,
+      30,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31,
+    ];
+
+    let currentDate = new Date();
+
+    month_picker.innerHTML = month_names[month];
+
+    calendar_header_year.innerHTML = year;
+
+    let first_day = new Date(year, month);
+
+    for (let i = 0; i <= days_of_month[month] + first_day.getDay() - 1; i++) {
+      let day = document.createElement("div");
+
+      if (i >= first_day.getDay()) {
+        day.innerHTML = i - first_day.getDay() + 1;
+
+        if (
+          i - first_day.getDay() + 1 === currentDate.getDate() &&
+          year === currentDate.getFullYear() &&
+          month === currentDate.getMonth()
+        ) {
+          day.classList.add("current-date");
+        }
+      }
+      calendar_days.appendChild(day);
+    }
+
+    const calendarSetEl = document.querySelector(".calendar-set");
+
+    calendar_days.addEventListener("click", (event) => {
+      console.log(event.target);
+      const selectedDay = parseInt(event.target.textContent);
+      const selectedMonth = currentMonth.value;
+      const selectedYear = currentYear.value;
+
+      const selectedDate = new Date(selectedYear, selectedMonth, selectedDay);
+
+      const currentDate = new Date();
+
+      var timeDifference = selectedDate - currentDate;
+
+      // You can use the selectedDay, selectedMonth, and selectedYear as needed
+      console.log(`Selected Date: ${selectedDay}`);
+      console.log(`Selected Month: ${month_names[selectedMonth]}`);
+      console.log(`Selected Year: ${selectedYear}`);
+
+      // To get the current time, you can use the existing timer
+      // (as it updates every second)
+      const currentTime = todayShowTime.textContent;
+      console.log(`Current Time: ${currentTime}`);
+
+      // Calculate days and time
+      const daysDifference = Math.floor(timeDifference / (1000 * 60 * 60 * 24));
+      const timeDifferenceMillis = timeDifference % (1000 * 60 * 60 * 24);
+      const hoursDifference = Math.floor(
+        timeDifferenceMillis / (1000 * 60 * 60)
+      );
+      const minutesDifference = Math.floor(
+        (timeDifferenceMillis % (1000 * 60 * 60)) / (1000 * 60)
+      );
+      // let timeDifferenceString;
+
+      // Format the time difference
+      // if (daysDifference > 0 && hoursDifference > 0 && minutesDifference > 0) {
+      //   timeDifferenceString =
+      //     daysDifference > 0
+      //       ? `Bài đăng của bạn sẽ được đăng sau ${daysDifference} ngày ${hoursDifference} giờ và ${minutesDifference} phút khi bạn submit`
+      //       : `Bài đăng của bạn sẽ được đăng sau ${hoursDifference} giờ ${minutesDifference} phút khi bạn submit.`;
+      // } else {
+      //   timeDifferenceString = `Vui lòng chọn lại thời gian đăng bài!`;
+      // }
+
+      const timeDifferenceString =
+        daysDifference > 0
+          ? `Bài đăng của bạn sẽ được đăng sau ${daysDifference} ngày ${hoursDifference} giờ và ${minutesDifference} phút khi bạn submit`
+          : `Bài đăng của bạn sẽ được đăng sau ${hoursDifference} giờ ${minutesDifference} phút khi bạn submit.`;
+
+      Toastify({
+        text: timeDifferenceString,
+        duration: 5000,
+        destination: "https://github.com/apvarun/toastify-js",
+        newWindow: true,
+        close: true,
+        gravity: "top", // `top` or `bottom`
+        position: "right", // `left`, `center` or `right`
+        stopOnFocus: true, // Prevents dismissing of toast on hover
+        style: {
+          background: "linear-gradient(to right, #6a3093, #a044ff)",
+          borderRadius: "10px",
+          color: "#fff",
+        },
+      }).showToast();
+
+      console.log(timeDifferenceString);
+
+      const timeSet = `${selectedDay} ${month_names[selectedMonth]} ${selectedYear} ${currentTime}`;
+      calendarSetEl.innerText = timeSet;
+    });
+  };
+
+  let month_list = calendar.querySelector(".month-list");
+  month_names.forEach((e, index) => {
+    let month = document.createElement("div");
+    month.innerHTML = `<div>${e}</div>`;
+
+    month_list.append(month);
+    month.onclick = () => {
+      currentMonth.value = index;
+      generateCalendar(currentMonth.value, currentYear.value);
+      month_list.classList.replace("show", "hide");
+      dayTextFormate.classList.remove("hideTime");
+      dayTextFormate.classList.add("showtime");
+      timeFormate.classList.remove("hideTime");
+      timeFormate.classList.add("showtime");
+      dateFormate.classList.remove("hideTime");
+      dateFormate.classList.add("showtime");
+    };
+  });
+
+  (function () {
+    month_list.classList.add("hideonce");
+  })();
+  document.querySelector("#pre-year").onclick = () => {
+    --currentYear.value;
+    generateCalendar(currentMonth.value, currentYear.value);
+  };
+  document.querySelector("#next-year").onclick = () => {
+    ++currentYear.value;
+    generateCalendar(currentMonth.value, currentYear.value);
+  };
+
+  let currentDate = new Date();
+  let currentMonth = { value: currentDate.getMonth() };
+  let currentYear = { value: currentDate.getFullYear() };
+  generateCalendar(currentMonth.value, currentYear.value);
+
+  const todayShowTime = document.querySelector(".time-formate");
+  const todayShowDate = document.querySelector(".date-formate");
+
+  const currshowDate = new Date();
+  const showCurrentDateOption = {
+    year: "numeric",
+    month: "long",
+    day: "numeric",
+    weekday: "long",
+  };
+  const currentDateFormate = new Intl.DateTimeFormat(
+    "en-US",
+    showCurrentDateOption
+  ).format(currshowDate);
+  todayShowDate.textContent = currentDateFormate;
+  setInterval(() => {
+    const timer = new Date();
+    const option = {
+      hour: "numeric",
+      minute: "numeric",
+      second: "numeric",
+    };
+    const formateTimer = new Intl.DateTimeFormat("en-us", option).format(timer);
+    let time = `${`${timer.getHours()}`.padStart(
+      2,
+      "0"
+    )}:${`${timer.getMinutes()}`.padStart(
+      2,
+      "0"
+    )}: ${`${timer.getSeconds()}`.padStart(2, "0")}`;
+    todayShowTime.textContent = formateTimer;
+  }, 1000);
 }
