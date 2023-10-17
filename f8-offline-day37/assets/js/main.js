@@ -19,7 +19,10 @@ const root = document.querySelector("#root");
 const loadingEl = document.querySelector(".loading");
 
 root.innerHTML = "";
-renderBtnLogin();
+// setTimeout(() => {
+//   // renderBtnLogin();
+// }, 3000);
+
 // renderPost();
 
 function handleLoginAndRegister() {
@@ -137,7 +140,6 @@ function handleLoginAndRegister() {
     });
   });
 }
-handleLoginAndRegister();
 
 //Handle register user
 async function handleRegister({ email, password, name }) {
@@ -217,10 +219,14 @@ async function handleLogin({ email, password }) {
 async function getUser() {
   loadingEl.classList.remove("d-none");
 
-  const { data: user } = await client.get(
+  const { data: user, response } = await client.get(
     "/users/profile",
     localStorage.getItem("access_token")
   );
+
+  if (+response.status === 401 || +response.status === 400) {
+    refreshToken();
+  }
 
   const userProfile = user.data;
 
@@ -413,6 +419,23 @@ async function getUser() {
         titleEl,
         contentEl
       );
+    } else {
+      Toastify({
+        text: "Bài viết không hợp lệ! ",
+        duration: 3000,
+        destination: "https://github.com/apvarun/toastify-js",
+        newWindow: true,
+        close: true,
+        gravity: "top", // `top` or `bottom`
+        position: "right", // `left`, `center` or `right`
+        stopOnFocus: true, // Prevents dismissing of toast on hover
+        style: {
+          background: "linear-gradient(62deg, #FBAB7E 0%, #F7CE68 100%)",
+          borderRadius: "10px",
+          color: "#fff",
+        },
+      }).showToast();
+      loadingEl.classList.add("d-none");
     }
   });
 
@@ -440,6 +463,7 @@ async function refreshToken() {
       location.setItem("access_token", data.accessToken);
       location.setItem("refresh_token", data.accessToken);
     }
+  } else {
   }
 }
 
@@ -471,15 +495,22 @@ async function handleSignout(token) {
         color: "#fff",
       },
     }).showToast();
+  } else {
+    checkAuth(response);
+    root.innerHTML = "";
+    renderBtnLogin();
+    renderPost();
+    handleLoginAndRegister();
   }
 }
 
 async function handleNewBlog(title, content, token, titleEL, contentEL) {
   const { response } = await client.post("/blogs", { title, content }, token);
+  console.log(response);
   if (response.ok) {
     loadingEl.classList.remove("d-none");
 
-    root.innerHTML = "";
+    // root.innerHTML = "";
     getUser();
     renderPost();
     titleEL.value = "";
@@ -499,8 +530,28 @@ async function handleNewBlog(title, content, token, titleEL, contentEL) {
         color: "#fff",
       },
     }).showToast();
-  } else {
+  } else if (+response.status === "401" || +response.status === "400") {
     refreshToken();
+    // root.innerHTML = "";
+    renderBtnLogin();
+    renderPost();
+    Toastify({
+      text: "Vui lòng đăng nhập lại! ",
+      duration: 3000,
+      destination: "https://github.com/apvarun/toastify-js",
+      newWindow: true,
+      close: true,
+      gravity: "top", // `top` or `bottom`
+      position: "right", // `left`, `center` or `right`
+      stopOnFocus: true, // Prevents dismissing of toast on hover
+      style: {
+        background: "linear-gradient(62deg, #FBAB7E 0%, #F7CE68 100%)",
+        borderRadius: "10px",
+        color: "#fff",
+      },
+    }).showToast();
+
+    loadingEl.classList.add("d-none");
   }
 
   loadingEl.classList.add("d-none");
@@ -517,8 +568,8 @@ async function checkToken() {
     console.log(user);
     if (user) {
       root.innerHTML = "";
-      getUser();
-      renderPost();
+      // getUser();
+      // renderPost();
     } else {
       const { data: refreshToken } = await client.post("/auth/refresh-token", {
         refreshToken: localStorage.getItem("refresh_token"),
@@ -533,11 +584,13 @@ async function checkToken() {
           "refresh_token",
           refreshToken.data.token.refreshToken
         );
-        getUser();
+        // root.innerHTML = "";
+        // getUser();
+        // renderPost();
       } else {
         localStorage.removeItem("access_token");
         localStorage.removeItem("refresh_token");
-        renderBtnLogin();
+        // renderBtnLogin();
       }
     }
   } else {
@@ -547,8 +600,43 @@ async function checkToken() {
     // renderPost();
   }
 }
-window.addEventListener("load", () => {
+window.addEventListener("DOMContentLoaded", () => {
   loadingEl.classList.remove("d-none");
-  checkToken();
-  renderPost();
+  checkToken().then(() => {
+    getUser();
+    renderPost();
+  });
+  // .then(() => {
+  //   renderBtnLogin();
+  // })
+  // .catch(() => {
+  //   renderBtnLogin();
+  //   handleLoginAndRegister();
+  // })
+  // .finally(() => {
+  //   renderPost();
+  // });
+  // renderPost();
 });
+
+function checkAuth(response) {
+  if (response.status === 401) {
+    Toastify({
+      text: "Đăng xuất thành công ",
+      duration: 3000,
+      destination: "https://github.com/apvarun/toastify-js",
+      newWindow: true,
+      close: true,
+      gravity: "top", // `top` or `bottom`
+      position: "right", // `left`, `center` or `right`
+      stopOnFocus: true, // Prevents dismissing of toast on hover
+      style: {
+        background: "linear-gradient(62deg, #FBAB7E 0%, #F7CE68 100%)",
+        borderRadius: "10px",
+        color: "#fff",
+      },
+    }).showToast();
+
+    loadingEl.classList.add("d-none");
+  }
+}
