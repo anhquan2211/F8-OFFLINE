@@ -464,6 +464,9 @@ async function refreshToken() {
       location.setItem("refresh_token", data.accessToken);
     }
   } else {
+    renderBtnLogin();
+    handleLoginAndRegister();
+    renderPost();
   }
 }
 
@@ -530,13 +533,15 @@ async function handleNewBlog(title, content, token, titleEL, contentEL) {
         color: "#fff",
       },
     }).showToast();
-  } else if (+response.status === "401" || +response.status === "400") {
-    refreshToken();
+  } else if (+response.status === 401 || +response.status === 400) {
+    console.log("Đăng bài viết lỗi!");
+    // refreshToken();
     // root.innerHTML = "";
-    renderBtnLogin();
+    // renderBtnLogin();
+    // getUser();
     renderPost();
     Toastify({
-      text: "Vui lòng đăng nhập lại! ",
+      text: "Quá trình đăng bài bị lỗi! ",
       duration: 3000,
       destination: "https://github.com/apvarun/toastify-js",
       newWindow: true,
