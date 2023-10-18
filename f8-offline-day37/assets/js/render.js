@@ -266,9 +266,11 @@ export function renderDatePicker() {
       (year % 100 === 0 && year % 400 === 0)
     );
   };
+
   const getFebDays = (year) => {
     return isLeapYear(year) ? 29 : 28;
   };
+
   let calendar = document.querySelector(".calendar");
   const month_names = [
     "January",
@@ -284,6 +286,7 @@ export function renderDatePicker() {
     "November",
     "December",
   ];
+
   let month_picker = document.querySelector("#month-picker");
   const dayTextFormate = document.querySelector(".day-text-formate");
   const timeFormate = document.querySelector(".time-formate");
@@ -303,6 +306,7 @@ export function renderDatePicker() {
 
   const generateCalendar = (month, year) => {
     let calendar_days = document.querySelector(".calendar-days");
+    const calendarSetEl = document.querySelector(".calendar-set");
     calendar_days.innerHTML = "";
     let calendar_header_year = document.querySelector("#year");
     let days_of_month = [
@@ -341,81 +345,89 @@ export function renderDatePicker() {
         ) {
           day.classList.add("current-date");
         }
+
+        day.addEventListener("click", (event) => {
+          event.stopPropagation();
+          const selectedDay = parseInt(event.target.textContent);
+          const selectedMonth = currentMonth.value;
+          const selectedYear = currentYear.value;
+
+          const selectedDate = new Date(
+            selectedYear,
+            selectedMonth,
+            selectedDay
+          );
+
+          const currentDate = new Date();
+          var timeDifference = selectedDate - currentDate;
+
+          // You can use the selectedDay, selectedMonth, and selectedYear as needed
+          console.log(`Selected Date: ${selectedDay}`);
+          console.log(`Selected Month: ${month_names[selectedMonth]}`);
+          console.log(`Selected Year: ${selectedYear}`);
+
+          // To get the current time, you can use the existing timer (as it updates every second)
+          const currentTime = todayShowTime.textContent;
+          console.log(`Current Time: ${currentTime}`);
+
+          // Calculate days and time
+          const daysDifference = Math.floor(
+            timeDifference / (1000 * 60 * 60 * 24)
+          );
+          const timeDifferenceMillis = timeDifference % (1000 * 60 * 60 * 24);
+          const hoursDifference = Math.floor(
+            timeDifferenceMillis / (1000 * 60 * 60)
+          );
+          const minutesDifference = Math.floor(
+            (timeDifferenceMillis % (1000 * 60 * 60)) / (1000 * 60)
+          );
+
+          // Calculate the time difference string
+          let timeDifferenceString = "";
+          if (daysDifference > 0) {
+            timeDifferenceString += `${daysDifference} ngày${
+              daysDifference > 1 ? "" : ""
+            } `;
+          }
+          if (hoursDifference > 0) {
+            timeDifferenceString += `${hoursDifference} giờ${
+              hoursDifference > 1 ? "" : ""
+            } `;
+          }
+          if (minutesDifference > 0) {
+            timeDifferenceString += `${minutesDifference} phút${
+              minutesDifference > 1 ? "" : ""
+            }`;
+          }
+
+          if (timeDifferenceString === "") {
+            timeDifferenceString = "Now!";
+          } else {
+            timeDifferenceString = `Bài viết của bạn sẽ được đăng sau ${timeDifferenceString} lúc ${selectedYear} ${month_names[selectedMonth]} ${selectedDay}, ${currentTime}`;
+          }
+
+          // Update the calendarSetEl with the time difference string
+          calendarSetEl.innerText = timeDifferenceString;
+          Toastify({
+            text: timeDifferenceString,
+            duration: 3000,
+            destination: "https://github.com/apvarun/toastify-js",
+            newWindow: true,
+            close: true,
+            gravity: "top", // `top` or `bottom`
+            position: "right", // `left`, `center` or `right`
+            stopOnFocus: true, // Prevents dismissing of toast on hover
+            style: {
+              background: "linear-gradient(to right, #6a3093, #a044ff)",
+              borderRadius: "10px",
+              color: "#fff",
+            },
+          }).showToast();
+        });
+
+        calendar_days.appendChild(day);
       }
-      calendar_days.appendChild(day);
     }
-
-    const calendarSetEl = document.querySelector(".calendar-set");
-
-    calendar_days.addEventListener("click", (event) => {
-      console.log(event.target);
-      const selectedDay = parseInt(event.target.textContent);
-      const selectedMonth = currentMonth.value;
-      const selectedYear = currentYear.value;
-
-      const selectedDate = new Date(selectedYear, selectedMonth, selectedDay);
-
-      const currentDate = new Date();
-
-      var timeDifference = selectedDate - currentDate;
-
-      // You can use the selectedDay, selectedMonth, and selectedYear as needed
-      console.log(`Selected Date: ${selectedDay}`);
-      console.log(`Selected Month: ${month_names[selectedMonth]}`);
-      console.log(`Selected Year: ${selectedYear}`);
-
-      // To get the current time, you can use the existing timer
-      // (as it updates every second)
-      const currentTime = todayShowTime.textContent;
-      console.log(`Current Time: ${currentTime}`);
-
-      // Calculate days and time
-      const daysDifference = Math.floor(timeDifference / (1000 * 60 * 60 * 24));
-      const timeDifferenceMillis = timeDifference % (1000 * 60 * 60 * 24);
-      const hoursDifference = Math.floor(
-        timeDifferenceMillis / (1000 * 60 * 60)
-      );
-      const minutesDifference = Math.floor(
-        (timeDifferenceMillis % (1000 * 60 * 60)) / (1000 * 60)
-      );
-      let timeDifferenceString;
-
-      // Format the time difference
-      if (daysDifference > 0 && hoursDifference > 0 && minutesDifference > 0) {
-        timeDifferenceString =
-          daysDifference > 0
-            ? `Bài đăng của bạn sẽ được đăng sau ${daysDifference} ngày ${hoursDifference} giờ và ${minutesDifference} phút khi bạn submit`
-            : `Bài đăng của bạn sẽ được đăng sau ${hoursDifference} giờ ${minutesDifference} phút khi bạn submit.`;
-      } else {
-        timeDifferenceString = `Vui lòng chọn lại thời gian đăng bài!`;
-      }
-
-      // const timeDifferenceString =
-      //   daysDifference > 0
-      //     ? `Bài đăng của bạn sẽ được đăng sau ${daysDifference} ngày ${hoursDifference} giờ và ${minutesDifference} phút khi bạn submit`
-      //     : `Bài đăng của bạn sẽ được đăng sau ${hoursDifference} giờ ${minutesDifference} phút khi bạn submit.`;
-
-      Toastify({
-        text: timeDifferenceString,
-        duration: 5000,
-        destination: "https://github.com/apvarun/toastify-js",
-        newWindow: true,
-        close: true,
-        gravity: "top", // `top` or `bottom`
-        position: "right", // `left`, `center` or `right`
-        stopOnFocus: true, // Prevents dismissing of toast on hover
-        style: {
-          background: "linear-gradient(to right, #6a3093, #a044ff)",
-          borderRadius: "10px",
-          color: "#fff",
-        },
-      }).showToast();
-
-      console.log(timeDifferenceString);
-
-      const timeSet = `${selectedDay} ${month_names[selectedMonth]} ${selectedYear} ${currentTime}`;
-      calendarSetEl.innerText = timeSet;
-    });
   };
 
   let month_list = calendar.querySelector(".month-list");
@@ -469,6 +481,7 @@ export function renderDatePicker() {
     showCurrentDateOption
   ).format(currshowDate);
   todayShowDate.textContent = currentDateFormate;
+
   setInterval(() => {
     const timer = new Date();
     const option = {
@@ -476,14 +489,7 @@ export function renderDatePicker() {
       minute: "numeric",
       second: "numeric",
     };
-    const formateTimer = new Intl.DateTimeFormat("en-us", option).format(timer);
-    let time = `${`${timer.getHours()}`.padStart(
-      2,
-      "0"
-    )}:${`${timer.getMinutes()}`.padStart(
-      2,
-      "0"
-    )}: ${`${timer.getSeconds()}`.padStart(2, "0")}`;
+    const formateTimer = new Intl.DateTimeFormat("en-US", option).format(timer);
     todayShowTime.textContent = formateTimer;
   }, 1000);
 }
