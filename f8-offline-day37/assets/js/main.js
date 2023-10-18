@@ -407,18 +407,15 @@ async function getUser() {
     e.preventDefault();
     const titleEl = document.querySelector(".input-title");
     const contentEl = document.querySelector(".input-content");
+    const calendarSet = document.querySelector(".calendar-set");
+    console.log(calendarSet.innerText);
 
     const title = titleEl.value;
     const content = contentEl.value;
+    const token = localStorage.getItem("access_token");
     console.log(title, content);
     if (title && content) {
-      handleNewBlog(
-        title,
-        content,
-        localStorage.getItem("access_token"),
-        titleEl,
-        contentEl
-      );
+      handlePostBlog(title, content, token, titleEl, contentEl);
     } else {
       Toastify({
         text: "Bài viết không hợp lệ! ",
@@ -453,6 +450,7 @@ async function getUser() {
 
   // renderPost();
 }
+
 async function refreshToken() {
   const { response, data } = await client.post(
     "/auth/refresh-token",
@@ -507,13 +505,18 @@ async function handleSignout(token) {
   }
 }
 
-async function handleNewBlog(title, content, token, titleEL, contentEL) {
-  const { response } = await client.post("/blogs", { title, content }, token);
+async function handlePostBlog(title, content, token, titleEL, contentEL) {
+  const { response, data } = await client.post(
+    "/blogs",
+    { title, content },
+    token
+  );
   console.log(response);
+  console.log(data);
   if (response.ok) {
     loadingEl.classList.remove("d-none");
 
-    // root.innerHTML = "";
+    root.innerHTML = "";
     getUser();
     renderPost();
     titleEL.value = "";
@@ -535,13 +538,13 @@ async function handleNewBlog(title, content, token, titleEL, contentEL) {
     }).showToast();
   } else if (+response.status === 401 || +response.status === 400) {
     console.log("Đăng bài viết lỗi!");
-    // refreshToken();
+    refreshToken();
     // root.innerHTML = "";
     // renderBtnLogin();
     // getUser();
     renderPost();
     Toastify({
-      text: "Quá trình đăng bài bị lỗi! ",
+      text: "Quá trình đăng bài bị lỗi. Vui lòng thử lại! ",
       duration: 3000,
       destination: "https://github.com/apvarun/toastify-js",
       newWindow: true,
