@@ -401,7 +401,7 @@ export function renderDatePicker() {
           }
 
           if (timeDifferenceString === "") {
-            timeDifferenceString = "Now!";
+            timeDifferenceString = "Vui lòng chọn lại thời gian đăng";
           } else {
             timeDifferenceString = `Bài viết của bạn sẽ được đăng sau ${timeDifferenceString} lúc ${selectedYear} ${month_names[selectedMonth]} ${selectedDay}, ${currentTime}`;
           }
