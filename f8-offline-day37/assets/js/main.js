@@ -468,6 +468,7 @@ async function refreshToken() {
       localStorage.setItem("refresh_token", dataToken.data.token.refreshToken);
     }
   } else {
+    root.innerHTML = "";
     renderBtnLogin();
     handleLoginAndRegister();
     Toastify({
@@ -560,23 +561,45 @@ async function handlePostBlog(title, content, token, titleEL, contentEL) {
     }).showToast();
   } else {
     console.log("Đăng bài viết lỗi!");
-    refreshToken().then(async () => {
-      const { response, data } = await client.post(
-        "/blogs",
-        { title, content },
-        localStorage.getItem("access_token")
-      );
-      console.log(localStorage.getItem("access_token"));
+    refreshToken()
+      .then(async () => {
+        const { response, data } = await client.post(
+          "/blogs",
+          { title, content },
+          localStorage.getItem("access_token")
+        );
+        console.log(localStorage.getItem("access_token"));
 
-      if (response.ok) {
-        console.log(12345678);
+        if (response.ok) {
+          console.log(12345678);
+          root.innerHTML = "";
+          getUser();
+          renderPost();
+          titleEL.value = "";
+          contentEL.value = "";
+          Toastify({
+            text: "Bạn đã đăng 1 bài viết mới ",
+            duration: 3000,
+            destination: "https://github.com/apvarun/toastify-js",
+            newWindow: true,
+            close: true,
+            gravity: "top", // `top` or `bottom`
+            position: "right", // `left`, `center` or `right`
+            stopOnFocus: true, // Prevents dismissing of toast on hover
+            style: {
+              background: "linear-gradient(to right, #6a3093, #a044ff)",
+              borderRadius: "10px",
+              color: "#fff",
+            },
+          }).showToast();
+        }
+      })
+      .catch(() => {
         root.innerHTML = "";
-        getUser();
-        renderPost();
-        titleEL.value = "";
-        contentEL.value = "";
+        renderBtnLogin();
+        handleLoginAndRegister();
         Toastify({
-          text: "Bạn đã đăng 1 bài viết mới ",
+          text: "Vui lòng đăng nhập lại! ",
           duration: 3000,
           destination: "https://github.com/apvarun/toastify-js",
           newWindow: true,
@@ -585,13 +608,13 @@ async function handlePostBlog(title, content, token, titleEL, contentEL) {
           position: "right", // `left`, `center` or `right`
           stopOnFocus: true, // Prevents dismissing of toast on hover
           style: {
-            background: "linear-gradient(to right, #6a3093, #a044ff)",
+            background: "linear-gradient(62deg, #FBAB7E 0%, #F7CE68 100%)",
             borderRadius: "10px",
-            color: "#fff",
+            color: "#000",
           },
         }).showToast();
-      }
-    });
+        renderPost();
+      });
 
     loadingEl.classList.add("d-none");
   }
