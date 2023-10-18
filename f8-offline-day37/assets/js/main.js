@@ -449,6 +449,7 @@ async function getUser() {
   // renderPost();
 
   // renderPost();
+  return user;
 }
 
 async function refreshToken() {
@@ -593,8 +594,8 @@ async function checkToken() {
     console.log(user);
     if (user) {
       root.innerHTML = "";
-      // getUser();
-      // renderPost();
+      getUser();
+      renderPost();
     } else {
       const { data: refreshToken } = await client.post("/auth/refresh-token", {
         refreshToken: localStorage.getItem("refresh_token"),
@@ -609,28 +610,34 @@ async function checkToken() {
           "refresh_token",
           refreshToken.data.token.refreshToken
         );
-        // root.innerHTML = "";
-        // getUser();
-        // renderPost();
+        root.innerHTML = "";
+        getUser();
+        renderPost();
       } else {
         localStorage.removeItem("access_token");
         localStorage.removeItem("refresh_token");
-        // renderBtnLogin();
+        renderBtnLogin();
+        handleLoginAndRegister();
+        renderPost();
       }
     }
   } else {
     localStorage.removeItem("access_token");
     localStorage.removeItem("refresh_token");
-    // renderBtnLogin();
-    // renderPost();
+    renderBtnLogin();
+    handleLoginAndRegister();
+    renderPost();
+    // refreshToken();
   }
 }
 window.addEventListener("DOMContentLoaded", () => {
   loadingEl.classList.remove("d-none");
-  checkToken().then(() => {
-    getUser();
-    renderPost();
-  });
+  checkToken();
+  // checkToken().then(() => {
+  //   // getUser();
+  //   // renderBtnLogin;
+  //   // renderPost();
+  // });
   // .then(() => {
   //   renderBtnLogin();
   // })
