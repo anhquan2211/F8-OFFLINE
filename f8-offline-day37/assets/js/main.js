@@ -453,17 +453,21 @@ async function getUser() {
 }
 
 async function refreshToken() {
-  const { response, data } = await client.post(
+  const { response, data: dataToken } = await client.post(
     "/auth/refresh-token",
-    localStorage.getItem("access_token")
+    {
+      refreshToken: localStorage.getItem("refresh_token"),
+    }
   );
+  // console.log(data);
   console.log("Response của refresh token: ", response);
   if (response.ok) {
-    if (!data.status_code === "FAILED") {
-      location.setItem("access_token", data.accessToken);
-      location.setItem("refresh_token", data.accessToken);
+    if (dataToken.code === 200) {
+      console.log("ok");
+      localStorage.setItem("access_token", dataToken.data.token.accessToken);
+      localStorage.setItem("refresh_token", dataToken.data.token.refreshToken);
     }
-  } else if (+response.status === 400) {
+  } else {
     renderBtnLogin();
     handleLoginAndRegister();
     Toastify({
@@ -528,8 +532,9 @@ async function handlePostBlog(title, content, token, titleEL, contentEL) {
     { title, content },
     token
   );
-  console.log(response);
-  console.log(data);
+  console.log(token);
+  // console.log(response);
+  // console.log(data);
   if (response.ok) {
     loadingEl.classList.remove("d-none");
 
@@ -553,29 +558,40 @@ async function handlePostBlog(title, content, token, titleEL, contentEL) {
         color: "#fff",
       },
     }).showToast();
-  } else if (+response.status === 401 || +response.status === 400) {
+  } else {
     console.log("Đăng bài viết lỗi!");
-    refreshToken();
-    root.innerHTML = "";
-    renderBtnLogin();
-    handleLoginAndRegister();
-    // getUser();
-    renderPost();
-    Toastify({
-      text: "Vui lòng đăng nhập lại! ",
-      duration: 3000,
-      destination: "https://github.com/apvarun/toastify-js",
-      newWindow: true,
-      close: true,
-      gravity: "top", // `top` or `bottom`
-      position: "right", // `left`, `center` or `right`
-      stopOnFocus: true, // Prevents dismissing of toast on hover
-      style: {
-        background: "linear-gradient(62deg, #FBAB7E 0%, #F7CE68 100%)",
-        borderRadius: "10px",
-        color: "#fff",
-      },
-    }).showToast();
+    refreshToken().then(async () => {
+      const { response, data } = await client.post(
+        "/blogs",
+        { title, content },
+        localStorage.getItem("access_token")
+      );
+      console.log(localStorage.getItem("access_token"));
+
+      if (response.ok) {
+        console.log(12345678);
+        root.innerHTML = "";
+        getUser();
+        renderPost();
+        titleEL.value = "";
+        contentEL.value = "";
+        Toastify({
+          text: "Bạn đã đăng 1 bài viết mới ",
+          duration: 3000,
+          destination: "https://github.com/apvarun/toastify-js",
+          newWindow: true,
+          close: true,
+          gravity: "top", // `top` or `bottom`
+          position: "right", // `left`, `center` or `right`
+          stopOnFocus: true, // Prevents dismissing of toast on hover
+          style: {
+            background: "linear-gradient(to right, #6a3093, #a044ff)",
+            borderRadius: "10px",
+            color: "#fff",
+          },
+        }).showToast();
+      }
+    });
 
     loadingEl.classList.add("d-none");
   }
