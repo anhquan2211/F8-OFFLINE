@@ -408,17 +408,34 @@ async function getUser() {
     const titleEl = document.querySelector(".input-title");
     const contentEl = document.querySelector(".input-content");
     const calendarSet = document.querySelector(".calendar-set");
-    console.log(calendarSet.innerText);
 
+    const calendarSetTime = calendarSet.innerText;
     const title = titleEl.value;
     const content = contentEl.value;
     const token = localStorage.getItem("access_token");
     console.log(title, content);
-    if (title && content) {
+    if (title && content && !calendarSetTime) {
       handlePostBlog(title, content, token, titleEl, contentEl);
-    } else {
+    } else if (!title && !content) {
       Toastify({
         text: "Bài viết không hợp lệ! ",
+        duration: 3000,
+        destination: "https://github.com/apvarun/toastify-js",
+        newWindow: true,
+        close: true,
+        gravity: "top", // `top` or `bottom`
+        position: "right", // `left`, `center` or `right`
+        stopOnFocus: true, // Prevents dismissing of toast on hover
+        style: {
+          background: "linear-gradient(62deg, #FBAB7E 0%, #F7CE68 100%)",
+          borderRadius: "10px",
+          color: "#fff",
+        },
+      }).showToast();
+      loadingEl.classList.add("d-none");
+    } else if (calendarSetTime) {
+      Toastify({
+        text: "Chức năng đăng bài theo ngày chưa xử lý. Vui lòng không chọn ngày giờ để đăng bài!",
         duration: 3000,
         destination: "https://github.com/apvarun/toastify-js",
         newWindow: true,
