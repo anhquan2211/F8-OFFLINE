@@ -140,7 +140,7 @@ button {
   text-align: center;
   border-radius: 10px;
   overflow: hidden;
-  height: 500px;
+  height: fit-content;
   display: flex;
   flex-direction: column;
   row-gap: 10px;
@@ -164,6 +164,7 @@ button {
   font-weight: 600;
   margin: 10px 30px;
   cursor: pointer;
+  height: 55px;
 }
 
 .blog-item .content {
@@ -177,6 +178,7 @@ button {
   line-height: 1.4;
   margin: 0 30px 10px;
   cursor: pointer;
+  height: 55px;
 }
 
 .blog-item .info {
@@ -234,6 +236,42 @@ button {
 .blog-item .info .time {
   color: #797676;
   font-size: 14px;
+}
+
+.btn-go-home {
+  padding: 10px 0px;
+  color: #fff;
+  border-radius: 10px;
+  margin: 0 30px 20px;
+  text-align: center;
+  background-color: #0000ff;
+  position: absolute;
+  right: 30px;
+  width: 150px;
+  top: 30px;
+}
+
+.btn-go-home:hover {
+  opacity: 0.8;
+}
+
+.blog-item .btn-detail {
+  width: 85%;
+  padding: 10px 0px;
+  background: radial-gradient(
+    circle 897px at 9% 80.3%,
+    rgba(55, 60, 245, 1) 0%,
+    rgba(234, 161, 15, 0.9) 100.2%
+  );
+  color: #fff;
+  border-radius: 10px;
+  margin: 0 30px 20px;
+  text-align: center;
+  transition: opacity 0.3s linear;
+}
+
+.blog-item .btn-detail:hover {
+  opacity: 0.8;
 }
 
 a {
@@ -655,4 +693,83 @@ a {
   .month-list > div {
     margin: 5px 0px;
   }
+}
+
+.d-none {
+  display: none;
+}
+
+/* VIEW DETAIL POST */
+.container-detail {
+  position: relative;
+  width: 80%;
+  height: fit-content;
+  margin: 100px auto;
+  border-radius: 10px;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  background-color: #fff;
+  padding: 20px 30px;
+  display: flex;
+  flex-direction: column;
+  row-gap: 30px;
+}
+
+.container-detail .info-detail {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  column-gap: 20px;
+}
+
+.info-detail .avatar-detail {
+  text-align: center;
+  line-height: 50px;
+  font-size: 30px;
+  font-weight: bold;
+  color: #fff;
+  width: 50px !important;
+  height: 50px !important;
+  background: #000428; /* fallback for old browsers */
+  background: -webkit-linear-gradient(
+    to right,
+    #004e92,
+    #000428
+  ); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(
+    to right,
+    #004e92,
+    #000428
+  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+  border-radius: 50%;
+}
+
+.container-detail .image-container {
+  margin: 0 auto;
+  width: 100%;
+}
+
+.container-detail .image-detail {
+  margin-bottom: 30px;
+  width: 100%;
+}
+
+.title-detail {
+  font-size: 24px;
+  font-weight: 800;
+}
+
+.name-detail {
+  font-size: 20px;
+  font-weight: 500;
+}
+
+.time-detail {
+  font-size: 16px;
+  font-style: italic;
+  text-decoration: underline;
+}
+
+.content-detail {
+  text-align: justify;
 }

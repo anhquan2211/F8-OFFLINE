@@ -55,6 +55,7 @@ export async function renderPost() {
 
       const image = document.createElement("img");
       image.src = "./assets/images/image.jpg";
+      image.classList.add("image");
       blogItem.append(image);
 
       const titleEl = document.createElement("div");
@@ -64,7 +65,23 @@ export async function renderPost() {
 
       const contentEl = document.createElement("div");
       contentEl.classList.add("content");
-      contentEl.innerText = content;
+      const pattern =
+        /[\+]?[(]?([0-9]{3})[)]?[-\s\.]?([0-9]{3})[-\s\.]?([0-9]{4,6})/g;
+      const pattern2 = /([a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4})/g;
+      const pattern3 =
+        /(https?:\/\/(?:www\.|(?!www))[a-zA-Z0-9][a-zA-Z0-9-]+[a-zA-Z0-9]\.[^\s]{2,}|www\.[a-zA-Z0-9][a-zA-Z0-9-]+[a-zA-Z0-9]\.[^\s]{2,}|https?:\/\/(?:www\.|(?!www))[a-zA-Z0-9]+\.[^\s]{2,}|www\.[a-zA-Z0-9]+\.[^\s]{2,})/g;
+      const replacedContent = content
+        .replace(pattern, (match, p1, p2, p3) => {
+          const phoneNumber = p1 + p2 + p3;
+          return `<a href="tel:${phoneNumber}" data-start="${p1}">${match}</a>`;
+        })
+        .replace(pattern2, (match) => {
+          return `<a href="mailto:${match}">${match}</a>`;
+        })
+        .replace(pattern3, (match) => {
+          return `<a href="${match}" target="_blank">${match}</a>`;
+        });
+      contentEl.innerHTML = replacedContent;
       blogItem.append(contentEl);
 
       const info = document.createElement("div");
@@ -89,6 +106,11 @@ export async function renderPost() {
       info.append(time);
 
       blogItem.append(info);
+
+      const buttonDetailPost = document.createElement("button");
+      buttonDetailPost.classList.add("btn-detail");
+      buttonDetailPost.innerText = "View Detail Post";
+      blogItem.append(buttonDetailPost);
 
       containerBlog.append(blogItem);
     });
@@ -492,4 +514,51 @@ export function renderDatePicker() {
     const formateTimer = new Intl.DateTimeFormat("en-US", option).format(timer);
     todayShowTime.textContent = formateTimer;
   }, 1000);
+}
+
+export function renderDetailPost() {
+  const containerDetailPost = document.createElement("div");
+  containerDetailPost.classList.add("container-detail");
+
+  const info = document.createElement("div");
+  info.classList.add("info-detail");
+
+  const avatarDetail = document.createElement("div");
+  avatarDetail.classList.add("avatar-detail");
+  info.append(avatarDetail);
+
+  const nameDetail = document.createElement("div");
+  nameDetail.classList.add("name-detail");
+  info.append(nameDetail);
+
+  const timeDetail = document.createElement("div");
+  timeDetail.classList.add("time-detail");
+  info.append(timeDetail);
+
+  containerDetailPost.append(info);
+
+  const titleDetail = document.createElement("div");
+  titleDetail.classList.add("title-detail");
+  containerDetailPost.append(titleDetail);
+
+  const contentDetail = document.createElement("div");
+  contentDetail.classList.add("content-detail");
+  containerDetailPost.append(contentDetail);
+
+  const divImg = document.createElement("div");
+  divImg.classList.add("img-container");
+
+  const image = document.createElement("img");
+  image.src = "./assets/images/image.jpg";
+  image.classList.add("image-detail");
+  divImg.append(image);
+
+  containerDetailPost.append(divImg);
+
+  const goHomeBtn = document.createElement("button");
+  goHomeBtn.classList.add("btn-go-home");
+  goHomeBtn.innerText = "Go Home";
+  containerDetailPost.append(goHomeBtn);
+
+  root.append(containerDetailPost);
 }
