@@ -2,6 +2,12 @@
 
 import { config } from "./config.js";
 import { client } from "./client.js";
+import {
+  replaceEmailAddresses,
+  replacePhoneNumbers,
+  replaceLinks,
+  replaceYouTubeVideos,
+} from "./main.js";
 
 const { SERVER_AUTH_API } = config;
 
@@ -65,22 +71,12 @@ export async function renderPost() {
 
       const contentEl = document.createElement("div");
       contentEl.classList.add("content");
-      const pattern =
-        /[\+]?[(]?([0-9]{3})[)]?[-\s\.]?([0-9]{3})[-\s\.]?([0-9]{4,6})/g;
-      const pattern2 = /([a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4})/g;
-      const pattern3 =
-        /(https?:\/\/(?:www\.|(?!www))[a-zA-Z0-9][a-zA-Z0-9-]+[a-zA-Z0-9]\.[^\s]{2,}|www\.[a-zA-Z0-9][a-zA-Z0-9-]+[a-zA-Z0-9]\.[^\s]{2,}|https?:\/\/(?:www\.|(?!www))[a-zA-Z0-9]+\.[^\s]{2,}|www\.[a-zA-Z0-9]+\.[^\s]{2,})/g;
-      const replacedContent = content
-        .replace(pattern, (match, p1, p2, p3) => {
-          const phoneNumber = p1 + p2 + p3;
-          return `<a href="tel:${phoneNumber}" data-start="${p1}">${match}</a>`;
-        })
-        .replace(pattern2, (match) => {
-          return `<a href="mailto:${match}">${match}</a>`;
-        })
-        .replace(pattern3, (match) => {
-          return `<a href="${match}" target="_blank">${match}</a>`;
-        });
+      contentEl.innerText = content;
+      let replacedContent = contentEl.innerText;
+      replacedContent = replaceEmailAddresses(replacedContent);
+      replacedContent = replacePhoneNumbers(replacedContent);
+      replacedContent = replaceLinks(replacedContent);
+      // replacedContent = replaceYouTubeVideos(replacedContent);
       contentEl.innerHTML = replacedContent;
       blogItem.append(contentEl);
 

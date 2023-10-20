@@ -822,16 +822,10 @@ function handleDetailPost() {
         } else if (element.classList.contains("content")) {
           contentDetail.innerText = element.innerText;
           let strContent = contentDetail.innerText;
-          strContent = replacePhoneNumbers(strContent);
           strContent = replaceEmailAddresses(strContent);
-          if (
-            strContent.includes("youtube") ||
-            strContent.includes("youtu.be")
-          ) {
-            strContent = replaceYouTubeVideos(strContent);
-          } else {
-            strContent = replaceLinks(strContent);
-          }
+          strContent = replacePhoneNumbers(strContent);
+          strContent = replaceLinks(strContent);
+          strContent = replaceYouTubeVideos(strContent);
 
           contentDetail.innerHTML = strContent;
         } else if (element.classList.contains("info")) {
@@ -892,39 +886,54 @@ function handleNoneButtonDetail() {
   });
 }
 
-function replacePhoneNumbers(content) {
-  const phonePattern =
-    /[\+]?[(]?([0-9]{3})[)]?[-\s\.]?([0-9]{3})[-\s\.]?([0-9]{4,6})/g;
-  return content.replace(phonePattern, (match, p1, p2, p3) => {
-    const phoneNumber = p1 + p2 + p3;
-    return `<a href="tel:${phoneNumber}" data-start="${p1}">${match}</a>`;
+export function replacePhoneNumbers(content) {
+  const phoneRegex =
+    /((\+|0)\d{1,4}[-.\s]?)?(\(?\d{1,3}?\)?[-.\s]?)?\b\d{1,4}[-.\s]?\d{2,}[-.\s]?\d{2,}\b/g;
+  return content.replaceAll(phoneRegex, function (phone) {
+    return ` <a href="tel:${phone}" class="link" target="_blank">${phone}</a> `;
   });
 }
 
-function replaceEmailAddresses(content) {
-  const emailPattern = /([a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4})/g;
-  return content.replace(emailPattern, (match) => {
-    return `<a href="mailto:${match}">${match}</a>`;
+export function replaceEmailAddresses(content) {
+  const emailRegex = /\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Z|a-z]{2,}\b/g;
+  return content.replaceAll(emailRegex, function (email) {
+    return ` <a href="mailto:${email}" class="link" target="_blank">${email}</a> `;
   });
 }
 
-function replaceYouTubeVideos(content) {
-  const youtubePattern =
-    /((?:https?:)?\/\/)?((?:www|m)\.)?((?:youtube(-nocookie)?\.com|youtu.be))(\/(?:[\w\-]+\?v=|embed\/|live\/|v\/)?)([\w\-]+)(\S+)?/g;
-  return content.replace(youtubePattern, (match) => {
-    const videoID = match.match(
-      /^.*(youtu\.be\/|v\/|u\/\w\/|embed\/|watch\?v=|\&v=)([^#\&\?]*).*/
-    )[2];
-    const anchorElement = `<a href="${match}" target="_blank">${match}</a>`;
-    const iframeElement = `<iframe width="560" height="315" src="https://www.youtube.com/embed/${videoID}" frameborder="0" allowfullscreen></iframe>`;
-    return `${anchorElement}<br>${iframeElement}`;
+export function replaceYouTubeVideos(content) {
+  const youtubeRegex = /(https?:\/\/(www\.)?(youtube\.com|youtu\.be)\/[^\s]+)/g;
+  return content.replaceAll(youtubeRegex, function (url) {
+    if (url) {
+      let videoId = url.split(/(vi\/|v=|\/v\/|youtu\.be\/|\/embed\/)/)[2];
+      if (videoId) {
+        videoId = videoId.split(/[^0-9a-z_-]/i)[0];
+        return `
+        <iframe
+          width='560'
+          height='315'
+          src='https://www.youtube.com/embed/${videoId}'
+          title='YouTube video player'
+          frameBorder='0'
+          allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share'
+          allowFullScreen></iframe>
+      `;
+      }
+      return url;
+    }
+    return url;
   });
 }
 
-function replaceLinks(content) {
-  const linkPattern =
-    /(https?:\/\/(?:www\.|(?!www))[a-zA-Z0-9][a-zA-Z0-9-]+[a-zAZ0-9]\.[^\s]{2,}|www\.[a-zA-Z0-9][a-zA-Z0-9-]+[a-zA-Z0-9]\.[^\s]{2,}|https?:\/\/(?:www\.|(?!www))[a-zA-Z0-9]+\.[^\s]{2,}|www\.[a-zA-Z0-9]+\.[^\s]{2,})/g;
-  return content.replace(linkPattern, (match) => {
-    return `<a href="${match}" target="_blank">${match}</a>`;
+export function replaceLinks(content) {
+  const urlRegex = /((https?:\/\/)|(www\.))[^\s]+/g;
+  return content.replaceAll(urlRegex, function (url) {
+    if (url.slice(0, 4) !== "http") {
+      url = "http://" + url;
+    }
+    if (url.slice(-1) === "/") {
+      url = url.substring(0, url.length - 1);
+    }
+    return ` <a href="${url}" class="link" target="_blank">${url.replace("http://", "")}</a> `;
   });
 }
