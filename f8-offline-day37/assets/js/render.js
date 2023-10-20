@@ -53,7 +53,16 @@ export async function renderPost() {
       const firstCharacterName =
         characterNameArr[characterNameArr.length - 1].charAt(0);
       const title = blog.title;
-      const content = blog.content;
+      let content = blog.content;
+      content = content
+        .replace(/'/g, " ' ")
+        .replace(/"/g, ' " ')
+        .replace(/</g, "<")
+        .replace(/>/g, ">")
+        .replace(/&/g, "&")
+        .replace(/\n{3,}/g, "\n\n")
+        .replace(/\n/g, " <br/> ")
+        .trim();
       const date = blog.createdAt;
 
       const blogItem = document.createElement("div");

@@ -844,6 +844,17 @@ function handleDetailPost() {
         } else if (element.classList.contains("content")) {
           contentDetail.innerText = element.innerText;
           let strContent = contentDetail.innerText;
+
+          strContent = strContent
+            .replace(/ ' /g, "'")
+            .replace(/ " /g, '"')
+            .replace(/</g, "<")
+            .replace(/>/g, ">")
+            .replace(/&/g, "&")
+            .replace(/\n{3,}/g, "\n\n")
+            .replace(/\n/g, " <br/> ")
+            .trim();
+
           strContent = replaceEmailAddresses(strContent);
           strContent = replacePhoneNumbers(strContent);
           strContent = replaceLinks(strContent);
