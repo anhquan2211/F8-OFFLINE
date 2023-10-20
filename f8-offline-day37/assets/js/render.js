@@ -105,6 +105,7 @@ export async function renderPost() {
 
       const buttonDetailPost = document.createElement("button");
       buttonDetailPost.classList.add("btn-detail");
+      buttonDetailPost.classList.add("btn-animation");
       buttonDetailPost.innerText = "View Detail Post";
       blogItem.append(buttonDetailPost);
 

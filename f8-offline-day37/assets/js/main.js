@@ -276,31 +276,48 @@ async function getUser() {
     const formPost = document.createElement("form");
     formPost.classList.add("form-post");
 
+    const containerFormBlog = document.createElement("div");
+    containerFormBlog.classList.add("container-form-blog");
+    containerFormBlog.classList.add("form-child");
+
+    const titleContainer = document.createElement("div");
+    titleContainer.classList.add("title-container");
+
     const titlePost = document.createElement("label");
     titlePost.classList.add("title-post");
     titlePost.innerText = "Title bài viết";
-    formPost.append(titlePost);
+    titleContainer.append(titlePost);
 
     const inputTitle = document.createElement("input");
     inputTitle.classList.add("input-title");
     inputTitle.placeholder = "Vui lòng nhập title bài viết của bạn...";
-    formPost.append(inputTitle);
+    titleContainer.append(inputTitle);
+
+    containerFormBlog.append(titleContainer);
+
+    const contentContainer = document.createElement("div");
+    contentContainer.classList.add("content-container");
 
     const contentPost = document.createElement("label");
     contentPost.classList.add("content-post");
     contentPost.innerText = "Content bài viết";
-    formPost.append(contentPost);
+    contentContainer.append(contentPost);
 
     const inputContent = document.createElement("textarea");
     inputContent.classList.add("input-content");
-    inputContent.cols = 30;
+    inputContent.cols = 50;
     inputContent.rows = 10;
     inputContent.placeholder = "Vui lòng nhập content bài viết của bạn...";
-    formPost.append(inputContent);
+    contentContainer.append(inputContent);
+
+    containerFormBlog.append(contentContainer);
+
+    formPost.append(containerFormBlog);
 
     // Create the container element
     const containerDate = document.createElement("div");
     containerDate.classList.add("container");
+    containerDate.classList.add("form-child");
 
     const titleSetTime = document.createElement("div");
     titleSetTime.classList.add("title-set-time");
@@ -413,10 +430,15 @@ async function getUser() {
 
     formPost.append(containerDate);
 
+    const btnSubmitWrap = document.createElement("div");
+    btnSubmitWrap.classList.add("btn-submit-wrap");
     const btnPost = document.createElement("button");
     btnPost.classList.add("btn-post");
+    btnPost.classList.add("btn-animation");
     btnPost.innerText = "Đăng bài";
-    formPost.append(btnPost);
+    btnSubmitWrap.append(btnPost);
+
+    formPost.append(btnSubmitWrap);
 
     container.append(formPost);
 
