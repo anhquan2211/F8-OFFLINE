@@ -10,19 +10,23 @@ export const App = () => {
 
   const routeConfig = [
     {
-      path: "/",
+      path: "/f8-offline-day40/dist/index.html",
       component: Home,
     },
     {
-      path: "/gioi-thieu",
+      path: "/f8-offline-day40/dist",
+      component: Home,
+    },
+    {
+      path: "/f8-offline-day40/dist/gioi-thieu",
       component: About,
     },
     {
-      path: "/san-pham",
+      path: "/f8-offline-day40/dist/san-pham",
       component: Products,
     },
     {
-      path: "/san-pham/:id",
+      path: "/f8-offline-day40/dist/san-pham/:id",
       component: ProductDetail,
     },
   ];
