@@ -9,24 +9,24 @@ export const App = () => {
   console.log("Đã vào hàm App()");
 
   const routeConfig = [
+    // {
+    //   path: "/f8-offline-day40/dist/index.html",
+    //   component: Home,
+    // },
     {
-      path: "/f8-offline-day40/dist/index.html",
+      path: "/",
       component: Home,
     },
     {
-      path: "/f8-offline-day40/dist",
-      component: Home,
-    },
-    {
-      path: "/f8-offline-day40/dist/gioi-thieu",
+      path: "/gioi-thieu",
       component: About,
     },
     {
-      path: "/f8-offline-day40/dist/san-pham",
+      path: "/san-pham",
       component: Products,
     },
     {
-      path: "/f8-offline-day40/dist/san-pham/:id",
+      path: "/san-pham/:id",
       component: ProductDetail,
     },
   ];
