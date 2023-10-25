@@ -5,11 +5,10 @@ console.log(Error());
 const routerInit = new Navigo("/", { linksSelector: "a", hash: true });
 const app = document.querySelector("#app");
 
-function render(app, html) {
-  console.log(html);
-  console.log(app);
+const render = (app, html) => {
   app.innerHTML = html;
-}
+};
+
 window.navigate = (path) => routerInit.navigate(path);
 
 const renderUI = (defaultLayout, component, params) => {
