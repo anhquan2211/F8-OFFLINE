@@ -123,6 +123,22 @@ body {
   background: linear-gradient(270deg, #fe3b0e, #ff8119);
 }
 
+.title-react {
+  background: #ffb75e; /* fallback for old browsers */
+  background: -webkit-linear-gradient(
+    to right,
+    #ed8f03,
+    #ffb75e
+  ); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(
+    to right,
+    #ed8f03,
+    #ffb75e
+  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+  color: #056aa4;
+}
+
 .project-item,
 .day-homework {
   background-color: #fff;
@@ -172,6 +188,7 @@ body {
 
 input[id="title-wrap-prj"]:checked ~ .project-wrapper,
 input[id="title-wrap-js"]:checked ~ .homework-wrapper,
+input[id="title-wrap-react"]:checked ~ .homework-wrapper,
 input[id="title-wrap"]:checked ~ .homework-wrapper {
   opacity: 1;
   display: block;

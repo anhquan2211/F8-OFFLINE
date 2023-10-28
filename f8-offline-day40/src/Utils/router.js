@@ -2,7 +2,7 @@ import Navigo from "navigo";
 import { Error } from "../Error";
 console.log(Error());
 
-const routerInit = new Navigo("/", { linksSelector: "a", hash: true });
+const routerInit = new Navigo("/", { linksSelector: "a", hash: false });
 const app = document.querySelector("#app");
 
 const render = (app, html) => {

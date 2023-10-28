@@ -1,0 +1,20 @@
+.todo-item-only {
+  color: rgb(55 65 81);
+  line-height: 1.25;
+  border: 1px solid #ccc;
+  padding: 8px 12px;
+  border-radius: 4px;
+  width: 100%;
+  appearance: none;
+}
+
+.line-through {
+  text-decoration: line-through;
+}
+
+.action-btn {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 16px;
+}

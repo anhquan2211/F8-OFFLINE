@@ -9,10 +9,6 @@ export const App = () => {
   console.log("Đã vào hàm App()");
 
   const routeConfig = [
-    // {
-    //   path: "/f8-offline-day40/dist/index.html",
-    //   component: Home,
-    // },
     {
       path: "/",
       component: Home,
