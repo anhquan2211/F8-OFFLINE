@@ -9,6 +9,7 @@ import HttpClient from "../configs/client";
 import FormTodo from "../components/FormTodo/FormTodo";
 import ListTodo from "../components/ListTodo/ListTodo";
 import { accessToast, failedToast } from "../helpers/toastify";
+import Loading from "../components/Loading/Loading";
 
 //Khởi tạo đối tượng client từ class HttpClient.
 const client = new HttpClient();
@@ -19,33 +20,34 @@ export default function Home() {
   const [todosList, setTodosList] = useState([]);
 
   const getTodos = async (apiKey) => {
-    console.log("Đã vào hàm để getTodo");
-    const { data } = await client.get(endpoint.todos, {}, apiKey);
-    console.log(data);
-    if (data && data.data) {
-      const todoList = data.data.listTodo.map((item) => {
-        const newTodo = {
-          id: item._id,
-          todo: item.todo,
-          createdAt: item.createdAt,
-          isCompleted: item.isCompleted,
-        };
-        return newTodo;
-      });
-      return setTodosList(todoList);
+    if (!loading) {
+      setLoading(true);
+      const { data } = await client.get(endpoint.todos, {}, apiKey);
+      console.log(data);
+      if (data && data.data) {
+        const todoList = data.data.listTodo.map((item) => {
+          const newTodo = {
+            id: item._id,
+            todo: item.todo,
+            createdAt: item.createdAt,
+            isCompleted: item.isCompleted,
+          };
+          return newTodo;
+        });
+        setTodosList(todoList);
+      }
+      setLoading(false);
     }
   };
 
   useEffect(() => {
     if (apiKey) {
-      console.log(apiKey);
-
       getTodos(apiKey);
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [apiKey]);
 
   useEffect(() => {
-    setLoading(true);
     let userApiKey = localStorage.getItem("apiKey");
 
     //Kiểm tra có tồn tại apiKey ở trong localStorage hay không?
@@ -63,8 +65,6 @@ export default function Home() {
           }
 
           if (apiKey && userEmail) {
-            setLoading(false);
-
             accessToast(
               "Chào bạn " + userEmail.slice(0, userEmail.indexOf("@"))
             );
@@ -87,7 +87,6 @@ export default function Home() {
         );
 
         setApiKey(userApiKey);
-        setLoading(false);
       } else {
         localStorage.removeItem("userEmail");
         localStorage.removeItem("apiKey");
@@ -118,6 +117,7 @@ export default function Home() {
           />
         </div>
       </main>
+      {loading && <Loading />}
     </>
   );
 }

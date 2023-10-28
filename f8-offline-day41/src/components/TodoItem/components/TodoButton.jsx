@@ -1,22 +1,30 @@
 import propTypes from "prop-types";
+import React, { useState } from "react";
 
 import Button from "../../Button/Button";
 import "../assets/TodoButton.css";
 
 export default function TodoButtons({
+  todoItem,
+  setTodoItem,
   isEditable,
   setIsEditable,
   loading,
   handleUpdate,
   handleDelete,
 }) {
+  const [prevState, setPrevState] = useState(todoItem);
   return (
     <div className="btn-wrapper">
       {isEditable && (
         <>
           <Button
             className="btn-exits"
-            onClick={() => setIsEditable(false)}
+            onClick={() => {
+              setIsEditable(false);
+              console.log(prevState);
+              setTodoItem(prevState);
+            }}
             disabled={loading}
             loading={loading}
             style="warn"
@@ -37,12 +45,15 @@ export default function TodoButtons({
           </Button>
         </>
       )}
-      {console.log("isEditable: ", isEditable)}
       {!isEditable && (
         <Button
           className="btn-edit"
           style={"success"}
-          onClick={() => setIsEditable(!isEditable)}
+          onClick={() => {
+            console.log(todoItem);
+            setIsEditable(true);
+            setPrevState(todoItem);
+          }}
           loading={loading}
           disabled={loading}
           type="button"
@@ -70,4 +81,6 @@ TodoButtons.propTypes = {
   loading: propTypes.bool.isRequired,
   handleUpdate: propTypes.func.isRequired,
   handleDelete: propTypes.func.isRequired,
+  todoItem: propTypes.object,
+  setTodoItem: propTypes.func,
 };

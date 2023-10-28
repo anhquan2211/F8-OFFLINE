@@ -114,7 +114,11 @@ export default function TodoItem({
           setIsEditable={setIsEditable}
           handleUpdate={handleUpdate}
           handleDelete={handleDelete}
+          todoItem={todoItem}
+          setTodoItem={setTodoItem}
           loading={loading}
+          todo={todo}
+          isCompleted={isCompleted}
         />
       </div>
       {loading && <Loading />}
