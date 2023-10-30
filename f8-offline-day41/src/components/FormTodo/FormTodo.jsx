@@ -6,6 +6,7 @@ import propTypes from "prop-types";
 import HttpClient from "../../configs/client";
 import { endpoint } from "../../configs/config";
 import Button from "../Button/Button";
+import getApiKey from "../../helpers/getApiKey";
 import "./FormTodo.css";
 import { accessToast, failedToast } from "../../helpers/toastify";
 
@@ -25,6 +26,8 @@ export default function FormTodo({
       {},
       apiKey
     );
+    console.log("res addTodo: ", res);
+    console.log("apiKey addTodo: ", apiKey);
     if (res.ok) {
       const response = data.data;
       const newTodo = {
@@ -36,8 +39,6 @@ export default function FormTodo({
       console.log(newTodo);
       setTodosList((todosList) => [newTodo, ...todosList]);
       return newTodo;
-    } else {
-      throw new Error(`Failed to add`);
     }
   }
 

@@ -1,0 +1,22 @@
+input {
+  border: none;
+  outline: none;
+}
+
+.form-filter {
+  max-width: 384px;
+  width: 100%;
+}
+
+.form-filter .input-filter {
+  padding: 8px 12px;
+  line-height: 1.25;
+  border-style: none;
+  appearance: none;
+  width: 100%;
+  margin-top: 12px;
+  border-color: rgb(20 184 166);
+  border-bottom-width: 1px;
+  border-bottom-style: solid;
+  border-radius: 4px;
+}
