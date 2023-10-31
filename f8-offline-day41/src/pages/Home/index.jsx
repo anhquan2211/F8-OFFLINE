@@ -1,17 +1,16 @@
 /* eslint-disable no-undef */
 //Import Library
 import { useEffect, useState } from "react";
-import queryString from "query-string";
 
 //Import File
-import getApiKey from "../helpers/getApiKey";
-import { endpoint } from "../configs/config";
-import HttpClient from "../configs/client";
-import FormTodo from "../components/FormTodo/FormTodo";
-import ListTodo from "../components/ListTodo/ListTodo";
-import { accessToast, failedToast } from "../helpers/toastify";
-import Loading from "../components/Loading/Loading";
-import FilterTodo from "../components/FilterTodo";
+import getApiKey from "../../helpers/getApiKey";
+import { endpoint } from "../../configs/config";
+import HttpClient from "../../configs/client";
+import FormTodo from "./FormTodo/FormTodo";
+import ListTodo from "../Home/ListTodo/ListTodo";
+import { accessToast, failedToast } from "../../helpers/toastify";
+import Loading from "../../components/Loading/Loading";
+import FilterTodo from "./FilterTodo";
 
 //Khởi tạo đối tượng client từ class HttpClient.
 const client = new HttpClient();
@@ -28,10 +27,7 @@ export default function Home() {
   const getTodos = async (apiKey) => {
     if (!loading) {
       setLoading(true);
-      const paramsString = queryString.stringify(filters);
       const { data, res } = await client.get(endpoint.todos, filters, apiKey);
-      console.log(data);
-      console.log(res);
       if (res.ok) {
         if (data && data.data) {
           const todoList = data.data.listTodo.map((item) => {

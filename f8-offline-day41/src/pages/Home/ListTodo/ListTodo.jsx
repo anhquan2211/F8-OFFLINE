@@ -1,7 +1,7 @@
 import propTypes from "prop-types";
 
 import TodoItem from "../TodoItem";
-import generateId from "../../helpers/generateId";
+import generateId from "../../../helpers/generateId";
 import "./ListTodo.css";
 
 export default function ListTodo({
@@ -15,10 +15,6 @@ export default function ListTodo({
     <ul className="list-todo">
       {Array.isArray(data) && data.length > 0 ? (
         data.map(({ todo, isCompleted, id }) => {
-          {
-            console.log("todo: ", todo);
-            console.log("isCompleted: ", isCompleted);
-          }
           return (
             <TodoItem
               apiKey={apiKey}

@@ -1,7 +1,7 @@
 import propTypes from "prop-types";
-import React, { useState } from "react";
+import { useState } from "react";
 
-import Button from "../../Button/Button";
+import Button from "../../../../components/Button/Button";
 import "../assets/TodoButton.css";
 
 export default function TodoButtons({

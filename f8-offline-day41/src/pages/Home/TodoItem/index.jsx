@@ -2,13 +2,13 @@
 import { useState } from "react";
 import propTypes from "prop-types";
 
-import Loading from "../Loading/Loading";
-import HttpClient from "../../configs/client";
-import { endpoint } from "../../configs/config";
+import Loading from "../../../components/Loading/Loading";
+import HttpClient from "../../../configs/client";
+import { endpoint } from "../../../configs/config";
 import TodoInput from "./components/TodoInput";
 import TodoButtons from "./components/TodoButton";
 import TodoCheckbox from "./components/TodoCheckbox";
-import { accessToast, failedToast } from "../../helpers/toastify";
+import { accessToast, failedToast } from "../../../helpers/toastify";
 
 const client = new HttpClient();
 

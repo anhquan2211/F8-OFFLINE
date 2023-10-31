@@ -3,12 +3,11 @@
 import propTypes from "prop-types";
 
 // Import File
-import HttpClient from "../../configs/client";
-import { endpoint } from "../../configs/config";
-import Button from "../Button/Button";
-import getApiKey from "../../helpers/getApiKey";
+import HttpClient from "../../../configs/client";
+import { endpoint } from "../../../configs/config";
+import Button from "../../../components/Button/Button";
 import "./FormTodo.css";
-import { accessToast, failedToast } from "../../helpers/toastify";
+import { accessToast, failedToast } from "../../../helpers/toastify";
 
 //Khởi tạo đối tượng client từ class Client
 const client = new HttpClient();
@@ -45,7 +44,6 @@ export default function FormTodo({
   const handleSubmit = async (e) => {
     e.preventDefault();
     const target = e.target;
-    console.log(target.todo.value);
     if (!loading && target.todo.value.length > 1) {
       setGlobalLoading(true);
       try {

@@ -32,7 +32,7 @@ function FilterTodo(props) {
       };
 
       onSubmit(formValues);
-    }, 800);
+    }, 500);
   }
 
   return (
