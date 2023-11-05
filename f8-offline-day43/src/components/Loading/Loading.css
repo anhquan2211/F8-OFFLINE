@@ -9,7 +9,7 @@
   display: flex;
   justify-content: center;
   position: relative;
-  z-index: 100;
+  z-index: 2000;
 }
 
 .loading-container > div {
@@ -37,7 +37,7 @@
   position: fixed;
   inset: 0;
   background-color: #1c09466c;
-  z-index: 100;
+  z-index: 2000;
 }
 
 .loading-container {

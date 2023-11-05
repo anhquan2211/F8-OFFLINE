@@ -9,7 +9,7 @@ import "react-toastify/dist/ReactToastify.css";
  * @param {function} onClick - The function to be executed when the notification is clicked.
  * @param {number} [timing=3000] - The duration for which the notification should be displayed, in milliseconds. Defaults to 3000ms.
  */
-const notify = (msg, type, onClick, timing = 4000) => {
+const notify = (msg, type, onClick, timing = 2500) => {
   toast[type](msg, {
     position: "top-right",
     autoClose: timing,
