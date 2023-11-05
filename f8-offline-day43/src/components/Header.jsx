@@ -5,19 +5,28 @@ import Table from "react-bootstrap/Table";
 import Nav from "react-bootstrap/Nav";
 import Badge from "@mui/material/Badge";
 import Menu from "@mui/material/Menu";
-// import MenuItem from "@mui/material/MenuItem";
 import { NavLink } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 
-import { DELETE } from "../redux/actions/action";
-// import { toast } from "react-toastify";
-// import { toToastItem } from "react-toastify/dist/utils";
+import { postOrder } from "../helpers/postOrder";
+import { DELETE_ALL } from "../redux/actions/action";
+import notify from "../helpers/toastify";
+import Loading from "./Loading/Loading";
+import Dialog from "./Dialog/Dialog";
 
 function Header() {
   const [price, setPrice] = useState(0);
+  const [loading, setLoading] = useState(false);
+  const [dataProductLocal, setDataProductLocal] = useState([]);
+  const [isShowModalDelete, setIsShowModalDelete] = useState(false);
+  const [idProductDelete, setIdProductDelete] = useState(null);
 
-  const getData = useSelector((state) => state.cartReducer.carts);
-  // console.log(getData);
+  const dataProductReducer = useSelector((state) => state.cartReducer.carts);
+
+  useEffect(() => {
+    const dataProduct = JSON.parse(localStorage.getItem("cart")) || [];
+    setDataProductLocal(dataProduct);
+  }, [dataProductReducer]);
 
   const dispatch = useDispatch();
 
@@ -31,23 +40,64 @@ function Header() {
 
   const handleClose = () => {
     setAnchorEl(null);
+    setIsShowModalDelete(false);
   };
 
+  const handlePostOrder = () => {
+    setLoading(true);
+    const body = [];
+    dataProductLocal.map((item) => {
+      const dataItem = {
+        productId: item._id,
+        quantity: item.amount,
+      };
+      body.push(dataItem);
+    });
+    postOrder(body).then(({ data, res }) => {
+      if (res.ok) {
+        console.log("Đã gọi thành công postOrder");
+        notify(`Bạn đã thanh toán ${data.message}`, "success");
+        dispatch(DELETE_ALL());
+      } else {
+        notify("Thanh toán thất bại! Vui lòng thử lại.", "error");
+      }
+      setLoading(false);
+    });
+  };
+
+  /**
+   * Handles the deletion of a product item from the shopping cart.
+   *
+   * @param {string} id - The ID of the product to be deleted.
+   */
   const deleteItem = (id) => {
-    dispatch(DELETE(id));
+    setIsShowModalDelete(true);
+    setIdProductDelete(id);
   };
 
   useEffect(() => {
     let price = 0;
-    getData?.map((element) => {
+    dataProductLocal?.map((element) => {
       price = element.price * element.amount + price;
     });
     setPrice(price);
-  }, [getData, price]);
+  }, [dataProductLocal, price]);
 
   return (
     <>
-      <Navbar bg="dark" variant="dark" style={{ height: "60px" }}>
+      {console.log(dataProductLocal)}
+      <Navbar
+        bg="dark"
+        variant="dark"
+        style={{
+          height: "60px",
+          position: "fixed",
+          top: 0,
+          left: 0,
+          right: 0,
+          zIndex: 2,
+        }}
+      >
         <Container>
           <NavLink to="/" className="text-decoration-none text-light mx-3">
             Add to Cart
@@ -59,13 +109,14 @@ function Header() {
           </Nav>
 
           <Badge
-            badgeContent={getData?.length}
+            badgeContent={dataProductLocal?.length}
             color="primary"
             id="basic-button"
             aria-controls={open ? "basic-menu" : undefined}
             aria-haspopup="true"
             aria-expanded={open ? "true" : undefined}
             onClick={handleClick}
+            style={{ position: "relative", zIndex: 0 }}
           >
             <i
               className="fa-solid fa-cart-shopping text-light"
@@ -83,7 +134,7 @@ function Header() {
             "aria-labelledby": "basic-button",
           }}
         >
-          {getData?.length ? (
+          {dataProductLocal?.length ? (
             <div
               className="cart-details"
               style={{ width: "24rem", padding: 10 }}
@@ -97,7 +148,8 @@ function Header() {
                 </thead>
 
                 <tbody>
-                  {getData.map((e, index) => {
+                  {dataProductLocal.map((e, index) => {
+                    const price = parseFloat(e.price).toLocaleString("en");
                     return (
                       <React.Fragment key={index}>
                         <tr>
@@ -114,7 +166,7 @@ function Header() {
                           </td>
                           <td>
                             <p>{e.name}</p>
-                            <p>Price: ${e.price}</p>
+                            <p>Price: ${price}</p>
                             <p>SL: {e.amount}</p>
                             <p>Còn: {e.quantity} sản phẩm</p>
                           </td>
@@ -133,7 +185,33 @@ function Header() {
                       </React.Fragment>
                     );
                   })}
-                  <p className="text-center">Total: ${price}</p>
+                  <tr>
+                    <td>
+                      <p className="text-center">
+                        Total: ${parseFloat(price).toLocaleString("en")}
+                      </p>
+                    </td>
+                    <td></td>
+                    <td></td>
+                  </tr>
+
+                  <tr>
+                    <td>
+                      <button
+                        className="btn btn-success"
+                        style={{
+                          border: "1px solid #ccc",
+                          padding: "10px 30px",
+                          borderRadius: "5px",
+                        }}
+                        onClick={handlePostOrder}
+                      >
+                        Thanh toán
+                      </button>
+                    </td>
+                    <td></td>
+                    <td></td>
+                  </tr>
                 </tbody>
               </Table>
             </div>
@@ -159,6 +237,14 @@ function Header() {
           )}
         </Menu>
       </Navbar>
+
+      <Dialog
+        show={isShowModalDelete}
+        handleClose={handleClose}
+        idProductDelete={idProductDelete}
+      />
+
+      {loading && <Loading />}
     </>
   );
 }

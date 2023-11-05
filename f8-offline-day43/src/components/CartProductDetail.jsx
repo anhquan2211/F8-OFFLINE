@@ -1,18 +1,21 @@
 import React, { useEffect, useState } from "react";
 import Table from "react-bootstrap/Table";
-import { useNavigate, useParams } from "react-router";
+import { useParams } from "react-router";
 import { useDispatch, useSelector } from "react-redux";
 
-import { DELETE, ADD, DECREASE } from "../redux/actions/action";
+import { ADD, DECREASE } from "../redux/actions/action";
+import notify from "../helpers/toastify";
+import DialogDetailPage from "../components/Dialog/DialogDetailPage";
 
 function CartProductDetail() {
-  const [data, setData] = useState([]);
+  const dataProductLocal = JSON.parse(localStorage.getItem("cart"));
+  const [data, setData] = useState([dataProductLocal]);
+  const [isShowModalDelete, setIsShowModalDelete] = useState(false);
+  const [idProductDelete, setIdProductDelete] = useState(null);
 
   const { id } = useParams();
 
   const dispatch = useDispatch();
-
-  const history = useNavigate();
 
   const getData = useSelector((state) => state.cartReducer.carts);
 
@@ -21,15 +24,38 @@ function CartProductDetail() {
     setData(compareData);
   };
 
+  /**
+   * Handles the addition of a product to the shopping cart.
+   *
+   * @param {Object} element - The product to be added to the cart.
+   */
   const handleAddToCart = (element) => {
     dispatch(ADD(element));
+    notify(`Đã thêm ${element.name} vào giỏ hàng`, "success");
   };
 
+  /**
+   * Closes the delete confirmation dialog.
+   */
+  const handleClose = () => {
+    setIsShowModalDelete(false);
+  };
+
+  /**
+   * Handles the deletion of a product from the shopping cart.
+   *
+   * @param {string} id - The ID of the product to be deleted.
+   */
   const deleteItem = (id) => {
-    dispatch(DELETE(id));
-    history("/");
+    setIsShowModalDelete(true);
+    setIdProductDelete(id);
   };
 
+  /**
+   * Handles decreasing the quantity of a product in the shopping cart.
+   *
+   * @param {Object} item - The product to decrease the quantity of.
+   */
   const decrease = (item) => {
     dispatch(DECREASE(item));
   };
@@ -60,14 +86,17 @@ function CartProductDetail() {
                             <strong>Name</strong>: {element.name}
                           </p>
                           <p>
-                            <strong>Price</strong>: $ {element.price}
+                            <strong>Price</strong>: ${" "}
+                            {parseFloat(element.price).toLocaleString("en")}
                           </p>
                           <p>
                             <strong>Address</strong>: Ha Noi
                           </p>
                           <p>
                             <strong>Total</strong>: $
-                            {element.price * element.amount}
+                            {parseFloat(
+                              element.price * element.amount
+                            ).toLocaleString("en")}
                           </p>
                           <div
                             className="mt-5 d-flex justify-content-between align-items-center"
@@ -143,6 +172,12 @@ function CartProductDetail() {
           </div>
         </section>
       </div>
+
+      <DialogDetailPage
+        show={isShowModalDelete}
+        handleClose={handleClose}
+        idProductDelete={idProductDelete}
+      />
     </>
   );
 }

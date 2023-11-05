@@ -8,29 +8,46 @@ import notify from "./helpers/toastify";
 import Header from "./components/Header";
 import CartProductDetail from "./components/CartProductDetail";
 import ProductList from "./components/ProductList/ProductList";
-import getProduct from "./helpers/getProduct";
+import getProfile from "./helpers/getProfile";
 
 function App() {
   const [apiKey, setApiKey] = useState(null);
 
   useEffect(() => {
     let apiKey = localStorage.getItem("apiKey");
-    let email = localStorage.getItem("email");
     if (apiKey) {
       setApiKey(apiKey);
-      notify(
-        "Chào mừng bạn quay trở lại " + email.slice(0, email.indexOf("@")),
-        "success"
-      );
+      getProfile()
+        .then((data) => {
+          if (data) {
+            notify(`Chào mừng ${data} quay trở lại`, "success");
+          } else {
+            notify("Vui lòng đăng nhập lại!", "warning");
+            localStorage.removeItem("apiKey");
+            localStorage.removeItem("email");
+            window.location.reload();
+          }
+        })
+        .catch((error) => {
+          if (error.response && error.response.status === 401) {
+            notify("Please Login", "warning");
+          } else {
+            console.error("Error:", error);
+          }
+        });
+    } else {
+      notify("Vui lòng đăng nhập để đặt hàng", "warning");
     }
   }, []);
 
-  useEffect(() => {
-    // getProduct();
-  }, []);
-
+  /**
+   * Function to handle a successful login operation.
+   *
+   * @param {string} apiKey - The API key received upon successful login.
+   * @param {string} email - The user's email address.
+   */
   const handleLoginSuccess = (apiKey, email) => {
-    notify("Chào bạn " + email.slice(0, email.indexOf("@")) + "!", "success");
+    notify("Chào bạn " + email.slice(0, email.indexOf("@")), "success");
     localStorage.setItem("apiKey", apiKey);
     localStorage.setItem("email", email);
     setApiKey(apiKey);

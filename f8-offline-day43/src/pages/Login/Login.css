@@ -5,16 +5,18 @@
   background-color: rgba(0, 0, 0, 0.3);
   position: absolute;
   inset: 0;
-  height: 100vw;
+  height: 100%;
 }
 
 .login-content {
   position: absolute;
   z-index: 1;
-  top: 50%;
+  top: 200px;
   left: 50%;
   transform: translate(-50%);
-  background-color: #fff;
+  background-color: #8bc6ec;
+  background-image: linear-gradient(135deg, #8bc6ec 0%, #9599e2 100%);
+
   display: flex;
   align-items: center;
   flex-direction: column;

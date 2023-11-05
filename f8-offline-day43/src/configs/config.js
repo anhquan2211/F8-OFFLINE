@@ -7,4 +7,5 @@ export const endpoint = {
   todos: "/todos",
   products: "/products",
   orders: "/orders",
+  profile: "/users/profile",
 };

@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from "react";
 import Card from "react-bootstrap/Card";
 import Button from "react-bootstrap/Button";
+import { ToastContainer } from "react-toastify";
 
 import getProduct from "../../helpers/getProduct";
+import notify from "../../helpers/toastify.js";
 import { ADD } from "../../redux/actions/action";
 import { useDispatch } from "react-redux";
 import Loading from "../Loading/Loading";
@@ -12,24 +14,37 @@ function ProductList() {
   const [productData, setProductData] = useState([]);
 
   useEffect(() => {
-    getProduct().then((data) => {
-      setProductData(data);
-      setTimeout(() => {
+    getProduct()
+      .then((data) => {
+        setProductData(data);
+        setTimeout(() => {
+          setLoading(false);
+        }, 1000);
+      })
+      .catch(() => {
+        notify("Error fetching product data:", "error");
         setLoading(false);
-      }, 2000);
-    });
+        localStorage.removeItem("apiKey");
+        localStorage.removeItem("email");
+        window.location.reload();
+      });
   }, []);
 
   const dispatch = useDispatch();
 
+  /**
+   * Handles adding a product to the shopping cart and displays a notification.
+   *
+   * @param {Object} element - The product to be added to the cart.
+   */
   const handleAddToCart = (element) => {
     dispatch(ADD(element));
+    notify(`Đã thêm ${element.name} vào giỏ hàng`, "success");
   };
 
   return (
-    <div className="container mt-3">
+    <div className="container" style={{ marginTop: "80px" }}>
       <h2 className="text-center">My Product</h2>
-      {console.log(productData)}
       <div className="row d-flex justify-content-center align-items-center">
         {productData.map((element, id) => {
           return (
@@ -63,6 +78,7 @@ function ProductList() {
         })}
       </div>
       {loading && <Loading />}
+      <ToastContainer />
     </div>
   );
 }
