@@ -6,6 +6,7 @@ import Nav from "react-bootstrap/Nav";
 import Badge from "@mui/material/Badge";
 import Menu from "@mui/material/Menu";
 import { NavLink } from "react-router-dom";
+import { useNavigate } from "react-router";
 import { useDispatch, useSelector } from "react-redux";
 
 import { postOrder } from "../helpers/postOrder";
@@ -29,6 +30,8 @@ function Header() {
   }, [dataProductReducer]);
 
   const dispatch = useDispatch();
+
+  const history = useNavigate();
 
   const [anchorEl, setAnchorEl] = useState(null);
 
@@ -58,6 +61,7 @@ function Header() {
         console.log("Đã gọi thành công postOrder");
         notify(`Bạn đã thanh toán ${data.message}`, "success");
         dispatch(DELETE_ALL());
+        history("/");
       } else {
         notify("Thanh toán thất bại! Vui lòng thử lại.", "error");
       }
