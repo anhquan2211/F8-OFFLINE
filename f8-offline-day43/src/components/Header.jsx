@@ -172,7 +172,7 @@ function Header() {
                             <p>{e.name}</p>
                             <p>Price: ${price}</p>
                             <p>SL: {e.amount}</p>
-                            <p>Còn: {e.quantity} sản phẩm</p>
+                            <p>Còn: {e.quantity - e.amount} sản phẩm</p>
                           </td>
                           <td
                             className="mt-5"
