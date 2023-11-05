@@ -7,4 +7,5 @@
 body {
   position: relative;
   font-family: "Roboto", sans-serif;
+  overflow: scroll !important;
 }

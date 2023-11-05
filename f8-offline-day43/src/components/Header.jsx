@@ -89,7 +89,6 @@ function Header() {
 
   return (
     <>
-      {console.log(dataProductLocal)}
       <Navbar
         bg="dark"
         variant="dark"
@@ -137,6 +136,7 @@ function Header() {
           MenuListProps={{
             "aria-labelledby": "basic-button",
           }}
+          disableScrollLock={true}
         >
           {dataProductLocal?.length ? (
             <div
