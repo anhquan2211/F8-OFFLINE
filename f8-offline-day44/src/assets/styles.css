@@ -1,0 +1,23 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+a {
+  text-decoration: none;
+}
+
+body {
+  background-color: #8bc6ec;
+  background-image: linear-gradient(135deg, #8bc6ec 0%, #9599e2 100%);
+  min-height: 100vh;
+}
+
+.Toastify__toast-container {
+  width: 400px;
+}
+
+.Toastify__toast-body > div:last-child {
+  width: 320px;
+}
