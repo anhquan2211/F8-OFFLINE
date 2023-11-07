@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 import { useAuth0 } from "@auth0/auth0-react";
 import { Slide, ToastContainer } from "react-toastify";
 
@@ -13,6 +13,7 @@ import "./Logout.css";
 const LogoutButton = () => {
   const { logout, isAuthenticated } = useAuth0();
   const [isLoggingOut, setIsLoggingOut] = useState(false);
+  const notifyIdRef = useRef(null);
 
   /**
    * Handles the user sign-out process. It sets a loading state, performs the sign-out, and
@@ -20,13 +21,22 @@ const LogoutButton = () => {
    */
   const handleLogout = () => {
     setIsLoggingOut(true);
-    setTimeout(() => {
+    notifyIdRef.current = setTimeout(() => {
       notify("Đăng xuất thành công!", "success");
     }, 500);
+
     setTimeout(() => {
       logout({ logoutParams: { returnTo: window.location.origin } });
     }, 2500);
   };
+
+  useEffect(() => {
+    return () => {
+      if (notifyIdRef.current) {
+        clearTimeout(notifyIdRef.current);
+      }
+    };
+  }, []);
 
   return (
     <>
