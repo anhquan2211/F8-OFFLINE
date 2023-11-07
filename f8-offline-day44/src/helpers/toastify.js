@@ -19,7 +19,7 @@ const notify = (msg, type, onClick, timing = 2500) => {
     draggable: true,
     progress: undefined,
     onClick: onClick,
-    theme: "dark",
+    theme: "colored",
   });
 };
 

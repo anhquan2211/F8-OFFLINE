@@ -1,7 +1,7 @@
 import { useAuth0 } from "@auth0/auth0-react";
 import { useState } from "react";
 import emailjs from "@emailjs/browser";
-import { ToastContainer } from "react-toastify";
+import { Slide, ToastContainer } from "react-toastify";
 
 import Loading from "../Loading/Loading";
 import LogoutButton from "../Logout/LogoutButton";
@@ -16,7 +16,6 @@ import "./Profile.css";
 const Profile = () => {
   const { isLoading, user, isAuthenticated } = useAuth0();
   const [loading, setLoading] = useState(false);
-
   /**
    * Handles the form submission and sends an email using the emailjs library.
    * Displays loading state and notifies the user about the email sending status.
@@ -56,10 +55,16 @@ const Profile = () => {
         <section>
           {user?.picture && <img src={user.picture} alt={user.name} />}
           <h2>Xin chào: {user?.name}</h2>
-          <p>Vị trí: {user?.locale === "vi" ? "Tiếng Việt" : user.locale}</p>
-          <p>
-            Email: <a href={`mailto:${user?.email}`}>{user?.email}</a>
-          </p>
+          {user.locale && (
+            <p>
+              Ngôn ngữ: {user?.locale === "vi" ? "Tiếng Việt" : user.locale}
+            </p>
+          )}
+          {user.email && (
+            <p>
+              Email: <a href={`mailto:${user?.email}`}>{user?.email}</a>
+            </p>
+          )}
 
           <form action="" className="form-container" onSubmit={sendEmail}>
             <label htmlFor="name">Tên của bạn: </label>
@@ -94,7 +99,7 @@ const Profile = () => {
         </section>
       )}
       {(isLoading || loading) && <Loading />}
-      <ToastContainer />
+      <ToastContainer transition={Slide} />
     </>
   );
 };

@@ -14,6 +14,7 @@ section {
 
 section img {
   border-radius: 50%;
+  width: 150px;
 }
 
 .form-container {
@@ -35,7 +36,18 @@ section img {
 
 .btn-support {
   width: 100%;
-  background-color: coral !important;
-  background-image: none;
+  color: #fff;
+  background: #56ccf2; /* fallback for old browsers */
+  background: -webkit-linear-gradient(
+    to right,
+    #2f80ed,
+    #56ccf2
+  ); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(
+    to right,
+    #2f80ed,
+    #56ccf2
+  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
   box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
 }

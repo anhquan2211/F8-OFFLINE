@@ -1,7 +1,9 @@
 import { useState } from "react";
 import { useAuth0 } from "@auth0/auth0-react";
-import Loading from "../Loading/Loading";
+import { Slide, ToastContainer } from "react-toastify";
 
+import Loading from "../Loading/Loading";
+import notify from "../../helpers/toastify";
 import "./Logout.css";
 
 /**
@@ -18,10 +20,12 @@ const LogoutButton = () => {
    */
   const handleLogout = () => {
     setIsLoggingOut(true);
-
+    setTimeout(() => {
+      notify("Đăng xuất thành công!", "success");
+    }, 500);
     setTimeout(() => {
       logout({ logoutParams: { returnTo: window.location.origin } });
-    }, 1000);
+    }, 2500);
   };
 
   return (
@@ -36,6 +40,7 @@ const LogoutButton = () => {
           Sign Out
         </button>
       )}
+      {isLoggingOut && <ToastContainer transition={Slide} />}
     </>
   );
 };
