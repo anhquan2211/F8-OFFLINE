@@ -22,7 +22,7 @@ const LogoutButton = () => {
   const handleLogout = () => {
     setIsLoggingOut(true);
     notifyIdRef.current = setTimeout(() => {
-      notify("Đăng xuất thành công!", "success");
+      notify("Đang đăng xuất...", "success");
     }, 1000);
 
     setTimeout(() => {
