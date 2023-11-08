@@ -23,7 +23,7 @@ const LogoutButton = () => {
     setIsLoggingOut(true);
     notifyIdRef.current = setTimeout(() => {
       notify("Đăng xuất thành công!", "success");
-    }, 500);
+    }, 1000);
 
     setTimeout(() => {
       logout({ logoutParams: { returnTo: window.location.origin } });
