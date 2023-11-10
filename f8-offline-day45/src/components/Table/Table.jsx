@@ -117,11 +117,14 @@ const TableResult = () => {
                 flexShrink={0}
               >
                 <Table>
-                  <TableCaption fontSize={20}>
+                  <TableCaption fontSize={20} marginTop={0}>
                     Lần chơi thứ: {dataLocal.length - index} /{" "}
                     {dataLocal.length}
                   </TableCaption>
-                  <TableCaption fontSize={20}>
+                  <TableCaption fontSize={20} marginTop={0}>
+                    Bạn đã nhập {+data.length} / {MAX_TURN} lần
+                  </TableCaption>
+                  <TableCaption fontSize={20} marginTop={0}>
                     Số lần nhập tối đa: {data[0].maxTurn || MAX_TURN}
                   </TableCaption>
                   <thead>

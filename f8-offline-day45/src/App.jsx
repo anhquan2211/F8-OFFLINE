@@ -46,7 +46,11 @@ const App = () => {
       <Form />
       <TableResult />
       {/* Notification container */}
-      <ToastContainer position="top-right" autoClose={3000} theme={colorMode} />
+      <ToastContainer
+        position="top-right"
+        autoClose={3000}
+        theme={colorMode === "light" ? "dark" : "light"}
+      />
     </Provider>
   );
 };

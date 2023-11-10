@@ -86,7 +86,7 @@ const Form = () => {
     return () => {
       document.removeEventListener("keydown", handleKeyDown);
     };
-  }, []);
+  }, [isDisabled]);
 
   return (
     <div className="form-container">

@@ -27,7 +27,9 @@ const RateResult = ({
     return rateResult + "%";
   };
   return (
-    <TableCaption fontSize={20}>Tỷ lệ đúng: {getRateResult()}</TableCaption>
+    <TableCaption fontSize={20} marginTop={0}>
+      Tỷ lệ đúng: {getRateResult()}
+    </TableCaption>
   );
 };
 
