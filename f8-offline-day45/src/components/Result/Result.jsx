@@ -46,7 +46,7 @@ const Result = () => {
       <div className="progress" style={{ width: `${progressWidth}` }}></div>
       <div className="heading">{handleResult(turn, result)}</div>
       <div className="turn">
-        Còn {turn} / {MAX_TURN} lần
+        Còn {turn} / {MAX_TURN} lần đoán
       </div>
       <div className="description">
         Bạn cần tìm kiếm một số từ 1 đến {RANGE_NUMBER - 1}

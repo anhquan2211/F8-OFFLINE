@@ -7,3 +7,29 @@
   top: 0;
   left: 0;
 }
+
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  row-gap: 10px;
+}
+
+.heading {
+  text-align: center;
+  font-size: 30px;
+  margin-top: 10px;
+  font-weight: 600;
+}
+
+.turn {
+  text-align: center;
+  font-size: 24px;
+  font-weight: 500;
+}
+
+.description {
+  font-size: 20px;
+  font-weight: 500;
+}

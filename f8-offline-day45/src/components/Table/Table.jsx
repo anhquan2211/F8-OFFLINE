@@ -14,7 +14,7 @@ import { DeleteIcon } from "@chakra-ui/icons";
 import { useRef } from "react";
 import MAX_TURN from "../../config/config";
 import { useSelector } from "../../Provider/Provider";
-// import RateResult from "../RateResultCorrect/RateResult";
+import RateResult from "../RateResultCorrect/RateResult";
 
 const TableResult = () => {
   const { getLocalStorage, clearLocalStorage } = useLocalStorage();
@@ -31,7 +31,7 @@ const TableResult = () => {
   useEffect(() => {
     if (result === "CORRECT" || turn === 0) {
       pageTableRef.current = 0;
-      const scrollWidth = tableRef.current.clientWidth * pageTableRef.current;
+      const scrollWidth = tableRef.current?.clientWidth * pageTableRef.current;
       tableRef.current.scroll({
         left: scrollWidth,
         behavior: "smooth",
@@ -101,7 +101,7 @@ const TableResult = () => {
             position={"fixed"}
             right={8}
             color={"brand.700"}
-            background={"brand"}
+            background={"burlywood"}
             variant={"solid"}
             icon={<DeleteIcon />}
             onClick={handleRemoveData}
@@ -117,11 +117,11 @@ const TableResult = () => {
                 flexShrink={0}
               >
                 <Table>
-                  <TableCaption>
+                  <TableCaption fontSize={20}>
                     Lần chơi thứ: {dataLocal.length - index} /{" "}
                     {dataLocal.length}
                   </TableCaption>
-                  <TableCaption>
+                  <TableCaption fontSize={20}>
                     Số lần nhập tối đa: {data[0].maxTurn || MAX_TURN}
                   </TableCaption>
                   <thead>
@@ -145,11 +145,11 @@ const TableResult = () => {
                         </tr>
                       ))}
                   </tbody>
-                  {/* <RateResult
+                  <RateResult
                     turnUser={data?.length}
                     maxTurn={data[index]?.maxTurn}
                     correct={data[data?.length - 1]?.right ? true : false}
-                  /> */}
+                  />
                 </Table>
               </TableContainer>
             );

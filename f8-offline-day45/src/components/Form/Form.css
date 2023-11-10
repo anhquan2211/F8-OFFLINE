@@ -1,6 +1,8 @@
 .label {
   display: block;
   margin: 10px 0;
+  font-size: 20px;
+  font-weight: 500;
 }
 
 .input-number {
@@ -14,7 +16,7 @@
 .btn-submit {
   background: #2a69ac;
   color: #fff;
-  padding: 6px 10px;
+  padding: 6px 18px;
   border-radius: 6px;
   margin-top: 10px;
   margin-bottom: 20px;
