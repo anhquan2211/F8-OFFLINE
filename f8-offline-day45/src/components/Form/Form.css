@@ -1,0 +1,26 @@
+.label {
+  display: block;
+  margin: 10px 0;
+}
+
+.input-number {
+  width: 90%;
+  border: 1px solid #ccc;
+  padding: 10px;
+  border-radius: 6px;
+}
+
+.btn-replay,
+.btn-submit {
+  background: #2a69ac;
+  color: #fff;
+  padding: 6px 10px;
+  border-radius: 6px;
+  margin-top: 10px;
+  margin-bottom: 20px;
+}
+
+.btn-replay:hover,
+.btn-submit:hover {
+  opacity: 0.8;
+}
