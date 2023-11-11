@@ -1,5 +1,5 @@
 .progress {
-  background-color: rgb(43, 43, 217);
+  background-color: rgb(66, 66, 230);
   height: 10px;
   transition: width 0.5s ease-in-out;
   transition-delay: 100ms;

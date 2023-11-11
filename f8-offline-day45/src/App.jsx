@@ -39,7 +39,7 @@ const App = () => {
         onClick={handleTheme}
         icon={colorMode === "light" ? <MoonIcon /> : <SunIcon />}
         variant="solid"
-        style={{ position: "absolute", top: 30, right: 30 }}
+        style={{ position: "absolute", top: 30, left: 30 }}
       />
       {/* Components */}
       <Result />

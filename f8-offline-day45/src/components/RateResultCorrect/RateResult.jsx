@@ -10,19 +10,21 @@ import MAX_TURN from "../../config/config";
  * @param {boolean} [correct=false] - Boolean denoting correctness of the guess.
  * @returns {JSX.Element} - A JSX element displaying the success rate.
  */
-const RateResult = ({
-  turnUser = MAX_TURN,
-  maxTurn = MAX_TURN,
-  correct = false,
-}) => {
+const RateResult = ({ turnUser = MAX_TURN, maxTurn = MAX_TURN, correct }) => {
   /**
    * Calculates the success rate based on the number of turns and correctness.
    * @returns {string} - A string representation of the success rate.
    */
   const getRateResult = () => {
-    let rateResult = (((maxTurn - turnUser + 1) / maxTurn) * 100).toFixed(2);
+    let rateResult = (((maxTurn - turnUser) / maxTurn) * 100).toFixed(2);
     if (turnUser === maxTurn && !correct) {
       rateResult = 0;
+    }
+    if (turnUser === 1 && correct) {
+      rateResult = 100;
+    }
+    if (+turnUser === +maxTurn && correct) {
+      rateResult = ((1 / maxTurn) * 100).toFixed(2);
     }
     return rateResult + "%";
   };

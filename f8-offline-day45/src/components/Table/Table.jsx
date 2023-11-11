@@ -32,10 +32,12 @@ const TableResult = () => {
     if (result === "CORRECT" || turn === 0) {
       pageTableRef.current = 0;
       const scrollWidth = tableRef.current?.clientWidth * pageTableRef.current;
-      tableRef.current.scroll({
-        left: scrollWidth,
-        behavior: "smooth",
-      });
+      if (tableRef.current) {
+        tableRef.current.scroll({
+          left: scrollWidth,
+          behavior: "smooth",
+        });
+      }
     }
   }, [data, state]);
 
@@ -52,7 +54,6 @@ const TableResult = () => {
       }
 
       const scrollWidth = tableRef.current.clientWidth * pageTableRef.current;
-      console.log(scrollWidth);
       tableRef.current.scroll({
         left: scrollWidth,
         behavior: "smooth",
@@ -99,7 +100,7 @@ const TableResult = () => {
         >
           <IconButton
             position={"fixed"}
-            right={8}
+            right={3}
             color={"brand.700"}
             background={"burlywood"}
             variant={"solid"}
@@ -118,14 +119,13 @@ const TableResult = () => {
               >
                 <Table>
                   <TableCaption fontSize={20} marginTop={0}>
-                    Lần chơi thứ: {dataLocal.length - index} /{" "}
-                    {dataLocal.length}
+                    Lần chơi thứ: {dataLocal.length - index} /{dataLocal.length}
                   </TableCaption>
                   <TableCaption fontSize={20} marginTop={0}>
                     Bạn đã nhập {+data.length} / {MAX_TURN} lần
                   </TableCaption>
                   <TableCaption fontSize={20} marginTop={0}>
-                    Số lần nhập tối đa: {data[0].maxTurn || MAX_TURN}
+                    Số lần nhập tối đa: {data[0]?.maxTurn || MAX_TURN}
                   </TableCaption>
                   <thead>
                     <tr>
@@ -142,7 +142,12 @@ const TableResult = () => {
                             <Divider />
                           </td>
                           <td>
-                            <Text align={"center"}>{data.number}</Text>
+                            <Text
+                              align={"center"}
+                              color={data?.correct ? "green.400" : "red.500"}
+                            >
+                              {data.number}
+                            </Text>
                             <Divider />
                           </td>
                         </tr>
@@ -151,7 +156,7 @@ const TableResult = () => {
                   <RateResult
                     turnUser={data?.length}
                     maxTurn={data[index]?.maxTurn}
-                    correct={data[data?.length - 1]?.right ? true : false}
+                    correct={data[data?.length - 1]?.correct ? true : false}
                   />
                 </Table>
               </TableContainer>

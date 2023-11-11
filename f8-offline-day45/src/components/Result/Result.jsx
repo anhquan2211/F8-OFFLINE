@@ -44,7 +44,7 @@ const Result = () => {
   return (
     <div className="container">
       <div className="progress" style={{ width: `${progressWidth}` }}></div>
-      <div className="heading">{handleResult(turn, result)}</div>
+      <div className="heading">{handleResult(result, turn)}</div>
       <div className="turn">
         Còn {turn} / {MAX_TURN} lần đoán
       </div>
