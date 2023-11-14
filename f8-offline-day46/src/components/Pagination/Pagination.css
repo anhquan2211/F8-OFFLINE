@@ -1,0 +1,30 @@
+.btn-pagination-container {
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 1060px;
+  margin: 30px auto;
+  column-gap: 10px;
+}
+
+.btn-pagination-container button {
+  width: 50%;
+  border: none;
+  outline: none;
+  padding: 10px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.btn-pagination-container button:hover {
+  opacity: 0.8;
+}
+
+.btn-pagination-container button:first-child {
+  background-color: burlywood;
+}
+
+.btn-pagination-container button:last-child {
+  background-color: cadetblue;
+}
