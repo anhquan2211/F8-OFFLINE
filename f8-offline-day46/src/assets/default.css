@@ -6,7 +6,8 @@
 
 :root {
   --toastify-color-success: blueviolet;
-  /* --toastify-toast-background: blueviolet !important; */
+  --toastify-toast-background: blueviolet !important;
+  -toastify-color-dark: blueviolet;
 }
 
 body {
@@ -17,4 +18,8 @@ body {
 
 button:disabled {
   cursor: not-allowed;
+}
+
+.Toastify__toast-theme--dark {
+  background-color: cornflowerblue;
 }

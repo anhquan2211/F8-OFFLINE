@@ -190,7 +190,7 @@ function ProductList() {
       </div>
 
       {loading && <Loading />}
-      <ToastContainer toastStyle={{ backgroundColor: "crimson" }} />
+      <ToastContainer toastStyle={{ backgroundColor: "blueviolet" }} />
     </div>
   );
 }
