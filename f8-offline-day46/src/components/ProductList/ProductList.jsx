@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import Card from "react-bootstrap/Card";
 import Button from "react-bootstrap/Button";
 import { ToastContainer } from "react-toastify";
@@ -19,31 +19,40 @@ function ProductList() {
   const [loading, setLoading] = useState(true);
   const [productData, setProductData] = useState([]);
   const location = useLocation();
+  console.log(location);
+  const paramsRef = useRef({
+    limit: config.LIMIT,
+    page: 1,
+    totalPage: 0,
+  });
   let pageParams = location.search.slice(1).split("&")[0].split("=")[1];
-  const [pagination, setPagination] = useState({
-    page: +pageParams,
-    limit: config.LIMIT,
-    totalPage: 1,
-  });
-
-  const [filters, setFilters] = useState({
-    limit: config.LIMIT,
-    page: +pageParams,
-  });
 
   const navigate = useNavigate();
   const match = useMatch("/products");
   const dispatch = useDispatch();
 
   useEffect(() => {
-    // const params = queryString.parse(location.search);
-    // const pageParams = params.page ? Number(params.page) : 1;
-    // setFilters({ ...filters, page: pageParams });
-    const paramString = queryString.stringify(filters);
+    const newFilter = { ...paramsRef.current, page: pageParams };
+
+    paramsRef.current = newFilter;
+
+    const paramString = queryString.stringify({
+      limit: newFilter.limit,
+      page: newFilter.page,
+    });
     getProduct(paramString)
       .then((data) => {
         setProductData(data.listProduct);
-        setPagination({ ...pagination, totalPage: data.totalPage });
+        paramsRef.current = { ...newFilter, totalPage: data.totalPage };
+
+        if (
+          data.listProduct.length === 0 ||
+          !location.search.startsWith("?page=") ||
+          !location.pathname.startsWith("/products")
+        ) {
+          navigate("/products?page=1");
+        }
+
         setTimeout(() => {
           setLoading(false);
         }, 1000);
@@ -52,15 +61,9 @@ function ProductList() {
         notify("Error fetching product data:", "error");
         setLoading(false);
       });
-  }, [filters]);
-
-  useEffect(() => {
-    setLoading(true);
-    const params = queryString.parse(location.search);
-    const pageParams = params.page ? Number(params.page) : 1;
-    setFilters({ ...filters, page: pageParams });
-    setPagination({ ...pagination, page: pageParams });
   }, [location.search]);
+
+  useEffect(() => {}, []);
 
   /**
    * Handles adding a product to the shopping cart and displays a notification.
@@ -79,6 +82,7 @@ function ProductList() {
       pathname: match.pathname,
       search: queryString.stringify(queryParams),
     });
+    paramsRef.current.page = newPage;
   };
 
   const handleClickImg = (element) => {
@@ -127,7 +131,10 @@ function ProductList() {
             </React.Fragment>
           );
         })}
-        <Pagination pagination={pagination} onPageChange={handlePageChange} />
+        <Pagination
+          pagination={paramsRef.current}
+          onPageChange={handlePageChange}
+        />
       </div>
 
       {loading && <Loading />}

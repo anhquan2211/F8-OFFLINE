@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router";
 import { NavLink } from "react-router-dom";
@@ -7,6 +7,7 @@ import notify from "../../helpers/toastify";
 import "./CartDetail.css";
 import Dialog from "../Dialog/Dialog";
 import { ADD, DECREASE, DELETE_ALL } from "../../redux/actions/action";
+import removeAccent from "../../helpers/removeAccent";
 
 const CartDetail = () => {
   const [dataProductLocal, setDataProductLocal] = useState([]);
@@ -83,7 +84,9 @@ const CartDetail = () => {
                 <div className="product-item" key={dataProduct._id}>
                   <div className="img-container">
                     <NavLink
-                      to={`/detail/name~${dataProduct.name}/${dataProduct._id}`}
+                      to={`/detail/name~${removeAccent(dataProduct.name)}/${
+                        dataProduct._id
+                      }`}
                     >
                       <img src={dataProduct.image} alt="image" />
                     </NavLink>

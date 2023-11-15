@@ -1,12 +1,11 @@
 import { PropTypes } from "prop-types";
-import { useLocation } from "react-router";
 
 import "./Pagination.css";
 
 const Pagination = (props) => {
   const { pagination, onPageChange } = props;
   const { page, totalPage } = pagination;
-  const location = useLocation();
+  // const location = useLocation();
   console.log("page Pagination: ", page);
 
   function handlePageChange(newPage) {
@@ -17,18 +16,12 @@ const Pagination = (props) => {
   }
   return (
     <div className="btn-pagination-container">
-      <button
-        disabled={page <= 1}
-        style={{
-          cursor: `{${page <= 1} ? "not-allowed" : "default"}`,
-        }}
-        onClick={() => handlePageChange(page - 1)}
-      >
+      <button disabled={+page <= 1} onClick={() => handlePageChange(+page - 1)}>
         Prev
       </button>
       <button
-        disabled={page >= totalPage}
-        onClick={() => handlePageChange(page + 1)}
+        disabled={+page >= totalPage}
+        onClick={() => handlePageChange(+page + 1)}
       >
         Next
       </button>

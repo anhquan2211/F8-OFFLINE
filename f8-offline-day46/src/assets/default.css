@@ -9,3 +9,7 @@ body {
   font-family: "Roboto", sans-serif;
   overflow: scroll !important;
 }
+
+button:disabled {
+  cursor: not-allowed;
+}
