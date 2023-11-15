@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect, useRef, useState } from "react";
 import Card from "react-bootstrap/Card";
 import Button from "react-bootstrap/Button";
@@ -189,7 +190,7 @@ function ProductList() {
       </div>
 
       {loading && <Loading />}
-      <ToastContainer />
+      <ToastContainer toastStyle={{ backgroundColor: "crimson" }} />
     </div>
   );
 }
