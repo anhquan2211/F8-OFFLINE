@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Navigate, useNavigate } from "react-router";
+import { useNavigate } from "react-router";
 import { NavLink } from "react-router-dom";
 
 import notify from "../../helpers/toastify";
@@ -33,6 +33,12 @@ const CartDetail = () => {
     notify(`Đã thêm ${element.name} vào giỏ hàng`, "success");
   };
 
+  /**
+   *Handles the post-order process.
+   *Notifies the user about successful payment.
+   *Dispatches an action to delete all items from the cart.
+   *Redirects the user to the products page after order completion.
+   */
   const handlePostOrder = () => {
     notify(`Bạn đã thanh toán thành công`, "success");
     dispatch(DELETE_ALL());
@@ -65,10 +71,20 @@ const CartDetail = () => {
     dispatch(DECREASE(item));
   };
 
+  /**
+   * Handles the adjustment of quantity for a specific item.
+   * Deletes the item identified by the provided ID from the cart.
+   * @param {string} id - The identifier of the item to adjust quantity for.
+   */
   const handleQuantity = (id) => {
     dispatch(DELETE(id));
   };
 
+  /**
+   * Executes an effect to calculate the total price based on local product data.
+   * Updates the 'price' state accordingly.
+   * Dependencies on 'dataProductLocal' and 'price' trigger this effect.
+   */
   useEffect(() => {
     let price = 0;
     dataProductLocal?.map((element) => {

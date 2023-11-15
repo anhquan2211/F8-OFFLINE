@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState } from "react";
 import Card from "react-bootstrap/Card";
 import Button from "react-bootstrap/Button";
 import { ToastContainer } from "react-toastify";
-import { useNavigate, useMatch, useLocation, NavLink } from "react-router-dom";
+import { useNavigate, useLocation, NavLink } from "react-router-dom";
 import queryString from "query-string";
 import ReactPaginate from "react-paginate";
 
@@ -40,9 +40,13 @@ function ProductList() {
   let pageParams = location.search.slice(1).split("&")[0].split("=")[1];
 
   const navigate = useNavigate();
-  const match = useMatch("/products");
   const dispatch = useDispatch();
 
+  /**
+   * Executes an effect to fetch and update product data based on query parameters.
+   * Updates the product data and pagination information.
+   * Triggers when 'location.search' changes.
+   */
   useEffect(() => {
     const newFilter = { ...paramsRef.current, page: pageParams };
 
@@ -52,12 +56,18 @@ function ProductList() {
       limit: newFilter.limit,
       page: newFilter.page,
     });
+
     getProduct(paramString)
       .then((data) => {
+        // Updates the total page reference for pagination
         totalPageRef.current = [...Array(data.totalPage + 1).keys()].slice(1);
 
         setProductData(data.listProduct);
+
+        // Updates current parameters with fetched total page count
         paramsRef.current = { ...newFilter, totalPage: data.totalPage };
+
+        // Redirects if conditions for invalid data or URL are met
         if (
           data.listProduct.length === 0 ||
           !location.search.startsWith("?page=") ||
@@ -105,6 +115,11 @@ function ProductList() {
     notify(`Đã thêm ${element.name} vào giỏ hàng`, "success");
   };
 
+  /**
+   * Handles clicking on a product image to store details in local storage.
+   *
+   * @param {Object} element - The product whose details are to be stored.
+   */
   const handleClickImg = (element) => {
     localStorage.setItem("detail", JSON.stringify(element));
   };

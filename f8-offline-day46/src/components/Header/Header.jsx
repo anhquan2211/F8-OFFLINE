@@ -1,30 +1,33 @@
-import React, { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import Navbar from "react-bootstrap/Navbar";
 import Container from "react-bootstrap/Container";
-import Table from "react-bootstrap/Table";
 import Nav from "react-bootstrap/Nav";
-import Badge from "@mui/material/Badge";
-import Menu from "@mui/material/Menu";
 import { NavLink } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 
-import { DELETE_ALL } from "../../redux/actions/action";
-import Loading from "../Loading/Loading";
-import Dialog from "../Dialog/Dialog";
 import "./Header.css";
 
 function Header() {
-  const [loading, setLoading] = useState(false);
   const [dataProductLocal, setDataProductLocal] = useState([]);
   const [amount, setAmount] = useState(0);
 
   const dataProductReducer = useSelector((state) => state.cartReducer.carts);
 
+  /**
+   * Executes an effect to update the local product data from the 'cart' in localStorage.
+   * Updates 'dataProductLocal' based on 'dataProductReducer'.
+   * Triggers when 'dataProductReducer' changes.
+   */
   useEffect(() => {
     const dataProduct = JSON.parse(localStorage.getItem("cart")) || [];
     setDataProductLocal(dataProduct);
   }, [dataProductReducer]);
 
+  /**
+   * Executes an effect to calculate the total amount of products in 'dataProductLocal'.
+   * Updates the 'amount' state based on the accumulated amount of items.
+   * Triggers when 'dataProductLocal' changes.
+   */
   useEffect(() => {
     const totalAmount = dataProductLocal.reduce(
       (acc, current) => acc + +current.amount,
@@ -65,8 +68,6 @@ function Header() {
           </NavLink>
         </Container>
       </Navbar>
-
-      {loading && <Loading />}
     </>
   );
 }
