@@ -1,12 +1,12 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useNavigate } from "react-router";
+import { Navigate, useNavigate } from "react-router";
 import { NavLink } from "react-router-dom";
 
 import notify from "../../helpers/toastify";
 import "./CartDetail.css";
 import Dialog from "../Dialog/Dialog";
-import { ADD, DECREASE, DELETE_ALL } from "../../redux/actions/action";
+import { ADD, DECREASE, DELETE_ALL, DELETE } from "../../redux/actions/action";
 import removeAccent from "../../helpers/removeAccent";
 
 const CartDetail = () => {
@@ -65,6 +65,10 @@ const CartDetail = () => {
     dispatch(DECREASE(item));
   };
 
+  const handleQuantity = (id) => {
+    dispatch(DELETE(id));
+  };
+
   useEffect(() => {
     let price = 0;
     dataProductLocal?.map((element) => {
@@ -102,12 +106,16 @@ const CartDetail = () => {
                       <p className="price">
                         <b>${dataProduct.price.toLocaleString()}</b>
                       </p>
-                      <p className="amount">Số lượng: {dataProduct.amount}</p>
+                      <p className="amount">
+                        Số lượng: {dataProduct.amount.toLocaleString()}
+                      </p>
                       <div className="quantity">
                         Còn{" "}
-                        {(
-                          dataProduct.quantity - dataProduct.amount
-                        ).toLocaleString()}{" "}
+                        {dataProduct.quantity - dataProduct.amount < 0
+                          ? handleQuantity(dataProduct._id)
+                          : (
+                              dataProduct.quantity - dataProduct.amount
+                            ).toLocaleString()}{" "}
                         sản phẩm
                       </div>
                     </div>

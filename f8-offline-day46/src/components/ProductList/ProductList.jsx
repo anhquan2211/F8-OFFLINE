@@ -58,11 +58,11 @@ function ProductList() {
 
         setProductData(data.listProduct);
         paramsRef.current = { ...newFilter, totalPage: data.totalPage };
-
         if (
           data.listProduct.length === 0 ||
           !location.search.startsWith("?page=") ||
-          !location.pathname.startsWith("/products")
+          !location.pathname.startsWith("/products") ||
+          isNaN(+pageParams)
         ) {
           navigate("/products?page=1");
         }
