@@ -54,3 +54,10 @@
   margin-bottom: 1rem;
   padding: 0 6px;
 }
+
+.amount-product {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  column-gap: 40px;
+}

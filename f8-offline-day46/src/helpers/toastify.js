@@ -11,7 +11,7 @@ import "react-toastify/dist/ReactToastify.css";
  */
 const notify = (msg, type, onClick, timing = 2500) => {
   toast[type](msg, {
-    position: "top-center",
+    position: "top-left",
     autoClose: timing,
     hideProgressBar: false,
     closeOnClick: true,
@@ -19,7 +19,7 @@ const notify = (msg, type, onClick, timing = 2500) => {
     draggable: true,
     progress: undefined,
     onClick: onClick,
-    theme: "light",
+    theme: "dark",
   });
 };
 

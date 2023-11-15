@@ -83,7 +83,6 @@ function ProductList() {
     const endOffset = itemOffset + itemPerPage;
     setCurrentItems(productData.slice(itemOffset, endOffset));
     setPageCount(Math.ceil(totalPageRef.current.length));
-    console.log("totalPageRef.current.length: ", totalPageRef.current.length);
   }, [itemOffset, itemPerPage, productData]);
 
   // Invoke when user click to request another page.
@@ -104,16 +103,6 @@ function ProductList() {
   const handleAddToCart = (element) => {
     dispatch(ADD(element));
     notify(`Đã thêm ${element.name} vào giỏ hàng`, "success");
-  };
-
-  const handlePageChange = (newPage) => {
-    const queryParams = { page: newPage };
-    setLoading(true);
-    navigate({
-      pathname: match.pathname,
-      search: queryString.stringify(queryParams),
-    });
-    paramsRef.current.page = newPage;
   };
 
   const handleClickImg = (element) => {

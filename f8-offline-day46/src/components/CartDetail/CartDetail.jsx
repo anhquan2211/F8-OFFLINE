@@ -97,17 +97,19 @@ const CartDetail = () => {
                     <h3 className="category">
                       Category: {dataProduct.category}
                     </h3>
-                    <p className="description">{dataProduct.description}</p>
-                    <p className="price">
-                      <b>${dataProduct.price.toLocaleString()}</b>
-                    </p>
-                    <p className="amount">Số lượng: {dataProduct.amount}</p>
-                    <div className="quantity">
-                      Còn{" "}
-                      {(
-                        dataProduct.quantity - dataProduct.amount
-                      ).toLocaleString()}{" "}
-                      sản phẩm
+
+                    <div className="amount-product">
+                      <p className="price">
+                        <b>${dataProduct.price.toLocaleString()}</b>
+                      </p>
+                      <p className="amount">Số lượng: {dataProduct.amount}</p>
+                      <div className="quantity">
+                        Còn{" "}
+                        {(
+                          dataProduct.quantity - dataProduct.amount
+                        ).toLocaleString()}{" "}
+                        sản phẩm
+                      </div>
                     </div>
                     <div
                       className=" d-flex justify-content-between align-items-center change-amount"

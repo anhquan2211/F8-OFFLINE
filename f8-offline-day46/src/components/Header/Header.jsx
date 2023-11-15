@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import Navbar from "react-bootstrap/Navbar";
 import Container from "react-bootstrap/Container";
 import Table from "react-bootstrap/Table";
@@ -16,6 +16,7 @@ import "./Header.css";
 function Header() {
   const [loading, setLoading] = useState(false);
   const [dataProductLocal, setDataProductLocal] = useState([]);
+  const [amount, setAmount] = useState(0);
 
   const dataProductReducer = useSelector((state) => state.cartReducer.carts);
 
@@ -23,6 +24,14 @@ function Header() {
     const dataProduct = JSON.parse(localStorage.getItem("cart")) || [];
     setDataProductLocal(dataProduct);
   }, [dataProductReducer]);
+
+  useEffect(() => {
+    const totalAmount = dataProductLocal.reduce(
+      (acc, current) => acc + +current.amount,
+      0
+    );
+    setAmount(totalAmount);
+  }, [dataProductLocal]);
 
   return (
     <>
@@ -51,7 +60,7 @@ function Header() {
           <NavLink to="/cart">
             <div className="icon-cart" style={{ fontSize: 20 }}>
               <i className="fa-solid fa-cart-shopping"></i>
-              <span className="length-cart">{dataProductLocal.length}</span>
+              <span className="length-cart">{amount}</span>
             </div>
           </NavLink>
         </Container>
