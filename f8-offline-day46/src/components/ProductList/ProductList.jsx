@@ -103,6 +103,10 @@ function ProductList() {
     const queryParams = { page: selectedPage };
     const searchString = queryString.stringify(queryParams);
     navigate(`/products?${searchString}`);
+    document.documentElement.scroll({
+      top: 0,
+      behavior: "instant",
+    });
   };
 
   /**
