@@ -16,3 +16,32 @@
   border: 2px solid #ccc !important;
   padding: 14px;
 }
+
+.pagination {
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 5rem;
+  font-size: 16px;
+  gap: 6px;
+  color: #000;
+  margin-top: 3rem;
+}
+
+.pagination .page-num {
+  padding: 8px 15px;
+  cursor: pointer;
+  border-radius: 3px;
+  font-weight: 500;
+  color: #000;
+}
+
+.pagination .page-num:hover {
+  background-color: #5ab1bb;
+  color: #fff;
+}
+
+.pagination .active {
+  background-color: #5ab1bb;
+}

@@ -4,13 +4,13 @@ import Button from "react-bootstrap/Button";
 import { ToastContainer } from "react-toastify";
 import { useNavigate, useMatch, useLocation, NavLink } from "react-router-dom";
 import queryString from "query-string";
+import ReactPaginate from "react-paginate";
 
 import getProduct from "../../helpers/getProduct";
 import notify from "../../helpers/toastify.js";
 import { ADD } from "../../redux/actions/action";
 import { useDispatch } from "react-redux";
 import Loading from "../Loading/Loading";
-import Pagination from "../Pagination/Pagination.jsx";
 import { config } from "../../configs/config.js";
 import removeAccent from "../../helpers/removeAccent.js";
 import "./ProductList.css";
@@ -18,13 +18,25 @@ import "./ProductList.css";
 function ProductList() {
   const [loading, setLoading] = useState(true);
   const [productData, setProductData] = useState([]);
+  const [itemOffset, setItemOffset] = useState(0);
+  const [currentItems, setCurrentItems] = useState([]);
+  const [pageCount, setPageCount] = useState(0);
+  const itemPerPage = config.LIMIT;
   const location = useLocation();
-  console.log(location);
   const paramsRef = useRef({
     limit: config.LIMIT,
     page: 1,
     totalPage: 0,
   });
+
+  const totalPageRef = useRef(0);
+
+  // Check if current page is the first page
+  const isFirstPage = +paramsRef.current.page === 1;
+
+  // Check if current page is the last page
+  const isLastPage = +paramsRef.current.page === totalPageRef.current.length;
+
   let pageParams = location.search.slice(1).split("&")[0].split("=")[1];
 
   const navigate = useNavigate();
@@ -42,6 +54,8 @@ function ProductList() {
     });
     getProduct(paramString)
       .then((data) => {
+        totalPageRef.current = [...Array(data.totalPage + 1).keys()].slice(1);
+
         setProductData(data.listProduct);
         paramsRef.current = { ...newFilter, totalPage: data.totalPage };
 
@@ -63,7 +77,24 @@ function ProductList() {
       });
   }, [location.search]);
 
-  useEffect(() => {}, []);
+  //Pagination react
+
+  useEffect(() => {
+    const endOffset = itemOffset + itemPerPage;
+    setCurrentItems(productData.slice(itemOffset, endOffset));
+    setPageCount(Math.ceil(totalPageRef.current.length));
+    console.log("totalPageRef.current.length: ", totalPageRef.current.length);
+  }, [itemOffset, itemPerPage, productData]);
+
+  // Invoke when user click to request another page.
+  const handlePageClick = (data) => {
+    setLoading(true);
+    const selectedPage = data.selected + 1;
+    setItemOffset(data.selected * itemPerPage);
+    const queryParams = { page: selectedPage };
+    const searchString = queryString.stringify(queryParams);
+    navigate(`/products?${searchString}`);
+  };
 
   /**
    * Handles adding a product to the shopping cart and displays a notification.
@@ -131,9 +162,21 @@ function ProductList() {
             </React.Fragment>
           );
         })}
-        <Pagination
-          pagination={paramsRef.current}
-          onPageChange={handlePageChange}
+
+        <ReactPaginate
+          breakLabel="..."
+          nextLabel={isLastPage ? null : "next >"}
+          onPageChange={handlePageClick}
+          pageRangeDisplayed={3}
+          pageCount={pageCount}
+          previousLabel={isFirstPage ? null : "< previous"}
+          renderOnZeroPageCount={null}
+          containerClassName="pagination"
+          pageLinkClassName="page-num"
+          previousLinkClassName="page-num"
+          nextLinkClassName="page-num"
+          activeLinkClassName="active"
+          initialPage={+pageParams - 1}
         />
       </div>
 
