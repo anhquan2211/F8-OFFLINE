@@ -169,11 +169,11 @@ function ProductList() {
 
         <ReactPaginate
           breakLabel="..."
-          nextLabel={isLastPage ? null : "next >"}
+          nextLabel={isLastPage ? null : "Next >"}
           onPageChange={handlePageClick}
           pageRangeDisplayed={3}
           pageCount={pageCount}
-          previousLabel={isFirstPage ? null : "< previous"}
+          previousLabel={isFirstPage ? null : "< Previous"}
           renderOnZeroPageCount={null}
           containerClassName="pagination"
           pageLinkClassName="page-num"
