@@ -12,19 +12,18 @@
 .login-content {
   position: absolute;
   z-index: 1;
-  top: 50%;
+  top: 300px;
   left: 50%;
   /* transform: translate(50% 50%); */
   transform: translateX(-50%) translateY(-50%);
-  background-color: #8bc6ec;
-  background-image: linear-gradient(135deg, #8bc6ec 0%, #9599e2 100%);
+  background-color: #fff;
 
   display: flex;
   align-items: center;
   flex-direction: column;
   row-gap: 20px;
-  padding: 20px;
   border-radius: 10px;
+  padding: 25px 40px;
   z-index: 100;
 }
 
@@ -39,20 +38,135 @@
 .login-form input {
   width: 100%;
   padding: 10px 18px;
-  border-radius: 6px;
-  border: 1px solid #ccc;
+  border-radius: 4px;
+  border: 2px solid #dfe1e6;
   outline: none;
+  height: 40px;
+  transition: background-color 0.2s ease-in-out 0s,
+    border-color 0.2s ease-in-out 0s;
+}
+
+.login-form input:focus {
+  background-color: white;
+  border: 2px solid #4c9aff;
+  box-shadow: 0 0 0;
 }
 
 .login-form .btn-login {
   width: 100%;
-  padding: 10px 18px;
+  padding: 6px 18px;
   border: 1px solid #ccc;
   outline: none;
   border-radius: 6px;
   cursor: pointer;
+  color: #fff;
+  font-weight: bold;
+  background-color: rgb(90, 172, 68);
+  margin-bottom: 20px;
 }
 
 .login-form .btn-login:hover {
   background-color: #d4d4d4;
+}
+
+.login-content .trello-main-logo {
+  width: 150px;
+}
+
+.content-container {
+  background-color: #fff;
+  text-align: center;
+  border-top: 1px solid #ccc;
+  padding: 10px 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.content-container .title {
+  font-size: 16px;
+  color: #5e6c84;
+}
+
+.content-container .description {
+  font-size: 16px;
+  color: #5e6c84;
+  font-weight: 600;
+}
+
+.login-content .or {
+  font-size: 14px;
+  margin-bottom: 10px;
+}
+
+.login-content .icon-google {
+  background: url(https://d2k1ftgv7pobq7.cloudfront.net/meta/c/p/res/images/8215f6659adc202403198fef903a447e/sign-in-with-google.svg)
+    0 50% no-repeat;
+}
+
+.login-content .icon-microsoft {
+  background: url(https://d2k1ftgv7pobq7.cloudfront.net/meta/c/p/res/images/72ece804e5285ab6507e2406157cda3c/microsoft-logo.svg);
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  vertical-align: -5px;
+}
+
+.login-content .icon-apple {
+  background: url(https://d2k1ftgv7pobq7.cloudfront.net/meta/c/p/res/images/6fc4ecf05a97cfb43cfcbb14738a5aa0/apple-logo-black.svg);
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  vertical-align: -3px;
+}
+
+.login-content .icon-slack {
+  background: url(https://d2k1ftgv7pobq7.cloudfront.net/meta/c/p/res/images/267584bf90783090ede8f337d9baf909/slack-logo.svg);
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  vertical-align: -5px;
+}
+
+.login-content .icon {
+  display: inline-block;
+  border-radius: 1px;
+  width: 18px;
+  height: 18px;
+  vertical-align: middle;
+}
+
+.login-content .label {
+  display: inline-block;
+  vertical-align: middle;
+  font-size: 14px;
+  font-family: inherit;
+  font-weight: bold;
+  color: #505f79;
+  height: 32px;
+  line-height: 32px;
+  margin-left: 10px;
+}
+
+.login-content .btn {
+  background: #fff;
+  color: rgba(0, 0, 0, 0.54);
+  box-shadow: rgba(0, 0, 0, 0.2) 1px 1px 5px 0;
+  border-color: transparent;
+  text-align: center;
+  border-radius: 3px;
+  width: 99%;
+  height: 39px;
+  padding-top: 3px;
+  margin-bottom: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  -webkit-transition: background-color 0.2s ease-in-out 0s,
+    border-color 0.2s ease-in-out 0s;
+  transition: background-color 0.2s ease-in-out 0s,
+    border-color 0.2s ease-in-out 0s;
+}
+
+.login-content .btn:hover {
+  background-color: #f9fafc;
+  text-decoration: none;
+  color: #0052cc;
 }
