@@ -97,24 +97,7 @@ function AppBar() {
               />
             ),
           }}
-          sx={{
-            minWidth: 120,
-            maxWidth: 180,
-            '& label': { color: 'white' },
-            '& input': { color: 'white' },
-            '& label.Mui-focused': { color: 'white' },
-            '& .MuiOutlinedInput-root': {
-              '& fieldset': {
-                borderColor: 'white',
-              },
-              '&:hover fieldset': {
-                borderColor: 'white',
-              },
-              '&.Mui-focused fieldset': {
-                borderColor: 'white',
-              },
-            },
-          }}
+          sx={styles.textFieldCss}
         />
 
         <ModeSelect />
@@ -133,6 +116,27 @@ function AppBar() {
       </Box>
     </Box>
   )
+}
+
+const styles = {
+  textFieldCss: {
+    minWidth: 120,
+    maxWidth: 180,
+    '& label': { color: 'white' },
+    '& input': { color: 'white' },
+    '& label.Mui-focused': { color: 'white' },
+    '& .MuiOutlinedInput-root': {
+      '& fieldset': {
+        borderColor: 'white',
+      },
+      '&:hover fieldset': {
+        borderColor: 'white',
+      },
+      '&.Mui-focused fieldset': {
+        borderColor: 'white',
+      },
+    },
+  },
 }
 
 export default AppBar

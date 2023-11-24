@@ -5,16 +5,23 @@ import notify from '~/utils/toastify'
 import BoardDetail from './pages/Boards/BoardDetail'
 
 import 'bootstrap/dist/css/bootstrap.min.css'
+import Loading from './components/Loading/Loading'
 
 function App() {
   const [apiKey, setApiKey] = useState(null)
+  const [isLoading, setIsLoading] = useState(true)
 
   useEffect(() => {
-    let apiKey = localStorage.getItem('apiKey')
-    if (apiKey) {
-      setApiKey(apiKey)
+    let storedApiKey = localStorage.getItem('apiKey')
+    if (storedApiKey) {
+      setApiKey(storedApiKey)
+      // Simulating a 1-second loading delay
+      setTimeout(() => {
+        setIsLoading(false)
+      }, 1000)
     } else {
-      notify('Vui lòng đăng nhập để đặt hàng', 'warning')
+      notify('Vui lòng đăng nhập để tiếp tục', 'warning')
+      setIsLoading(false)
     }
   }, [])
 
@@ -28,14 +35,32 @@ function App() {
     notify('Chào bạn ' + email.slice(0, email.indexOf('@')), 'success')
     localStorage.setItem('apiKey', apiKey)
     localStorage.setItem('email', email)
-    setApiKey(apiKey)
+    // Simulating a 1-second loading delay
+    setIsLoading(true)
+    setTimeout(() => {
+      setApiKey(apiKey)
+      setIsLoading(false)
+    }, 1000)
   }
-  return (
-    <>
-      <BoardDetail />
-      {!apiKey && <Login onLoginSuccess={handleLoginSuccess} />}
-    </>
-  )
+
+  if (isLoading) {
+    return <Loading />
+  }
+
+  if (!apiKey) {
+    return <Login onLoginSuccess={handleLoginSuccess} />
+  }
+
+  return <BoardDetail />
 }
+
+// return (
+//   <>
+//     {isLoading && <Loading />}
+//     {!isLoading && <BoardDetail />}
+//     {!apiKey && <Login onLoginSuccess={handleLoginSuccess} />}
+//   </>
+// )
+// }
 
 export default App

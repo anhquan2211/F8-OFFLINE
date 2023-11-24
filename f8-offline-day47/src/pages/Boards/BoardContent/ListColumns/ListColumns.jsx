@@ -13,6 +13,7 @@ function ListColumns({ columns }) {
    * SortableContext yêu cầu items là một mảng dạng ['id-1', 'id-2'] chứ không phải là [{id: 'id-1'},{id: 'id-2'}]
    * Nếu không đúng thì vẫn kéo thả được nhưng không có animation
    */
+  console.log('columns: ', columns)
   return (
     <SortableContext
       items={columns?.map((c) => c._id)}
