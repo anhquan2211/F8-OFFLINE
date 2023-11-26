@@ -9,6 +9,7 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import Theme from "@/components/Theme";
 import LanguageSelect from "@/components/Language";
+import NotFound from "@/components/NotFound";
 import "./globals.css";
 
 const inter = Inter({ subsets: ["latin"] });
@@ -32,23 +33,26 @@ export default async function LocaleLayout({
   params,
 }: LocaleLayoutProps) {
   // Getting the current locale using useLocale() from next-intl
-  const locale = useLocale();
 
   // Checking if the provided locale parameter doesn't match the current locale
-  if (params.locale !== locale) {
-    notFound();
-  }
 
   let messages;
+  let localeGlobal;
   try {
+    const locale = useLocale();
+    localeGlobal = locale;
     // Dynamically importing messages based on the locale
     messages = (await import(`../../messages/${locale}.json`)).default;
+
+    if (params.locale !== locale) {
+      return <NotFound />;
+    }
   } catch (error) {
-    notFound();
+    return <NotFound />;
   }
 
   return (
-    <html lang={locale} className="!scroll-smooth">
+    <html lang={localeGlobal} className="!scroll-smooth">
       <body
         className={`${inter.className} bg-gray-50 text-gray-950 relative pt-28 sm:pt-36 dark:bg-gray-900 dark:text-gray-50 dark:text-opacity-90`}
       >
