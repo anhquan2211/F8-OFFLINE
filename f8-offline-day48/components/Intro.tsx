@@ -31,7 +31,7 @@ const Intro = () => {
           }}
         >
           <Image
-            src="/IMG_4048.JPG"
+            src="/IMG_4048.jpg"
             alt="Luu Anh Quan Portrait"
             width="192"
             height="192"

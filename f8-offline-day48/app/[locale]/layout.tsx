@@ -1,3 +1,5 @@
+import { notFound } from "next/navigation";
+import { useLocale, NextIntlClientProvider } from "next-intl";
 import Header from "@/components/Header";
 import "./globals.css";
 import { Inter } from "next/font/google";
@@ -6,6 +8,7 @@ import { Toaster } from "react-hot-toast";
 import Footer from "@/components/Footer";
 import Theme from "@/components/Theme";
 import ThemeContextProvider from "@/context/theme-context";
+import LanguageSelect from "@/components/Language";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -14,13 +17,33 @@ export const metadata = {
   description: "Anh Quan Portfolio",
 };
 
-export default function RootLayout({
-  children,
-}: {
+interface LocaleLayoutProps {
   children: React.ReactNode;
-}) {
+  params: {
+    locale: string; // Assuming 'locale' is a string, adjust the type accordingly if it's different
+    // Add other properties if 'params' contains more than just 'locale'
+  };
+}
+
+export default async function LocaleLayout({
+  children,
+  params,
+}: LocaleLayoutProps) {
+  const locale = useLocale();
+
+  if (params.locale !== locale) {
+    notFound();
+  }
+
+  let messages;
+  try {
+    messages = (await import(`../../messages/${locale}.json`)).default;
+  } catch (error) {
+    notFound();
+  }
+
   return (
-    <html lang="en" className="!scroll-smooth">
+    <html lang={locale} className="!scroll-smooth">
       <body
         className={`${inter.className} bg-gray-50 text-gray-950 relative pt-28 sm:pt-36 dark:bg-gray-900 dark:text-gray-50 dark:text-opacity-90`}
       >
@@ -29,11 +52,14 @@ export default function RootLayout({
 
         <ThemeContextProvider>
           <ActiveSectionContextProvider>
-            <Header />
-            {children}
-            <Footer />
-            <Theme />
-            <Toaster position="top-right" />
+            <NextIntlClientProvider messages={messages}>
+              <Header />
+              {children}
+              <Footer />
+              <Theme />
+              <LanguageSelect />
+              <Toaster position="top-right" />
+            </NextIntlClientProvider>
           </ActiveSectionContextProvider>
         </ThemeContextProvider>
       </body>

@@ -130,14 +130,16 @@ export const experiencesData = [
 export const projectsData = [
   {
     title: "Clone ZingMP3",
-    description: "This is the description.",
+    description:
+      "The project has main functions such as: song playlist, next/prev/play/pause/random song, karaoke for song",
     tags: ["Javascript", "HTML", "SCSS"],
     imageUrl: zingMP3Project,
   },
   {
     title: "Clone Trello",
-    description: "This is the description.",
-    tags: ["ReactJs", "NodeJs/ExpressJs", "MUI", "Tailwind", "Redux"],
+    description:
+      "The project has the following main functions: drag and drop columns and tags like trello web, build database and write drag and drop api, login registration,...",
+    tags: ["ReactJs", "NodeJs/ExpressJs", "MUI", "Redux-Toolkit"],
     imageUrl: trelloProject,
   },
 ] as const;
