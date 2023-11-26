@@ -134,6 +134,8 @@ export const projectsData = [
       "The project has main functions such as: song playlist, next/prev/play/pause/random song, karaoke for song",
     tags: ["Javascript", "HTML", "SCSS"],
     imageUrl: zingMP3Project,
+    demoLink:
+      "https://anhquan2211.github.io/F8-OFFLINE/Clone_zing_mp3/index.html",
   },
   {
     title: "Clone Trello",
@@ -141,6 +143,7 @@ export const projectsData = [
       "The project has the following main functions: drag and drop columns and tags like trello web, build database and write drag and drop api, login registration,...",
     tags: ["ReactJs", "NodeJs/ExpressJs", "MUI", "Redux-Toolkit"],
     imageUrl: trelloProject,
+    demoLink: "https://f8-offline-day48.vercel.app/",
   },
 ] as const;
 
