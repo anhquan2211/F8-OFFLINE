@@ -8,5 +8,10 @@
     "Skills": "Skills",
     "Experience": "Experience",
     "Contact": "Contact"
+  },
+  "intro": {
+    "description": "Hello, I'm Luu Anh Quan. I'm a Fullstack Developer with X years of experience.",
+    "contact": "Contact me here",
+    "download": "Download CV"
   }
 }

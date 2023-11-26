@@ -9,9 +9,11 @@ import { HiDownload } from "react-icons/hi";
 import { FaGithubSquare } from "react-icons/fa";
 import { useSectionInView } from "@/lib/hooks";
 import { useActiveSectionContext } from "@/context/active-section-context";
+import { useTranslations } from "next-intl";
 
 const Intro = () => {
   const { ref } = useSectionInView("Home", 0.5);
+  const t = useTranslations("intro");
 
   const { setActiveSection, setTimeOfLastClick } = useActiveSectionContext();
 
@@ -47,9 +49,7 @@ const Intro = () => {
         initial={{ opacity: 0, y: 100 }}
         animate={{ opacity: 1, y: 0 }}
       >
-        <span className="font-bold">Hello, I&apos;m Luu Anh Quan</span>.
-        I&apos;m a <span className="font-bold"> Fullstack Developer</span> with{" "}
-        <span className="font-bold">X years</span> of experience.
+        {t("description")}
       </motion.h1>
 
       <motion.div
@@ -68,7 +68,7 @@ const Intro = () => {
             setTimeOfLastClick(Date.now());
           }}
         >
-          Contact me here{" "}
+          {t("contact")}{" "}
           <BsArrowRight className="opacity-70 group-hover:translate-x-1" />
         </Link>
 
@@ -77,7 +77,7 @@ const Intro = () => {
           href="/CV.pdf"
           download
         >
-          Download CV{" "}
+          {t("download")}{" "}
           <HiDownload className="opacity-60 group-hover:translate-y-1 transition" />
         </a>
 

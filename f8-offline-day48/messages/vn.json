@@ -8,5 +8,10 @@
     "Skills": "Kỹ năng",
     "Experience": "Kinh nghiệm",
     "Contact": "Liên lạc"
+  },
+  "intro": {
+    "description": "Xin chào, tôi tên là Lưu Anh Quân. Tôi là nhà phát triển web Fullstack với X năm kinh nghiệm làm việc.",
+    "contact": "Liên hệ với tôi",
+    "download": "Tải CV"
   }
 }
