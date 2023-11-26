@@ -27,8 +27,12 @@ const LanguageSelect = () => {
         value={pathname.split("/")[1]}
         onChange={handleLanguageChange}
       >
-        <option value="en">🇺🇸</option>
-        <option value="vn">🇻🇳</option>
+        <option value="en" className="text-xl">
+          🇺🇸
+        </option>
+        <option value="vn" className="text-xl">
+          🇻🇳
+        </option>
       </select>
     </div>
   );

@@ -1,23 +1,21 @@
 "use client";
 
-import React, { useContext, useState } from "react";
 import { motion } from "framer-motion";
 import clsx from "clsx";
+import Link from "next/link";
+import { useTranslations } from "next-intl";
 
 import { links } from "@/lib/data";
-import Link from "next/link";
-import {
-  ActiveSectionContext,
-  useActiveSectionContext,
-} from "@/context/active-section-context";
-import { useTranslations } from "next-intl";
-import LanguageSelect from "./Language";
+import { useActiveSectionContext } from "@/context/active-section-context";
 
 const Header = () => {
+  // Using useTranslations hook to get translations for navbar
   const t = useTranslations("navbar");
 
+  // Using useActiveSectionContext hook to manage active section state
   const { activeSection, setActiveSection, setTimeOfLastClick } =
     useActiveSectionContext();
+
   return (
     <header className="z-[999] relative">
       <motion.div

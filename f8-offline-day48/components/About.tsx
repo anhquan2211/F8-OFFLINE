@@ -1,13 +1,12 @@
 "use client";
 
-import React, { useEffect } from "react";
-import SectionHeading from "./Section-Heading";
 import { motion } from "framer-motion";
-import { useInView } from "react-intersection-observer";
-import { useActiveSectionContext } from "@/context/active-section-context";
+
 import { useSectionInView } from "@/lib/hooks";
+import SectionHeading from "./Section-Heading";
 
 const About = () => {
+  // Using useSectionInView hook to track section visibility
   const { ref } = useSectionInView("About");
 
   return (

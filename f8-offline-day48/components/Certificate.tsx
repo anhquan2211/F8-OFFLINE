@@ -1,18 +1,22 @@
 "use client";
 
 import React from "react";
-import SectionHeading from "./Section-Heading";
 import {
   VerticalTimeline,
   VerticalTimelineElement,
 } from "react-vertical-timeline-component";
 import "react-vertical-timeline-component/style.min.css";
+
 import { certificatesData } from "@/lib/data";
 import { useSectionInView } from "@/lib/hooks";
 import { useTheme } from "@/context/theme-context";
+import SectionHeading from "./Section-Heading";
 
 const Certificate = () => {
+  // Using useSectionInView hook to track section visibility with a threshold
   const { ref } = useSectionInView("Certificate", 0.5);
+
+  // Using useTheme hook to get theme information
   const { theme } = useTheme();
 
   return (

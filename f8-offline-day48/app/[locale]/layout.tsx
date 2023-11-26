@@ -1,27 +1,29 @@
 import { notFound } from "next/navigation";
 import { useLocale, NextIntlClientProvider } from "next-intl";
-import Header from "@/components/Header";
-import "./globals.css";
 import { Inter } from "next/font/google";
-import ActiveSectionContextProvider from "@/context/active-section-context";
 import { Toaster } from "react-hot-toast";
+
+import ActiveSectionContextProvider from "@/context/active-section-context";
+import ThemeContextProvider from "@/context/theme-context";
+import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import Theme from "@/components/Theme";
-import ThemeContextProvider from "@/context/theme-context";
 import LanguageSelect from "@/components/Language";
+import "./globals.css";
 
 const inter = Inter({ subsets: ["latin"] });
 
+// Metadata object containing title and description for the webpage
 export const metadata = {
   title: "Anh Quan | Personal Portfolio",
   description: "Anh Quan Portfolio",
 };
 
+// Interface defining props for LocaleLayout component
 interface LocaleLayoutProps {
   children: React.ReactNode;
   params: {
-    locale: string; // Assuming 'locale' is a string, adjust the type accordingly if it's different
-    // Add other properties if 'params' contains more than just 'locale'
+    locale: string;
   };
 }
 
@@ -29,14 +31,17 @@ export default async function LocaleLayout({
   children,
   params,
 }: LocaleLayoutProps) {
+  // Getting the current locale using useLocale() from next-intl
   const locale = useLocale();
 
+  // Checking if the provided locale parameter doesn't match the current locale
   if (params.locale !== locale) {
     notFound();
   }
 
   let messages;
   try {
+    // Dynamically importing messages based on the locale
     messages = (await import(`../../messages/${locale}.json`)).default;
   } catch (error) {
     notFound();

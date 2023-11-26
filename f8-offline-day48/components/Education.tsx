@@ -1,15 +1,16 @@
 "use client";
 
 import React from "react";
-import SectionHeading from "./Section-Heading";
 import {
   VerticalTimeline,
   VerticalTimelineElement,
 } from "react-vertical-timeline-component";
 import "react-vertical-timeline-component/style.min.css";
+
 import { educationData } from "@/lib/data";
 import { useSectionInView } from "@/lib/hooks";
 import { useTheme } from "@/context/theme-context";
+import SectionHeading from "./Section-Heading";
 
 const Education = () => {
   const { ref } = useSectionInView("Education", 0.5);

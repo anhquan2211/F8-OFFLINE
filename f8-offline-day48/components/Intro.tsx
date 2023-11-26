@@ -7,9 +7,10 @@ import Link from "next/link";
 import { BsArrowRight, BsLinkedin } from "react-icons/bs";
 import { HiDownload } from "react-icons/hi";
 import { FaGithubSquare } from "react-icons/fa";
+import { useTranslations } from "next-intl";
+
 import { useSectionInView } from "@/lib/hooks";
 import { useActiveSectionContext } from "@/context/active-section-context";
-import { useTranslations } from "next-intl";
 
 const Intro = () => {
   const { ref } = useSectionInView("Home", 0.5);
