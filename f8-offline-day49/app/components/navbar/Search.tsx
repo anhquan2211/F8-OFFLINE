@@ -63,6 +63,8 @@ const Search = () => {
         hover:shadow-md 
         transition 
         cursor-pointer
+        border-primary
+        dark:border-gray-100
       "
     >
       <div
@@ -78,7 +80,8 @@ const Search = () => {
             text-sm 
             font-semibold 
             px-6
-            text-white
+            text-gray-900
+            dark:text-gray-100
           "
         >
           {locationLabel}
@@ -90,10 +93,13 @@ const Search = () => {
             text-sm 
             font-semibold 
             px-6 
-            border-x-[1px] 
+            border-x-[1px]
+            border-x-primary 
+            dark:border-x-gray-100
             flex-1 
             text-center
-            text-white
+            text-gray-900
+            dark:text-gray-100
           "
         >
           {durationLabel}
@@ -103,7 +109,8 @@ const Search = () => {
             text-sm 
             pl-6 
             pr-2 
-            text-white/80
+            text-gray-500
+            dark:text-gray-300
             flex 
             flex-row 
             items-center 
@@ -114,7 +121,8 @@ const Search = () => {
           <div
             className="
               p-2 
-              bg-primary 
+              bg-primary
+              dark:bg-indigo-900
               rounded-full 
               text-white
             "
