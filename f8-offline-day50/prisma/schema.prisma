@@ -1,0 +1,86 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+//Xác định nhà cung cấp Prisma Client sử dụng để tạo Prisma Client cho JavaScript, cho phép tương tác với cơ sở dữ liệu
+generator client {
+  provider = "prisma-client-js"
+}
+
+//Định nghĩa chi tiết kết nối cơ sở dữ liệu, bao gồm nhà cung cấp (mongodb) và URL được lấy từ biến môi trường DATABASE_URL.
+datasource db {
+  provider = "mongodb"
+  url      = env("DATABASE_URL")
+}
+
+//Đại diện cho một người dùng trong hệ thống 
+model User {
+  id             String    @id @default(auto()) @map("_id") @db.ObjectId
+  name           String?
+  email          String?   @unique
+  emailVerified  DateTime?
+  image          String?
+  hashedPassword String?
+  createdAt      DateTime  @default(now())
+  updatedAt      DateTime  @updatedAt
+
+  conversationsIds String[]       @db.ObjectId
+  conversations    Conversation[] @relation(fields: [conversationsIds], references: [id])
+
+  seenMessageIds String[]  @db.ObjectId
+  seenMessages   Message[] @relation("Đã xem", fields: [seenMessageIds], references: [id])
+
+  accounts Account[]
+  messages Message[]
+}
+
+//Đại diện cho một tài khoản liên kết với một người dùng.
+model Account {
+  id                String  @id @default(auto()) @map("_id") @db.ObjectId
+  userId            String  @db.ObjectId
+  type              String
+  provider          String
+  providerAccountId String
+  refresh_token     String? @db.String
+  access_token      String? @db.String
+  expires_at        Int?
+  token_type        String?
+  scope             String?
+  id_token          String? @db.String
+  session_state     String?
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([provider, providerAccountId])
+}
+
+//Đại diện cho một cuộc trò chuyện.
+model Conversation {
+  id            String   @id @default(auto()) @map("_id") @db.ObjectId
+  createdAt     DateTime @default(now())
+  lastMessageAt DateTime @default(now())
+  name          String?
+  isGroup       Boolean?
+
+  messagesIds String[]  @db.ObjectId
+  messages    Message[]
+
+  userIds String[] @db.ObjectId
+  users   User[]   @relation(fields: [userIds], references: [id])
+}
+
+//Đại diện cho một tin nhắn trong một cuộc trò chuyện.
+model Message {
+  id        String   @id @default(auto()) @map("_id") @db.ObjectId
+  body      String?
+  image     String?
+  createdAt DateTime @default(now())
+
+  seenIds String[] @db.ObjectId
+  seen    User[]   @relation("Đã xem", fields: [seenIds], references: [id])
+
+  conversationId String       @db.ObjectId
+  conversation   Conversation @relation(fields: [conversationId], references: [id], onDelete: Cascade)
+
+  senderId String @db.ObjectId
+  sender   User   @relation(fields: [senderId], references: [id], onDelete: Cascade)
+}
